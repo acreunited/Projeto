@@ -1,7 +1,7 @@
 use animearena;
 show tables;
 
-
+DELETE * FROM USERS;
 -- USER
 insert into USERS values(
 	0, 'axe', 'password', curdate(), 0, null, 

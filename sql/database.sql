@@ -5,7 +5,7 @@ show tables;
 
 -- USERS --
 create table USERS (
-	userID int not null auto_increment,
+	userID int not null,
     username varchar(16) not null,
     UNIQUE(username),
     pass varchar(32) not null,
@@ -34,14 +34,14 @@ create table USERS (
 
 -- USER IS-A --
 create table MEMBERS (
-	membersID int not null auto_increment,
+	membersID int not null,
     constraint pk_members primary key (membersID),
     constraint fk_members foreign key (membersID) references USERS(userID)
 );
 
 -- MEMBERS IS-A --
 create table ADMINISTRATOR (
-	administratorID int not null auto_increment,
+	administratorID int not null,
     constraint pk_administrator primary key (administratorID),
     constraint fk_administrator foreign key (administratorID) references MEMBERS(membersID)
 );
@@ -49,34 +49,25 @@ create table ADMINISTRATOR (
 
 -- CHARACTERS --
 create table CHARACTERS (
-	characterID int not null auto_increment,
-    nome varchar(16) not null,
-    UNIQUE(nome),
-    avatar tinyblob,
-    descricao varchar(5000),
+	characterID int not null,
 
     constraint pk_characters primary key(characterID)
 );
 
 -- CHARACTERS IS-A ANIME --
-create table DRAGONBALL (
-	dragonballID int not null auto_increment,
-    planet varchar(16) not null,    
-    constraint pk_dragonball primary key (dragonballID),
-    constraint fk_dragonball foreign key (dragonballID) references CHARACTERS(characterID)
-);
-create table NARUTO (
-	narutoID int not null auto_increment,
-    village varchar(16) not null, 
-    clan varchar(16) not null, 
-    constraint pk_naruto primary key (narutoID),
-    constraint fk_naruto foreign key (narutoID) references CHARACTERS(characterID)
+create table BLEACH (
+	bleachID int not null,
+    category varchar(16) not null, 
+    CHECK (category in ('human', 'shinigami', 'souls', 'arrancar', 'hollow', 'quincy', 'other')),
+    
+    constraint pk_bleach primary key (bleachID),
+    constraint fk_bleach foreign key (bleachID) references CHARACTERS(characterID)
 );
 
 -- MISSION --
 -- REQUISITOS?--
 create table MISSION (
-	missionID int not null auto_increment,
+	missionID int not null,
     nome varchar(32) not null,
     UNIQUE(nome),
     descricao varchar(5000),
@@ -91,9 +82,8 @@ create table MISSION (
 
 -- ABILITY --
 create table ABILITY(
-	abilityID int not null auto_increment,
+	abilityID int not null,
     nome varchar(16) not null,
-    descricao varchar(5000),
     cooldown int not null,
     CHECK (cooldown >= 0),
     avatar tinyblob not null,
@@ -105,12 +95,12 @@ create table ABILITY(
 
 -- ENERGY --
 create table ENERGY(
-	energyID int not null auto_increment,
+	energyID int not null,
     
     constraint pk_energy primary key (energyID)
 );
 create table E1(
-	e1ID int not null auto_increment,
+	e1ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
     color varchar(16) not null,
@@ -120,7 +110,7 @@ create table E1(
     constraint fk_e1 foreign key (e1ID) references ENERGY(energyID)
 );
 create table E2(
-	e2ID int not null auto_increment,
+	e2ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
     color varchar(16) not null,
@@ -130,7 +120,7 @@ create table E2(
     constraint fk_e2 foreign key (e2ID) references ENERGY(energyID)
 );
 create table E3(
-	e3ID int not null auto_increment,
+	e3ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
     color varchar(16) not null,
@@ -140,7 +130,7 @@ create table E3(
     constraint fk_e3 foreign key (e3ID) references ENERGY(energyID)
 );
 create table E4(
-	e4ID int not null auto_increment,
+	e4ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
     color varchar(16) not null,
@@ -150,7 +140,7 @@ create table E4(
     constraint fk_e4 foreign key (e4ID) references ENERGY(energyID)
 );
 create table E5(
-	e5ID int not null auto_increment,
+	e5ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
     color varchar(16) not null,
@@ -162,7 +152,7 @@ create table E5(
 
 -- THEME --
 create table THEME(
-	themeID int not null auto_increment,
+	themeID int not null,
     
     constraint pk_theme primary key (themeID)
 );
@@ -206,7 +196,8 @@ create table THEME_CHARACTER (
 	characterID int not null, 
     themeID int not null,
     nome varchar(16) not null,
-    avatar tinyblob not null,
+    avatar tinyblob,
+    descricao varchar(500) not null,
     constraint pk_associates_character primary key (themeID, characterID),
     constraint fk_theme_characters foreign key (themeID) references THEME(themeID),
     constraint fk_characters_theme foreign key (characterID) references CHARACTERS(characterID)
@@ -217,6 +208,7 @@ create table THEME_ABILITY (
     themeID int not null,
     nome varchar(16) not null,
     avatar tinyblob not null,
+    descricao varchar(500) not null,
     constraint pk_associates_character primary key (themeID, abilityID),
     constraint fk_theme_ability foreign key (themeID) references THEME(themeID),
     constraint fk_ability_theme foreign key (abilityID) references ABILITY(abilityID)
