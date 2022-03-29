@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<missions>
+
+	<!-- Ganhar 5 jogos com uma personagem especifica -->
+	<mission missionID="m000">
+		<character characterID="c000">
+			<wins goal="5" current="0"/>
+		</character>
+	</mission>
+
+	<!-- Ganhar 10 jogos com uma personagem de um determinado anime -->
+	<mission missionID="m001">
+		<anime animeID="a000">
+			<wins>0</wins>
+		</anime>
+	</mission>
+
+	<!-- Ganhar 10 jogos com uma personagem de um determinado anime 
+	e 5 jogos com uma personagem especifica -->
+	<mission missionID="m002">
+		<character characterID="c000">
+			<wins>0</wins>
+		</character>
+
+		<anime animeID="a000">
+			<wins>0</wins>
+		</anime>
+	</mission>
+
+</missions>		

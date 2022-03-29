@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<animes>
+	<!-- Dragon Ball -->
+	<anime animeID="a000">
+		<character characterID="c000">
+			<planet>Namek</planet>
+			<race>Namekian</race>
+		</character>
+	</anime>
+
+	<!-- Naruto -->
+	<anime animeID="a001">
+		<character characterID="c001">
+			<village>Konoha</village>
+			<clan>Uzumaki</clan>
+		</character>
+	</anime>
+</animes>
+

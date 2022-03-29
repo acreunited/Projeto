@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<requirements>
+	<mission missionID="m000">
+		<name>Nome Missao m001</name>
+		<description>Ganhar 5 jogos com uma personagem especifica</description>
+		<character characterID="c000">
+			<wins>5</wins>
+		</character>
+
+		<character characterID="c001">
+			<wins>10</wins>
+		</character>
+		
+		<anime animeID="a001">
+			<wins>20</wins>
+		</anime>
+	</mission>
+
+
+</requirements>
