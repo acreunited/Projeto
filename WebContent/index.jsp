@@ -12,7 +12,7 @@
     <meta name="description" content="DragonBall-Arena">
     <meta name="author" content="Pedro Dias">
 
-    <title>DragonBall-Arena</title>
+    <title>Anime-Arena</title>
 
     <!-- Custom fonts for this template-->
     <link href="extras/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
