@@ -36,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
                 <!--<div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>-->
@@ -88,8 +88,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Theme1</a>
-                        <a class="collapse-item" href="#">Theme2</a>
+                        <a class="collapse-item" href="#">Default</a>
+                        <a class="collapse-item" href="#">Anime</a>
                     </div>
                 </div>
             </li>
@@ -119,10 +119,10 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="index.html">Annoucements</a>
-                        <a class="collapse-item" href="ladder.html">Rankings</a>
-                        <a class="collapse-item" href="missions.html">Missions</a>
-                        <a class="collapse-item" href="help.html">Help</a>
+                        <a class="collapse-item" href="index.jsp">Annoucements</a>
+                        <a class="collapse-item" href="ladder.jsp">Rankings</a>
+                        <a class="collapse-item" href="missions.jsp">Missions</a>
+                        <a class="collapse-item" href="help.jsp">Help</a>
 
                         <div class="collapse-divider"></div>
                     </div>
@@ -138,8 +138,8 @@
                 </a>
                 <div id="collapseAccount" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="login.jsp">Login</a>
+                        <a class="collapse-item" href="register.jsp">Register</a>
 
                         <div class="collapse-divider"></div>
                     </div>
@@ -168,133 +168,9 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
+                 
         
 
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">2</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Annoucements
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                         
-                                    <div>
-                                        <div class="small text-gray-500">March 17, 2022</div>
-                                        <span class="font-weight-bold">Notify users of annoucements, like balance update, new chars, etc</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                         
-                                    <div>
-                                        <div class="small text-gray-500">March 17, 2022</div>
-                                        <span class="font-weight-bold">PS: Just an idea, will implement this later, one thing at a time </span>
-                                    </div>
-                                </a>
-                                
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Annoucements</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">1</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Private Messages
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/goku.png"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Krillin is dead again, we need to revive him!</div>
-                                        <div class="small text-gray-500">Goku</div>
-                                    </div>
-                                </a>
-                               
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/buu.png">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.html">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="settings.html">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
 
                 </nav>
                 <!-- End of Topbar -->
