@@ -1,7 +1,7 @@
 use animearena;
 show tables;
 
-DELETE * FROM USERS;
+
 -- USER
 insert into USERS values(
 	0, 'axe', 'password', curdate(), 0, null, 
@@ -24,3 +24,4 @@ insert into MISSION values(
 	0, "Esdeath Mission Name", "description here", null, 16, 1
 );
 select * from mission;
+

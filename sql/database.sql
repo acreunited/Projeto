@@ -83,10 +83,8 @@ create table MISSION (
 -- ABILITY --
 create table ABILITY(
 	abilityID int not null,
-    nome varchar(16) not null,
     cooldown int not null,
     CHECK (cooldown >= 0),
-    avatar tinyblob not null,
     
     characterID int not null,
     
@@ -206,8 +204,8 @@ create table THEME_CHARACTER (
 create table THEME_ABILITY (
 	abilityID int not null, 
     themeID int not null,
-    nome varchar(16) not null,
-    avatar tinyblob not null,
+    nome varchar(32) not null,
+    avatar tinyblob,
     descricao varchar(500) not null,
     constraint pk_associates_character primary key (themeID, abilityID),
     constraint fk_theme_ability foreign key (themeID) references THEME(themeID),
