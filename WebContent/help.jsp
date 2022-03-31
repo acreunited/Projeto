@@ -208,7 +208,7 @@
 
                     <div id="contentCharSkills" style="display: none;">
                         
-                        <%
+                       <%
 					Class.forName(Connector.drv);
 					try (Connection conn = Connector.getConnection();) {
 						Statement stmt = conn.createStatement();
@@ -222,42 +222,73 @@
 								break;
 							}
 					%>
-                    
-                        <article>
-                            <img src="ViewCharacter?id=<%=characterID %>" onclick="document.getElementById('characterID<%=characterID%>').style.display='block'">
-
-                            <article class="content">
-                                <b><%=nome %></b><br>
-                            </article>
-                        </article>
+	                        <article>
+	                            <img src="ViewCharacter?id=<%=characterID %>" onclick="document.getElementById('characterID<%=characterID%>').style.display='block'">
+	
+	                            <article class="content">
+	                                <b><%=nome %></b><br>
+	                            </article>
+	                        </article>
                         
-                        <div id="characterID<%=characterID%>" class="modal" style="display: none;">
-                        	<div class="container" style="background-color: #f1f1f1">
-                        		<%
-								
-								ResultSet character = conn.createStatement().executeQuery(
-										"select * from BLEACH INNER JOIN THEME_CHARACTER where BLEACH.bleachID=THEME_CHARACTER.characterID and THEME_CHARACTER.themeID=1 and BLEACH.bleachID=" + characterID);
-								if (character.next()) {
-								%>
-								<div style="margin: auto; width: 50%; padding: 10px">
-									<p><%=character.getString("nome")%></p>
-									<img src="ViewCharacter?id=<%=characterID %>"/>
-									<p><%=character.getString("descricao")%></p>
+	                        <div id="characterID<%=characterID%>" class="modal" style="display: none;">
+	                        	<div class="container" style="background-color: #f1f1f1">
+	                        		<%
+	                        		ResultSet character = conn.createStatement().executeQuery(
+											"select * from BLEACH INNER JOIN THEME_CHARACTER where BLEACH.bleachID=THEME_CHARACTER.characterID and THEME_CHARACTER.themeID=1 and BLEACH.bleachID=" + characterID);
+									while (character.next()) {
+									%>
+										<div style="margin: auto; width: 50%; padding: 10px">
+											<p><%=character.getString("nome")%></p>
+											<img src="ViewCharacter?id=<%=characterID %>"/>
+											<p><%=character.getString("descricao")%></p>
+										</div>
+										<%
+									}
+									character.close();
+									
+									ResultSet abilities = conn.createStatement().executeQuery(
+											"select * from ABILITY where characterID="+characterID+";");
+									
+									while (abilities.next()) {
+										
+										String abilityID = abilities.getString("abilityID");
+										if (abilityID==null) {
+											break;
+										}
+										
+										ResultSet abilit = conn.createStatement().executeQuery(
+												"select * from THEME_ABILITY where themeID=1 and abilityID="+abilityID+";");
+										
+											if (abilit.next()) {
+												String name = abilit.getString("nome");
+												String descricao = abilit.getString("descricao");
+												if (name==null) {
+													break;
+												}
+											
+												%>
+												<div style="margin: auto; width: 50%; padding: 10px">
+													<p><b>Name:</b> <%=name%></p>
+													<img src="ViewAbility?id=<%=abilityID %>"/>
+													<p><b>Description:</b> <%=descricao%></p>
+													<p><b>Cooldown:</b> <%=abilities.getString("cooldown")%></p>
+												</div>
+												<%
+												
+											}
+											abilit.close();
+										}
+									
+									abilities.close();
+									%>	
+									
+	                        		<div class="container" style="background-color: #f1f1f1">
+										<button type="button" onclick="document.getElementById('characterID<%=characterID%>').style.display='none'"
+										class="cancelbtn"
+										>Exit</button>
+									</div>
 								</div>
-								<%
-								}
-								character.close();
-								%>
-								
-								
-                        	</div>
-                        	<div class="container" style="background-color: #f1f1f1">
-							<button type="button"
-								onclick="document.getElementById('characterID<%=characterID%>').style.display='none'"
-								class="cancelbtn"
-								>Exit</button>
-							</div>
-                        </div>
+	                        </div>
 
                         <%
                         }

@@ -76,8 +76,15 @@ where USERS.userID=ADMINISTRATOR.administratorID;
 
 select * from MISSION where missionID=0;
 
+select * from ABILITY where characterID=1;
+select * from THEME_ABILITY where themeID=1 and abilityID=0;
+
 select * from THEME_CHARACTER where themeID=1 and characterID=0;
 
 select * from THEME_CHARACTER where themeID=1;
 
 select * from BLEACH INNER JOIN THEME_CHARACTER where BLEACH.bleachID=THEME_CHARACTER.characterID and THEME_CHARACTER.themeID=1 and BLEACH.bleachID=0;
+
+
+select * from THEME_ABILITY where themeID=1;
+select * from THEME_ABILITY where themeID=1 and abilityID=1
