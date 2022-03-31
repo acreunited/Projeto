@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@page import="java.io.*"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="main.Connector"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -177,41 +186,46 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">Missions</h1>
-                    <p class="mb-4">Maybe explain here that they need a minimum rank, having a search bar for when we have a lot of missions etc<br>
+                    <!--<h1 class="h3 mb-1 text-gray-800">Missions</h1>
+                     <p class="mb-4">Maybe explain here that they need a minimum rank, having a search bar for when we have a lot of missions etc<br>
                     Also let me know if you like this effect on missions or not (put the mouse over the image in the middle), 
                     I used it for the AC-R website and it might look good, but I can just remove it. But just putting the options of having all images like that (or with other effects if you want<br>
-                    I´d like to consider posting the mission image only, but we´ll see later when the time comes</p>
+                    I´d like to consider posting the mission image only, but we´ll see later when the time comes</p> -->
 
    
                     <div class="missions_container">
-                        <article class="card">
+                    
+                    <%
+					Class.forName(Connector.drv);
+					try (Connection conn = Connector.getConnection();) {
+						Statement stmt = conn.createStatement();
+		
+						ResultSet rs = stmt.executeQuery("select * from MISSION;");
+						while (rs.next()) {
+							String missionID = rs.getString("missionID");
+							String nome = rs.getString("nome");
+							String minLevel = rs.getString("minimumLevel");
+							if (missionID == null || nome==null || minLevel==null) {
+								break;
+							}
+					%>
+                    
+                        <article class="card" id="mission<%=missionID%>">
                             <img src="img/mission2.png" alt="card image"/>
 
                             <article class="content">
-                                <b>Mission Name</b>
-                                <p>Required Level</p>
+                                <b><%=nome %></b>
+                                <b>Required Level: <%=minLevel %></b>
                             </article>
                         </article>
 
-                        <article class="card">
-                            <img src="img/mission2.png" alt="card image" class="zoom"/>
-
-                            <article class="content">
-                                <b>Mission Name</b>
-                                <p>Required Level</p>
-                            </article>
-                        </article>
-
- 
-                        <article class="card">
-                            <img src="img/mission2.png" alt="card image"/>
-
-                            <article class="content">
-                                <b>Mission Name</b>
-                                <p>Required Level</p>
-                            </article>
-                        </article>
+                        <%
+                        }
+						rs.close();
+						} catch (SQLException | IOException e) {
+						System.out.println(e.getMessage());
+						}
+						%>
                     </div>
                     
                    

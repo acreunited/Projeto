@@ -73,3 +73,5 @@ where themeID=1 and abilityID IN (4, 5, 6, 7);
 select username 
 from USERS INNER JOIN ADMINISTRATOR 
 where USERS.userID=ADMINISTRATOR.administratorID;
+
+select * from MISSION;
