@@ -74,4 +74,10 @@ select username
 from USERS INNER JOIN ADMINISTRATOR 
 where USERS.userID=ADMINISTRATOR.administratorID;
 
-select * from MISSION;
+select * from MISSION where missionID=0;
+
+select * from THEME_CHARACTER where themeID=1 and characterID=0;
+
+select * from THEME_CHARACTER where themeID=1;
+
+select * from BLEACH INNER JOIN THEME_CHARACTER where BLEACH.bleachID=THEME_CHARACTER.characterID and THEME_CHARACTER.themeID=1 and BLEACH.bleachID=0;

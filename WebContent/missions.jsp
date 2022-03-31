@@ -210,11 +210,11 @@
 							}
 					%>
                     
-                        <article class="card" id="mission<%=missionID%>">
-                            <img src="img/mission2.png" alt="card image"/>
+                        <article id="mission<%=missionID%>">
+                            <img src="ViewMission?id=<%=missionID %>">
 
                             <article class="content">
-                                <b><%=nome %></b>
+                                <b><%=nome %></b><br>
                                 <b>Required Level: <%=minLevel %></b>
                             </article>
                         </article>

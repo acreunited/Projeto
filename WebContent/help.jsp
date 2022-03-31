@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@page import="java.io.*"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="main.Connector"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +31,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/characterInfo.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
 
     <script src="js/help.js"></script>
@@ -178,11 +188,11 @@
                 <div class="container-fluid">
                     
                      <!-- Page Heading -->
-                     <p class="mb-4">PS: I know the buttons are ugly. <br>
+                    <!-- <p class="mb-4">PS: I know the buttons are ugly. <br>
                         I just want to know if you guys like this idea of changing the informations according to the button the user clicks.<br>
                         I honestly dont think it makes sense for someone to click on a page and then having to go back and click on another one like N-A has<br>
                         If you do like this way, then I will make them look good, I guaranteed you that, we can also had them gfx from your part
-                     </p>
+                     </p>-->
 
                     <div class="text-center">
                         <div class="buttonsHelp">
@@ -197,7 +207,67 @@
                     </div>
 
                     <div id="contentCharSkills" style="display: none;">
-                        <p><br>We list here all chars and skills. Will do it once we have the chars</p>
+                        
+                        <%
+					Class.forName(Connector.drv);
+					try (Connection conn = Connector.getConnection();) {
+						Statement stmt = conn.createStatement();
+		
+						ResultSet rs = stmt.executeQuery("select * from THEME_CHARACTER where themeID=1");
+						while (rs.next()) {
+							String characterID = rs.getString("characterID");
+							String nome = rs.getString("nome");
+							
+							if (characterID == null || nome==null ) {
+								break;
+							}
+					%>
+                    
+                        <article>
+                            <img src="ViewCharacter?id=<%=characterID %>" onclick="document.getElementById('characterID<%=characterID%>').style.display='block'">
+
+                            <article class="content">
+                                <b><%=nome %></b><br>
+                            </article>
+                        </article>
+                        
+                        <div id="characterID<%=characterID%>" class="modal" style="display: none;">
+                        	<div class="container" style="background-color: #f1f1f1">
+                        		<%
+								
+								ResultSet character = conn.createStatement().executeQuery(
+										"select * from BLEACH INNER JOIN THEME_CHARACTER where BLEACH.bleachID=THEME_CHARACTER.characterID and THEME_CHARACTER.themeID=1 and BLEACH.bleachID=" + characterID);
+								if (character.next()) {
+								%>
+								<div style="margin: auto; width: 50%; padding: 10px">
+									<p><%=character.getString("nome")%></p>
+									<img src="ViewCharacter?id=<%=characterID %>"/>
+									<p><%=character.getString("descricao")%></p>
+								</div>
+								<%
+								}
+								character.close();
+								%>
+								
+								
+                        	</div>
+                        	<div class="container" style="background-color: #f1f1f1">
+							<button type="button"
+								onclick="document.getElementById('characterID<%=characterID%>').style.display='none'"
+								class="cancelbtn"
+								>Exit</button>
+							</div>
+                        </div>
+
+                        <%
+                        }
+						rs.close();
+						} catch (SQLException | IOException e) {
+						System.out.println(e.getMessage());
+						}
+						%>
+                        
+                        
                     </div>
 
                     <div id="contentRankins" style="display: none;">
