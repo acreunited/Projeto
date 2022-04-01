@@ -95,4 +95,9 @@ select * from THEME_CHARACTER;
 
 select pass, userID FROM USERS where username="axe";
 
-select * from ADMINISTRATOR where administratorID=0;
+select * from ADMINISTRATOR where administratorID=1;
+
+select * from USERS where userID=1;
+
+SELECT * FROM USERS ORDER BY xp DESC LIMIT 10;
+SELECT * FROM USERS ORDER BY xp DESC;

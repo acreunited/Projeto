@@ -11,6 +11,12 @@ insert into USERS values(
     curdate()
 );
 
+insert into USERS values(
+	2, 'ranktest', 'password', curdate(), 360, null, 
+    'pncdiarrrrrs@hotmail.com', 1, 0, null, null, +1, +1, 1, 
+    curdate()
+);
+
 select * from USERS;
 
 insert into MEMBERS values(
@@ -18,6 +24,9 @@ insert into MEMBERS values(
 );
 insert into MEMBERS values(
 	1
+);
+insert into MEMBERS values(
+	2
 );
 
 insert into ADMINISTRATOR values(

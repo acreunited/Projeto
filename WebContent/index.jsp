@@ -142,7 +142,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item" id="isLog" style="display: block">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount"
                     aria-expanded="true" aria-controls="collapseAccount">
                     <i class="fas fa-fw fa-ellipsis-v"></i>
@@ -182,13 +182,25 @@
                 
 					<!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto" id="players" style="display:none">
+                    
+                     <%
+					Class.forName(Connector.drv);
+					try (Connection conn = Connector.getConnection();) {
+						Statement stmt = conn.createStatement();
+						
+						ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("userID"));
+						if (rs.next()) {
+							String username = rs.getString("username");
+							String userID = rs.getString("userID");
+					%>
+                    
                     <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=username %></span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/buu.png">
+                                    src="ViewAvatar?id=<%=userID %>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -208,6 +220,14 @@
                                 </a>
                             </div>
                         </li>
+                        
+                        <%
+                        }
+						rs.close();
+						} catch (SQLException | IOException e) {
+						System.out.println(e.getMessage());
+						}
+						%>
                     </ul>
                     
            
@@ -227,7 +247,7 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Annoucements</h6>
-                               
+                               		<h4><a class="m-0 font-weight-bold text-primary" href="#" id="admin" style="display:none">+</a></h4>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -300,16 +320,29 @@
 	function displayUsers(tipoUser) {
 	    if (tipoUser=="administrador") {
 	        document.getElementById("players").style.display="block";
-	        
+	        document.getElementById("admin").style.display="block";
 	    }
 	    else if (tipoUser=="player") {
 	        document.getElementById("players").style.display="block";
-	        
+	        document.getElementById("admin").style.display="none";
 	    }
 	    else {
 	        document.getElementById("players").style.display="none";
-	       
+	        document.getElementById("admin").style.display="none";
 	    }
+	}
+	
+	function displayLogged(isLog) {
+		console.log(isLog);
+		
+		if (isLog=="null" || isLog=="false") {
+	        document.getElementById("isLog").style.display="block";
+	    }
+	    else {
+	    	document.getElementById("isLog").style.display="none";
+	    }
+		
+	    
 	}
 </script>
 
@@ -319,6 +352,11 @@
 	if (tipo!=null) {
 		displayUsers( tipo );
 	}
+	
+	var isLogin = "<%=session.getAttribute("loggedIn")%>";
+
+	displayLogged(isLogin);
+	
 </script>
 
     <!-- Bootstrap core JavaScript-->

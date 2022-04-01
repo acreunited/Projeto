@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@page import="java.io.*"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="main.Connector"%>
+<%@page import="users.Login"%>
+<%@page import="users.UserInfo"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +141,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item" id="isLog" style="display: block">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount"
                     aria-expanded="true" aria-controls="collapseAccount">
                     <i class="fas fa-fw fa-ellipsis-v"></i>
@@ -168,7 +179,55 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                 
+                 <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto" id="players" style="display:none">
+                    
+                     <%
+					Class.forName(Connector.drv);
+					try (Connection conn = Connector.getConnection();) {
+						Statement stmt = conn.createStatement();
+						
+						ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("userID"));
+						if (rs.next()) {
+							String username = rs.getString("username");
+							String userID = rs.getString("userID");
+					%>
+                    
+                    <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=username %></span>
+                                <img class="img-profile rounded-circle"
+                                    src="ViewAvatar?id=<%=userID %>">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="settings.html">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                        
+                         <%
+                        }
+						rs.close();
+						} catch (SQLException | IOException e) {
+						System.out.println(e.getMessage());
+						}
+						%>
+                    </ul>
 
         
                 </nav>
@@ -178,11 +237,11 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Ranking</h1>
-                    <p class="mb-4">Maybe some description here, not sure if its necessary. But basically its to show the rank of every player.
+                    <h1 class="h3 mb-2 text-gray-800">Ladder Rank</h1>
+                    <!-- <p class="mb-4">Maybe some description here, not sure if its necessary. But basically its to show the rank of every player.
                         Will do for clans too for sure later on, but until July I doubt I can implement it.<br>
                         I copy pasted 30 examples so you guys can see the search thingy working :Praydge:
-                    </p>
+                    </p>-->
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -215,277 +274,40 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    <%
+									Class.forName(Connector.drv);
+									try (Connection conn = Connector.getConnection();) {
+										Statement stmt = conn.createStatement();
+										
+										ResultSet rs = stmt.executeQuery("SELECT * FROM USERS ORDER BY xp DESC;");
+										int count = 0;
+										while (rs.next()) {
+											String username = rs.getString("username");
+											String xp = rs.getString("xp");
+											String wins = rs.getString("nWins");
+											String losses = rs.getString("nLosses");
+											String streak = rs.getString("streak");
+											
+											UserInfo userInfo = new UserInfo();
+											String level = userInfo.getLevel(xp);
+											count++;
+									%>
                                         <tr>
-                                            <td>#01</td>
-                                            <td>Betrayer</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#02</td>
-                                            <td>Clover</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#03</td>
-                                            <td>Aby</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#04</td>
-                                            <td>Sad</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#05</td>
-                                            <td>Axe</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#06</td>
-                                            <td>Shuna</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#07</td>
-                                            <td>Betrayer</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#08</td>
-                                            <td>Shuna</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#09</td>
-                                            <td>Sad</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#10</td>
-                                            <td>Shuna</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#11</td>
-                                            <td>Shuna</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#12</td>
-                                            <td>Betrayer</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#13</td>
-                                            <td>Clover</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#14</td>
-                                            <td>Shuna</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#15</td>
-                                            <td>Aby</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#16</td>
-                                            <td>Axe</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#17</td>
-                                            <td>Shuna</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#18</td>
-                                            <td>Clover</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#19</td>
-                                            <td>Sad</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#20</td>
-                                            <td>Aby</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#21</td>
-                                            <td>Axe</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#22</td>
-                                            <td>Betrayer</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#23</td>
-                                            <td>Clover</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#24</td>
-                                            <td>Sad</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#25</td>
-                                            <td>Aby</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#26</td>
-                                            <td>Axe</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#27</td>
-                                            <td>Betrayer</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#28</td>
-                                            <td>Clover</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#29</td>
-                                            <td>Sad</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#30</td>
-                                            <td>Aby</td>
-                                            <td>66</td>
-                                            <td>54561561</td>
-                                            <td>56465</td>
-                                            <td>4125</td>
-                                            <td>+16</td>
-                                        </tr>
-                                        
+                                            <td>#<%=count %></td>
+                                            <td><%=username %></td>
+                                            <td><%=level %></td>
+                                            <td><%=xp %></td>
+                                            <td><%=wins %></td>
+                                            <td><%=losses %></td>
+                                            <td>+<%=streak %></td>
+                                        </tr>   
+                                    <%
+			                        }
+									rs.close();
+									} catch (SQLException | IOException e) {
+									System.out.println(e.getMessage());
+									}
+									%>  
                                     </tbody>
                                 </table>
                             </div>
@@ -512,6 +334,46 @@
     </a>
 
     
+<script type="text/javascript">
+	function displayUsers(tipoUser) {
+	    if (tipoUser=="administrador") {
+	        document.getElementById("players").style.display="block";
+
+	    }
+	    else if (tipoUser=="player") {
+	        document.getElementById("players").style.display="block";
+	    }
+	    else {
+	        document.getElementById("players").style.display="none";
+	    }
+	}
+	
+	function displayLogged(isLog) {
+		console.log(isLog);
+		
+		if (isLog=="null" || isLog=="false") {
+	        document.getElementById("isLog").style.display="block";
+	    }
+	    else {
+	    	document.getElementById("isLog").style.display="none";
+	    }
+		
+	    
+	}
+</script>
+
+<script>
+	var tipo = "<%=(String) session.getAttribute("tipoUser")%>";
+	
+	if (tipo!=null) {
+		displayUsers( tipo );
+	}
+	
+	var isLogin = "<%=session.getAttribute("loggedIn")%>";
+
+	displayLogged(isLogin);
+	
+</script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="js/jquery.js"></script>
