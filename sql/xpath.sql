@@ -87,4 +87,12 @@ select * from BLEACH INNER JOIN THEME_CHARACTER where BLEACH.bleachID=THEME_CHAR
 
 
 select * from THEME_ABILITY where themeID=1;
-select * from THEME_ABILITY where themeID=1 and abilityID=1
+select * from THEME_ABILITY where themeID=1 and abilityID=1;
+
+select * from MISSION where missionID=0;
+
+select * from THEME_CHARACTER;
+
+select pass, userID FROM USERS where username="axe";
+
+select * from ADMINISTRATOR where administratorID=0;

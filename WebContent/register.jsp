@@ -209,14 +209,14 @@
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email">
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <a href="index.jsp" class="btn btn-primary btn-user btn-block">
                                             Register
                                         </a>
                                         
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="login.html">Already have an account?</a>
+                                        <a class="small" href="login.jsp">Already have an account?</a>
                                     </div>
                                    
                                 </div>

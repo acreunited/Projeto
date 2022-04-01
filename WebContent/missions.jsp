@@ -193,7 +193,7 @@
                     I´d like to consider posting the mission image only, but we´ll see later when the time comes</p> -->
 
    
-                    <div class="missions_container">
+                    <div class="container-fluid">
                     
                     <%
 					Class.forName(Connector.drv);
@@ -210,14 +210,51 @@
 							}
 					%>
                     
-                        <article id="mission<%=missionID%>">
-                            <img src="ViewMission?id=<%=missionID %>">
-
-                            <article class="content">
-                                <b><%=nome %></b><br>
-                                <b>Required Level: <%=minLevel %></b>
-                            </article>
-                        </article>
+	                        <article id="mission<%=missionID%>">
+	                            <img src="ViewMission?id=<%=missionID %>"  onclick="document.getElementById('missionID<%=missionID%>').style.display='block'">
+	
+	                            <article class="content">
+	                                <b><%=nome %></b><br>
+	                                <b>Required Level: <%=minLevel %></b>
+	                            </article>
+	                        </article>
+	                        
+	                        <div id="missionID<%=missionID%>" class="modal" style="display: none;">
+		                        	<div class="container" style="background-color: #f1f1f1">
+		                        		<%
+		                        		ResultSet mission = conn.createStatement().executeQuery(
+												"select * from MISSION where missionID="+missionID);
+		                        		
+										if (mission.next()) {
+											String missionName = mission.getString("nome");
+											String missionDescription = mission.getString("descricao");
+											String missionLevel = mission.getString("minimumLevel");
+											String missionChar = mission.getString("characterID");
+											
+											if (missionName==null||missionDescription==null||missionLevel==null||missionChar==null) {
+												break;
+											}
+										%>
+											<div style="margin: auto; width: 50%; padding: 10px">
+												<p><%=missionName%></p>
+												<img src="ViewMission?id=<%=missionID %>">
+												<p><%=missionDescription%></p>
+												<p>Required Level: <%=missionLevel%></p>
+												<img src="ViewCharacter?id=<%=missionChar %>"/>
+											</div>
+											<%
+										}
+										mission.close();
+										%>	
+										
+		                        		<div class="container" style="background-color: #f1f1f1">
+											<button type="button" onclick="document.getElementById('missionID<%=missionID%>').style.display='none'"
+											class="cancelbtn"
+											>Exit</button>
+										</div>
+									</div>
+		                        </div>
+                        
 
                         <%
                         }
