@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@page import="java.io.*"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="main.Connector"%>
+<%@ page import="users.Login"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +33,15 @@
     <!-- Custom styles for this template-->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    
 
 </head>
 
 <body id="page-top">
+
+
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -164,7 +179,37 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                
+					<!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto" id="players" style="display:none">
+                    <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Username</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/buu.png">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="settings.html">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    
            
 
                 </nav>
@@ -251,7 +296,30 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+<script type="text/javascript">
+	function displayUsers(tipoUser) {
+	    if (tipoUser=="administrador") {
+	        document.getElementById("players").style.display="block";
+	        
+	    }
+	    else if (tipoUser=="player") {
+	        document.getElementById("players").style.display="block";
+	        
+	    }
+	    else {
+	        document.getElementById("players").style.display="none";
+	       
+	    }
+	}
+</script>
 
+<script>
+	var tipo = "<%=(String) session.getAttribute("tipoUser")%>";
+	
+	if (tipo!=null) {
+		displayUsers( tipo );
+	}
+</script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="js/jquery.js"></script>

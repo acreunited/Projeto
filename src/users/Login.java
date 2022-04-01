@@ -50,6 +50,7 @@ public class Login extends HttpServlet {
 		response.getWriter().write("USER " + username + " PASS " + password);
 
 		session.setAttribute("loggedIn", false);
+		session.setAttribute("tipoUser", "guest");
 		
 		try {
 			Class.forName(Connector.drv);
