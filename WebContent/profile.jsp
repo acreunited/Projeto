@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@page import="java.io.*"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="main.Connector"%>
+<%@page import="users.Login"%>
+<%@page import="users.UserInfo"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +141,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item" id="isLog" style="display: block">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount"
                     aria-expanded="true" aria-controls="collapseAccount">
                     <i class="fas fa-fw fa-ellipsis-v"></i>
@@ -168,19 +179,68 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
+					<!-- Topbar Navbar -->
+                 <ul class="navbar-nav ml-auto" id="players" style="display:none">
+                    
+                     <%
+					Class.forName(Connector.drv);
+					try (Connection conn = Connector.getConnection();) {
+						Statement stmt = conn.createStatement();
+						
+						ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("userID"));
+						if (rs.next()) {
+							String username = rs.getString("username");
+							String userID = rs.getString("userID");
+					%>
+                    
+                    <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=username %></span>
+                                <img class="img-profile rounded-circle"
+                                    src="ViewAvatar?id=<%=userID %>">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="profile.jsp">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="settings.jsp">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="logout.jsp" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                        
+                         <%
+                        }
+						rs.close();
+						} catch (SQLException | IOException e) {
+						System.out.println(e.getMessage());
+						}
+						%>
+                    </ul>
                     
 
                 </nav>
                 <!-- End of Topbar -->
                 <div class="container-fluid">
-                <p class="mb-4">I feel like it could/should be the same as the one from N-A. Open to suggestions tho<br>
-                 </p>
+                <!-- <p class="mb-4">I feel like it could/should be the same as the one from N-A. Open to suggestions tho</p><br>-->
+                 
                  </div>
 
                 <!-- Outer Row -->
                 <div class="row justify-content-center">
 
-                    <img style="width: 75px;height: 75px; margin-right: 20px;margin-top: 20px;" alt="Avatar" src="https://acreunited.github.io/avys/Misc/71.png">
+                    <img style="width: 75px;height: 75px; margin-right: 20px;margin-top: 20px;" alt="Avatar" src="ViewAvatar?id=<%=session.getAttribute("userID") %>">
                     <table class="ml-8 w-full content:w-[70%] content:mr-4 table-auto border-separate text-[12px]">
                         <thead>
                             <tr>
@@ -188,21 +248,42 @@
                             </tr>
                         </thead>
                         <tbody>
+                        
+                        	<%
+								Class.forName(Connector.drv);
+								try (Connection conn = Connector.getConnection();) {
+									Statement stmt = conn.createStatement();
+									
+									ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("userID"));
+									
+									if (rs.next()) {
+										String username = rs.getString("username");
+										String xp = rs.getString("xp");
+										String wins = rs.getString("nWins");
+										String losses = rs.getString("nLosses");
+										String streak = rs.getString("streak");
+										String date = rs.getString("registerDate");
+										String hLevel = rs.getString("highestLevel");
+										String hStreak = rs.getString("highestStreak");
+										
+										UserInfo userInfo = new UserInfo();
+										String level = userInfo.getLevel(xp);
+										String ratio = userInfo.getWinPercentage(wins, losses);
+										
+								%>
+                        
                             <tr class="bg-hallo-nav dark:bg-dark-nav">
                                 <td class="w-2/6">Username:</td>
-                                <td class="font-bold text-hallo-title dark:text-dark-title">Kitana</td>
+                                <td class="font-bold text-hallo-title dark:text-dark-title"><%=username %></td>
                             </tr>
                             <tr class="bg-hallo-navm dark:bg-dark-navm">
                                 <td>Site rank:</td>
-                                <td class="flex items-center"><img src="https://naruto-arena.net/images/ranks/Member.gif" class="mr-2"> Member</td>
+                                <td class="flex items-center"><img src="" class="mr-2"> <%=session.getAttribute("tipoUser") %></td>
                             </tr>
-                            <tr class="bg-hallo-nav dark:bg-dark-nav">
-                                <td>Posts:</td>
-                                <td>101</td>
-                            </tr>
+                            
                             <tr class="bg-hallo-navm dark:bg-dark-navm">
                                 <td>Registered on:</td>
-                                <td>August 12, 2019 16:34</td>
+                                <td><%=date %></td>
                             </tr>
                         </tbody>
                     </table>
@@ -220,76 +301,81 @@
                             <td class="w-[70%]">
                             <div class="w-[100px] h-[18px] border border-black bg-hallo-cont dark:bg-dark-cont">
                                 <div class="bg-hallo-top dark:bg-dark-top h-[16px]" style="width: 33.211488250653px;"></div>
-                                <span class="relative inset-0 top-[-15px] left-[45%]">52</span>
+                                <span class="relative inset-0 top-[-15px] left-[45%]"><%=level %></span>
                                 </div>
                     
                             </td>
                         </tr>
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
                             <td>Rank:</td>
-                                <td class="flex items-center"><img src="https://naruto-arena.net/images/ladderranks/Kage.png" class="mr-2">Kage</td>
+                                <td class="flex items-center"><img src="https://naruto-arena.net/images/ladderranks/Kage.png" class="mr-2">TODO</td>
                         </tr>
                         <tr class="bg-hallo-nav dark:bg-dark-nav">
                             <td>Experience Points:</td>
-                                <td>53576 <span class="text-gray-400">xp</span></td>
+                                <td><%=xp %> <span class="text-gray-400">xp</span></td>
                         </tr>
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
+                        <%
+                        ResultSet allUsers = conn.createStatement().executeQuery(
+								"SELECT * FROM USERS ORDER BY xp DESC;");
+                        int count = 0;
+                        while (allUsers.next()) {
+                        	count++;
+                        	
+                        	if (allUsers.getString("username").equals(username)) {
+                        		break;
+                        	}
+                        }
+                        %>
                             <td>Ladder Rank:</td>
-                                        <td>#29</td>
+                            <td>#<%=count %></td>
                             
                         </tr>
+                        <%                        
+                        allUsers.close();
+                        %>
                         <tr class="bg-hallo-nav dark:bg-dark-nav">
                             <td>Wins:</td>
-                            <td>2345</td>
+                            <td><%=wins %></td>
                         </tr>
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
                             <td>Losses:</td>
-                            <td>614</td>
+                            <td><%=losses %></td>
                         </tr>
                         <tr class="bg-hallo-nav dark:bg-dark-nav">
                             <td>Win percentage:</td>
-                            <td>79 %</td>
+                            <td><%=ratio %>%</td>
                         </tr>
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
                             <td>Streak:</td>
-                            <td>+1</td>
+                            <td><%=streak %></td>
                         </tr>
                         <tr class="bg-hallo-nav dark:bg-dark-nav">
                             <td>Highest Streak:</td>
-                            <td>+49</td>
+                            <td>+<%=hStreak %></td>
                         </tr>
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
                             <td>Highest Level:</td>
-                            <td>Level 56</td>
+                            <td><%=hLevel %></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <div class="row justify-content-center" style="margin-top: 20px;">
-                        <!--Games-->
-                    <table class="w-[100%] table-auto text-[12px] mb-10 mt-10">
-                        <thead>
-                        <tr>
-                            <th class="text-hallo-top dark:text-dark-top">Private games (in the last 5 days)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-hallo-nav dark:bg-dark-nav">
-                                <td class="w-[25%]">March 16, 2022 17:25</td>
-                                <td class="w-[30%]"><a href="#">Kitana</a> vs
-                                <a href="#">AusBee</a></td>
-                                <td class="w-[30%]"><a href="#">Winner <b class="text-hallo-title dark:text-dark-title">Kitana</b></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                             
+ 
+	          
 
         </div>
         <!-- End of Content Wrapper -->
 
     </div>
+    
+     					<%
+                        }
+						rs.close();
+						} catch (SQLException | IOException e) {
+						System.out.println(e.getMessage());
+						}
+						%>
     
     <!-- End of Page Wrapper -->
 
@@ -298,7 +384,46 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    
+<script type="text/javascript">
+	function displayUsers(tipoUser) {
+	    if (tipoUser=="administrador") {
+	        document.getElementById("players").style.display="block";
+
+	    }
+	    else if (tipoUser=="player") {
+	        document.getElementById("players").style.display="block";
+	    }
+	    else {
+	        document.getElementById("players").style.display="none";
+	    }
+	}
+	
+	function displayLogged(isLog) {
+		console.log(isLog);
+		
+		if (isLog=="null" || isLog=="false") {
+	        document.getElementById("isLog").style.display="block";
+	    }
+	    else {
+	    	document.getElementById("isLog").style.display="none";
+	    }
+		
+	    
+	}
+</script>
+
+<script>
+	var tipo = "<%=(String) session.getAttribute("tipoUser")%>";
+	
+	if (tipo!=null) {
+		displayUsers( tipo );
+	}
+	
+	var isLogin = "<%=session.getAttribute("loggedIn")%>";
+
+	displayLogged(isLogin);
+	
+</script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="js/jquery.js"></script>

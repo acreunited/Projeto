@@ -139,7 +139,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item" id="isLog" style="display: block">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount"
                     aria-expanded="true" aria-controls="collapseAccount">
                     <i class="fas fa-fw fa-ellipsis-v"></i>
@@ -176,6 +176,56 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                
+					<!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto" id="players" style="display:none">
+                    
+                     <%
+					Class.forName(Connector.drv);
+					try (Connection conn = Connector.getConnection();) {
+						Statement stmt = conn.createStatement();
+						
+						ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("userID"));
+						if (rs.next()) {
+							String username = rs.getString("username");
+							String userID = rs.getString("userID");
+					%>
+                    
+                    <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=username %></span>
+                                <img class="img-profile rounded-circle"
+                                    src="ViewAvatar?id=<%=userID %>">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="profile.jsp">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="settings.jsp">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                        
+                         <%
+                        }
+						rs.close();
+						} catch (SQLException | IOException e) {
+						System.out.println(e.getMessage());
+						}
+						%>
+                    </ul>
 
                     
 
@@ -289,7 +339,46 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    
+<script type="text/javascript">
+	function displayUsers(tipoUser) {
+	    if (tipoUser=="administrador") {
+	        document.getElementById("players").style.display="block";
+
+	    }
+	    else if (tipoUser=="player") {
+	        document.getElementById("players").style.display="block";
+	    }
+	    else {
+	        document.getElementById("players").style.display="none";
+	    }
+	}
+	
+	function displayLogged(isLog) {
+		console.log(isLog);
+		
+		if (isLog=="null" || isLog=="false") {
+	        document.getElementById("isLog").style.display="block";
+	    }
+	    else {
+	    	document.getElementById("isLog").style.display="none";
+	    }
+		
+	    
+	}
+</script>
+
+<script>
+	var tipo = "<%=(String) session.getAttribute("tipoUser")%>";
+	
+	if (tipo!=null) {
+		displayUsers( tipo );
+	}
+	
+	var isLogin = "<%=session.getAttribute("loggedIn")%>";
+
+	displayLogged(isLogin);
+	
+</script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="js/jquery.js"></script>

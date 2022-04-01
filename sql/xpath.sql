@@ -101,3 +101,7 @@ select * from USERS where userID=1;
 
 SELECT * FROM USERS ORDER BY xp DESC LIMIT 10;
 SELECT * FROM USERS ORDER BY xp DESC;
+
+select * from ABILITY where characterID=0;
+
+select * from USERS where userID=1;
