@@ -105,3 +105,9 @@ SELECT * FROM USERS ORDER BY xp DESC;
 select * from ABILITY where characterID=0;
 
 select * from USERS where userID=1;
+
+select membersID from MEMBERS order by membersID DESC LIMIT 1;
+
+select * from USERS;
+select * FROM MISSION;
+select * from MEMBERS;

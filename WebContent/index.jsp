@@ -99,9 +99,11 @@
                     <span>Themes</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Default</a>
-                        <a class="collapse-item" href="#">Anime</a>
+                    <div class="custom-select">
+                        <select>
+					    <option value="0">No Theme</option>
+					    <option value="1">Default</option>
+					  </select>
                     </div>
                 </div>
             </li>
@@ -116,7 +118,7 @@
                 Game
             </div>
 
-            <li class="nav-item active">
+            <li class="nav-item active" id="players" style="display:none">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-circle"></i>
                     <span>Start Playing</span></a>
@@ -157,6 +159,11 @@
                     </div>
                 </div>
             </li>
+            
+            <li class="nav-item active" id="admin" style="display:none">
+                <a class="nav-link" href="create.jsp">
+                    <span>Create Character</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -172,7 +179,7 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column" >
 
             <!-- Main Content -->
             <div id="content">
@@ -181,7 +188,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                 
 					<!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto" id="players" style="display:none">
+                    <ul class="navbar-nav ml-auto" id="players">
                     
                      <%
 					Class.forName(Connector.drv);
@@ -214,7 +221,7 @@
                                     Settings
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="logout.jsp" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="logout.jsp">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

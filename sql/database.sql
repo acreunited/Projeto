@@ -9,7 +9,7 @@ create table USERS (
     username varchar(16) not null,
     UNIQUE(username),
     pass varchar(32) not null,
-    registerDate datetime not null,
+    registerDate date not null,
     xp int not null,
     CHECK(xp >= 0),
     avatar blob,
@@ -26,7 +26,7 @@ create table USERS (
     CHECK (highestStreak >= 0),
     highestLevel int not null,
     CHECK (highestLevel > 0),
-    estado datetime not null,
+    estado date not null,
 
     constraint pk_user primary key(userID)
     

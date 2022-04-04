@@ -115,7 +115,7 @@
                 Game
             </div>
 
-            <li class="nav-item active">
+            <li class="nav-item active" id="players" style="display:none">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-circle"></i>
                     <span>Start Playing</span></a>
@@ -180,7 +180,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto" id="players" style="display:none">
+                    <ul class="navbar-nav ml-auto" id="players">
                     
                      <%
 					Class.forName(Connector.drv);
@@ -213,7 +213,7 @@
                                     Settings
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="logout.jsp" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="logout.jsp">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -234,13 +234,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
-                     <!-- Page Heading -->
-                    <!-- <p class="mb-4">PS: I know the buttons are ugly. <br>
-                        I just want to know if you guys like this idea of changing the informations according to the button the user clicks.<br>
-                        I honestly dont think it makes sense for someone to click on a page and then having to go back and click on another one like N-A has<br>
-                        If you do like this way, then I will make them look good, I guaranteed you that, we can also had them gfx from your part
-                     </p>-->
 
                     <div class="text-center">
                         <div class="buttonsHelp">

@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@page import="java.io.*"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="main.Connector"%>
+<%@ page import="users.Register"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,11 +114,7 @@
                 Game
             </div>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-circle"></i>
-                    <span>Start Playing</span></a>
-            </li>
+         
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -190,28 +196,37 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user"
+										method="GET" name='RegisterForm' action='Register'>
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="text" class="form-control form-control-user"
                                                 id="exampleInputUsername" aria-describedby="usernameHelp"
-                                                placeholder="Enter Username">
+                                                placeholder="Enter Username"
+                                                name="USERNAME" required
+                                                >
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" placeholder="Password"
+                                                name="PASSWORD" required
+                                                >
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword2" placeholder="Confirm Password">
+                                                id="exampleInputPassword2" placeholder="Confirm Password"
+                                                name="CONFIRM_PASSWORD" required
+                                                >
                                         </div>
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email">
+                                                placeholder="Enter Email"
+                                                name="EMAIL" required
+                                                >
                                         </div>
-                                        <a href="index.jsp" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Register
-                                        </a>
+                                        </button>
                                         
                                     </form>
                                     <hr>

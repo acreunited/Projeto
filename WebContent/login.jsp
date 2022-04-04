@@ -114,11 +114,7 @@
                 Game
             </div>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-circle"></i>
-                    <span>Start Playing</span></a>
-            </li>
+         
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -215,12 +211,7 @@
 				<button type="submit">Login</button>
 			</div>
 
-			<div class="container" style="background-color: #f1f1f1">
-				<button type="button"
-					onclick="document.getElementById('idLogin').style.display='none'"
-					class="cancelbtn"
-				>Cancel</button>
-			</div>
+			
 		</form>
 	</div>
 

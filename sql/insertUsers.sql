@@ -29,6 +29,7 @@ insert into MEMBERS values(
 	2
 );
 
+
 insert into ADMINISTRATOR values(
 	0
 );
