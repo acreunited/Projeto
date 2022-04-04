@@ -143,23 +143,6 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item" id="isLog" style="display: block">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount"
-                    aria-expanded="true" aria-controls="collapseAccount">
-                    <i class="fas fa-fw fa-ellipsis-v"></i>
-                    <span>Account</span>
-                </a>
-                <div id="collapseAccount" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.jsp">Login</a>
-                        <a class="collapse-item" href="register.jsp">Register</a>
-
-                        <div class="collapse-divider"></div>
-                    </div>
-                </div>
-            </li>
-            
             <li class="nav-item active">
                 <a class="nav-link" href="create.jsp">
                     <span>Create Character</span></a>
@@ -260,7 +243,7 @@
 							<label for="characterDescription">
 								<b>Character Description</b>
 							</label>
-							<textarea placeholder="Write Character Description" name="characterDescription"
+							<textarea placeholder="Write Character Description (max 5000chars)" name="characterDescription"
 								style="min-height: 200px; width: 100%;" required
 							></textarea>
 						</div>
@@ -271,6 +254,108 @@
 						</div>
 						<br>
 						<br>
+						<div class="container">
+							<label for="abilityName1">
+								<b>Ability1 Name</b>
+							</label>
+							<input type="text" placeholder="Ability Name" name="ability1"
+								required pattern="[\w ()-]{3,100}"
+							/>
+						</div>
+						
+						<div class="container">
+							<label for="ability1Description">
+								<b>Ability1 Description</b>
+							</label>
+							<textarea placeholder="Write Ability 1 Description (max 5000chars)" name="ability1Description"
+								style="min-height: 200px; width: 100%;" required
+							></textarea>
+						</div>
+						<div class="container">
+							<label for="ability1cd">Cooldown (minimum 0):</label>
+							<input type="number" name="ability1cd" min="0" max="100">
+						</div>	
+						<div class="container">
+							<label for="ability1image">Ability1 Picture</label>
+							<input type="file" accept="image/*" name="ability1image" required />
+						</div>
+						<br><br>
+						<div class="container">
+							<label for="abilityName2">
+								<b>Ability2 Name</b>
+							</label>
+							<input type="text" placeholder="Ability Name" name="ability2"
+								required pattern="[\w ()-]{3,100}"
+							/>
+						</div>
+						
+						<div class="container">
+							<label for="ability2Description">
+								<b>Ability2 Description</b>
+							</label>
+							<textarea placeholder="Write Ability 2 Description (max 5000chars)" name="ability2Description"
+								style="min-height: 200px; width: 100%;" required
+							></textarea>
+						</div>
+						<div class="container">
+							<label for="ability2cd">Cooldown (minimum 0):</label>
+							<input type="number" name="ability2cd" min="0" max="100">
+						</div>	
+						<div class="container">
+							<label for="ability2image">Ability2 Picture</label>
+							<input type="file" accept="image/*" name="ability2image" required />
+						</div>
+						<br><br>
+						<div class="container">
+							<label for="abilityName3">
+								<b>Ability3 Name</b>
+							</label>
+							<input type="text" placeholder="Ability Name" name="ability3"
+								required pattern="[\w ()-]{3,100}"
+							/>
+						</div>
+						<div class="container">
+							<label for="ability3Description">
+								<b>Ability3 Description</b>
+							</label>
+							<textarea placeholder="Write Ability 3 Description (max 5000chars)" name="ability3Description"
+								style="min-height: 200px; width: 100%;" required
+							></textarea>
+						</div>
+						<div class="container">
+							<label for="ability3cd">Cooldown (minimum 0):</label>
+							<input type="number" name="ability3cd" min="0" max="100">
+						</div>	
+						<div class="container">
+							<label for="ability3image">Ability3 Picture</label>
+							<input type="file" accept="image/*" name="ability3image" required />
+						</div>
+						<br><br>
+						<div class="container">
+							<label for="abilityName4">
+								<b>Ability4 Name</b>
+							</label>
+							<input type="text" placeholder="Ability Name" name="ability4"
+								required pattern="[\w ()-]{3,100}"
+							/>
+						</div>
+						<div class="container">
+							<label for="ability4Description">
+								<b>Ability4 Description</b>
+							</label>
+							<textarea placeholder="Write Ability 4 Description (max 5000chars)" name="ability4Description"
+								style="min-height: 200px; width: 100%;" required
+							></textarea>
+						</div>
+						<div class="container">
+							<label for="ability4cd">Cooldown (minimum 0):</label>
+							<input type="number" name="ability4cd" min="0" max="100">
+						</div>	
+						<div class="container">
+							<label for="ability4image">Ability4 Picture</label>
+							<input type="file" accept="image/*" name="ability4image" required />
+						</div>
+						<br><br>
 		
 						<div class="container">
 							<label for="charAnime">Character Anime</label>
@@ -282,12 +367,40 @@
 						
 						<div class="container">
 							<label for="defaultmission">Default or Mission Character ?</label>
-							<select name="defaultmission" id="defaultORmission">
+							<select name="defaultmission" id="defaultORmission" onchange="isMission(this)">
 								<option value="Default">Default</option>
 								<option value="Mission">Mission</option>
 							</select>
 						</div>
-		
+						
+						<div id="showMission" style="display:none">
+							<div class="container">
+								<label for="missionName">
+									<b>Mission Name</b>
+								</label>
+								<input type="text" placeholder="Mission Name" name="missionName"
+									required pattern="[\w ()-]{3,100}"
+								/>
+							</div>
+							<div class="container">
+								<label for="missionDescription">
+									<b>Mission Description</b>
+								</label>
+								<textarea placeholder="Write Mission Description (max 5000chars)" name="missionDescription"
+									style="min-height: 200px; width: 100%;" required
+								></textarea>
+							</div>
+							
+							<div class="container">
+								<label for="minLevel">Required Level (minimum 1):</label>
+								<input type="number" name="minLevel" min="1" max="1000">
+							</div>	
+							
+							<div class="container">
+								<label for="missionImage">Mission Picture</label>
+								<input type="file" accept="image/*" name="missionImage" required />
+							</div>
+						</div>
 						<br>
 		
 						<button type="submit">Submit</button>
@@ -295,9 +408,6 @@
 				</form>
                 
                 </div>
-
-                    
-
             </div>
             <!-- End of Main Content -->
 
@@ -314,18 +424,20 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-
-
 <script>
-	var tipo = "<%=(String) session.getAttribute("tipoUser")%>";
-	
-	if (tipo!="administrador") {
-		session.invalidate();
-		response.sendRedirect("login.jsp");
-	}
-	
-	
+function isMission(m) {
+	console.log(m.value);
+    if (m.value=="Mission") {
+        document.getElementById("showMission").style.display="block";
+    }
+    else if (m.value=="Default") {
+        document.getElementById("showMission").style.display="none";
+    }
+}
 </script>
+
+
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="js/jquery.js"></script>

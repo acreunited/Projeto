@@ -324,33 +324,33 @@
     </a>
 
 <script type="text/javascript">
-	function displayUsers(tipoUser) {
-	    if (tipoUser=="administrador") {
-	        document.getElementById("players").style.display="block";
-	        document.getElementById("admin").style.display="block";
-	    }
-	    else if (tipoUser=="player") {
-	        document.getElementById("players").style.display="block";
-	        document.getElementById("admin").style.display="none";
-	    }
-	    else {
-	        document.getElementById("players").style.display="none";
-	        document.getElementById("admin").style.display="none";
-	    }
-	}
+function displayUsers(tipoUser) {
+    if (tipoUser=="administrador") {
+        document.getElementById("players").style.display="block";
+        document.getElementById("admin").style.display="block";
+    }
+    else if (tipoUser=="player") {
+        document.getElementById("players").style.display="block";
+        document.getElementById("admin").style.display="none";
+    }
+    else {
+        document.getElementById("players").style.display="none";
+        document.getElementById("admin").style.display="none";
+    }
+}
+
+function displayLogged(isLog) {
+	console.log(isLog);
 	
-	function displayLogged(isLog) {
-		console.log(isLog);
-		
-		if (isLog=="null" || isLog=="false") {
-	        document.getElementById("isLog").style.display="block";
-	    }
-	    else {
-	    	document.getElementById("isLog").style.display="none";
-	    }
-		
-	    
-	}
+	if (isLog=="null" || isLog=="false") {
+        document.getElementById("isLog").style.display="block";
+    }
+    else {
+    	document.getElementById("isLog").style.display="none";
+    }
+	
+    
+}
 </script>
 
 <script>

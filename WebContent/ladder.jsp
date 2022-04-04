@@ -156,6 +156,11 @@
                     </div>
                 </div>
             </li>
+            
+            <li class="nav-item active" id="admin" style="display:none">
+                <a class="nav-link" href="create.jsp">
+                    <span>Create Character</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -335,18 +340,20 @@
 
     
 <script type="text/javascript">
-	function displayUsers(tipoUser) {
-	    if (tipoUser=="administrador") {
-	        document.getElementById("players").style.display="block";
-
-	    }
-	    else if (tipoUser=="player") {
-	        document.getElementById("players").style.display="block";
-	    }
-	    else {
-	        document.getElementById("players").style.display="none";
-	    }
-	}
+function displayUsers(tipoUser) {
+    if (tipoUser=="administrador") {
+        document.getElementById("players").style.display="block";
+        document.getElementById("admin").style.display="block";
+    }
+    else if (tipoUser=="player") {
+        document.getElementById("players").style.display="block";
+        document.getElementById("admin").style.display="none";
+    }
+    else {
+        document.getElementById("players").style.display="none";
+        document.getElementById("admin").style.display="none";
+    }
+}
 	
 	function displayLogged(isLog) {
 		console.log(isLog);

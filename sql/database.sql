@@ -195,7 +195,7 @@ create table THEME_CHARACTER (
     themeID int not null,
     nome varchar(16) not null,
     avatar blob,
-    descricao varchar(500) not null,
+    descricao varchar(5000) not null,
     constraint pk_associates_character primary key (themeID, characterID),
     constraint fk_theme_characters foreign key (themeID) references THEME(themeID),
     constraint fk_characters_theme foreign key (characterID) references CHARACTERS(characterID)
@@ -206,7 +206,7 @@ create table THEME_ABILITY (
     themeID int not null,
     nome varchar(32) not null,
     avatar blob,
-    descricao varchar(500) not null,
+    descricao varchar(5000) not null,
     constraint pk_associates_character primary key (themeID, abilityID),
     constraint fk_theme_ability foreign key (themeID) references THEME(themeID),
     constraint fk_ability_theme foreign key (abilityID) references ABILITY(abilityID)

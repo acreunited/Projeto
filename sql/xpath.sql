@@ -116,4 +116,9 @@ select * from CHARACTERS;
 select * from BLEACH;
 select * from BLEACH;
 
+select * from ABILITY;
+
 select * from CHARACTERS order by characterID DESC LIMIT 1;
+select * from ABILITY order by abilityID DESC LIMIT 1;
+
+select * from MISSION order by missionID DESC LIMIT 1;
