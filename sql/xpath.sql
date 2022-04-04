@@ -111,3 +111,9 @@ select membersID from MEMBERS order by membersID DESC LIMIT 1;
 select * from USERS;
 select * FROM MISSION;
 select * from MEMBERS;
+
+select * from CHARACTERS;
+select * from BLEACH;
+select * from BLEACH;
+
+select * from CHARACTERS order by characterID DESC LIMIT 1;
