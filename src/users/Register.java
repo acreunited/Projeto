@@ -1,6 +1,7 @@
 package users;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,13 +50,29 @@ public class Register extends HttpServlet {
 		String confirm_password = request.getParameter("CONFIRM_PASSWORD");
 		String email = request.getParameter("EMAIL");
 		int id = 0;
-		
-	
 
 		try {
 			Class.forName(Connector.drv);
 			Connection conn = Connector.getConnection();
 			System.out.printf("%s %s %s %s\n", username, password, confirm_password, email);
+			
+			String names = "select username from USERS;";
+			PreparedStatement stmt_names = conn.prepareStatement(names);
+			ResultSet rs_names = stmt_names.executeQuery();
+			
+			//boolean exists = false;
+			while (rs_names.next()) {
+				if (rs_names.getString("username").equalsIgnoreCase(username)){
+					//exists=true;
+					//sendFailMessage(request, response, "Username Already Exists");
+					session.setAttribute("usernameExists", "true");
+					response.sendRedirect("register.jsp");
+					return;
+				}
+			}
+			session.setAttribute("usernameExists", "false");
+			rs_names.close();
+			//if (exists)
 			
 			String lastID_query = "select userID from USERS order by userID DESC LIMIT 1;";
 			PreparedStatement stmt_id = conn.prepareStatement(lastID_query);
@@ -108,7 +126,7 @@ public class Register extends HttpServlet {
 
 			response.getWriter().append("Register Sucessfull" + username);
 			
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("verificationEmail.jsp");
 			
 			stmt.close();
 			stmt_member.close();
@@ -132,4 +150,21 @@ public class Register extends HttpServlet {
 		doGet(request, response);
 	}
 
+	private void sendFailMessage(HttpServletRequest request, HttpServletResponse response, String message)
+			throws ServletException, IOException {
+		if (message.equals("") || message == null) {
+			message = "Error in Form";
+		}
+		PrintWriter out = response.getWriter();
+		request.setAttribute("error", message);
+
+		//out.println("<div class='container modal'><h3>" + message + "</h3></div>");
+
+	
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+		
+		rd.include(request, response);
+		return;
+	}
 }

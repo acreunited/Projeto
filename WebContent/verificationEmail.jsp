@@ -183,83 +183,18 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                            <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <!--<div class="col-lg-6 d-none d-lg-block bg-login-image"></div>-->
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                                    </div>
-                                    <form class="user" method="GET" name='RegisterForm' action='Register'>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
-                                                id="exampleInputUsername" aria-describedby="usernameHelp"
-                                                placeholder="Enter Username"
-                                                name="USERNAME" required onchange='updateUsername();'
-                                                >
-                                            <span id='error_username'></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="PASSWORD" placeholder="Password"
-                                                name="PASSWORD" required onchange='check_pass();'
-                                                >
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="CONFIRM_PASSWORD" placeholder="Confirm Password"
-                                                name="CONFIRM_PASSWORD" required onchange='check_pass();'
-                                                >
-                                                <span id='error_password'></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email"
-                                                name="EMAIL" required
-                                                >
-                                        </div>
-                                       
-                                        <button type="submit" id="submit" class="btn btn-primary btn-user btn-block" disabled>
-                                            Register
-                                        </button>
-                                        
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="login.jsp">Already have an account?</a>
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <p class="mb-4">The registration was done sucessfully, almost done! <br>A verification email was sent. 
+                	Click on the given link to active your account and start playing!
+                    </p>
+				</div>
 
             </div>
 
         </div>
 
-                </div>
+               
 
 
-            </div>
-            <!-- End of Main Content -->
-
-      
-
-        </div>
-        <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -268,32 +203,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-  
-<script>
-function check_pass() {
-
-    if (document.getElementById('PASSWORD').value == document.getElementById('CONFIRM_PASSWORD').value) {
-        document.getElementById('submit').disabled = false;
-        document.getElementById('error_password').textContent="Passwords match"
-    } else {
-        document.getElementById('submit').disabled = true;
-        document.getElementById('error_password').textContent="Passwords do not match!"
-    }
-}
-</script>
-
-<script type="text/javascript">
-var exists ='<%=session.getAttribute("usernameExists")%>';
-
-if (exists == "true") {
-	document.getElementById('error_username').textContent="Username Already Exists";
-}
-
-function updateUsername() {
-	document.getElementById('error_username').textContent="";
-}
-</script> 
 
 
     <!-- Bootstrap core JavaScript-->

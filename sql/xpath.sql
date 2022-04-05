@@ -125,3 +125,5 @@ select * from MISSION order by missionID DESC LIMIT 1;
 
 select * from USERS;
 select * from USERS order by streak DESC LIMIT 10;
+
+select username from USERS;
