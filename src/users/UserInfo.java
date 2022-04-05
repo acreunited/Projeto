@@ -3,7 +3,7 @@ package users;
 public class UserInfo {
 	
 	
-	public int getLevel(int xp) {
+	public static int getLevel(int xp) {
 		if (xp<200) {
 			return 1;
 		}
@@ -11,7 +11,7 @@ public class UserInfo {
 			return 2;
 		}
 	}
-	public String getLevel(String xp) {
+	public static String getLevel(String xp) {
 		if (Integer.parseInt(xp)<200) {
 			return "1";
 		}
@@ -20,7 +20,7 @@ public class UserInfo {
 		}
 	}
 	
-	public String getWinPercentage(String w, String l) {
+	public static String getWinPercentage(String w, String l) {
 		
 		int wins = Integer.parseInt(w);
 		int losses = Integer.parseInt(l);

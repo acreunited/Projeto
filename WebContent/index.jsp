@@ -9,7 +9,8 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="main.Connector"%>
-<%@ page import="users.Login"%>
+<%@page import="users.Login"%>
+<%@page import="users.UserInfo"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,7 @@
     <!-- Custom styles for this template-->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/ladderRank.css" rel="stylesheet">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
     
@@ -279,11 +281,45 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <p>List Here</p>
-                                    </div>
-                                </div>
+										
+								<div class="container">
+								<%
+								Class.forName(Connector.drv);
+								try (Connection conn = Connector.getConnection();) {
+									Statement stmt = conn.createStatement();
+									
+									ResultSet rs = stmt.executeQuery("select * from USERS order by userID DESC LIMIT 10;");
+									int count = 0;
+									while (rs.next()) {
+										count++;
+										String username = rs.getString("username");
+										String xp = rs.getString("userID");
+										String level = UserInfo.getLevel(xp);
+										
+								%>
+									<div class="row">
+										<div class="col-2"style="margin-top: 34px">
+											<b>#<%=count %></b>
+										</div>
+										<div class="col-10">
+											<a href="#"><%=username %></a>
+											<div class="skills ladder" style="width: 75%;"><%=level %></div>
+										</div>
+									</div>
+									
+							    <%
+		                        }
+								rs.close();
+								} catch (SQLException | IOException e) {
+								System.out.println(e.getMessage());
+								}
+								%>
+									
+								</div>
+                                    
+                               </div>
                             </div>
+                         
 
 
                             <div class="card shadow mb-4">
@@ -295,10 +331,42 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <p>List Here</p>
-                                    </div>
-                                    
+                                    <div class="container">
+								<%
+								Class.forName(Connector.drv);
+								try (Connection conn = Connector.getConnection();) {
+									Statement stmt = conn.createStatement();
+									
+									ResultSet rs = stmt.executeQuery("select * from USERS order by streak DESC LIMIT 10;");
+									int count = 0;
+									while (rs.next()) {
+										count++;
+										String username = rs.getString("username");
+										String streak = rs.getString("streak");
+										
+								%>
+									<div class="row">
+										<div class="col-2">
+											<b>#<%=count %></b>
+										</div>
+										<div class="col-4">
+											<b><%=username %></b>
+										</div>
+										<div class="col-2">
+											<b>+<%=streak %></b>
+										</div>
+										
+									</div>
+									
+							    <%
+		                        }
+								rs.close();
+								} catch (SQLException | IOException e) {
+								System.out.println(e.getMessage());
+								}
+								%>
+									
+								</div>
                                 </div>
                             </div>
 
@@ -348,7 +416,6 @@ function displayLogged(isLog) {
     else {
     	document.getElementById("isLog").style.display="none";
     }
-	
     
 }
 </script>

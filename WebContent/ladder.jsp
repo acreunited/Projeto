@@ -293,8 +293,7 @@
 											String losses = rs.getString("nLosses");
 											String streak = rs.getString("streak");
 											
-											UserInfo userInfo = new UserInfo();
-											String level = userInfo.getLevel(xp);
+											String level = UserInfo.getLevel(xp);
 											count++;
 									%>
                                         <tr>
