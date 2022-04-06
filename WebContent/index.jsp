@@ -121,8 +121,8 @@
             </div>
 
             <li class="nav-item active" id="players" style="display:none">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-circle"></i>
+                <a class="nav-link" href="selection.jsp" target = "_blank">
+                    <i class="fas fa-fw fa-circle"></i>                   
                     <span>Start Playing</span></a>
             </li>
 

@@ -39,6 +39,18 @@ public class ViewProfile extends HttpServlet {
 
 		try {
 			Connection con = Connector.getConnection();
+			
+			PreparedStatement rank = con.prepareStatement("select * from USERS order by xp DESC;");
+			ResultSet rs_rank = rank.executeQuery();
+			int count = 0;
+			while (rs_rank.next()) {
+				count++;
+				if (rs_rank.getString("username").equalsIgnoreCase(username)) {
+					break;
+				}
+			}
+			String profile_rank = ""+count;
+			
 			PreparedStatement user = con.prepareStatement(
 					"select * from USERS where USERS.username=?");
 			user.setString(1, username);
@@ -66,6 +78,7 @@ public class ViewProfile extends HttpServlet {
 				session.setAttribute("profile_hLevel", hLevel);
 				session.setAttribute("profile_hStreak", hStreak);
 				session.setAttribute("profile_level", level);
+				session.setAttribute("profile_rank", profile_rank);
 				
 				response.sendRedirect("profile.jsp");
 			} else {

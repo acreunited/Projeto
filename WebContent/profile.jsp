@@ -300,7 +300,7 @@
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
                      
                             <td>Ladder Rank:</td>
-                            <td>TODO</td>
+                            <td>#<%=session.getAttribute("profile_rank")%></td>
                             
                         </tr>
                        
