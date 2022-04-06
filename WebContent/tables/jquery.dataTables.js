@@ -1004,8 +1004,7 @@
 				"fnServerData",
 				"fnFormatNumber",
 				"sServerMethod",
-				"aaSorting",
-				"aaSortingFixed",
+				
 				"aLengthMenu",
 				"sPaginationType",
 				"sAjaxSource",
@@ -1820,66 +1819,7 @@
 	};
 	
 	
-	/**
-	 * Provide backwards compatibility for the main DT options. Note that the new
-	 * options are mapped onto the old parameters, so this is an external interface
-	 * change only.
-	 *  @param {object} init Object to map
-	 */
-	function _fnCompatOpts ( init )
-	{
-		_fnCompatMap( init, 'ordering',      'bSort' );
-		_fnCompatMap( init, 'orderMulti',    'bSortMulti' );
-		_fnCompatMap( init, 'orderClasses',  'bSortClasses' );
-		_fnCompatMap( init, 'orderCellsTop', 'bSortCellsTop' );
-		_fnCompatMap( init, 'order',         'aaSorting' );
-		_fnCompatMap( init, 'orderFixed',    'aaSortingFixed' );
-		_fnCompatMap( init, 'paging',        'bPaginate' );
-		_fnCompatMap( init, 'pagingType',    'sPaginationType' );
-		_fnCompatMap( init, 'pageLength',    'iDisplayLength' );
-		_fnCompatMap( init, 'searching',     'bFilter' );
 	
-		// Boolean initialisation of x-scrolling
-		if ( typeof init.sScrollX === 'boolean' ) {
-			init.sScrollX = init.sScrollX ? '100%' : '';
-		}
-		if ( typeof init.scrollX === 'boolean' ) {
-			init.scrollX = init.scrollX ? '100%' : '';
-		}
-	
-		// Column search objects are in an array, so it needs to be converted
-		// element by element
-		var searchCols = init.aoSearchCols;
-	
-		if ( searchCols ) {
-			for ( var i=0, ien=searchCols.length ; i<ien ; i++ ) {
-				if ( searchCols[i] ) {
-					_fnCamelToHungarian( DataTable.models.oSearch, searchCols[i] );
-				}
-			}
-		}
-	}
-	
-	
-	/**
-	 * Provide backwards compatibility for column options. Note that the new options
-	 * are mapped onto the old parameters, so this is an external interface change
-	 * only.
-	 *  @param {object} init Object to map
-	 */
-	function _fnCompatCols ( init )
-	{
-		_fnCompatMap( init, 'orderable',     'bSortable' );
-		_fnCompatMap( init, 'orderData',     'aDataSort' );
-		_fnCompatMap( init, 'orderSequence', 'asSorting' );
-		_fnCompatMap( init, 'orderDataType', 'sortDataType' );
-	
-		// orderData can be given as an integer
-		var dataSort = init.aDataSort;
-		if ( typeof dataSort === 'number' && ! Array.isArray( dataSort ) ) {
-			init.aDataSort = [ dataSort ];
-		}
-	}
 	
 	
 	/**
@@ -14483,14 +14423,6 @@
 		"sLength": "dataTables_length",
 		"sProcessing": "dataTables_processing",
 	
-		/* Sorting */
-		"sSortAsc": "sorting_asc",
-		"sSortDesc": "sorting_desc",
-		"sSortable": "sorting", /* Sortable in both directions */
-		"sSortableAsc": "sorting_desc_disabled",
-		"sSortableDesc": "sorting_asc_disabled",
-		"sSortableNone": "sorting_disabled",
-		"sSortColumn": "sorting_", /* Note that an int is postfixed for the sorting order */
 	
 		/* Filtering */
 		"sFilterInput": "",

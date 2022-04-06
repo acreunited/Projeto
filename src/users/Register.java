@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import main.Connector;
 
 /**
- * Servlet implementation class RegistarNovoUser
+ * Servlet implementation class Register
  */
 @WebServlet("/Register")
 public class Register extends HttpServlet {

@@ -186,6 +186,11 @@
                 <p class="mb-4">The registration was done sucessfully, almost done! <br>A verification email was sent. 
                 	Click on the given link to active your account and start playing!
                     </p>
+                    
+                    <form action="VerifyCode" method="post">
+			            <input type="text" name="authcode" >
+			            <input type="submit" value="verify">
+			        </form>
 				</div>
 
             </div>

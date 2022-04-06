@@ -18,7 +18,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="DragonBall-Arena">
+    <meta name="description" content="Anime-Arena">
     <meta name="author" content="Pedro Dias">
 
     <title>Anime-Arena</title>
@@ -32,7 +32,7 @@
     <!-- Custom styles for this template-->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
-
+	<link href="css/modal.css" rel="stylesheet">
 
 </head>
 
@@ -207,7 +207,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.jsp">
+                                <a class="dropdown-item" href="ViewUserProfile?username=<%=username %>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -239,13 +239,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <!--<h1 class="h3 mb-1 text-gray-800">Missions</h1>
-                     <p class="mb-4">Maybe explain here that they need a minimum rank, having a search bar for when we have a lot of missions etc<br>
-                    Also let me know if you like this effect on missions or not (put the mouse over the image in the middle), 
-                    I used it for the AC-R website and it might look good, but I can just remove it. But just putting the options of having all images like that (or with other effects if you want<br>
-                    I´d like to consider posting the mission image only, but we´ll see later when the time comes</p> -->
+s
 
    
                     <div class="container-fluid">
@@ -274,8 +268,10 @@
 	                            </article>
 	                        </article>
 	                        
+	                        
 	                        <div id="missionID<%=missionID%>" class="modal" style="display: none;">
-		                        	<div class="container" style="background-color: #f1f1f1">
+	                        	<div class="modal-content animate">
+		                        	<div class="container">
 		                        		<%
 		                        		ResultSet mission = conn.createStatement().executeQuery(
 												"select * from MISSION where missionID="+missionID);
@@ -290,13 +286,22 @@
 												break;
 											}
 										%>
-											<div style="margin: auto; width: 50%; padding: 10px">
-												<p><%=missionName%></p>
-												<img src="ViewMission?id=<%=missionID %>">
-												<p><%=missionDescription%></p>
-												<p>Required Level: <%=missionLevel%></p>
-												<img src="ViewCharacter?id=<%=missionChar %>"/>
+										
+											<div class="row">
+												<div class="col">
+													<p><%=missionName%></p>
+													<p>Required Level: <%=missionLevel%></p>
+													<img src="ViewCharacter?id=<%=missionChar %>"/>
+												</div>
+												<div class="col">
+													<img src="ViewMission?id=<%=missionID %>">
+													<p><%=missionDescription%></p>
+													<p>Requirements:</p>
+													<p>Status:</p>
+												</div>
 											</div>
+										
+										
 											<%
 										}
 										mission.close();
@@ -309,7 +314,8 @@
 										</div>
 									</div>
 		                        </div>
-                        
+                        	</div>
+                        	
 
                         <%
                         }
@@ -319,11 +325,6 @@
 						}
 						%>
                     </div>
-                    
-                   
-                        
-                    
-
                 </div>
                 <!-- /.container-fluid -->
 
@@ -360,18 +361,18 @@ function displayUsers(tipoUser) {
     }
 }
 	
-	function displayLogged(isLog) {
-		console.log(isLog);
-		
-		if (isLog=="null" || isLog=="false") {
-	        document.getElementById("isLog").style.display="block";
-	    }
-	    else {
-	    	document.getElementById("isLog").style.display="none";
-	    }
-		
-	    
-	}
+function displayLogged(isLog) {
+	console.log(isLog);
+	
+	if (isLog=="null" || isLog=="false") {
+        document.getElementById("isLog").style.display="block";
+    }
+    else {
+    	document.getElementById("isLog").style.display="none";
+    }
+	
+    
+}
 </script>
 
 <script>
@@ -387,12 +388,15 @@ function displayUsers(tipoUser) {
 	
 </script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="js/jquery.js"></script>
-    <script src="extras/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="js/jquery.easing.js"></script>
-    <script src="js/interface.js"></script>
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="js/jquery.js"></script>
+<script src="extras/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/jquery.easing.js"></script>
+<script src="js/interface.js"></script>
 
 
 </body>

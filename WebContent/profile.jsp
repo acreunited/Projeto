@@ -20,7 +20,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="DragonBall-Arena">
+    <meta name="description" content="Anime-Arena">
     <meta name="author" content="Pedro Dias">
 
     <title>Anime-Arena</title>
@@ -209,7 +209,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.jsp">
+                                <a class="dropdown-item" href="ViewUserProfile?username=<%=username %>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -245,7 +245,7 @@
                 <!-- Outer Row -->
                 <div class="row justify-content-center">
 
-                    <img style="width: 75px;height: 75px; margin-right: 20px;margin-top: 20px;" alt="Avatar" src="ViewAvatar?id=<%=session.getAttribute("userID") %>">
+                    <img style="width: 75px;height: 75px; margin-right: 20px;margin-top: 20px;" alt="Avatar" src="ViewAvatar?id=<%=session.getAttribute("profile_id") %>">
                     <table class="ml-8 w-full content:w-[70%] content:mr-4 table-auto border-separate text-[12px]">
                         <thead>
                             <tr>
@@ -254,41 +254,18 @@
                         </thead>
                         <tbody>
                         
-                        	<%
-								Class.forName(Connector.drv);
-								try (Connection conn = Connector.getConnection();) {
-									Statement stmt = conn.createStatement();
-									
-									ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("userID"));
-									
-									if (rs.next()) {
-										String username = rs.getString("username");
-										String xp = rs.getString("xp");
-										String wins = rs.getString("nWins");
-										String losses = rs.getString("nLosses");
-										String streak = rs.getString("streak");
-										String date = rs.getString("registerDate");
-										String hLevel = rs.getString("highestLevel");
-										String hStreak = rs.getString("highestStreak");
-										
-										UserInfo userInfo = new UserInfo();
-										String level = userInfo.getLevel(xp);
-										String ratio = userInfo.getWinPercentage(wins, losses);
-										
-								%>
-                        
                             <tr class="bg-hallo-nav dark:bg-dark-nav">
                                 <td class="w-2/6">Username:</td>
-                                <td class="font-bold text-hallo-title dark:text-dark-title"><%=username %></td>
+                                <td class="font-bold text-hallo-title dark:text-dark-title"><%=session.getAttribute("profile_username") %></td>
                             </tr>
                             <tr class="bg-hallo-navm dark:bg-dark-navm">
                                 <td>Site rank:</td>
-                                <td class="flex items-center"><img src="" class="mr-2"> <%=session.getAttribute("tipoUser") %></td>
+                                <td class="flex items-center"><img src="" class="mr-2">TODO</td>
                             </tr>
                             
                             <tr class="bg-hallo-navm dark:bg-dark-navm">
                                 <td>Registered on:</td>
-                                <td><%=date %></td>
+                                <td><%=session.getAttribute("profile_registerDate") %></td>
                             </tr>
                         </tbody>
                     </table>
@@ -306,7 +283,7 @@
                             <td class="w-[70%]">
                             <div class="w-[100px] h-[18px] border border-black bg-hallo-cont dark:bg-dark-cont">
                                 <div class="bg-hallo-top dark:bg-dark-top h-[16px]" style="width: 33.211488250653px;"></div>
-                                <span class="relative inset-0 top-[-15px] left-[45%]"><%=level %></span>
+                                <span class="relative inset-0 top-[-15px] left-[45%]"><%=session.getAttribute("profile_level") %></span>
                                 </div>
                     
                             </td>
@@ -317,51 +294,38 @@
                         </tr>
                         <tr class="bg-hallo-nav dark:bg-dark-nav">
                             <td>Experience Points:</td>
-                                <td><%=xp %> <span class="text-gray-400">xp</span></td>
+                            <td><%=session.getAttribute("profile_xp") %><span class="text-gray-400">xp</span></td>
                         </tr>
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
-                        <%
-                        ResultSet allUsers = conn.createStatement().executeQuery(
-								"SELECT * FROM USERS ORDER BY xp DESC;");
-                        int count = 0;
-                        while (allUsers.next()) {
-                        	count++;
-                        	
-                        	if (allUsers.getString("username").equals(username)) {
-                        		break;
-                        	}
-                        }
-                        %>
+                     
                             <td>Ladder Rank:</td>
-                            <td>#<%=count %></td>
+                            <td>TODO</td>
                             
                         </tr>
-                        <%                        
-                        allUsers.close();
-                        %>
+                       
                         <tr class="bg-hallo-nav dark:bg-dark-nav">
                             <td>Wins:</td>
-                            <td><%=wins %></td>
+                            <td><%=session.getAttribute("profile_wins") %></td>
                         </tr>
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
                             <td>Losses:</td>
-                            <td><%=losses %></td>
+                            <td><%=session.getAttribute("profile_losses") %></td>
                         </tr>
                         <tr class="bg-hallo-nav dark:bg-dark-nav">
                             <td>Win percentage:</td>
-                            <td><%=ratio %>%</td>
+                            <td>TODO</td>
                         </tr>
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
                             <td>Streak:</td>
-                            <td><%=streak %></td>
+                            <td><%=session.getAttribute("profile_streak") %></td>
                         </tr>
                         <tr class="bg-hallo-nav dark:bg-dark-nav">
                             <td>Highest Streak:</td>
-                            <td>+<%=hStreak %></td>
+                            <td><%=session.getAttribute("profile_hStreak") %></td>
                         </tr>
                         <tr class="bg-hallo-navm dark:bg-dark-navm">
                             <td>Highest Level:</td>
-                            <td><%=hLevel %></td>
+                            <td><%=session.getAttribute("profile_hLevel") %></td>
                         </tr>
                         </tbody>
                     </table>
@@ -374,13 +338,6 @@
 
     </div>
     
-     					<%
-                        }
-						rs.close();
-						} catch (SQLException | IOException e) {
-						System.out.println(e.getMessage());
-						}
-						%>
     
     <!-- End of Page Wrapper -->
 
@@ -405,18 +362,18 @@ function displayUsers(tipoUser) {
     }
 }
 	
-	function displayLogged(isLog) {
-		console.log(isLog);
-		
-		if (isLog=="null" || isLog=="false") {
-	        document.getElementById("isLog").style.display="block";
-	    }
-	    else {
-	    	document.getElementById("isLog").style.display="none";
-	    }
-		
-	    
-	}
+function displayLogged(isLog) {
+	console.log(isLog);
+	
+	if (isLog=="null" || isLog=="false") {
+        document.getElementById("isLog").style.display="block";
+    }
+    else {
+    	document.getElementById("isLog").style.display="none";
+    }
+	
+    
+}
 </script>
 
 <script>

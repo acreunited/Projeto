@@ -20,7 +20,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="DragonBall-Arena">
+    <meta name="description" content="Anime-Arena">
     <meta name="author" content="Pedro Dias">
 
     <title>Anime-Arena</title>
@@ -209,7 +209,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.jsp">
+                                <a class="dropdown-item" href="ViewUserProfile?username=<%=username %>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -247,6 +247,14 @@
                         Will do for clans too for sure later on, but until July I doubt I can implement it.<br>
                         I copy pasted 30 examples so you guys can see the search thingy working :Praydge:
                     </p>-->
+                    
+                    <style>
+                    <table
+					   data-paging="false"
+					   data-searching="false"
+					   data-ordering="false"
+					>
+                    </style>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -255,10 +263,10 @@
                         </div>-->
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table data-ordering="false" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Rank</th>
+                                            <th >Rank</th>
                                             <th>Username</th>
                                             <th>Level</th>
                                             <th>Experience</th>

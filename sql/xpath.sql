@@ -127,3 +127,8 @@ select * from USERS;
 select * from USERS order by streak DESC LIMIT 10;
 
 select username from USERS;
+
+SELECT * FROM USERS ORDER BY xp DESC;
+
+select * from USERS where username="axe";
+select * from USERS where userID=1;

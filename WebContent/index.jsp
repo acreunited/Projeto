@@ -20,7 +20,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="DragonBall-Arena">
+    <meta name="description" content="Anime-Arena">
     <meta name="author" content="Pedro Dias">
 
     <title>Anime-Arena</title>
@@ -214,7 +214,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.jsp">
+                                <a class="dropdown-item" href="ViewUserProfile?username=<%=username %>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -288,12 +288,12 @@
 								try (Connection conn = Connector.getConnection();) {
 									Statement stmt = conn.createStatement();
 									
-									ResultSet rs = stmt.executeQuery("select * from USERS order by userID DESC LIMIT 10;");
+									ResultSet rs = stmt.executeQuery("select * from USERS order by xp DESC LIMIT 10;");
 									int count = 0;
 									while (rs.next()) {
 										count++;
 										String username = rs.getString("username");
-										String xp = rs.getString("userID");
+										String xp = rs.getString("xp");
 										String level = UserInfo.getLevel(xp);
 										
 								%>
@@ -302,7 +302,8 @@
 											<b>#<%=count %></b>
 										</div>
 										<div class="col-10">
-											<a href="#"><%=username %></a>
+											<a href="ViewUserProfile?username=<%=username %>"><%=username %></a>
+											
 											<div class="skills ladder" style="width: 75%;"><%=level %></div>
 										</div>
 									</div>
@@ -350,7 +351,7 @@
 											<b>#<%=count %></b>
 										</div>
 										<div class="col-4">
-											<b><%=username %></b>
+											<a href="ViewUserProfile?username=<%=username %>"><%=username %></a>
 										</div>
 										<div class="col-2">
 											<b>+<%=streak %></b>
