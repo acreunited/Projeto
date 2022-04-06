@@ -1,8 +1,7 @@
 package resources;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.sql.Blob;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,12 +17,12 @@ import javax.servlet.http.HttpSession;
 import main.Connector;
 import users.UserInfo;
 
-@WebServlet("/ViewUserProfile")
-public class ViewUserProfile extends HttpServlet {
+@WebServlet("/ViewProfile")
+public class ViewProfile extends HttpServlet {
 	
 	private static final long serialVersionUID = 7215979604673189309L;
 	
-	public ViewUserProfile() {
+	public ViewProfile() {
 		super();
 	}
 	

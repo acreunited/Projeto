@@ -214,7 +214,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="ViewUserProfile?username=<%=username %>">
+                                <a class="dropdown-item" href="ViewProfile?username=<%=username %>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -302,7 +302,7 @@
 											<b>#<%=count %></b>
 										</div>
 										<div class="col-10">
-											<a href="ViewUserProfile?username=<%=username %>"><%=username %></a>
+											<a href="ViewProfile?username=<%=username %>"><%=username %></a>
 											
 											<div class="skills ladder" style="width: 75%;"><%=level %></div>
 										</div>
@@ -351,7 +351,7 @@
 											<b>#<%=count %></b>
 										</div>
 										<div class="col-4">
-											<a href="ViewUserProfile?username=<%=username %>"><%=username %></a>
+											<a href="ViewProfile?username=<%=username %>"><%=username %></a>
 										</div>
 										<div class="col-2">
 											<b>+<%=streak %></b>
