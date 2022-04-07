@@ -1,0 +1,360 @@
+@font-face {
+    font-family: 'uni_sansbold_italic';
+    src: url('../fonts/Uni Sans Bold Italic.otf');
+
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'uni_sanslight';
+    src: url('../fonts/Uni Sans Light.otf') format('woff2');
+    src: url('../fonts/Uni Sans Light.otf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'uni_sansregular';
+    src: url('../fonts/Uni Sans Regular.otf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'uni_sanssemibold';
+    src: url('../fonts/Uni Sans SemiBold.otf') format('woff2'),
+         url('../fonts/Uni Sans SemiBold.otf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#app {
+    display: flex
+}
+
+#root {
+    height: 560px;
+    width: 770px
+}
+
+.mc_custom,
+.mold {
+    position: absolute
+}
+
+.mc_custom {
+    height: 560px;
+    width: 770px
+}
+.mc_custom {
+   /* clip: rect(0, 770px, 560px, 0);*/
+    height: 560px;
+    position: absolute;
+    width: 770px
+}
+
+.mc_custom_bg {
+
+    position: absolute
+}
+
+.menu {
+   
+    height: 30px;
+    left: -68px;
+    position: absolute;
+    top: 240px;
+    width: 1000px
+}
+.menu ul li {
+    display: inline;
+    
+}
+
+.rodape {
+   
+    background-image: url(../selection/Character_Background.png);
+    height: 233px;
+    left: 4px;
+    position: absolute;
+    top: 315px;
+    width: 765px;
+}
+
+.rodape ul {
+    display: flex;
+    flex-wrap: wrap;
+    left: 15px;
+    position: absolute;
+    top: 17px;
+    width: 430px
+}
+
+.rodape ul li {
+	
+    list-style: none;
+    margin-bottom: 8px;
+    margin-right: 10px
+}
+
+.personagem_fundo {
+    background-color: #e1d6b2;
+    height: 48px;
+    width: 48px;
+    
+}
+.borda {
+    border: 1px solid #000
+}
+.personagem {
+    height: 48px;
+    width: 48px;
+}  
+
+.perfil {
+    left: 520px;
+    top: 26px
+}
+
+.perfil,
+.texto {
+    position: absolute;  
+}
+
+.texto {
+    font-size: 12pt;
+    left: 89px;
+    line-height: 16px;
+    top: -5px;
+    width: 110px;
+    font-family: "uni_sanslight";
+    color: #ececec;
+}  
+ 
+.texto span {
+	font-family: "uni_sansregular";
+}
+
+.avatar {
+    height: 75px;
+    width: 75px
+}
+
+.mold {
+    margin-left: -86px;
+    margin-top: -9px;
+    width: 94px
+}
+
+.selecionados {
+    left: 520px;
+    position: absolute;
+    top: 103px
+}
+
+.selectedsnum {
+    display: flex;
+    height: 50px;
+    left: -2px;
+    position: absolute;
+    top: 40px;
+    width: 200px
+}
+
+.selectedsnum div {
+    align-items: center;
+    background-color: #e1d6b2;
+    border: 1px solid #000;
+    display: flex;
+    font-size: 40px;
+    height: 40px;
+    justify-content: center;
+    margin-right: 11px;
+    width: 49px
+}
+
+.containers {
+    display: inline-block;
+    left: 28px;
+    position: absolute;
+    top: 25px;
+    width: 200px
+}
+.items {
+    background-size: 50px;
+    float: left;
+    height: 48px;
+    left: -28px;
+    margin-right: 13px;
+    position: relative;
+    top: 14px;
+    width: 48px
+}
+
+/*CHARACTER DETAILS*/
+.conteudo, .topo {
+    position: absolute;
+}
+.topo {
+   /* clip: rect(0,545px,222px,0);*/
+    background-image: url(../selection/animeselectcharviewbackground.png);
+    height: 233px;
+    left: 40px;
+    top: 24px;
+    width: 698px;
+     z-index: 1;
+}/*
+.topoa, .topoaend {
+    -webkit-animation-duration: .6s;
+    animation-duration: .6s;
+}
+.topoa {
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: clipa;
+    animation-name: clipa;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+}*/
+
+.conteudo {
+    left: 87px;
+    top: 13px;
+}
+.conteudo, .topo {
+    position: absolute;
+}
+.nome {
+    color: #b91921;
+    font-size: 14pt;
+    left: 0px;
+    top: 10px;
+    position: absolute;
+    width: 498px;
+    color: #ececec;
+    font-family: "uni_sanssemibold";
+}
+.foto, .fotolista {
+    height: 75px;
+    width: 75px;
+}
+.foto {
+    position: absolute;
+    top: 29px;
+}
+.borda {
+    border: 1px solid #000;
+}
+.desc, .nomeskill {
+    position: absolute;
+}
+.nomeskill {
+    color: #b91921;
+    font-size: 12pt;
+    left: 1px;
+    top: 118px;
+    width: 295px;
+    color: #ff1d20;
+    font-family: "uni_sanssemibold";
+}
+.desc, .nomeEnergy {
+    position: absolute;
+}
+.nomeEnergy {
+    color: #b91921;
+    font-size: 12pt;
+    left: 300px;
+    top: 118px;
+    width: 295px;
+    color: #ececec;
+    font-family: "uni_sanssemibold";
+}
+.desc, .cooldown {
+    position: absolute;
+}
+.cooldown {
+    color: #b91921;
+    font-size: 8pt;
+    left: 325px;
+    top: 195px;
+    width: 295px;
+    color: #ff1d20;
+    font-family: "uni_sanssemibold";
+}
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #000000; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff1d20; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff1d20; 
+}
+.desc {
+    font-size: 11pt;
+    height: 59px;
+    left: 1px;
+    overflow-y: auto;
+    scrollbar-color: #fff #8c8c8cbf;
+    scrollbar-width: thin;
+    top: 133px;
+    width: 415px;
+    color: #ececec;
+    font-family: "uni_sanslight";
+    
+}
+.desc, .nomeskill {
+    position: absolute;
+}
+.fotoskill {
+    height: 75px;
+    left: 519px;
+    position: absolute;
+    top: 133px;
+    width: 75px;
+}
+.borda {
+    border: 1px solid #000;
+}
+nav {
+    display: block;
+}
+.listaskills {
+    display: flex;
+    left: 233px;
+    overflow-x: auto;
+    position: absolute;
+    scrollbar-color: #fff #8c8c8cbf;
+    scrollbar-width: thin;
+    top: 29px;
+    width: 380px;
+}
+.listaskills li {
+    left: -39px;
+    list-style: none;
+    margin-right: 18px;
+    position: relative;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+li {
+    text-align: -webkit-match-parent;
+}

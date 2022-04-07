@@ -134,3 +134,6 @@ select * from USERS where username="axe";
 select * from USERS where userID=1;
 
 select * from USERS order by xp DESC;
+
+select characterID from THEME_CHARACTER where themeID=1 LIMIT 12;
+select * from USERS where userID=1;
