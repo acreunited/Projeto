@@ -154,7 +154,7 @@
 
 .selectedsnum {
     display: flex;
-    height: 50px;
+    height: 51px;
     left: -2px;
     position: absolute;
     top: 40px;
@@ -167,10 +167,10 @@
     border: 1px solid #000;
     display: flex;
     font-size: 40px;
-    height: 40px;
+    height: 51px;
     justify-content: center;
     margin-right: 11px;
-    width: 49px
+    width: 51px
 }
 
 .containers {
@@ -183,12 +183,12 @@
 .items {
     background-size: 50px;
     float: left;
-    height: 48px;
+    height: 51px;
     left: -28px;
     margin-right: 13px;
     position: relative;
     top: 14px;
-    width: 48px
+    width: 51px
 }
 
 /*CHARACTER DETAILS*/
@@ -241,7 +241,7 @@
 }
 .foto {
     position: absolute;
-    top: 29px;
+    top: 32px;
 }
 .borda {
     border: 1px solid #000;
@@ -321,9 +321,9 @@
 }
 .fotoskill {
     height: 75px;
-    left: 519px;
+    left: 434px;
     position: absolute;
-    top: 133px;
+    top: 125px;
     width: 75px;
 }
 .borda {

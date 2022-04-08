@@ -22,12 +22,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Game Selection</title>
   
-  <link href="css/ingameSelection.css" rel="stylesheet">
-   <link href="css/stylesheet.css" rel="stylesheet">
+ <link href="css/ingameSelection.css" rel="stylesheet">
+
 </head>
+
 
 <body style="padding: 0px;">
 
+          
 
 <div id="app" class="central">
     <div id="root">
@@ -35,8 +37,8 @@
             
             <!-- <img src="https://media.discordapp.net/attachments/951508126518116432/957459505829007370/handsignbg.png" style="width: 770px; height: 560px;">
              -->
-           <img src="selection/background.png" style="width: 770px; height: 560px;">
-			     
+          
+			   <img src="selection/background.png" style="width: 770px; height: 560px;">   
 			  <%
 			Class.forName(Connector.drv);
 			try (Connection conn = Connector.getConnection();) {
@@ -52,23 +54,25 @@
 						String name = especific.getString("nome");
 						String descricao = especific.getString("descricao");
 			%>
-					<div class="topo" id="displayCharacter<%=characterID%>" style="display:none">
+					<div class="topo" id="displayCharacter<%=characterID%>" style="display:block">
 						<div class="conteudo">
 						   <div class="nome">
 						      <%=name%>
 						   </div>
-						   <img src="ViewCharacter?id=<%=characterID %>" class="foto borda"> 
-						   <div class="nomeskill">
-						      <%=name%>
-						   </div>
+						   <img src="ViewCharacter?id=<%=characterID %>" class="foto borda" onclick="displayCharacterDescription(<%=characterID %>)"> 
+						  
 						   <div class="nomeEnergy">
 						      ENERGY:
 						   </div>
 						   
-						   <div id="charDescription">
+						   <div id="charDescription<%=characterID %>">
 							   <div class="desc">
 							   	<%=descricao%>
 							   </div>
+							    <div class="nomeskill">
+							      <%=name%>
+							   </div>
+							   <img src="ViewCharacter?id=<%=characterID %>" class="fotoskill borda"> 
 						   </div>
 						   
 						   <% 
@@ -81,6 +85,7 @@
 										"select * from THEME_ABILITY where themeID=1 and abilityID="+abilityID+";");
 								if (abilit.next()) {
 									String descricao_ability = abilit.getString("descricao");
+									String name_ability = abilit.getString("nome");
 								
 								%>
 								
@@ -88,7 +93,13 @@
 								   <div class="desc">
 								   	<%=descricao_ability%>
 								   </div>
+								   <img src="ViewCharacter?id=<%=characterID %>" class="foto borda" onclick="displayCharacterDescription(<%=characterID %>)"> 
+								   <div class="nomeskill">
+								      <%=name_ability %>
+								   </div>
+								   <img src="ViewAbility?id=<%=abilityID %>" class="fotoskill borda"> 
 							   </div>
+							   
 							   <%
 							  
 								}
@@ -103,7 +114,8 @@
 						   </div>
 						   
 						</div>
-					    <img src="ViewCharacter?id=<%=characterID %>" class="fotoskill borda"> 
+					    
+					    
 					    <nav>
 					       <ul class="listaskills">
 					       <% 
@@ -162,8 +174,13 @@
 							
 							String characterID = rs.getString("characterID");							
 					%>
-                        <li class="personagem_fundo borda"><img src="ViewCharacter?id=<%=characterID %>" class="personagem" onclick="displayInfo(<%=characterID %>)"></li>
+                        <li class="personagem_fundo borda" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)">
+                        <img id="charpic<%=characterID %>" src="ViewCharacter?id=<%=characterID %>" class="personagem" onclick="displayInfo(<%=characterID %>)"
                         
+                      
+                        >
+                        </li>
+                       
                         <%
 					}
 						rs.close();
@@ -206,16 +223,19 @@
 					%>
                     <div class="selecionados">
                         <div class="selectedsnum">
-                            <div data-v-41d77b00="">1</div>
-                            <div data-v-41d77b00="">2</div>
-                            <div data-v-41d77b00="">3</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
                         </div>
                         <div class="containers">
-                            <div class="items" style="background-image: url();"></div>
-                            <div class="items" style="background-image: url();"></div>
-                            <div class="items" style="background-image: url();"></div>
+                            <div id="items1" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)"class="items"></div>
+                            <div id="items2" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" class="items"></div>
+                            <div id="items3" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" class="items"></div>
                         </div>
                     </div>
+          
+		
+			<!-- <img id="drag1" src="selection/background.png" draggable="true" ondragstart="drag(event)" width="336" height="69" style="postion: absolute;">-->
                 
                 </div>
             </div>
@@ -223,6 +243,8 @@
            
             <div class="arrow_left"></div>
             <div class="arrow_right"></div>
+            
+            
 
         </div>
      
@@ -230,33 +252,66 @@
 </div>
 
 <script>
-	function displayInfo(id) {
-		console.log(id);
-		
-		for (let i = 0; i < 100; i++) {
-			if (document.getElementById("displayCharacter"+i)!=null) {					
-				document.getElementById("displayCharacter"+i).style.display="none";
-			}
-		} 
-		if (document.getElementById("displayCharacter"+id)!=null) {		
-			document.getElementById("displayCharacter"+id).style.display="block";
-			document.getElementById("charDescription").style.display="block";
-		}		
+function displayInfo(id) {
+	
+	for (let i = 0; i < 100; i++) {
+		if (document.getElementById("displayCharacter"+i)!=null) {					
+			document.getElementById("displayCharacter"+i).style.display="none";
+		}
+	} 
+	if (document.getElementById("displayCharacter"+id)!=null) {		
+		document.getElementById("displayCharacter"+id).style.display="block";
+		document.getElementById("charDescription"+id).style.display="block";
+	}		
+}
+	
+function displayAbilityDescription(id) {
+	//document.getElementById("").style.display="none";
+	for (let i = 0; i < 100; i++) {
+		if (document.getElementById("ability"+i)!=null) {					
+			document.getElementById("ability"+i).style.display="none";
+		}
+		if (document.getElementById("charDescription"+i)!=null) {					
+			document.getElementById("charDescription"+i).style.display="none";
+		}
+	} 
+	if (document.getElementById("ability"+id)!=null) {	
+		document.getElementById("ability"+id).style.display="block";
+	}		
+}
+function displayCharacterDescription(id) {
+	console.log(id);
+	for (let i = 0; i < 100; i++) {
+		if (document.getElementById("ability"+i)!=null) {					
+			document.getElementById("ability"+i).style.display="none";
+		}
+		if (document.getElementById("charDescription"+i)!=null) {					
+			document.getElementById("charDescription"+i).style.display="none";
+		}
+	}
+	if (document.getElementById("charDescription"+id)!=null) {	
+		document.getElementById("charDescription"+id).style.display="block";
 	}
 	
-	function displayAbilityDescription(id) {
-		console.log(id);
-		document.getElementById("charDescription").style.display="none";
-		for (let i = 0; i < 100; i++) {
-			if (document.getElementById("ability"+i)!=null) {					
-				document.getElementById("ability"+i).style.display="none";
-			}
-		} 
-		if (document.getElementById("ability"+id)!=null) {	
-			document.getElementById("ability"+id).style.display="block";
-			
-		}		
-	}
+}
+	
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("img", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("img");
+  
+  if (ev.target.id=="" || ev.target.id=="items1" || ev.target.id=="items2" || ev.target.id=="items3") {
+	  ev.target.appendChild(document.getElementById(data));
+  }
+
+}
 </script>
 
 
