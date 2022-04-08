@@ -64,6 +64,7 @@
     position: absolute;
     top: 240px;
     width: 1000px
+    
 }
 .menu ul li {
     display: inline;
@@ -193,6 +194,7 @@
 /*CHARACTER DETAILS*/
 .conteudo, .topo {
     position: absolute;
+
 }
 .topo {
    /* clip: rect(0,545px,222px,0);*/
