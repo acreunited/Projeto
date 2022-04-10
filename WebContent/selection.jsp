@@ -54,7 +54,7 @@
 						String name = especific.getString("nome");
 						String descricao = especific.getString("descricao");
 			%>
-					<div class="topo" id="displayCharacter<%=characterID%>" style="display:block">
+					<div class="topo" id="displayCharacter<%=characterID%>" style="display:none">
 						<div class="conteudo">
 						   <div class="nome">
 						      <%=name%>

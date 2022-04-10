@@ -145,3 +145,5 @@ SELECT COUNT(characterID) from THEME_CHARACTER where themeID=1;
 
 select * from ABILITY where characterID=6;
 select * from THEME_ABILITY where themeID=1;
+
+select * from THEME_ABILITY where themeID=1 and abilityID=1;
