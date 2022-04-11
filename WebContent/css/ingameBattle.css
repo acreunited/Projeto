@@ -1,3 +1,19 @@
+/*@font-face {
+    font-family: 'franklin_gothic_medium_condRg';
+    src: url('franklin-webfont.woff2') format('woff2'),
+         url('franklin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}*/
+@font-face {
+    font-family: 'franklin_gothic_medium_condRg';
+    src: url('../fonts/franklin.otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 #app{
     display:flex
 }
@@ -36,8 +52,9 @@
     width:273px
 }
 .mc_username1{
-    color:#bd262c;
-    font-size:20px;
+	font-family: "franklin_gothic_medium_condRg";
+    color:#ff1e51;
+    font-size:16pt;
     margin-top:22px
 }
 .mc_username1,.mc_userrank1{
@@ -45,8 +62,10 @@
     width:215px
 }
 .mc_userrank1{
-    color:#151311;
-    margin-top:-1px
+    font-family: "franklin_gothic_medium_condRg";
+	font-size: 13pt;
+    color: #101010;
+    margin-top:-5px
 }
 .mc_avatar1{
     left:223px;
@@ -54,9 +73,9 @@
     top:9px
 }
 .mc_avatar1,.mc_avatar1 img{
-    height:48px;
+    height:50px;
     position:absolute;
-    width:48px
+    width:50px
 }
 .mc_avatar1 img{
     border:1px solid #151311
@@ -100,10 +119,13 @@
     width:191px
 }
 .mc_bar_ready{
-    color:#151311;
+	font-family: "franklin_gothic_medium_condRg";
+    color:#101010 ;
+    font-size: 16pt ;
     position:absolute;
     text-align:center;
-    width:100%
+    width:100%;
+    margin-top: -6px;
 }
 
 .mc_play2{
@@ -112,8 +134,9 @@
     width:265px
 }
 .mc_username2{
-    color:#bd262c;
-    font-size:20px;
+    font-family: "franklin_gothic_medium_condRg";
+    color:#ff1e51;
+    font-size:16pt;
     margin-top:22px
 }
 .mc_username2,.mc_userrank2{
@@ -122,21 +145,24 @@
     width:215px
 }
 .mc_userrank2{
-    color:#151311;
-    margin-top:-1px
+	font-family: "franklin_gothic_medium_condRg";
+	font-size: 13pt;
+    color: #101010;
+    margin-top:-5px
 }
 .mc_avatar2{
     left:0;
     pointer-events:none;
     top:9px
+    
 }
 .mc_avatar2,.mc_avatar2 img{
-    height:48px;
+    height:50px;
     position:absolute;
-    width:48px
+    width:50px;
 }
 .mc_avatar2 img{
-    border:1px solid #151311
+    border:1px solid #151311;
 }
 
 .mc_combat{
@@ -165,7 +191,7 @@
     width:381px
 }
 .mc_char_section_skill{
-    background-image:url(../images/skillsdiv.png);
+    background-image:url(../battle/SkillCard.png);
     background-repeat:no-repeat;
     left:0
 }
@@ -264,18 +290,20 @@
 }
 .mc_char_12,.mc_char_card{
     position:absolute;
-    width:110px
+    width:110px;
+    
 }
 .mc_char_card{
-    height:115px
+    height:115px;
 }
 .mc_char_card_rank2{
-    z-index:2
+    z-index:2;
 }
 .mc_char_card_rank,.mc_char_card_rank2{
     pointer-events:none;
     position:absolute;
-    top:-12px
+    top:-12px;
+    
 }
 .mc_char_card_rank{
     z-index:3
@@ -310,14 +338,16 @@
     width:75px
 }
 .mc_char_card_lifetext{
-    color:#151311;
-    font-size:12px;
-    height:14px;
+	font-family: "franklin_gothic_medium_condRg";
+    color: #000000 ;
+    font-size:11pt;
+    height:17px;
     position:absolute;
     text-align:center;
-    width:74px
+    width:75px;
+    margin-top: -1px;
 }
-
+/*
 .pulse_avt{
     -webkit-animation-duration:1.1s;
     animation-duration:1.1s;
@@ -352,7 +382,7 @@
         transform:scale(2);
         will-change:transform
     }
-}
+}*/
 .effects{
     display:flex;
     height:22px;
@@ -406,15 +436,15 @@
     width:770px
 }
 .mc_info{
-    background-image:url(../images/infodiv.png);
-    height:134px;
-    left:247px;
+    background-image:url(../battle/ButtomInfoCard.png);
+    height:132px;
+    left:235px;
     position:absolute;
     top:10px;
-    width:523px
+    width:535px
 }
 .mc_info_avatar{
-    left:31px;
+    left:46px;
     pointer-events:none;
     position:absolute;
     top:28px
@@ -433,23 +463,22 @@
     width:94px
 }
 .mc_info_name{
-    color:#bd262c;
-    font-size:15px;
-    top:25px
+	
+    color:#ff1e51;
+    font-size:14pt;
+    top:15px;
+
 }
 .mc_info_desc,.mc_info_name{
-    left:117px;
-    position:absolute
+    left:130px;
+    position:absolute;
+    font-family: "franklin_gothic_medium_condRg";
 }
 .mc_info_desc{
-    color:#151311;
-    font-size:12px;
-    height:56px;
-    overflow-y:auto;
-    scrollbar-color:#c8c8c8 #8c8c8cbf;
-    scrollbar-width:thin;
-    top:40px;
-    width:400px
+    color: #f0f0f0;
+    font-size:11pt;
+    top:34px;
+    
 }
 .mc_info_team{
     left:314px;
@@ -505,9 +534,23 @@
     left:53px;
     top:11px
 }
-.mc_chat,.mc_surrender{
+.mc_chat {
+	clip:rect(0,160px,46px,0);
+    background-image:url(../battle/discord.png);
+    background-repeat:no-repeat;
+    color:#151311;
+    font-size:13px;
+    height:46px;
+    padding-left:20px;
+    padding-top:16px;
+    position:absolute;
+    width:182px;
+    margin-left: -10px;
+}
+
+.mc_surrender{
     clip:rect(0,160px,46px,0);
-    background-image:url(../images/menudiv.png);
+    background-image:url(../battle/surrender.png);
     background-repeat:no-repeat;
     color:#151311;
     font-size:13px;
@@ -515,7 +558,8 @@
     padding-left:30px;
     padding-top:16px;
     position:absolute;
-    width:182px
+    width:182px;
+    margin-left: -20px;
 }
 .mc_chat{
     left:30px;
@@ -526,7 +570,7 @@
     width:27px
 }
 .mc_volume{
-    background-image:url(../images/menudiv.png);
+    background-image:url(../battle/volume.png);
     background-repeat:no-repeat;
     color:#151311;
     font-size:13px;
@@ -548,6 +592,25 @@
 .mc_render img{
     width:150px
 }
+.pulseenemy {
+    position: relative;
+    z-index: 2;
+}
+.revert{
+    transform:scaleX(-1)
+}
+.pulse_avt {
+    -webkit-animation-duration: 1.1s;
+    animation-duration: 1.1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: pulse_avt;
+    animation-name: pulse_avt;
+    left: 33px;
+    position: absolute;
+    top: 19px;
+}
+
 /*
 #cursor{
     background-image:url(../images/kunai.png);
@@ -614,3 +677,4 @@ html{
         will-change:transform
     }
 }*/
+

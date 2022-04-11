@@ -31,11 +31,11 @@
          <div id="root">
             <div class="mc_custom">
                
-               <img src="https://media.discordapp.net/attachments/829102407375388752/851849181194878986/BG_PSD_copy.png" style="width: 770px; height: 560px;"> <!----> 
+               <img src="battle/thebackground.png" style="width: 770px; height: 560px;"> <!----> 
                <div class="mc_top">
                   <div class="mc_play1">
                      <div class="mc_username1">
-                        KITANA
+                        Kitana
                      </div>
                      <div class="mc_userrank1">
                         KAGE
@@ -51,7 +51,7 @@
                            <div class="mc_bar_fill" style="width: 133.7px;"></div>
                         </div>
                         <div class="mc_bar_ready">
-                           OPPONENT TURN...
+                           Opponent Turn...
                         </div>
                      </div>
                      <!---->
@@ -71,7 +71,7 @@
                </div>
                <div class="mc_combat">
                   <div class="mc_char_00">
-                     <div class="mc_char_section">??
+                     <div class="mc_char_section">
                         <div class="mc_char_section_perg"></div>
                         <div class="mask">
                            <div class="mc_char_section_skill opp_turn">
@@ -192,7 +192,7 @@
                         </div>
                      </div>
                      <div class="mc_char_card">
-                        <div class="mc_char_card_rank2  ">
+                        <div class="mc_char_card_rank2">
                            <img src="https://naruto-arena.net/images/ranks/10v2.png">
                         </div>
                         <div class="mc_char_card_avatar  ">
@@ -274,7 +274,7 @@
                   <div class="mc_char_12">
                      <div class="mc_char_card">
                         <div class="mc_char_card_rank2 revert rankenemy">
-                           <img src="https://naruto-arena.net/images/ranks/9v2.png">
+                           <img src="https://naruto-arena.net/images/ranks/9v2.png" >
                         </div>
                         <div class="mc_char_card_avatar revert mc_char_card_avatar_en">
                            <img class="abs revert" src="https://naruto-arena.net/images/dead.png">
@@ -305,8 +305,13 @@
                         <img src="https://acreunited.github.io/avys/Misc/205.png"> <!---->
                      </div>
                      <!----> 
-                     <div class="mc_info_name">DRAVEN</div>
-                     <div class="mc_info_desc" style="height: 70px;">AKATSUKI<br>CLAN: ACRES CAELESTES REUNITED<br>LEVEL: 41 ( 33935 XP)<br>LADDERRANK: 0<br>RATIO:  126 - 18 ( +1)</div>
+                     <div class="mc_info_name">BEEPBOOP</div>
+                     <div class="mc_info_desc" >
+                     Rookie<br>
+                     Clan: AC-R<br>
+                     Level: 41<br>
+                     Ladderrank: #2<br>
+                     Ratio: 126-18 (+1)</div>
                      <div class="mc_info_team">
                         <div class="mc_info_team1"><img src="https://i.imgur.com/ZoEQafG.jpg"></div>
                         <div class="mc_info_team2"><img src="https://media.discordapp.net/attachments/673748029052026882/847100835963994153/lkZT91h.png"></div>
@@ -315,13 +320,10 @@
                      <!----> <!----> <!---->
                   </div>
                   <div class="mc_menu">
-                     <div class="mc_surrender">SURRENDER</div>
-                     <div class="mc_chat">
-                        REACTIONS
-                        <img src="https://naruto-arena.net/images/reactions/1.png">
-                     </div>
-                     <div class="mc_volume">SETTINGS</div>
-                     <div class="mc_render" style="background-image: url(&quot;https://i.imgur.com/NbkCAzO.png&quot;);"></div>
+                     <div class="mc_surrender"></div>
+                     <div class="mc_chat"></div>
+                     <div class="mc_volume"></div>
+                     <div class="mc_render" style="background-image: url(battle/bottomrender.png);"></div>
                   </div>
                </div>
                <!----> <!---->
