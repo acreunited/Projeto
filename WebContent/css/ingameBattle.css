@@ -172,7 +172,7 @@
     position:absolute
 }
 .mc_char_section_perg{
-    background-image:url(../images/perg.png);
+    /*background-image:url(../images/perg.png);*/
     background-repeat:no-repeat;
     height:88px;
     left:81px;
@@ -209,7 +209,7 @@
     will-change:transform
 }
 .mc_char_section_selected{
-    background-image:url(../images/skillact.png);
+    /*background-image:url(../images/skillact.png);*/
     background-repeat:no-repeat;
     height:56px;
     left:22px;
@@ -346,6 +346,7 @@
     text-align:center;
     width:75px;
     margin-top: -1px;
+ 
 }
 /*
 .pulse_avt{
@@ -466,7 +467,7 @@
 	
     color:#ff1e51;
     font-size:14pt;
-    top:15px;
+    top:20px;
 
 }
 .mc_info_desc,.mc_info_name{
@@ -477,7 +478,7 @@
 .mc_info_desc{
     color: #f0f0f0;
     font-size:11pt;
-    top:34px;
+    top:39px;
     
 }
 .mc_info_team{
@@ -531,7 +532,7 @@
     background:#7d7d7d
 }
 .mc_surrender{
-    left:53px;
+    left:63px;
     top:11px
 }
 .mc_chat {
@@ -585,7 +586,7 @@
 .mc_render{
     background-repeat:no-repeat;
     height:152px;
-    left:115px;
+    left:125px;
     position:absolute;
     width:163px
 }
@@ -610,6 +611,81 @@
     position: absolute;
     top: 19px;
 }
+.en{
+    left:2px!important
+}
+.en2{
+    left:3px!important
+}
+
+
+/* MY TURN */
+.mc_energy_system{
+    height:30px;
+    position:absolute;
+    top:50px;
+    width:200px
+}
+
+.mc_energy_bar{
+    /*background-image:url(../images/energy_bar.png);*/
+    background-repeat:no-repeat;
+    height:10px;
+    left:3px;
+    position:absolute;
+    top:-1px;
+    width:175px
+}
+.mc_energy_txt strong{
+    font-weight:400;
+    margin-right:26px
+}
+.mc_energy_txt .energy0{
+    left:2px;
+    position:absolute
+}
+.mc_energy_txt .energy1{
+    left:42px;
+    position:absolute
+}
+.mc_energy_txt .energy2{
+    left:83px;
+    position:absolute
+}
+.mc_energy_txt .energy3{
+    left:124px;
+    position:absolute
+}
+.mc_energy_txt .energy4{
+    left:165px;
+    position:absolute
+}
+.mc_energy_txt{
+	font-family: "franklin_gothic_medium_condRg";
+    color: #101010;
+    font-size:12pt;
+    left:12px;
+    position:absolute;
+    top:-18px;
+    width:235px
+}
+.mc_energy_exchange{
+	font-family: "franklin_gothic_medium_condRg";
+    color:#101010;
+    font-size:11pt;
+    height:15px;
+    position:absolute;
+    text-align:center;
+    top:0px;
+    width:200px;
+    z-index:997;
+}
+.my_turn{
+    transform:translateX(0);
+    transition:transform .5s;
+    will-change:transform
+}
+
 
 /*
 #cursor{
@@ -656,7 +732,7 @@ html{
     height:35px;
     width:35px;
     z-index:1001
-}
+}*/
 @-webkit-keyframes transform{
     0%{
         transform:rotate(0deg);
@@ -676,5 +752,5 @@ html{
         transform:rotate(1turn);
         will-change:transform
     }
-}*/
+}
 
