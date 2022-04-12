@@ -46,14 +46,15 @@
 							
 				%>
                   <div class="mc_play1">
-                     <div class="mc_username1" onclick="playerFooterInfo('my')">
+                     <div class="mc_username1">
                         <%=username %>
                      </div>
                      <div class="mc_userrank1">
                         CABIN BOY
                      </div>
                      <div class="mc_avatar1">
-                        <img src="ViewAvatar?id=<%=userID %>" > 
+                     
+                       <img src="ViewAvatar?id=<%=userID %>" onclick="playerFooterInfo('my')" alt="" > 
                      </div>
                   </div>
                   <%
@@ -71,7 +72,7 @@
                         <div class="mc_bar_back">
                            <div class="mc_bar_fill" style="width: 133.7px;"></div>
                         </div>
-                        <div class="mc_bar_ready opp_turn" style="display:none;" onclick="changeTurnTo('my')">
+                        <div class="mc_bar_ready opp_text" style="display:none;" onclick="changeTurnTo('my')">
                            Opponent Turn...
                         </div>
                         <div class="mc_bar_ready my_turn" onclick="changeTurnTo('opp')">
@@ -104,14 +105,14 @@
 							
 				%>
                   <div class="mc_play2">
-                     <div class="mc_username2" onclick="playerFooterInfo('opp')">
+                     <div class="mc_username2">
                         <%=username %>
                      </div>
                      <div class="mc_userrank2">
                         CABIN BOY
                      </div>
                      <div class="mc_avatar2">
-                        <img src="ViewAvatar?id=<%=userID %>"> 
+                        <a><img src="ViewAvatar?id=<%=userID %>" onclick="playerFooterInfo('opp')"> </a>
      	             </div>
                   </div>
                       <%
@@ -153,7 +154,7 @@
 							String abilityID = abilities.getString("abilityID");
 							 %>
                                  <div class="skillimg<%=count%>">
-                                    <img src="ViewAbility?id=<%=abilityID %>" class="disabled" onclick="abilityFooterInfo(<%=abilityID %>)"> 
+                                    <a onclick="abilityFooterInfo(<%=abilityID %>)"><img src="ViewAbility?id=<%=abilityID %>" class="disabled" > </a>
                                  </div>
   
                                   <%
@@ -175,7 +176,7 @@
 							String abilityID_my = abilities_my.getString("abilityID");
 							 %>
                                  <div class="skillimg<%=count_my%>">
-                                    <img src="ViewAbility?id=<%=abilityID_my %>" onclick="abilityFooterInfo(<%=abilityID_my %>)"> 
+                                    <a onclick="abilityFooterInfo(<%=abilityID_my %>)"><img src="ViewAbility?id=<%=abilityID_my %>"></a>
                                  </div>
   
                                   <%
@@ -194,8 +195,8 @@
                            <img src="https://naruto-arena.net/images/ranks/10v2.png">
                         </div>
                         <div class="mc_char_card_avatar  ">
-                           <img class="abs " src="https://naruto-arena.net/images/dead.png">
-                           <img class="abs" id="dead_00" src="https://media.discordapp.net/attachments/673748029052026882/746373202699092068/7fu7VwyukhwMQabyDOKgkQ7QcvDfkHFU2PGdKIuFwckB1OsGbUpnYHj7hZ1h8pE7DFsevGIQERJmUBOXZxBgZ2JQ5gbN1PxmeP31.png">
+                        <img class="abs " src="https://naruto-arena.net/images/dead.png">
+                         <img class="abs" id="dead_00" src="https://media.discordapp.net/attachments/673748029052026882/746373202699092068/7fu7VwyukhwMQabyDOKgkQ7QcvDfkHFU2PGdKIuFwckB1OsGbUpnYHj7hZ1h8pE7DFsevGIQERJmUBOXZxBgZ2JQ5gbN1PxmeP31.png">
                         </div>
                         <div class="mc_char_card_rank ">
                            <img src="https://naruto-arena.net/images/ranks/10.png">
@@ -204,13 +205,13 @@
                     
                      <div class="mc_char_card_lifebar">
                         <div id="bar_0<%=countChars%>" style=" background-color: #3BDF3F; width: 100%"></div>
-                        <div id="bar_text_0<%=countChars%>" class="mc_char_card_lifetext" onclick="characterFooterInfo(<%=characterID %>)">
+                        <div id="bar_text_0<%=countChars%>" class="mc_char_card_lifetext">
                            100/100
                         </div>
                      </div>
                      <div>
                         <div class="mc_char_card_avatar pulse_avt" >
-                           <img style="border: none" id="dead_00" src="ViewCharacter?id=<%=characterID %>" >
+                           <img style="border: none" id="dead_00" src="ViewCharacter?id=<%=characterID %>" onclick="characterFooterInfo(<%=characterID %>)">
                         </div>
                      </div>
                      <div class="effects"></div>
@@ -256,13 +257,13 @@
                      <!----> 
                      <div class="mc_char_card_lifebar en">
                         <div id="bar_10" style=" background-color: #3BDF3F; width: 100%"></div>
-                        <div id="bar_text_10" class="mc_char_card_lifetext"  onclick="characterFooterInfo(<%=characterID %>)">
+                        <div id="bar_text_10" class="mc_char_card_lifetext">
                            100/100
                         </div>
                      </div>
                      <div class="revert pulseenemy">
                         <div class="mc_char_card_avatar   pulse_avt">
-                           <img style="border: none" id="dead_10" src="ViewCharacter?id=<%=characterID %>">
+                          <img style="border: none" id="dead_10" src="ViewCharacter?id=<%=characterID %>" onclick="characterFooterInfo(<%=characterID %>)">
                         </div>
                      </div>
                      <div class="effects1"></div>
@@ -449,6 +450,7 @@ function displayNones() {
 }
 
 function characterFooterInfo(id) {
+	console.log("sdjndsjvnjdsnvd");
 	displayNones();
 	document.getElementById("character"+id).style.display="block";
 }
@@ -470,14 +472,19 @@ function playerFooterInfo(my_opp) {
 }
 
 function changeTurnTo(turn) {
-
+	
 	var opp = document.getElementsByClassName ("opp_turn");
+	var opp_text = document.getElementsByClassName ("opp_text");
 	var my = document.getElementsByClassName ("my_turn");
 	
 	if (turn=="my") {
 		
+		 
 		for (var i = 0; i < opp.length; i++) {
 			opp[i].style.display="none";
+		}
+		for (var i = 0; i < opp_text.length; i++) {
+			opp_text[i].style.display="none";
 		}
 		for (var i = 0; i < my.length; i++) {
 			my[i].style.display="block";
@@ -487,6 +494,9 @@ function changeTurnTo(turn) {
 
 		for (var i = 0; i < opp.length; i++) {
 			opp[i].style.display="block";
+		}
+		for (var i = 0; i < opp_text.length; i++) {
+			opp_text[i].style.display="block";
 		}
 		for (var i = 0; i < my.length; i++) {
 			my[i].style.display="none";
