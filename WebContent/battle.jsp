@@ -31,7 +31,7 @@
          <div id="root">
             <div class="mc_custom">
                
-               <img src="battle/thebackground.png" style="width: 770px; height: 560px;"> <!----> 
+               <img src="battle/thebackground.png" style="width: 770px; height: 560px;">
                <div class="mc_top">
                  <%
 				Class.forName(Connector.drv);
@@ -46,14 +46,14 @@
 							
 				%>
                   <div class="mc_play1">
-                     <div class="mc_username1">
+                     <div class="mc_username1" onclick="playerFooterInfo('my')">
                         <%=username %>
                      </div>
                      <div class="mc_userrank1">
                         CABIN BOY
                      </div>
                      <div class="mc_avatar1">
-                        <img src="ViewAvatar?id=<%=userID %>" onclick="functionTest()"> 
+                        <img src="ViewAvatar?id=<%=userID %>" > 
                      </div>
                   </div>
                   <%
@@ -104,15 +104,15 @@
 							
 				%>
                   <div class="mc_play2">
-                     <div class="mc_username2">
+                     <div class="mc_username2" onclick="playerFooterInfo('opp')">
                         <%=username %>
                      </div>
                      <div class="mc_userrank2">
                         CABIN BOY
                      </div>
                      <div class="mc_avatar2">
-                        <img src="ViewAvatar?id=<%=userID %>" onclick="playerFooterInfo('opp', <%=userID %>)"> 
-                     </div>
+                        <img src="ViewAvatar?id=<%=userID %>"> 
+     	             </div>
                   </div>
                       <%
 					}
@@ -153,7 +153,7 @@
 							String abilityID = abilities.getString("abilityID");
 							 %>
                                  <div class="skillimg<%=count%>">
-                                    <img src="ViewAbility?id=<%=abilityID %>" class="disabled"> 
+                                    <img src="ViewAbility?id=<%=abilityID %>" class="disabled" onclick="abilityFooterInfo(<%=abilityID %>)"> 
                                  </div>
   
                                   <%
@@ -175,7 +175,7 @@
 							String abilityID_my = abilities_my.getString("abilityID");
 							 %>
                                  <div class="skillimg<%=count_my%>">
-                                    <img src="ViewAbility?id=<%=abilityID_my %>" class="disabled"> 
+                                    <img src="ViewAbility?id=<%=abilityID_my %>" onclick="abilityFooterInfo(<%=abilityID_my %>)"> 
                                  </div>
   
                                   <%
@@ -188,9 +188,6 @@
                         </div>
                  
                      </div>
-                     
-                     
-                     
                      
                      <div class="mc_char_card">
                         <div class="mc_char_card_rank2  ">
@@ -207,13 +204,13 @@
                     
                      <div class="mc_char_card_lifebar">
                         <div id="bar_0<%=countChars%>" style=" background-color: #3BDF3F; width: 100%"></div>
-                        <div id="bar_text_0<%=countChars%>" class="mc_char_card_lifetext">
+                        <div id="bar_text_0<%=countChars%>" class="mc_char_card_lifetext" onclick="characterFooterInfo(<%=characterID %>)">
                            100/100
                         </div>
                      </div>
                      <div>
-                        <div class="mc_char_card_avatar   pulse_avt">
-                           <img style="border: none" id="dead_00" src="ViewCharacter?id=<%=characterID %>">
+                        <div class="mc_char_card_avatar pulse_avt" >
+                           <img style="border: none" id="dead_00" src="ViewCharacter?id=<%=characterID %>" >
                         </div>
                      </div>
                      <div class="effects"></div>
@@ -259,7 +256,7 @@
                      <!----> 
                      <div class="mc_char_card_lifebar en">
                         <div id="bar_10" style=" background-color: #3BDF3F; width: 100%"></div>
-                        <div id="bar_text_10" class="mc_char_card_lifetext">
+                        <div id="bar_text_10" class="mc_char_card_lifetext"  onclick="characterFooterInfo(<%=characterID %>)">
                            100/100
                         </div>
                      </div>
@@ -287,17 +284,17 @@
 					try (Connection conn = Connector.getConnection();) {
 						Statement stmt = conn.createStatement();
 						
-						ResultSet player = stmt.executeQuery("select * from USERS where userID=0 or userID=1;");
+						ResultSet player0 = stmt.executeQuery("select * from USERS where userID=0;");
 						
-						while (player.next()) {
-							String userID = player.getString("userID");
-							String username = player.getString("username");
-							String xp = player.getString("xp");
-							String wins = player.getString("nWins");
-							String losses = player.getString("nLosses");
-							String streak = player.getString("streak");
+						if (player0.next()) {
+							String userID = player0.getString("userID");
+							String username = player0.getString("username");
+							String xp = player0.getString("xp");
+							String wins = player0.getString("nWins");
+							String losses = player0.getString("nLosses");
+							String streak = player0.getString("streak");
 					%>
-					<div class="mc_info" id="player<%=userID %>" style="display:none;">
+					<div class="mc_info" id="player0" style="display:none;">
 					 
                      <div class="mc_info_avatar">
                         <img src="ViewAvatar?id=<%=userID%>"> 
@@ -307,14 +304,9 @@
                      <div class="mc_info_desc">
                      Cabin Boy<br>
                      Level: <%=UserInfo.getLevel(xp) %><br>
-                     Ladderrank: #3<br>
+                     Ladderrank: <br>
                      Ratio: <%=wins %>-<%=losses %> (+<%=streak %>)</div>
-                     <div class="mc_info_team" id="opponentTeam" style="display:none;">
-                        <div class="mc_info_team1"><img src="ViewCharacter?id=0"></div>
-                        <div class="mc_info_team2"><img src="ViewCharacter?id=1"></div>
-                        <div class="mc_info_team3"><img src="ViewCharacter?id=4"></div>
-                     </div>
-                     <div class="mc_info_team" id="myTeam" style="display:none;">
+                     <div class="mc_info_team">
                         <div class="mc_info_team1"><img src="ViewCharacter?id=0"></div>
                         <div class="mc_info_team2"><img src="ViewCharacter?id=6"></div>
                         <div class="mc_info_team3"><img src="ViewCharacter?id=7"></div>
@@ -322,12 +314,109 @@
                   </div>
                   <%
 					}
-					player.close();
+					player0.close();
+					} catch (SQLException | IOException e) {
+					System.out.println(e.getMessage());
+					}	
+                  %>
+                             <%
+					Class.forName(Connector.drv);
+					try (Connection conn = Connector.getConnection();) {
+						Statement stmt = conn.createStatement();
+						
+						ResultSet player1 = stmt.executeQuery("select * from USERS where userID=1;");
+						
+						if (player1.next()) {
+							String userID = player1.getString("userID");
+							String username = player1.getString("username");
+							String xp = player1.getString("xp");
+							String wins = player1.getString("nWins");
+							String losses = player1.getString("nLosses");
+							String streak = player1.getString("streak");
+					%>
+					<div class="mc_info" id="player1" style="display:block;">
+					 
+                     <div class="mc_info_avatar">
+                        <img src="ViewAvatar?id=<%=userID%>"> 
+                     </div>
+                     
+                     <div class="mc_info_name"><%=username %></div>
+                     <div class="mc_info_desc">
+                     Cabin Boy<br>
+                     Level: <%=UserInfo.getLevel(xp) %><br>
+                     Ladderrank: <br>
+                     Ratio: <%=wins %>-<%=losses %> (+<%=streak %>)</div>
+                     <div class="mc_info_team">
+                        <div class="mc_info_team1"><img src="ViewCharacter?id=0"></div>
+                        <div class="mc_info_team2"><img src="ViewCharacter?id=1"></div>
+                        <div class="mc_info_team3"><img src="ViewCharacter?id=4"></div>
+                     </div>
+                  </div>
+                  <%
+					}
+					player1.close();
 					} catch (SQLException | IOException e) {
 					System.out.println(e.getMessage());
 					}	
                   %>
                   
+                  
+                    <%
+					Class.forName(Connector.drv);
+					try (Connection conn = Connector.getConnection();) {
+						Statement stmt = conn.createStatement();
+						
+						ResultSet characters = stmt.executeQuery("select * from THEME_CHARACTER where themeID=1 and (characterID=0 or characterID=4 or characterID=6 or characterID=1 or characterID=7);");
+						
+						while (characters.next()) {
+							String characterID = characters.getString("characterID");
+							String nome = characters.getString("nome");
+							String descricao = characters.getString("descricao");
+							
+					%>
+					<div class="mc_info" id="character<%=characterID %>" style="display:none;">
+					 
+                     <div class="mc_info_avatar">
+                        <img src="ViewCharacter?id=<%=characterID%>"> 
+                     </div>
+                     
+                     <div class="mc_info_name"><%=nome %></div>
+                     <div class="mc_info_desc"><%=descricao %></div>
+
+                   </div>
+                  
+                  		<%
+                  		 ResultSet abilities = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
+						   while (abilities.next()) {
+							   String abilityID = abilities.getString("abilityID");
+							   
+							   ResultSet abilit = conn.createStatement().executeQuery("select * from THEME_ABILITY where themeID=1 and abilityID="+abilityID+";");
+							   while (abilit.next()) {
+								   String nome_ab = abilit.getString("nome");
+								   String descricao_ab = abilit.getString("descricao");
+								   
+								   %>
+								   <div class="mc_info" id="ability<%=abilityID %>" style="display:none;">
+					 
+				                     <div class="mc_info_avatar">
+				                        <img src="ViewAbility?id=<%=abilityID%>"> 
+				                     </div>
+				                     
+				                     <div class="mc_info_name"><%=nome_ab %></div>
+				                     <div class="mc_info_desc"><%=descricao_ab %></div>
+				
+				                   </div>
+								 <%  
+							   }
+							   abilit.close();
+						   }
+                 		abilities.close();
+					}
+				characters.close();
+					} catch (SQLException | IOException e) {
+					System.out.println(e.getMessage());
+					}	
+                  %>
                   
                   <div class="mc_menu">
                      <div class="mc_surrender"></div>
@@ -343,32 +432,39 @@
          </div>
     
 <script  type="text/javascript">
-function functionTest() {
-	alert("button was clicked");
-}
+
 
 function displayNones() {
-	document.getElementById("myTeam").style.display="block";
-	document.getElementById("opponentTeam").style.display="block";
+	document.getElementById("player0").style.display="none";
+	document.getElementById("player1").style.display="none";
 	
-	var bothPlayers = document.getElementsByClassName("mc_info");
-		
-	for (var i = 0; i < bothPlayers.length; i++) {
-		bothPlayers[i].style.display="none";
+	for (let i = 0; i < 999; i++) {
+		if (document.getElementById("character"+i)!=null) {
+			document.getElementById("character"+i).style.display="none";
+		}
+		if (document.getElementById("ability"+i)!=null) {
+			document.getElementById("ability"+i).style.display="none";
+		}
 	}
 }
 
-function playerFooterInfo(my_opp, id) {
-	console.log("yo");
+function characterFooterInfo(id) {
 	displayNones();
-	
-	document.getElementById("player"+id).style.display="block";
-	
+	document.getElementById("character"+id).style.display="block";
+}
+function abilityFooterInfo(id) {
+	displayNones();
+	document.getElementById("ability"+id).style.display="block";
+}
+function playerFooterInfo(my_opp) {
+
+	displayNones();
+
 	if (my_opp=="my") {
-		document.getElementById("myTeam").style.display="block";
+		document.getElementById("player0").style.display="block";
 	} 
 	else if (my_opp=="opp") {
-		document.getElementById("opponentTeam").style.display="block";
+		document.getElementById("player1").style.display="block";
 	}
 	
 }

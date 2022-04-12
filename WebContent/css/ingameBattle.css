@@ -180,6 +180,7 @@
     top:38px;
     width:25px
 }
+
 .mask{
     clip:rect(0,381px,79px,0);
     left:103px;
@@ -685,7 +686,26 @@
     transition:transform .5s;
     will-change:transform
 }
+.mc_char_section_selected {
+    background-image: url(../battle/skillact.png);
+    background-repeat: no-repeat;
+    height: 56px;
+    left: 22px;
+    position: absolute;
+    top: 11px;
+    width: 56px;
+}
+.my_turn {
+    transform: translateX(0);
+    transition: transform .5s;
+    will-change: transform;
+}
 
+.mask, .mc_char_section_skill {
+    height: 79px;
+    position: absolute;
+    width: 381px;
+}
 
 /*
 #cursor{
@@ -732,7 +752,7 @@ html{
     height:35px;
     width:35px;
     z-index:1001
-}*/
+}
 @-webkit-keyframes transform{
     0%{
         transform:rotate(0deg);
@@ -753,4 +773,4 @@ html{
         will-change:transform
     }
 }
-
+*/
