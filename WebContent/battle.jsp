@@ -78,14 +78,14 @@
                         <div class="mc_bar_ready my_turn" onclick="changeTurnTo('opp')">
                            Press To End Turn
                         </div>
-                        <div class="mc_energy_system" id="my_turn">
+                        <div class="mc_energy_system my_turn">
 			                <div class="mc_energy_bar"></div>
 			                <div class="mc_energy_txt">
-			                  <strong class="energy0">x 1</strong>
-			                  <strong class="energy1">x 2</strong>
-			                  <strong class="energy2">x 0</strong>
-			                  <strong class="energy3">x 0</strong>
-			                  <strong class="energy4">x 3</strong>
+			                  <strong class="energy0">x1</strong>
+			                  <strong class="energy1">x2</strong>
+			                  <strong class="energy2">x0</strong>
+			                  <strong class="energy3">x0</strong>
+			                  <strong class="energy4">x3</strong>
 			                </div>
 			                <div class="mc_energy_exchange">EXCHANGE ENERGY</div>
 			              </div>
@@ -191,15 +191,16 @@
                      </div>
                      
                      <div class="mc_char_card">
-                        <div class="mc_char_card_rank2  ">
+                       <div class="mc_char_card_rank2  ">
                            <img src="https://naruto-arena.net/images/ranks/10v2.png">
-                        </div>
-                        <div class="mc_char_card_avatar  ">
-                        <img class="abs " src="https://naruto-arena.net/images/dead.png">
-                         <img class="abs" id="dead_00" src="https://media.discordapp.net/attachments/673748029052026882/746373202699092068/7fu7VwyukhwMQabyDOKgkQ7QcvDfkHFU2PGdKIuFwckB1OsGbUpnYHj7hZ1h8pE7DFsevGIQERJmUBOXZxBgZ2JQ5gbN1PxmeP31.png">
-                        </div>
+                        </div> 
+                    
                         <div class="mc_char_card_rank ">
-                           <img src="https://naruto-arena.net/images/ranks/10.png">
+                           <a onclick="characterFooterInfo(<%=characterID %>)"><img src="https://naruto-arena.net/images/ranks/10.png"></a>
+                        </div> 
+                            <div class="mc_char_card_avatar  ">
+                         <img class="abs " src="https://naruto-arena.net/images/dead.png">
+                         <img class="abs" id="dead_0<%=countChars %>" src="ViewCharacter?id=<%=characterID %>">
                         </div>
                      </div>
                     
@@ -209,11 +210,11 @@
                            100/100
                         </div>
                      </div>
-                     <div>
+                   <!--  <div>
                         <div class="mc_char_card_avatar pulse_avt" >
-                           <img style="border: none" id="dead_00" src="ViewCharacter?id=<%=characterID %>" onclick="characterFooterInfo(<%=characterID %>)">
+                           <img style="border: none" id="dead_00" >
                         </div>
-                     </div>
+                     </div>-->
                      <div class="effects"></div>
                      
                   </div>
@@ -247,11 +248,11 @@
                            <img src="https://naruto-arena.net/images/ranks/9v2.png">
                         </div>
                         <div class="mc_char_card_avatar revert mc_char_card_avatar_en">
-                           <img class="abs revert" src="https://naruto-arena.net/images/dead.png">
-                           <img class="abs" id="dead_10" src="https://i.imgur.com/ZoEQafG.jpg">
+                          <!--  <img class="abs revert" src="https://naruto-arena.net/images/dead.png"> -->
+                           <img class="abs" id="dead_1<%=countChars %>" src="ViewCharacter?id=<%=characterID %>">
                         </div>
                         <div class="mc_char_card_rank revert">
-                           <img src="https://naruto-arena.net/images/ranks/9.png">
+                           <a onclick="characterFooterInfo(<%=characterID %>)"><img src="https://naruto-arena.net/images/ranks/9.png"></a>
                         </div>
                      </div>
                      <!----> 
@@ -261,11 +262,11 @@
                            100/100
                         </div>
                      </div>
-                     <div class="revert pulseenemy">
+                     <!-- <div class="revert pulseenemy">
                         <div class="mc_char_card_avatar   pulse_avt">
-                          <img style="border: none" id="dead_10" src="ViewCharacter?id=<%=characterID %>" onclick="characterFooterInfo(<%=characterID %>)">
+                          <img style="border: none" id="dead_10" >
                         </div>
-                     </div>
+                     </div> -->
                      <div class="effects1"></div>
                   </div>
                     <%
@@ -381,8 +382,8 @@
                         <img src="ViewCharacter?id=<%=characterID%>"> 
                      </div>
                      
-                     <div class="mc_info_name"><%=nome %></div>
-                     <div class="mc_info_desc"><%=descricao %></div>
+                     <div class="char_info_name"><%=nome %></div>
+                     <div class="char_info_desc"><%=descricao %></div>
 
                    </div>
                   
@@ -403,8 +404,8 @@
 				                        <img src="ViewAbility?id=<%=abilityID%>"> 
 				                     </div>
 				                     
-				                     <div class="mc_info_name"><%=nome_ab %></div>
-				                     <div class="mc_info_desc"><%=descricao_ab %></div>
+				                     <div class="ability_info_name"><%=nome_ab %></div>
+				                     <div class="ability_info_desc"><%=descricao_ab %></div>
 				
 				                   </div>
 								 <%  
@@ -450,7 +451,6 @@ function displayNones() {
 }
 
 function characterFooterInfo(id) {
-	console.log("sdjndsjvnjdsnvd");
 	displayNones();
 	document.getElementById("character"+id).style.display="block";
 }
@@ -459,7 +459,7 @@ function abilityFooterInfo(id) {
 	document.getElementById("ability"+id).style.display="block";
 }
 function playerFooterInfo(my_opp) {
-
+	
 	displayNones();
 
 	if (my_opp=="my") {
