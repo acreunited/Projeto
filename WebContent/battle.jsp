@@ -423,7 +423,9 @@
                   <div class="mc_menu">
                      <div class="mc_surrender"></div>
                      <div class="mc_chat"></div>
-                     <div class="mc_volume"></div>
+                     <div class="mc_volume">
+                     	<input type="range" min="1" max="100" value="50" class="slider">
+                     </div>
                      <div class="mc_render" style="background-image: url(battle/bottomrender.png);"></div>
                   </div>
                </div>

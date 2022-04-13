@@ -60,8 +60,8 @@
 .mc_username1{
 	font-family: "franklin_gothic_medium_condRg";
     color:#ff1e51;
-    font-size:16pt;
-    margin-top:22px
+    font-size:17pt;
+    margin-top:20px;
 }
 .mc_username1,.mc_userrank1{
     text-align:right;
@@ -69,9 +69,9 @@
 }
 .mc_userrank1{
     font-family: "franklin_gothic_medium_condRg";
-	font-size: 14pt;
+	font-size: 11pt;
     color: #101010;
-    margin-top:-6px
+    margin-top:-4px
 }
 .mc_avatar1{
     left:223px;
@@ -114,26 +114,29 @@
 }
 .mc_bar_back{
     background-color:#fff;
-    border:1px solid #000;
+    /*border:1px solid #000;*/
     height:10px;
     left:3px;
     position:absolute;
     top:18px;
-    width:191px
+    width:191px;
+    outline-style: solid ;
+	outline-color: #000000;
+	outline-width: 1px;
 }
 .mc_bar_fill{
     background-color:#ba1921;
     height:10px;
-    width:191px
+    width:191px;
 }
 .mc_bar_ready{
 	font-family: "franklin_gothic_medium_condRg";
     color:#101010 ;
-    font-size: 16pt ;
+    font-size: 14pt ;
     position:absolute;
     text-align:center;
     width:100%;
-    margin-top: -6px;
+    margin-top: -3px;
 }
 
 .mc_play2{
@@ -144,8 +147,8 @@
 .mc_username2{
     font-family: "franklin_gothic_medium_condRg";
     color:#ff1e51;
-    font-size:16pt;
-    margin-top:22px
+    font-size:17pt;
+    margin-top:20px;
 }
 .mc_username2,.mc_userrank2{
     margin-left:58px;
@@ -154,9 +157,9 @@
 }
 .mc_userrank2{
 	font-family: "franklin_gothic_medium_condRg";
-	font-size: 14pt;
+	font-size: 11pt;
     color: #101010;
-    margin-top:-6px
+    margin-top:-4px;
 }
 .mc_avatar2{
     left:0;
@@ -358,12 +361,12 @@
 .mc_char_card_lifetext{
 	font-family: "franklin_gothic_medium_condRg";
     color: #000000 ;
-    font-size:12pt;
+    font-size:10pt;
     height:17px;
     position:absolute;
     text-align:center;
     width:75px;
-    margin-top: -2px;
+    margin-top: -1px;
  
 }
 /*
@@ -507,9 +510,10 @@
 .ability_info_desc{
 	font-family: "uni_sanslight";
     color: #ffffff;
-    font-size:12pt;
+    font-size:11pt;
     top:39px;
     overflow-y: auto;
+   
     scrollbar-color: #fff #8c8c8cbf;
     scrollbar-width: thin;
     height: 60px;
@@ -527,7 +531,7 @@
 .char_info_desc{
 	font-family: "uni_sanslight";
     color: #ffffff;
-    font-size:12pt;
+    font-size:11pt;
     top:39px;
     overflow-y: auto;
     scrollbar-color: #fff #8c8c8cbf;
@@ -537,6 +541,7 @@
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
+
 }
 
 /* Track */
@@ -557,7 +562,7 @@
 }
 .mc_info_desc{
     color: #f0f0f0;
-    font-size:13pt;
+    font-size:11pt;
     top:39px;
    /* overflow-y: auto;
     scrollbar-color: #fff #8c8c8cbf;
@@ -615,10 +620,7 @@
 ::-webkit-scrollbar-thumb:hover{
     background:#7d7d7d
 }*/
-.mc_surrender{
-    left:63px;
-    top:11px
-}
+
 .mc_chat {
 	clip:rect(0,160px,46px,0);
     background-image:url(../battle/discord.png);
@@ -631,6 +633,8 @@
     position:absolute;
     width:182px;
     margin-left: -10px;
+    left:32px;
+    top:67px
 }
 
 .mc_surrender{
@@ -645,11 +649,10 @@
     position:absolute;
     width:182px;
     margin-left: -20px;
+    left:63px;
+    top:29px
 }
-.mc_chat{
-    left:30px;
-    top:53px
-}
+
 .mc_chat img{
     position:absolute;
     width:27px
@@ -657,16 +660,52 @@
 .mc_volume{
     background-image:url(../battle/volume.png);
     background-repeat:no-repeat;
-    color:#151311;
-    font-size:13px;
     height:46px;
     left:7px;
     padding-left:25px;
     padding-top:16px;
     position:absolute;
-    top:94px;
-    width:182px
+    top:102px;
+    width:182px;
 }
+
+.slider {
+	-webkit-appearance: none;
+	position:absolute;
+	left: 75px;
+	height: 3px;
+	width: 43px;
+	top: 15px;
+	background: #f0f0f0;
+	border-radius: 5px;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff1d20;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff1d20;
+  cursor: pointer;
+}
+
+
 .mc_render{
     background-repeat:no-repeat;
     height:152px;
@@ -708,7 +747,8 @@
     height:30px;
     position:absolute;
     top:50px;
-    width:200px
+    width:200px;
+ 
 }
 
 .mc_energy_bar{
@@ -718,7 +758,8 @@
     left:3px;
     position:absolute;
     top:-13px;
-    width:175px
+    width:175px;
+
 }
 .mc_energy_txt strong{
     font-weight:400;
@@ -733,30 +774,30 @@
     position:absolute
 }
 .mc_energy_txt .energy2{
-    left:83px;
+    left:82px;
     position:absolute
 }
 .mc_energy_txt .energy3{
-    left:124px;
+    left:122px;
     position:absolute
 }
 .mc_energy_txt .energy4{
-    left:165px;
+    left:162px;
     position:absolute
 }
 .mc_energy_txt{
 	font-family: "franklin_gothic_medium_condRg";
     color: #101010;
-    font-size:15pt;
+    font-size:12pt;
     left:16px;
     position:absolute;
-    top:-21px;
+    top:-18px;
     width:235px
 }
 .mc_energy_exchange{
 	font-family: "franklin_gothic_medium_condRg";
     color:#101010;
-    font-size:12pt;
+    font-size:10pt;
     height:15px;
     position:absolute;
     text-align:center;
