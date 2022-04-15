@@ -130,7 +130,9 @@
 				try (Connection conn = Connector.getConnection();) {
 					Statement stmt = conn.createStatement();
 					
-					ResultSet rs = stmt.executeQuery("select * from THEME_CHARACTER where themeID=1 and (characterID=0 or characterID=7 or characterID=6);");
+					ResultSet rs = stmt.executeQuery(
+							"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("this_char1")+ 
+							" or characterID="+ session.getAttribute("this_char2")+" or characterID="+session.getAttribute("this_char3")+");");
 					int countChars = 0;
 					while (rs.next()) {
 						String characterID = rs.getString("characterID");
@@ -234,7 +236,9 @@
 				try (Connection conn = Connector.getConnection();) {
 					Statement stmt = conn.createStatement();
 					
-					ResultSet rs = stmt.executeQuery("select * from THEME_CHARACTER where themeID=1 and (characterID=1 or characterID=4 or characterID=0);");
+					ResultSet rs = stmt.executeQuery(
+							"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("opp_char1")+ 
+							" or characterID="+ session.getAttribute("opp_char2")+" or characterID="+session.getAttribute("opp_char3")+");");
 					int countChars = 0;
 					while (rs.next()) {
 						String characterID = rs.getString("characterID");

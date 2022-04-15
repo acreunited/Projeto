@@ -34,13 +34,38 @@ public class FindOpponent extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String battle = request.getParameter("matchType");
-		System.out.println(battle);
-		/*String id = request.getParameter("id");
+		String userID = request.getParameter("userID");
 		String char1 = request.getParameter("char1");
 		String char2 = request.getParameter("char2");
 		String char3 = request.getParameter("char3");
 		
-		Queue.queueQuick.add(new Team(id, char1, char2, char3));
+		session.setAttribute("this_id", userID);
+		session.setAttribute("this_char1", char1);
+		session.setAttribute("this_char2", char2);
+		session.setAttribute("this_char3", char3);
+		
+		Queue.queueQuick.add(new Team(userID, char1, char2, char3));
+		
+		for (Team t : Queue.queueQuick) {
+			System.out.println("Player "+t.getId()+" "+ "Char1 "+t.getChar1()+" "+ "Char2 "+t.getChar2()+" "+ "Char3 "+t.getChar3());
+			
+			if (!t.getId().equals(userID)) {
+				session.setAttribute("opp_id", t.getId());
+				session.setAttribute("opp_char1", t.getChar1());
+				session.setAttribute("opp_char2", t.getChar2());
+				session.setAttribute("opp_char3", t.getChar3());
+				Queue.queueQuick.remove(t);
+				response.sendRedirect("battle.jsp");
+				break;
+			}
+		}
+		
+		
+		
+		/*String id = request.getParameter("id");
+		String char1 = request.getParameter("char1");
+		String char2 = request.getParameter("char2");
+		String char3 = request.getParameter("char3");
 
 		session.setAttribute("this_id", id);
 		//session.setAttribute(name, value);

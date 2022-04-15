@@ -231,6 +231,9 @@
                         	<input type="hidden" name="char1" id="inputChar1">
                         	<input type="hidden" name="char2" id="inputChar2">
                         	<input type="hidden" name="char3" id="inputChar3">
+                        	<input type="hidden" id="battleType" name="battle"/>
+                        	<input type="hidden" name="userID" value="<%=session.getAttribute("userID")%>"/>
+              		
                         </div>
                     </div>
           
@@ -246,14 +249,14 @@
                     <li><img src="selection/buttonLadder.png"></li>
                     <li style="margin-left: 3px;">
                     
-                    <input type="hidden" name="userID" value="<%=session.getAttribute("userID")%>"/>
-              		<input type="hidden" name="battle" value="quick"/>
-              		<!-- <input type="hidden" id="inputChar1" name="inputChar1" value="getChar1()"/> -->
- 					<img src="selection/buttons_quick.png" onclick="log()">
                     
+              		<!-- <input type="hidden" id="inputChar1" name="inputChar1" value="getChar1()"/> -->
+ 					<img src="selection/buttons_quick.png" onclick="findOpp('quick')">
+                   
   					       
                     </li>
                     <li style="margin-left: 2px;"><img src="selection/button_private.png"></li>
+                    
                 </ul>
             </div>
   
@@ -284,7 +287,7 @@ function displayInfo(id) {
 	}		
 }
 
-function log() {
+function findOpp(type) {
 	var items = document.getElementsByClassName("items");
 	let first = items[0].firstChild.id;
 	let second = items[1].firstChild.id;
@@ -293,6 +296,8 @@ function log() {
 	document.getElementById("inputChar1").value = first.split("charpic")[1];
 	document.getElementById("inputChar2").value = second.split("charpic")[1];
 	document.getElementById("inputChar3").value = third.split("charpic")[1];
+	
+	document.getElementById("battleType").value = type;
 	
 	var form = document.getElementById("form");
 	 
