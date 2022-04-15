@@ -10,6 +10,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="main.Connector"%>
 <%@page import="users.UserInfo"%>
+<%@ page import="game.FindOpponent"%>
 
 <html lang="en" id="move">
 
@@ -28,6 +29,8 @@
 
 
 <body style="padding: 0px;">
+<form method="GET" id="form" name='searchingBattle' action='FindOpponent'>
+
 
           
 
@@ -150,14 +153,7 @@
 			     
 			     
 			            
-            <div class="menu">
-                <ul>
-                    <li><img src="selection/buttonLogout.png"></li>
-                    <li><img src="selection/buttonLadder.png"></li>
-                    <li style="margin-left: 3px;"><img src="selection/buttons_quick.png"></li>
-                    <li style="margin-left: 2px;"><img src="selection/button_private.png"></li>
-                </ul>
-            </div>
+         
             <div>
                 <div class="rodape">
                     <!-- <input type="text" placeholder="Search Group" class="searchbargroup">
@@ -228,9 +224,13 @@
                             <div>3</div>
                         </div>
                         <div class="containers">
+                        
                             <div id="items1" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)"class="items"></div>
                             <div id="items2" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" class="items"></div>
                             <div id="items3" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" class="items"></div>
+                        	<input type="hidden" name="char1" id="inputChar1">
+                        	<input type="hidden" name="char2" id="inputChar2">
+                        	<input type="hidden" name="char3" id="inputChar3">
                         </div>
                     </div>
           
@@ -238,6 +238,23 @@
 			<!-- <img id="drag1" src="selection/background.png" draggable="true" ondragstart="drag(event)" width="336" height="69" style="postion: absolute;">-->
                 
                 </div>
+            </div>
+            
+               <div class="menu">
+                <ul>
+                    <li><img src="selection/buttonLogout.png"></li>
+                    <li><img src="selection/buttonLadder.png"></li>
+                    <li style="margin-left: 3px;">
+                    
+                    <input type="hidden" name="userID" value="<%=session.getAttribute("userID")%>"/>
+              		<input type="hidden" name="battle" value="quick"/>
+              		<!-- <input type="hidden" id="inputChar1" name="inputChar1" value="getChar1()"/> -->
+ 					<img src="selection/buttons_quick.png" onclick="log()">
+                    
+  					       
+                    </li>
+                    <li style="margin-left: 2px;"><img src="selection/button_private.png"></li>
+                </ul>
             </div>
   
            
@@ -251,6 +268,8 @@
     </div>
 </div>
 
+</form>
+
 <script>
 function displayInfo(id) {
 	
@@ -263,6 +282,29 @@ function displayInfo(id) {
 		document.getElementById("displayCharacter"+id).style.display="block";
 		document.getElementById("charDescription"+id).style.display="block";
 	}		
+}
+
+function log() {
+	var items = document.getElementsByClassName("items");
+	let first = items[0].firstChild.id;
+	let second = items[1].firstChild.id;
+	let third = items[2].firstChild.id;
+	
+	document.getElementById("inputChar1").value = first.split("charpic")[1];
+	document.getElementById("inputChar2").value = second.split("charpic")[1];
+	document.getElementById("inputChar3").value = third.split("charpic")[1];
+	
+	var form = document.getElementById("form");
+	 
+    form.submit();
+		
+}
+
+function getChar1() {
+	var items = document.getElementsByClassName("items");
+	let first = items[0].firstChild.id;
+	console.log(first);
+	return first;
 }
 	
 function displayAbilityDescription(id) {
@@ -280,7 +322,7 @@ function displayAbilityDescription(id) {
 	}		
 }
 function displayCharacterDescription(id) {
-	console.log(id);
+	
 	for (let i = 0; i < 100; i++) {
 		if (document.getElementById("ability"+i)!=null) {					
 			document.getElementById("ability"+i).style.display="none";
@@ -309,6 +351,7 @@ function drop(ev) {
   
   if (ev.target.id=="" || ev.target.id=="items1" || ev.target.id=="items2" || ev.target.id=="items3") {
 	  ev.target.appendChild(document.getElementById(data));
+	  //log();
   }
 
 }

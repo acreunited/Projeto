@@ -38,7 +38,7 @@
 				try (Connection conn = Connector.getConnection();) {
 					Statement stmt = conn.createStatement();
 					
-					ResultSet rs = stmt.executeQuery("select * from USERS where userID=0;");
+					ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("this_id")+";");
 					
 					if (rs.next()) {
 						String userID = rs.getString("userID");
@@ -97,7 +97,7 @@
 				try (Connection conn = Connector.getConnection();) {
 					Statement stmt = conn.createStatement();
 					
-					ResultSet rs = stmt.executeQuery("select * from USERS where userID=1;");
+					ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("opp_id")+";");
 					
 					if (rs.next()) {
 						String userID = rs.getString("userID");
