@@ -7,6 +7,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,50 +48,82 @@ public class FindOpponent extends HttpServlet {
 		session.setAttribute("this_char2", char2);
 		session.setAttribute("this_char3", char3);
 		
-		Queue.queueQuick.add(new Team(userID, char1, char2, char3));
+		//Queue.queueQuick.add(new Team(userID, char1, char2, char3));
+		Queue playerTeam = new Queue(new Player(userID), new Team(char1, char2, char3));
+		//Matchmaking.matchQuick.add( new Queue(new Player(userID), new Team(char1, char2, char3)) );
 		
-		for (Team t : Queue.queueQuick) {
-			System.out.println("Player "+t.getId()+" "+ "Char1 "+t.getChar1()+" "+ "Char2 "+t.getChar2()+" "+ "Char3 "+t.getChar3());
+		boolean cancel = false;
+		String state = "ENTERING";
+		
+		while (!cancel) {
 			
-			if (!t.getId().equals(userID)) {
-				session.setAttribute("opp_id", t.getId());
-				session.setAttribute("opp_char1", t.getChar1());
-				session.setAttribute("opp_char2", t.getChar2());
-				session.setAttribute("opp_char3", t.getChar3());
-				Queue.queueQuick.remove(t);
-				response.sendRedirect("battle.jsp");
+			switch (state) {
+			
+			case "ENTERING":
+				tryAdd(Matchmaking.matchQuick, playerTeam);
+				
+				state="QUEUE";
 				break;
+				
+			case "QUEUE":
+				//fica a procura de oponentes
+				//TODO CANCELAR PROCURA QUANDO CLICA BOTAO
+				Queue opp = null;
+				while (!oppFound(Matchmaking.matchQuick, playerTeam)) {
+					
+				}
+				removeFromQueue(Matchmaking.matchQuick, Matchmaking.matchQuickRemove);
+				
+				state = "FOUND";
+				break;
+				
+			case "FOUND":
+				//remover jogador e oponente array
+				//guardar oponente como inimigo
+				//redirect
+				
+				Queue player_match = null;
+				Queue opp_match = null;
+				System.out.println(Matchmaking.matchFoundQuick.size());
+				for (Map.Entry me : Matchmaking.matchFoundQuick.entrySet()) {
+					//fazer set session inimigo
+					Queue key = (Queue) me.getKey();
+					String playerID_key = key.getPlayer().getPlayerID();
+					
+					if (playerID_key.equals(userID)) {
+						player_match = (Queue) me.getKey();
+						opp_match = (Queue) me.getValue();
+						
+						session.setAttribute("opp_id", opp_match.getPlayer().getPlayerID());
+						session.setAttribute("opp_char1", opp_match.getTeam().getChar1());
+						session.setAttribute("opp_char2", opp_match.getTeam().getChar2());
+						session.setAttribute("opp_char3", opp_match.getTeam().getChar3());
+						
+						Matchmaking.matchFoundQuick.remove(player_match);
+						Matchmaking.matchFoundQuick.remove(opp_match);
+						
+						response.sendRedirect("battle.jsp");
+						break;
+					}
+					
+		         /* System.out.println("Player: "+player_match.getPlayer().getPlayerID() + " & Team: " 
+		        		  + player_match.getTeam().getChar1()+" "+""+ player_match.getTeam().getChar2()+" "+ player_match.getTeam().getChar3());
+		          System.out.println("Opp: "+opp_match.getPlayer().getPlayerID() + " & Team: " 
+		        		  + opp_match.getTeam().getChar1()+" "+""+ opp_match.getTeam().getChar2()+" "+ opp_match.getTeam().getChar3());
+		          */
+					
+		          }
+				//Matchmaking.matchFoundQuick.clear();
+				
+				System.out.println("SIZE: "+Matchmaking.matchFoundQuick.size());
+
+				
+				cancel=true;
+				break;
+				
 			}
 		}
 		
-		
-		
-		/*String id = request.getParameter("id");
-		String char1 = request.getParameter("char1");
-		String char2 = request.getParameter("char2");
-		String char3 = request.getParameter("char3");
-
-		session.setAttribute("this_id", id);
-		//session.setAttribute(name, value);
-		
-		System.out.println("Player "+id+" searching");
-		
-		for (Team t : Queue.queueQuick) {
-			System.out.println(
-					"Player "+t.getId()+" "+ "Char1 "+t.getChar1()+" "+ "Char2 "+t.getChar2()+" "+ "Char3 "+t.getChar3());
-		}*/
-		
-		
-		
-		/*for (String s : Queue.queueQuick) {
-			if(!s.equals(id)) {
-				session.setAttribute("opp_id", s);
-				response.sendRedirect("battle.jsp");
-				break;
-			}
-			//System.out.println("Queue: "+s);
-		}*/
-		//response.sendRedirect("selection.jsp");
 		
 
 	}
@@ -97,6 +133,54 @@ public class FindOpponent extends HttpServlet {
 		
 		doGet(request, response);
 	}
+	
+	private void tryAdd(CopyOnWriteArrayList<Queue> arr, Queue queue) {
+		
+		for (Queue q : arr) {
+			if (q.getPlayer().getPlayerID().equalsIgnoreCase(queue.getPlayer().getPlayerID())) {
+				arr.remove(q);
+			}
+		}
+		arr.add(queue);		
+	}
+	
+	private boolean oppFound(CopyOnWriteArrayList<Queue> arr, Queue player) {
+		
+		if (arr.size()<=1) {
+			return false;
+		}
+		
+		for (Queue q : arr) {
+			if (!q.getPlayer().getPlayerID().equalsIgnoreCase(player.getPlayer().getPlayerID())) {
+				Matchmaking.matchFoundQuick.put(player, q);
+				
+				Matchmaking.matchQuickRemove.add(q);
+				Matchmaking.matchQuickRemove.add(player);
 
+				return true;
+			}
+		}
+		return false;
+	}
+	private void removeFromQueue(CopyOnWriteArrayList<Queue> queue, CopyOnWriteArrayList<Queue> remove) {
 
+		for (Queue q : remove) {
+			queue.remove(q);
+		}
+	}
+	
+/*	private void tryRemove(ArrayList<Queue> arr, Queue entry) {
+		if (arr.size()<=1) {
+			return;
+		}
+		
+		for (Queue q : arr) {
+			if (q.equals(entry)) {
+				arr.remove(entry);
+			}
+		}
+		
+	}*/
+	
+	
 }

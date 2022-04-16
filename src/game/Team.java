@@ -4,8 +4,7 @@ public class Team {
 	
 	private String id, char1, char2, char3;
 	
-	public Team(String id, String char1, String char2, String char3) {
-		this.id = id;
+	public Team(String char1, String char2, String char3) {
 		this.char1 = char1;
 		this.char2 = char2;
 		this.char3 = char3;

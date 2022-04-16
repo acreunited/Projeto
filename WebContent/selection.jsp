@@ -248,12 +248,8 @@
                     <li><img src="selection/buttonLogout.png"></li>
                     <li><img src="selection/buttonLadder.png"></li>
                     <li style="margin-left: 3px;">
-                    
-                    
               		<!-- <input type="hidden" id="inputChar1" name="inputChar1" value="getChar1()"/> -->
  					<img src="selection/buttons_quick.png" onclick="findOpp('quick')">
-                   
-  					       
                     </li>
                     <li style="margin-left: 2px;"><img src="selection/button_private.png"></li>
                     
@@ -264,7 +260,11 @@
             <div class="arrow_left"></div>
             <div class="arrow_right"></div>
             
-            
+            <div class="holders holdanimes">
+                <span class="rbattle">SEARCHING FOR AN OPPONENT...</span> 
+                <div class="lds-hourglass"></div>
+                <div class="btncancels"><span>CANCEL</span></div>
+             </div>
 
         </div>
      

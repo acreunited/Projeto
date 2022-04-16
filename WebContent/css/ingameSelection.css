@@ -359,3 +359,118 @@ ul {
 li {
     text-align: -webkit-match-parent;
 }
+
+
+/*Searching Opp*/
+.holders{
+    background-image:url(../images/choose.png);
+    height:290px;
+    left:203px;
+    position:absolute;
+    top:101px;
+    width:391px;
+    z-index:999;
+}
+.holders img{
+    border:1px solid #000;
+    left:120px;
+    position:absolute;
+    top:70px;
+}
+.holdanimes{
+    -webkit-animation-duration:.2s;
+    animation-duration:.2s;
+    -webkit-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+    -webkit-animation-name:hold;
+    animation-name:hold;
+    -webkit-animation-timing-function:linear;
+    animation-timing-function:linear
+}
+@-webkit-keyframes hold{
+    0%{
+        transform:scale(.5);
+        will-change:transform
+    }
+    to{
+        transform:scale(1);
+        will-change:transform
+    }
+}
+@keyframes hold{
+    0%{
+        transform:scale(.5);
+        will-change:transform
+    }
+    to{
+        transform:scale(1);
+        will-change:transform
+    }
+}
+.rbattle{
+    left:61px;
+    top:50px;
+    width:317px
+}
+.rbattle,.rbattlelogin{
+    position:absolute;
+    text-align:center
+}
+.rbattlelogin{
+    font-size:14px;
+    left:100px;
+    top:60px;
+    width:255px
+}
+.lds-hourglass{
+    display:inline-block;
+    height:80px;
+    left:170px;
+    position:absolute;
+    top:100px;
+    width:80px
+}
+.lds-hourglass:after{
+    -webkit-animation:lds-hourglass 1.2s infinite;
+    animation:lds-hourglass 1.2s infinite;
+    border-color:#be2911 transparent;
+    border-radius:50%;
+    border-style:solid;
+    border-width:32px;
+    box-sizing:border-box;
+    content:" ";
+    display:block;
+    height:0;
+    margin:8px;
+    width:0
+}
+@-webkit-keyframes lds-hourglass{
+    0%{
+        -webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);
+        animation-timing-function:cubic-bezier(.55,.055,.675,.19);
+        transform:rotate(0)
+    }
+    50%{
+        -webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);
+        animation-timing-function:cubic-bezier(.215,.61,.355,1);
+        transform:rotate(900deg)
+    }
+    to{
+        transform:rotate(5turn)
+    }
+}
+@keyframes lds-hourglass{
+    0%{
+        -webkit-animation-timing-function:cubic-bezier(.55,.055,.675,.19);
+        animation-timing-function:cubic-bezier(.55,.055,.675,.19);
+        transform:rotate(0)
+    }
+    50%{
+        -webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);
+        animation-timing-function:cubic-bezier(.215,.61,.355,1);
+        transform:rotate(900deg)
+    }
+    to{
+        transform:rotate(5turn)
+    }
+}
