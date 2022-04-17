@@ -80,6 +80,71 @@ public class InsertIntoBD {
 		return true;
 	}
 	
+//	abilityID int not null,
+//    energyID int not null,
+//    quantity int not null,
+	public boolean createAbilityNature(int abilityID, int taijutsu, int heart, int energy, int spirit, int random) throws SQLException {
+		
+
+		createAbilityE1(abilityID, taijutsu);
+		createAbilityE2(abilityID, heart);
+		createAbilityE3(abilityID, energy);
+		createAbilityE4(abilityID, spirit);
+		createAbilityE5(abilityID, random);
+		
+		return true;
+	}
+	public boolean createAbilityE1(int abilityID, int taijutsu) throws SQLException {
+		String sql = "INSERT INTO ABILITY_E1 values (?, ?, ?);";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setInt(1, abilityID);
+		pstmt.setInt(2, 0);
+		pstmt.setInt(3, taijutsu);
+		pstmt.executeUpdate();
+		return true;
+	}
+	public boolean createAbilityE2(int abilityID, int heart) throws SQLException {
+		String sql = "INSERT INTO ABILITY_E2 values (?, ?, ?);";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setInt(1, abilityID);
+		pstmt.setInt(2, 1);
+		pstmt.setInt(3, heart);
+		pstmt.executeUpdate();
+		return true;
+	}
+	public boolean createAbilityE3(int abilityID, int energy) throws SQLException {
+		String sql = "INSERT INTO ABILITY_E3 values (?, ?, ?);";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setInt(1, abilityID);
+		pstmt.setInt(2, 2);
+		pstmt.setInt(3, energy);
+		pstmt.executeUpdate();
+		return true;
+	}
+	public boolean createAbilityE4(int abilityID, int spirit) throws SQLException {
+		String sql = "INSERT INTO ABILITY_E4 values (?, ?, ?);";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setInt(1, abilityID);
+		pstmt.setInt(2, 3);
+		pstmt.setInt(3, spirit);
+		pstmt.executeUpdate();
+		return true;
+	}
+	public boolean createAbilityE5(int abilityID, int random) throws SQLException {
+		String sql = "INSERT INTO ABILITY_E5 values (?, ?, ?);";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setInt(1, abilityID);
+		pstmt.setInt(2, 4);
+		pstmt.setInt(3, random);
+		pstmt.executeUpdate();
+		return true;
+	}
+	
 	public int createAbility(int cooldown, int characterID) throws SQLException {
 		
 		String getID = "select * from ABILITY order by abilityID DESC LIMIT 1;";

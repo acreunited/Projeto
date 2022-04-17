@@ -10,6 +10,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="main.Connector"%>
 <%@page import="users.UserInfo"%>
+<%@page import="game.Matchmaking"%>
 <%@ page import="game.FindOpponent"%>
 
 <html lang="en" id="move">
@@ -24,7 +25,7 @@
   <title>Game Selection</title>
   
  <link href="css/ingameSelection.css" rel="stylesheet">
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
 
@@ -231,6 +232,7 @@
                         	<input type="hidden" name="char1" id="inputChar1">
                         	<input type="hidden" name="char2" id="inputChar2">
                         	<input type="hidden" name="char3" id="inputChar3">
+                        	
                         	<input type="hidden" id="battleType" name="battle"/>
                         	<input type="hidden" name="userID" value="<%=session.getAttribute("userID")%>"/>
               		
@@ -255,16 +257,18 @@
                     
                 </ul>
             </div>
-  
+    
+            <div class="holders holdanimes" id="searchingOpp" style="display: none;">
+                <span class="rbattle">Searching for an opponent</span> 
+                <div class="lds-hourglass">
+            
+                </div>
+                <div class="btncancels" onclick="hideSearching()"></div>
+             </div>
            
             <div class="arrow_left"></div>
             <div class="arrow_right"></div>
-            
-            <div class="holders holdanimes">
-                <span class="rbattle">SEARCHING FOR AN OPPONENT...</span> 
-                <div class="lds-hourglass"></div>
-                <div class="btncancels"><span>CANCEL</span></div>
-             </div>
+          
 
         </div>
      
@@ -274,6 +278,13 @@
 </form>
 
 <script>
+
+function hideSearching() {
+
+	document.getElementById("searchingOpp").style.display="none";
+
+}
+
 function displayInfo(id) {
 	
 	for (let i = 0; i < 100; i++) {
@@ -288,6 +299,8 @@ function displayInfo(id) {
 }
 
 function findOpp(type) {
+	document.getElementById("searchingOpp").style.display="block";
+	
 	var items = document.getElementsByClassName("items");
 	let first = items[0].firstChild.id;
 	let second = items[1].firstChild.id;

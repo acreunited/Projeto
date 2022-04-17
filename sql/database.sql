@@ -57,11 +57,15 @@ create table CHARACTERS (
 -- CHARACTERS IS-A ANIME --
 create table BLEACH (
 	bleachID int not null,
-    category varchar(16) not null, 
-    CHECK (category in ('human', 'shinigami', 'souls', 'arrancar', 'hollow', 'quincy', 'other')),
     
     constraint pk_bleach primary key (bleachID),
     constraint fk_bleach foreign key (bleachID) references CHARACTERS(characterID)
+);
+create table DEMONSLAYER (
+	demonslayerID int not null,
+   
+    constraint pk_demonslayer primary key (demonslayerID),
+    constraint fk_demonslayer foreign key (demonslayerID) references CHARACTERS(characterID)
 );
 
 -- MISSION --
@@ -101,8 +105,6 @@ create table E1(
 	e1ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
-    color varchar(16) not null,
-    UNIQUE(color),
     
     constraint pk_e1 primary key (e1ID),
     constraint fk_e1 foreign key (e1ID) references ENERGY(energyID)
@@ -111,8 +113,6 @@ create table E2(
 	e2ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
-    color varchar(16) not null,
-    UNIQUE(color),
     
     constraint pk_e2 primary key (e2ID),
     constraint fk_e2 foreign key (e2ID) references ENERGY(energyID)
@@ -121,8 +121,6 @@ create table E3(
 	e3ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
-    color varchar(16) not null,
-    UNIQUE(color),
     
     constraint pk_e3 primary key (e3ID),
     constraint fk_e3 foreign key (e3ID) references ENERGY(energyID)
@@ -131,8 +129,6 @@ create table E4(
 	e4ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
-    color varchar(16) not null,
-    UNIQUE(color),
     
     constraint pk_e4 primary key (e4ID),
     constraint fk_e4 foreign key (e4ID) references ENERGY(energyID)
@@ -141,8 +137,6 @@ create table E5(
 	e5ID int not null,
     nome varchar(16) not null,
     UNIQUE(nome),
-    color varchar(16) not null,
-    UNIQUE(color),
     
     constraint pk_e5 primary key (e5ID),
     constraint fk_e5 foreign key (e5ID) references ENERGY(energyID)
@@ -204,7 +198,7 @@ create table THEME_CHARACTER (
 create table THEME_ABILITY (
 	abilityID int not null, 
     themeID int not null,
-    nome varchar(32) not null,
+    nome varchar(16) not null,
     avatar blob,
     descricao varchar(5000) not null,
     constraint pk_associates_character primary key (themeID, abilityID),

@@ -20,11 +20,9 @@ import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import DB.InsertIntoBD;
 
 
-/**
- * Servlet implementation class addNewRecurso
- */
+
 @WebServlet("/CreateCharacterMission")
-@MultipartConfig(maxFileSize = 134217728) // Esta cena custou-me umas horas valentes de debug
+@MultipartConfig(maxFileSize = 134217728) 
 
 public class CreateCharacterMission extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -103,6 +101,31 @@ public class CreateCharacterMission extends HttpServlet {
 				sendFailMessage(request, response, "Ability Description cannot be null");
 				return;
 			}
+			String ability1taijutsu = request.getParameter("ability1taijutsu");
+			if (ability1taijutsu == null || ability1taijutsu.equals("null") || ability1taijutsu.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability1heart = request.getParameter("ability1heart");
+			if (ability1heart == null || ability1heart.equals("null") || ability1heart.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability1energy = request.getParameter("ability1energy");
+			if (ability1energy == null || ability1energy.equals("null") || ability1energy.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability1spirit = request.getParameter("ability1spirit");
+			if (ability1spirit == null || ability1spirit.equals("null") || ability1spirit.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability1random = request.getParameter("ability1random");
+			if (ability1random == null || ability1random.equals("null") || ability1random.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
 			String ability1cooldown = request.getParameter("ability1cd");
 			if (ability1cooldown == null || ability1cooldown.equals("null") || ability1cooldown.equals("")) {
 				sendFailMessage(request, response, "Ability Cooldown cannot be null");
@@ -110,7 +133,15 @@ public class CreateCharacterMission extends HttpServlet {
 			}
 			
 			int abilityID = insert.createAbility(Integer.parseInt(ability1cooldown), characterID);
-			
+			insert.createAbilityNature(
+					abilityID, 
+					Integer.parseInt(ability1taijutsu), 
+					Integer.parseInt(ability1heart), 
+					Integer.parseInt(ability1energy), 
+					Integer.parseInt(ability1spirit), 
+					Integer.parseInt(ability1random)
+			);
+
 			Part ability1Pic = request.getPart("ability1image");
 			InputStream inputAbility1 = null; 
 			
@@ -134,6 +165,31 @@ public class CreateCharacterMission extends HttpServlet {
 				sendFailMessage(request, response, "Ability Description cannot be null");
 				return;
 			}
+			String ability2taijutsu = request.getParameter("ability2taijutsu");
+			if (ability2taijutsu == null || ability2taijutsu.equals("null") || ability2taijutsu.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability2heart = request.getParameter("ability2heart");
+			if (ability2heart == null || ability2heart.equals("null") || ability2heart.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability2energy = request.getParameter("ability2energy");
+			if (ability2energy == null || ability2energy.equals("null") || ability2energy.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability2spirit = request.getParameter("ability2spirit");
+			if (ability2spirit == null || ability2spirit.equals("null") || ability2spirit.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability2random = request.getParameter("ability2random");
+			if (ability2random == null || ability2random.equals("null") || ability2random.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
 			String ability2cooldown = request.getParameter("ability2cd");
 			if (ability2cooldown == null || ability2cooldown.equals("null") || ability2cooldown.equals("")) {
 				sendFailMessage(request, response, "Ability Cooldown cannot be null");
@@ -141,7 +197,15 @@ public class CreateCharacterMission extends HttpServlet {
 			}
 			
 			int ability2ID = insert.createAbility(Integer.parseInt(ability2cooldown), characterID);
-			
+			insert.createAbilityNature(
+					ability2ID, 
+					Integer.parseInt(ability2taijutsu), 
+					Integer.parseInt(ability2heart), 
+					Integer.parseInt(ability2energy), 
+					Integer.parseInt(ability2spirit), 
+					Integer.parseInt(ability2random)
+			);
+
 			Part ability2Pic = request.getPart("ability2image");
 			InputStream inputAbility2 = null; 
 			
@@ -164,6 +228,31 @@ public class CreateCharacterMission extends HttpServlet {
 				sendFailMessage(request, response, "Ability Description cannot be null");
 				return;
 			}
+			String ability3taijutsu = request.getParameter("ability3taijutsu");
+			if (ability3taijutsu == null || ability3taijutsu.equals("null") || ability3taijutsu.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability3heart = request.getParameter("ability3heart");
+			if (ability3heart == null || ability3heart.equals("null") || ability3heart.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability3energy = request.getParameter("ability3energy");
+			if (ability3energy == null || ability3energy.equals("null") || ability3energy.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability3spirit = request.getParameter("ability3spirit");
+			if (ability3spirit == null || ability3spirit.equals("null") || ability3spirit.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability3random = request.getParameter("ability3random");
+			if (ability3random == null || ability3random.equals("null") || ability3random.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
 			String ability3cooldown = request.getParameter("ability3cd");
 			if (ability3cooldown == null || ability3cooldown.equals("null") || ability3cooldown.equals("")) {
 				sendFailMessage(request, response, "Ability Cooldown cannot be null");
@@ -171,7 +260,15 @@ public class CreateCharacterMission extends HttpServlet {
 			}
 			
 			int ability3ID = insert.createAbility(Integer.parseInt(ability3cooldown), characterID);
-			
+			insert.createAbilityNature(
+					ability3ID, 
+					Integer.parseInt(ability3taijutsu), 
+					Integer.parseInt(ability3heart), 
+					Integer.parseInt(ability3energy), 
+					Integer.parseInt(ability3spirit), 
+					Integer.parseInt(ability3random)
+			);
+
 			Part ability3Pic = request.getPart("ability3image");
 			InputStream inputAbility3 = null; 
 			
@@ -196,6 +293,31 @@ public class CreateCharacterMission extends HttpServlet {
 				sendFailMessage(request, response, "Ability Description cannot be null");
 				return;
 			}
+			String ability4taijutsu = request.getParameter("ability4taijutsu");
+			if (ability4taijutsu == null || ability4taijutsu.equals("null") || ability4taijutsu.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability4heart = request.getParameter("ability4heart");
+			if (ability4heart == null || ability4heart.equals("null") || ability4heart.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability4energy = request.getParameter("ability4energy");
+			if (ability4energy == null || ability4energy.equals("null") || ability4energy.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability4spirit = request.getParameter("ability4spirit");
+			if (ability4spirit == null || ability4spirit.equals("null") || ability4spirit.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
+			String ability4random = request.getParameter("ability4random");
+			if (ability4random == null || ability4random.equals("null") || ability4random.equals("")) {
+				sendFailMessage(request, response, "Nature cannot be null");
+				return;
+			}
 			String ability4cooldown = request.getParameter("ability4cd");
 			if (ability4cooldown == null || ability4cooldown.equals("null") || ability4cooldown.equals("")) {
 				sendFailMessage(request, response, "Ability Cooldown cannot be null");
@@ -203,7 +325,15 @@ public class CreateCharacterMission extends HttpServlet {
 			}
 			
 			int ability4ID = insert.createAbility(Integer.parseInt(ability4cooldown), characterID);
-			
+			insert.createAbilityNature(
+					ability4ID, 
+					Integer.parseInt(ability4taijutsu), 
+					Integer.parseInt(ability4heart), 
+					Integer.parseInt(ability4energy), 
+					Integer.parseInt(ability4spirit), 
+					Integer.parseInt(ability4random)
+			);
+
 			Part ability4Pic = request.getPart("ability4image");
 			InputStream inputAbility4 = null; 
 			

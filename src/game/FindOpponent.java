@@ -2,7 +2,7 @@ package game;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.sql.Blob;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,15 +105,10 @@ public class FindOpponent extends HttpServlet {
 						response.sendRedirect("battle.jsp");
 						break;
 					}
-					
-		         /* System.out.println("Player: "+player_match.getPlayer().getPlayerID() + " & Team: " 
-		        		  + player_match.getTeam().getChar1()+" "+""+ player_match.getTeam().getChar2()+" "+ player_match.getTeam().getChar3());
-		          System.out.println("Opp: "+opp_match.getPlayer().getPlayerID() + " & Team: " 
-		        		  + opp_match.getTeam().getChar1()+" "+""+ opp_match.getTeam().getChar2()+" "+ opp_match.getTeam().getChar3());
-		          */
+
 					
 		          }
-				//Matchmaking.matchFoundQuick.clear();
+			
 				
 				System.out.println("SIZE: "+Matchmaking.matchFoundQuick.size());
 
@@ -169,7 +164,7 @@ public class FindOpponent extends HttpServlet {
 		}
 	}
 	
-/*	private void tryRemove(ArrayList<Queue> arr, Queue entry) {
+	/*private void tryRemove(ArrayList<Queue> arr, Queue entry) {
 		if (arr.size()<=1) {
 			return;
 		}

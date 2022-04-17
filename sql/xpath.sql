@@ -22,6 +22,8 @@ where characterID=1 and themeID=0;
 select nome from theme_character
 where characterID=1 and themeID=1;
 
+select * from ABILITY_E2;
+
 select descricao from theme_character
 where characterID=1 and themeID=1;
 
@@ -157,3 +159,17 @@ select * from THEME_CHARACTER where themeID=1;
 select * from THEME_CHARACTER where themeID=1 and (characterID=0 or characterID=4 or characterID=6 or characterID=1 or characterID=7);
 
 select * from USERS where userID=0 or userID=1;
+
+select * from THEME_CHARACTER where themeID=1;
+select * from THEME_ABILITY  where themeID=1 and abilityID=20;
+
+select quantity from ABILITY_E1 where abilityID=17;
+select quantity from ABILITY_E2 where abilityID=17;
+select quantity from ABILITY_E3 where abilityID=17;
+select quantity from ABILITY_E4 where abilityID=17;
+select quantity from ABILITY_E5 where abilityID=17;
+
+select * from THEME_CHARACTER;
+select * from BLEACH;
+
+select * from THEME_CHARACTER where characterID=9;

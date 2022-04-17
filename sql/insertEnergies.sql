@@ -17,19 +17,19 @@ insert into ENERGY values(
 );
 
 insert into E1 values (
-	0, "energia 0", "color0"
+	0, "Taijutsu"
 );
 insert into E2 values (
-	1, "energia 1", "color1"
+	1, "Heart"
 );
 insert into E3 values (
-	2, "energia 2", "color2"
+	2, "Energy"
 );
 insert into E4 values (
-	3, "energia 3", "color3"
+	3, "Spirit"
 );
 insert into E5 values (
-	4, "energia 4", "color4"
+	4, "Random"
 );
 
 

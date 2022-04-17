@@ -363,12 +363,12 @@ li {
 
 /*Searching Opp*/
 .holders{
-    background-image:url(../images/choose.png);
-    height:290px;
+    background-image:url(../selection/StartPrivateBackground.png);
+    height:233px;
     left:203px;
     position:absolute;
-    top:101px;
-    width:391px;
+    top:139px;
+    width:434px;
     z-index:999;
 }
 .holders img{
@@ -387,6 +387,7 @@ li {
     -webkit-animation-timing-function:linear;
     animation-timing-function:linear
 }
+/*
 @-webkit-keyframes hold{
     0%{
         transform:scale(.5);
@@ -406,30 +407,28 @@ li {
         transform:scale(1);
         will-change:transform
     }
-}
+}*/
 .rbattle{
-    left:61px;
-    top:50px;
-    width:317px
-}
-.rbattle,.rbattlelogin{
+	font-family: 'uni_sanssemibold';
+    left:58px;
+    top:20px;
+    width:317px;
+    font-size: 18px;
+    color: #ececec;
     position:absolute;
-    text-align:center
+    text-align:center;
 }
-.rbattlelogin{
-    font-size:14px;
-    left:100px;
-    top:60px;
-    width:255px
-}
+
 .lds-hourglass{
     display:inline-block;
-    height:80px;
-    left:170px;
+    height:125px;
+    left:90px;
     position:absolute;
-    top:100px;
-    width:80px
-}
+    top:50px;
+    width:252px;
+    background-image:url(../selection/newsearch.gif);
+
+}/*
 .lds-hourglass:after{
     -webkit-animation:lds-hourglass 1.2s infinite;
     animation:lds-hourglass 1.2s infinite;
@@ -473,4 +472,17 @@ li {
     to{
         transform:rotate(5turn)
     }
+}*/
+
+
+.btncancels{
+	background-image:url(../selection/cancelbutton.png);
+    left:170px;
+    height:32px;
+    top:182px;
+    width:76px;
+    border:1px solid #000;
+    position:absolute;
+    text-align:center;
 }
+
