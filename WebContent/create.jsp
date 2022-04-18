@@ -315,6 +315,10 @@
 								<option value="yes">Yes</option>
 							</select>
 							<br>
+							<select name="ability1ignoreInvul" id="ability1ignoreInvul">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
 						</div>
 				
 						<div class="container">
@@ -397,6 +401,54 @@
 							<br>
 						</div>
 						
+						<div class="container">
+							<label for="ability1extraDmamagePerSelfHPLost">Does this ability deal aditional damage per self HP lost?</label>
+							<select name="ability1extraDmamagePerSelfHPLost" id="ability1extraDmamagePerSelfHPLost" onchange="ability1DoesExtraDmamagePerSelfHPLost(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability1DoesExtraDmamagePerSelfHPLost" style="display: none;">
+								<label for="ability1extraDmamagePerSelfHPLostNumber">How much damage?:</label>
+								<input type="number" name="ability1extraDmamagePerSelfHPLostNumber" min="0" max="1000">
+								<label for="ability1extraDmamagePerSelfHPLostHP">How much HP lost?:</label>
+								<input type="number" name="ability1extraDmamagePerSelfHPLostHP" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
+						<div class="container">
+							<label for="ability1extraDmamagePerEnemyHPLost">Does this ability deal aditional damage per Enemy HP lost?</label>
+							<select name="ability1extraDmamagePerEnemyHPLost" id="ability1extraDmamagePerEnemyHPLost" onchange="ability1DoesExtraDmamagePerEnemyHPLost(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability1DoesExtraDmamagePerEnemyHPLost" style="display: none;">
+								<label for="ability1extraDmamagePerEnemyHPLostNumber">How much damage?:</label>
+								<input type="number" name="ability1extraDmamagePerEnemyHPLostNumber" min="0" max="1000">
+								<label for="ability1extraDmamagePerEnemyHPLostHP">How much HP lost?:</label>
+								<input type="number" name="ability1extraDmamagePerEnemyHPLostHP" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
+						<div class="container">
+							<label for="ability1extraDamageTemporary">Does this ability increase Character damage temporarly?</label>
+							<select name="ability1extraDamageTemporary" id="ability1extraDamageTemporary" onchange="ability1DoesExtraDmamageTemporary(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability1DoesExtraDamageTemporary" style="display: none;">
+								<label for="ability1extraDamageTemporaryNumber">How much damage?:</label>
+								<input type="number" name="ability1extraDamageTemporaryNumber" min="0" max="1000">
+								<label for="ability1extraDamageTemporaryDuration">Duration:</label>
+								<input type="number" name="ability1extraDamageTemporaryDuration" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
 						
 						<div class="container">
 							<label for="ability1taijutsu">Taijutsu (minimum 0):</label>
@@ -423,7 +475,7 @@
 							<label for="abilityName2">
 								<b>Ability2 Name</b>
 							</label>
-							<input type="text" placeholder="Ability Name (max 32chars)" name="ability2"
+							<input type="text" placeholder="Ability Name" name="ability2"
 								pattern="[A-Za-z]{1,16}" required
 							/>
 						</div>
@@ -561,6 +613,55 @@
 							</div>	
 							<br>
 						</div>
+						
+								<div class="container">
+							<label for="ability2extraDmamagePerSelfHPLost">Does this ability deal aditional damage per self HP lost?</label>
+							<select name="ability2extraDmamagePerSelfHPLost" id="ability2extraDmamagePerSelfHPLost" onchange="ability2DoesExtraDmamagePerSelfHPLost(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability2DoesExtraDmamagePerSelfHPLost" style="display: none;">
+								<label for="ability2extraDmamagePerSelfHPLostNumber">How much damage?:</label>
+								<input type="number" name="ability2extraDmamagePerSelfHPLostNumber" min="0" max="1000">
+								<label for="ability2extraDmamagePerSelfHPLostHP">How much HP lost?:</label>
+								<input type="number" name="ability2extraDmamagePerSelfHPLostHP" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
+						<div class="container">
+							<label for="ability2extraDmamagePerEnemyHPLost">Does this ability deal aditional damage per Enemy HP lost?</label>
+							<select name="ability2extraDmamagePerEnemyHPLost" id="ability2extraDmamagePerEnemyHPLost" onchange="ability2DoesExtraDmamagePerEnemyHPLost(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability2DoesExtraDmamagePerEnemyHPLost" style="display: none;">
+								<label for="ability2extraDmamagePerEnemyHPLostNumber">How much damage?:</label>
+								<input type="number" name="ability2extraDmamagePerEnemyHPLostNumber" min="0" max="1000">
+								<label for="ability2extraDmamagePerEnemyHPLostHP">How much HP lost?:</label>
+								<input type="number" name="ability2extraDmamagePerEnemyHPLostHP" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
+						<div class="container">
+							<label for="ability2extraDamageTemporary">Does this ability increase Character damage temporarly?</label>
+							<select name="ability2extraDamageTemporary" id="ability2extraDamageTemporary" onchange="ability2DoesExtraDmamageTemporary(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability2DoesExtraDamageTemporary" style="display: none;">
+								<label for="ability2extraDamageTemporaryNumber">How much damage?:</label>
+								<input type="number" name="ability2extraDamageTemporaryNumber" min="0" max="1000">
+								<label for="ability2extraDamageTemporaryDuration">Duration:</label>
+								<input type="number" name="ability2extraDamageTemporaryDuration" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
 						
 						<div class="container">
 							<label for="ability2taijutsu">Taijutsu (minimum 0):</label>
@@ -724,6 +825,55 @@
 							</div>	
 							<br>
 						</div>
+						
+						<div class="container">
+							<label for="ability3extraDmamagePerSelfHPLost">Does this ability deal aditional damage per self HP lost?</label>
+							<select name="ability3extraDmamagePerSelfHPLost" id="ability3extraDmamagePerSelfHPLost" onchange="ability3DoesExtraDmamagePerSelfHPLost(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability3DoesExtraDmamagePerSelfHPLost" style="display: none;">
+								<label for="ability3extraDmamagePerSelfHPLostNumber">How much damage?:</label>
+								<input type="number" name="ability3extraDmamagePerSelfHPLostNumber" min="0" max="1000">
+								<label for="ability3extraDmamagePerSelfHPLostHP">How much HP lost?:</label>
+								<input type="number" name="ability3extraDmamagePerSelfHPLostHP" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
+						<div class="container">
+							<label for="ability3extraDmamagePerEnemyHPLost">Does this ability deal aditional damage per Enemy HP lost?</label>
+							<select name="ability3extraDmamagePerEnemyHPLost" id="ability3extraDmamagePerEnemyHPLost" onchange="ability3DoesExtraDmamagePerEnemyHPLost(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability3DoesExtraDmamagePerEnemyHPLost" style="display: none;">
+								<label for="ability3extraDmamagePerEnemyHPLostNumber">How much damage?:</label>
+								<input type="number" name="ability3extraDmamagePerEnemyHPLostNumber" min="0" max="1000">
+								<label for="ability3extraDmamagePerEnemyHPLostHP">How much HP lost?:</label>
+								<input type="number" name="ability3extraDmamagePerEnemyHPLostHP" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
+						<div class="container">
+							<label for="ability3extraDamageTemporary">Does this ability increase Character damage temporarly?</label>
+							<select name="ability3extraDamageTemporary" id="ability3extraDamageTemporary" onchange="ability3DoesExtraDmamageTemporary(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability3DoesExtraDamageTemporary" style="display: none;">
+								<label for="ability3extraDamageTemporaryNumber">How much damage?:</label>
+								<input type="number" name="ability3extraDamageTemporaryNumber" min="0" max="1000">
+								<label for="ability3extraDamageTemporaryDuration">Duration:</label>
+								<input type="number" name="ability3extraDamageTemporaryDuration" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
 						
 						
 						<div class="container">
@@ -889,6 +1039,55 @@
 							<br>
 						</div>
 						
+						<div class="container">
+							<label for="ability4extraDmamagePerSelfHPLost">Does this ability deal aditional damage per self HP lost?</label>
+							<select name="ability4extraDmamagePerSelfHPLost" id="ability4extraDmamagePerSelfHPLost" onchange="ability4DoesExtraDmamagePerSelfHPLost(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability4DoesExtraDmamagePerSelfHPLost" style="display: none;">
+								<label for="ability4extraDmamagePerSelfHPLostNumber">How much damage?:</label>
+								<input type="number" name="ability4extraDmamagePerSelfHPLostNumber" min="0" max="1000">
+								<label for="ability4extraDmamagePerSelfHPLostHP">How much HP lost?:</label>
+								<input type="number" name="ability4extraDmamagePerSelfHPLostHP" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
+						<div class="container">
+							<label for="ability4extraDmamagePerEnemyHPLost">Does this ability deal aditional damage per Enemy HP lost?</label>
+							<select name="ability4extraDmamagePerEnemyHPLost" id="ability4extraDmamagePerEnemyHPLost" onchange="ability4DoesExtraDmamagePerEnemyHPLost(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability4DoesExtraDmamagePerEnemyHPLost" style="display: none;">
+								<label for="ability4extraDmamagePerEnemyHPLostNumber">How much damage?:</label>
+								<input type="number" name="ability4extraDmamagePerEnemyHPLostNumber" min="0" max="1000">
+								<label for="ability4extraDmamagePerEnemyHPLostHP">How much HP lost?:</label>
+								<input type="number" name="ability4extraDmamagePerEnemyHPLostHP" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
+						<div class="container">
+							<label for="ability4extraDamageTemporary">Does this ability increase Character damage temporarly?</label>
+							<select name="ability4extraDamageTemporary" id="ability4extraDamageTemporary" onchange="ability4DoesExtraDmamageTemporary(this)">
+								<option value="no" >No</option>
+								<option value="yes">Yes</option>
+							</select>
+	
+							<div id="ability4DoesExtraDamageTemporary" style="display: none;">
+								<label for="ability4extraDamageTemporaryNumber">How much damage?:</label>
+								<input type="number" name="ability4extraDamageTemporaryNumber" min="0" max="1000">
+								<label for="ability4extraDamageTemporaryDuration">Duration:</label>
+								<input type="number" name="ability4extraDamageTemporaryDuration" min="0" max="1000">
+							</div>	
+							<br>
+						</div>
+						
+						
 						
 						<div class="container">
 							<label for="ability4taijutsu">Taijutsu (minimum 0):</label>
@@ -1045,6 +1244,34 @@ function ability1gainsDR(m) {
 		document.getElementById("ability1gainsDR").style.display="none";
 	}
 }
+function ability1DoesExtraDmamagePerSelfHPLost(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability1DoesExtraDmamagePerSelfHPLost").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability1DoesExtraDmamagePerSelfHPLost").style.display="none";
+	}
+}
+
+function ability1DoesExtraDmamagePerEnemyHPLost(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability1DoesExtraDmamagePerEnemyHPLost").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability1DoesExtraDmamagePerEnemyHPLost").style.display="none";
+	}
+}
+function ability1DoesExtraDmamageTemporary(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability1DoesExtraDamageTemporary").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability1DoesExtraDamageTemporary").style.display="none";
+	}
+}
 //2
 function ability2DoesDamage(m) {
 	
@@ -1103,7 +1330,34 @@ function ability2gainsDR(m) {
 		document.getElementById("ability2gainsDR").style.display="none";
 	}
 }
+function ability2DoesExtraDmamagePerSelfHPLost(m) {
 
+	if (m.value=="yes") {
+		document.getElementById("ability2DoesExtraDmamagePerSelfHPLost").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability2DoesExtraDmamagePerSelfHPLost").style.display="none";
+	}
+}
+
+function ability2DoesExtraDmamagePerEnemyHPLost(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability2DoesExtraDmamagePerEnemyHPLost").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability2DoesExtraDmamagePerEnemyHPLost").style.display="none";
+	}
+}
+function ability2DoesExtraDmamageTemporary(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability2DoesExtraDamageTemporary").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability2DoesExtraDamageTemporary").style.display="none";
+	}
+}
 //3
 function ability3DoesDamage(m) {
 	
@@ -1162,7 +1416,34 @@ function ability3gainsDR(m) {
 		document.getElementById("ability3gainsDR").style.display="none";
 	}
 }
+function ability3DoesExtraDmamagePerSelfHPLost(m) {
 
+	if (m.value=="yes") {
+		document.getElementById("ability3DoesExtraDmamagePerSelfHPLost").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability3DoesExtraDmamagePerSelfHPLost").style.display="none";
+	}
+}
+
+function ability3DoesExtraDmamagePerEnemyHPLost(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability3DoesExtraDmamagePerEnemyHPLost").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability3DoesExtraDmamagePerEnemyHPLost").style.display="none";
+	}
+}
+function ability3DoesExtraDmamageTemporary(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability3DoesExtraDamageTemporary").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability3DoesExtraDamageTemporary").style.display="none";
+	}
+}
 //4
 function ability4DoesDamage(m) {
 	
@@ -1219,6 +1500,34 @@ function ability4gainsDR(m) {
 	}
 	else if (m.value=="no"){
 		document.getElementById("ability4gainsDR").style.display="none";
+	}
+}
+function ability4DoesExtraDmamagePerSelfHPLost(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability4DoesExtraDmamagePerSelfHPLost").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability4DoesExtraDmamagePerSelfHPLost").style.display="none";
+	}
+}
+
+function ability4DoesExtraDmamagePerEnemyHPLost(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability4DoesExtraDmamagePerEnemyHPLost").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability4DoesExtraDmamagePerEnemyHPLost").style.display="none";
+	}
+}
+function ability4DoesExtraDmamageTemporary(m) {
+
+	if (m.value=="yes") {
+		document.getElementById("ability4DoesExtraDamageTemporary").style.display="block";
+	}
+	else if (m.value=="no"){
+		document.getElementById("ability4DoesExtraDamageTemporary").style.display="none";
 	}
 }
 </script>

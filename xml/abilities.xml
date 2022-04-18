@@ -17,11 +17,15 @@
 			<number>20</number>
 			<duration>1</duration>
 		</damage>
-		<nTimesUsed>0</nTimesUsed><ignoresInvulnerability>false</ignoresInvulnerability>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>false</ignoresInvulnerability>
 		<stunDuration>0</stunDuration>	
 		<becomeInvulnerable>no</becomeInvulnerable>
 		<damageIncreasePerUse>5</damageIncreasePerUse>
+		<destroyDD>No</destroyDD>
+
 		<permanentDamageIncrease>0</permanentDamageIncrease>
+
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -42,6 +46,24 @@
 			<number>0</number>
 			<duration>0</duration>
 		</damageReduction>
+
+
+		<!-- Adicionar o que está abaixo -->
+
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
 	
 	</ability>	
 </abilities>
