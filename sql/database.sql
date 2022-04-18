@@ -67,6 +67,24 @@ create table DEMONSLAYER (
     constraint pk_demonslayer primary key (demonslayerID),
     constraint fk_demonslayer foreign key (demonslayerID) references CHARACTERS(characterID)
 );
+create table SAO (
+	saoID int not null,
+   
+    constraint pk_sao primary key (saoID),
+    constraint fk_sao foreign key (saoID) references CHARACTERS(characterID)
+);
+create table ONEPUNCHMAN (
+	onepunchmanID int not null,
+   
+    constraint pk_onepunchman primary key (onepunchmanID),
+    constraint fk_onepunchman foreign key (onepunchmanID) references CHARACTERS(characterID)
+);
+create table HUNTERXHUNTER (
+	hunterxhunterID int not null,
+   
+    constraint pk_hunterxhunter primary key (hunterxhunterID),
+    constraint fk_hunterxhunter foreign key (hunterxhunterID) references CHARACTERS(characterID)
+);
 
 -- MISSION --
 -- REQUISITOS?--

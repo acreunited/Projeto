@@ -1115,7 +1115,10 @@
 							<label for="charAnime">Character Anime</label>
 							<select name="charAnime" id="characterAnime">
 								<option value="Bleach">Bleach</option>
-								<option value="Naruto">Naruto</option>
+								<option value="DemonSlayer">Demon Slayer</option>
+								<option value="OnePunchMan">One Punch Man</option>
+								<option value="HunterXHunter">Hunter X Hunter</option>
+								<option value="SAO">Sword Art Online</option>
 							</select>
 						</div>
 						

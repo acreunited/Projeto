@@ -80,6 +80,18 @@ public class CreateCharacterMission extends HttpServlet {
 			case "Bleach":
 				insert.createBleach(characterID);
 				break;
+			case "DemonSlayer":
+				insert.createDemonSlayer(characterID);
+				break;
+			case "OnePunchMan":
+				insert.createOnePunchMan(characterID);
+				break;
+			case "HunterXHunter":
+				insert.createHunterXHunter(characterID);
+				break;
+			case "SAO":
+				insert.createSAO(characterID);
+				break;
 			}
 			
 			//create Character Theme

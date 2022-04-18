@@ -47,11 +47,46 @@ public class InsertIntoBD {
 	}
 	
 	public boolean createBleach(int id) throws SQLException {
-		String sql = "INSERT into BLEACH (bleachID, category)"
-				+ "values (?, ?);";
+		String sql = "INSERT into BLEACH (bleachID)"
+				+ "values (?);";
 		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		pstmt.setInt(1, id);
-		pstmt.setString(2, "human");
+		pstmt.executeUpdate();
+
+		return true;
+	}
+	public boolean createDemonSlayer(int id) throws SQLException {
+		String sql = "INSERT into DEMONSLAYER (demonslayerID)"
+				+ "values (?);";
+		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setInt(1, id);
+		pstmt.executeUpdate();
+
+		return true;
+	}
+	public boolean createSAO(int id) throws SQLException {
+		String sql = "INSERT into SAO (saoID)"
+				+ "values (?);";
+		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setInt(1, id);
+		pstmt.executeUpdate();
+
+		return true;
+	}
+	public boolean createHunterXHunter(int id) throws SQLException {
+		String sql = "INSERT into HUNTERXHUNTER (hunterxhunterID)"
+				+ "values (?);";
+		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setInt(1, id);
+		pstmt.executeUpdate();
+
+		return true;
+	}
+	public boolean createOnePunchMan(int id) throws SQLException {
+		String sql = "INSERT into ONEPUNCHMAN (onepunchmanID)"
+				+ "values (?);";
+		PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		pstmt.setInt(1, id);
 		pstmt.executeUpdate();
 
 		return true;
