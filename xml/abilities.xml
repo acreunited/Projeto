@@ -11,51 +11,61 @@
 			<spirit>0</spirit>
 			<random>0</random>
 		</nature>
+
 		<cooldown>0</cooldown>
+
 		<targetClick>Enemy</targetClick>
+
 		<damage>
 			<number>20</number>
 			<duration>1</duration>
 		</damage>
+
 		<nTimesUsed>0</nTimesUsed>
+
 		<ignoresInvulnerability>false</ignoresInvulnerability>
+
 		<stunDuration>0</stunDuration>	
+
 		<becomeInvulnerable>no</becomeInvulnerable>
+
 		<damageIncreasePerUse>5</damageIncreasePerUse>
+
 		<destroyDD>No</destroyDD>
 
 		<permanentDamageIncrease>0</permanentDamageIncrease>
-
+		
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
 		</removeNature>
+
 		<gainNature>
 			<number>0</number>
 			<duration>0</duration>
 		</gainNature>
+
 		<gainHP>
 			<number>0</number>
-			<nTimesUsed>0</nTimesUsed>
+			<duration>0</duration>
 		</gainHP>
-		<destructibleDefense>
+
+		<gainDD>
 			<number>0</number>
 			<duration>0</duration>
-		</destructibleDefense>
-		<damageReduction>
+		</gainDD>
+
+		<gainDR>
 			<number>0</number>
 			<duration>0</duration>
-		</damageReduction>
-
-
-		<!-- Adicionar o que está abaixo -->
+		</gainDR>
 
 		<moreDamagePerHPLost>
 			<extraDamage>0</extraDamage>
 			<hpLost>0</hpLost>
 		</moreDamagePerHPLost>
 
-		<moreDamageEnemyHPLost>
+		 <moreDamageEnemyHPLost>
 			<extraDamage>0</extraDamage>
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>

@@ -14,6 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 
@@ -165,6 +175,136 @@ public class CreateCharacterMission extends HttpServlet {
 				insert.createAbilityTheme(abilityID, 1, ability1Name, inputAbility1, ability1Description);
 			}
 			
+			String targetClick1 = request.getParameter("ability1target");
+			
+			String damageNumber1 = null;
+			String damageDuration1 = null;
+			String doesDamage = request.getParameter("ability1damage");
+			if (doesDamage.equalsIgnoreCase("no")) {
+				damageNumber1 = "0";
+				damageDuration1 = "0";
+			}
+			else {
+				damageNumber1 = request.getParameter("ability1damageNumber");
+				damageDuration1 = request.getParameter("ability1damageDuration");
+			}
+			String nTimesUsed1 = "0"; //TODO delete this
+			String damageIncreasePerUse1 = request.getParameter("ability1increaseAbilityDamage");
+			String permanentDamageIncrease1 = request.getParameter("ability1increasePermanentDamage");
+			String stunDuration1 = request.getParameter("ability1stun");
+			String becomesInvul1 = request.getParameter("ability1beInvul");
+			String ignoresInvul1 = request.getParameter("ability1ignoreInvul");
+			
+			String removeNatureNumber1 = null;
+			String removeNatureDuration1 = null;
+			String removesNature = request.getParameter("ability1removeNature");
+			if (removesNature.equalsIgnoreCase("no")) {
+				removeNatureNumber1 = "0";
+				removeNatureDuration1 = "0";
+			}
+			else {
+				removeNatureNumber1 = request.getParameter("ability1removesNatureNumber");
+				removeNatureDuration1 = request.getParameter("ability1removesNatureDuration");
+			}
+			
+			String gainNatureNumber1 = null;
+			String gainNatureDuration1 = null;
+			String gainsNature = request.getParameter("ability1gainNature");
+			if (gainsNature.equalsIgnoreCase("no")) {
+				gainNatureNumber1 = "0";
+				gainNatureDuration1 = "0";
+			}
+			else {
+				gainNatureNumber1 = request.getParameter("ability1gainNatureNumber");
+				gainNatureDuration1 = request.getParameter("ability1gainNatureDuration");
+			}
+			
+			
+			String gainHPNumber1 = null;
+			String gainHPDuration1 = null;
+			String gainsHP = request.getParameter("ability1gainHP");
+			if (gainsHP.equalsIgnoreCase("no")) {
+				gainHPNumber1 = "0";
+				gainNatureDuration1 = "0";
+			}
+			else {
+				gainHPNumber1 = request.getParameter("ability1gainHPNumber");
+				gainNatureDuration1 = request.getParameter("ability1gainHPDuration");
+			}
+			
+			String gainDDNumber1 = null;
+			String gainDDDuration1 = null;
+			String gainsDD = request.getParameter("ability1gainDD");
+			if (gainsDD.equalsIgnoreCase("no")) {
+				gainDDNumber1 = "0";
+				gainDDDuration1 = "0";
+			}
+			else {
+				gainDDNumber1 = request.getParameter("ability1gainDDNumber");
+				gainDDDuration1 = request.getParameter("ability1gainDDDuration");
+			}
+			
+			String gainDRNumber1 = null;
+			String gainDRDuration1 = null;
+			String gainsDR = request.getParameter("ability1gainDR");
+			if (gainsDR.equalsIgnoreCase("no")) {
+				gainDRNumber1 = "0";
+				gainDRDuration1 = "0";
+			}
+			else {
+				gainDRNumber1 = request.getParameter("ability1gainDRNumber");
+				gainDRDuration1 = request.getParameter("ability1gainDRDuration");
+			}
+			
+			String moreDamagePerHPLostDamage1 = null;
+			String moreDamagePerHPLostHP1 = null;
+			String damagePerHP = request.getParameter("ability1extraDmamagePerSelfHPLost");
+			if (damagePerHP.equalsIgnoreCase("no")) {
+				moreDamagePerHPLostDamage1 = "0";
+				moreDamagePerHPLostHP1 = "0";
+			}
+			else {
+				moreDamagePerHPLostDamage1 = request.getParameter("ability1extraDmamagePerSelfHPLostNumber");
+				moreDamagePerHPLostHP1 = request.getParameter("ability1extraDmamagePerSelfHPLostHP");
+			}
+			
+			String moreDamagePerEnemyHPLostDamage1 = null;
+			String moreDamagePerEnemyHPLostHP1 = null;
+			String damagePerHPEnemy = request.getParameter("ability1extraDmamagePerEnemyHPLost");
+			if (damagePerHPEnemy.equalsIgnoreCase("no")) {
+				moreDamagePerEnemyHPLostDamage1 = "0";
+				moreDamagePerEnemyHPLostHP1 = "0";
+			}
+			else {
+				moreDamagePerEnemyHPLostDamage1 = request.getParameter("ability1extraDmamagePerEnemyHPLostNumber");
+				moreDamagePerEnemyHPLostHP1 = request.getParameter("ability1extraDmamagePerEnemyHPLostHP");
+			}
+			
+			String temporaryDamageIncreaseDamage1 = null;
+			String temporaryDamageIncreaseDuration1 = null;
+			String damageTemp = request.getParameter("ability1extraDamageTemporary");
+			if (damageTemp.equalsIgnoreCase("no")) {
+				temporaryDamageIncreaseDamage1 = "0";
+				temporaryDamageIncreaseDuration1 = "0";
+			}
+			else {
+				temporaryDamageIncreaseDamage1 = request.getParameter("ability1extraDamageTemporaryNumber");
+				temporaryDamageIncreaseDuration1 = request.getParameter("ability1extraDamageTemporaryDuration");
+			}
+			
+			String destroyDD1 = request.getParameter("ability1destroyDD");; 
+	
+			
+			writeXML(""+abilityID, ability1Name, ability1Description, ability1taijutsu, ability1heart,
+					ability1energy, ability1spirit, ability1random, ability1cooldown, targetClick1, 
+					damageNumber1, damageDuration1, nTimesUsed1, ignoresInvul1, stunDuration1, becomesInvul1, 
+					damageIncreasePerUse1, destroyDD1, permanentDamageIncrease1, removeNatureNumber1, 
+					removeNatureDuration1, gainNatureNumber1, gainNatureDuration1, gainHPNumber1, 
+					gainHPDuration1, gainDDNumber1, gainDDDuration1, gainDRNumber1, gainDRDuration1, 
+					moreDamagePerHPLostDamage1, moreDamagePerHPLostHP1, moreDamagePerEnemyHPLostDamage1, 
+					moreDamagePerEnemyHPLostHP1, temporaryDamageIncreaseDamage1, temporaryDamageIncreaseDuration1);
+			
+			
 			
 			//ABILITY 2
 			String ability2Name = request.getParameter("ability2");
@@ -228,6 +368,135 @@ public class CreateCharacterMission extends HttpServlet {
 				insert.createAbilityTheme(ability2ID, 0, "name ability "+ability2ID, null, "descricao ability "+ability2ID);
 				insert.createAbilityTheme(ability2ID, 1, ability2Name, inputAbility2, ability2Description);
 			}
+			
+			String targetClick2 = request.getParameter("ability2target");
+			
+			String damageNumber2 = null;
+			String damageDuration2 = null;
+			String doesDamage2 = request.getParameter("ability2damage");
+			if (doesDamage2.equalsIgnoreCase("no")) {
+				damageNumber2 = "0";
+				damageDuration2 = "0";
+			}
+			else {
+				damageNumber2 = request.getParameter("ability2damageNumber");
+				damageDuration2 = request.getParameter("ability2damageDuration");
+			}
+			String nTimesUsed2 = "0"; //TODO delete this
+			String damageIncreasePerUse2 = request.getParameter("ability2increaseAbilityDamage");
+			String permanentDamageIncrease2 = request.getParameter("ability2increasePermanentDamage");
+			String stunDuration2 = request.getParameter("ability2stun");
+			String becomesInvul2 = request.getParameter("ability2beInvul");
+			String ignoresInvul2 = request.getParameter("ability2ignoreInvul");
+			
+			String removeNatureNumber2 = null;
+			String removeNatureDuration2 = null;
+			String removesNature2 = request.getParameter("ability2removeNature");
+			if (removesNature.equalsIgnoreCase("no")) {
+				removeNatureNumber2 = "0";
+				removeNatureDuration2 = "0";
+			}
+			else {
+				removeNatureNumber2 = request.getParameter("ability2removesNatureNumber");
+				removeNatureDuration2 = request.getParameter("ability2removesNatureDuration");
+			}
+			
+			String gainNatureNumber2 = null;
+			String gainNatureDuration2 = null;
+			String gainsNature2 = request.getParameter("ability2gainNature");
+			if (gainsNature.equalsIgnoreCase("no")) {
+				gainNatureNumber2 = "0";
+				gainNatureDuration2 = "0";
+			}
+			else {
+				gainNatureNumber2 = request.getParameter("ability2gainNatureNumber");
+				gainNatureDuration2 = request.getParameter("ability2gainNatureDuration");
+			}
+			
+			
+			String gainHPNumber2 = null;
+			String gainHPDuration2 = null;
+			String gainsHP2 = request.getParameter("ability2gainHP");
+			if (gainsHP.equalsIgnoreCase("no")) {
+				gainHPNumber2 = "0";
+				gainNatureDuration2 = "0";
+			}
+			else {
+				gainHPNumber2 = request.getParameter("ability2gainHPNumber");
+				gainNatureDuration2 = request.getParameter("ability2gainHPDuration");
+			}
+			
+			String gainDDNumber2 = null;
+			String gainDDDuration2 = null;
+			String gainsDD2 = request.getParameter("ability2gainDD");
+			if (gainsDD2.equalsIgnoreCase("no")) {
+				gainDDNumber2 = "0";
+				gainDDDuration2 = "0";
+			}
+			else {
+				gainDDNumber2 = request.getParameter("ability2gainDDNumber");
+				gainDDDuration2 = request.getParameter("ability2gainDDDuration");
+			}
+			
+			String gainDRNumber2 = null;
+			String gainDRDuration2 = null;
+			String gainsDR2 = request.getParameter("ability2gainDR");
+			if (gainsDR2.equalsIgnoreCase("no")) {
+				gainDRNumber2 = "0";
+				gainDRDuration2 = "0";
+			}
+			else {
+				gainDRNumber2 = request.getParameter("ability2gainDRNumber");
+				gainDRDuration2 = request.getParameter("ability2gainDRDuration");
+			}
+			
+			String moreDamagePerHPLostDamage2 = null;
+			String moreDamagePerHPLostHP2 = null;
+			String damagePerHP2 = request.getParameter("ability2extraDmamagePerSelfHPLost");
+			if (damagePerHP2.equalsIgnoreCase("no")) {
+				moreDamagePerHPLostDamage2 = "0";
+				moreDamagePerHPLostHP2 = "0";
+			}
+			else {
+				moreDamagePerHPLostDamage2 = request.getParameter("ability2extraDmamagePerSelfHPLostNumber");
+				moreDamagePerHPLostHP2 = request.getParameter("ability2extraDmamagePerSelfHPLostHP");
+			}
+			
+			String moreDamagePerEnemyHPLostDamage2 = null;
+			String moreDamagePerEnemyHPLostHP2 = null;
+			String damagePerHPEnemy2 = request.getParameter("ability2extraDmamagePerEnemyHPLost");
+			if (damagePerHPEnemy2.equalsIgnoreCase("no")) {
+				moreDamagePerEnemyHPLostDamage2 = "0";
+				moreDamagePerEnemyHPLostHP2 = "0";
+			}
+			else {
+				moreDamagePerEnemyHPLostDamage2 = request.getParameter("ability2extraDmamagePerEnemyHPLostNumber");
+				moreDamagePerEnemyHPLostHP2 = request.getParameter("ability2extraDmamagePerEnemyHPLostHP");
+			}
+			
+			String temporaryDamageIncreaseDamage2 = null;
+			String temporaryDamageIncreaseDuration2 = null;
+			String damageTemp2 = request.getParameter("ability2extraDamageTemporary");
+			if (damageTemp2.equalsIgnoreCase("no")) {
+				temporaryDamageIncreaseDamage2 = "0";
+				temporaryDamageIncreaseDuration2 = "0";
+			}
+			else {
+				temporaryDamageIncreaseDamage2 = request.getParameter("ability2extraDamageTemporaryNumber");
+				temporaryDamageIncreaseDuration2 = request.getParameter("ability2extraDamageTemporaryDuration");
+			}
+			
+			String destroyDD2 = request.getParameter("ability2destroyDD");; 
+	
+			
+			writeXML(""+ability2ID, ability2Name, ability2Description, ability2taijutsu, ability2heart,
+					ability2energy, ability2spirit, ability2random, ability2cooldown, targetClick2, 
+					damageNumber2, damageDuration2, nTimesUsed2, ignoresInvul2, stunDuration2, becomesInvul2, 
+					damageIncreasePerUse2, destroyDD2, permanentDamageIncrease2, removeNatureNumber2, 
+					removeNatureDuration2, gainNatureNumber2, gainNatureDuration2, gainHPNumber2, 
+					gainHPDuration2, gainDDNumber2, gainDDDuration2, gainDRNumber2, gainDRDuration2, 
+					moreDamagePerHPLostDamage2, moreDamagePerHPLostHP2, moreDamagePerEnemyHPLostDamage2, 
+					moreDamagePerEnemyHPLostHP2, temporaryDamageIncreaseDamage2, temporaryDamageIncreaseDuration2);
 			
 			//ABILITY 3
 			String ability3Name = request.getParameter("ability3");
@@ -293,6 +562,135 @@ public class CreateCharacterMission extends HttpServlet {
 			}
 			
 			
+			String targetClick3 = request.getParameter("ability3target");
+			
+			String damageNumber3 = null;
+			String damageDuration3 = null;
+			String doesDamage3 = request.getParameter("ability3damage");
+			if (doesDamage3.equalsIgnoreCase("no")) {
+				damageNumber3 = "0";
+				damageDuration3 = "0";
+			}
+			else {
+				damageNumber3 = request.getParameter("ability3damageNumber");
+				damageDuration3 = request.getParameter("ability3damageDuration");
+			}
+			String nTimesUsed3 = "0"; //TODO delete this
+			String damageIncreasePerUse3 = request.getParameter("ability3increaseAbilityDamage");
+			String permanentDamageIncrease3 = request.getParameter("ability3increasePermanentDamage");
+			String stunDuration3 = request.getParameter("ability3stun");
+			String becomesInvul3 = request.getParameter("ability3beInvul");
+			String ignoresInvul3 = request.getParameter("ability3ignoreInvul");
+			
+			String removeNatureNumber3 = null;
+			String removeNatureDuration3 = null;
+			String removesNature3 = request.getParameter("ability3removeNature");
+			if (removesNature.equalsIgnoreCase("no")) {
+				removeNatureNumber3 = "0";
+				removeNatureDuration3 = "0";
+			}
+			else {
+				removeNatureNumber3 = request.getParameter("ability3removesNatureNumber");
+				removeNatureDuration3 = request.getParameter("ability3removesNatureDuration");
+			}
+			
+			String gainNatureNumber3 = null;
+			String gainNatureDuration3 = null;
+			String gainsNature3 = request.getParameter("ability3gainNature");
+			if (gainsNature.equalsIgnoreCase("no")) {
+				gainNatureNumber3 = "0";
+				gainNatureDuration3 = "0";
+			}
+			else {
+				gainNatureNumber3 = request.getParameter("ability3gainNatureNumber");
+				gainNatureDuration3 = request.getParameter("ability3gainNatureDuration");
+			}
+			
+			
+			String gainHPNumber3 = null;
+			String gainHPDuration3 = null;
+			String gainsHP3 = request.getParameter("ability3gainHP");
+			if (gainsHP.equalsIgnoreCase("no")) {
+				gainHPNumber3 = "0";
+				gainNatureDuration3 = "0";
+			}
+			else {
+				gainHPNumber3 = request.getParameter("ability3gainHPNumber");
+				gainNatureDuration3 = request.getParameter("ability3gainHPDuration");
+			}
+			
+			String gainDDNumber3 = null;
+			String gainDDDuration3 = null;
+			String gainsDD3 = request.getParameter("ability3gainDD");
+			if (gainsDD3.equalsIgnoreCase("no")) {
+				gainDDNumber3 = "0";
+				gainDDDuration3 = "0";
+			}
+			else {
+				gainDDNumber3 = request.getParameter("ability3gainDDNumber");
+				gainDDDuration3 = request.getParameter("ability3gainDDDuration");
+			}
+			
+			String gainDRNumber3 = null;
+			String gainDRDuration3 = null;
+			String gainsDR3 = request.getParameter("ability3gainDR");
+			if (gainsDR3.equalsIgnoreCase("no")) {
+				gainDRNumber3 = "0";
+				gainDRDuration3 = "0";
+			}
+			else {
+				gainDRNumber3 = request.getParameter("ability3gainDRNumber");
+				gainDRDuration3 = request.getParameter("ability3gainDRDuration");
+			}
+			
+			String moreDamagePerHPLostDamage3 = null;
+			String moreDamagePerHPLostHP3 = null;
+			String damagePerHP3 = request.getParameter("ability3extraDmamagePerSelfHPLost");
+			if (damagePerHP3.equalsIgnoreCase("no")) {
+				moreDamagePerHPLostDamage3 = "0";
+				moreDamagePerHPLostHP3 = "0";
+			}
+			else {
+				moreDamagePerHPLostDamage3 = request.getParameter("ability3extraDmamagePerSelfHPLostNumber");
+				moreDamagePerHPLostHP3 = request.getParameter("ability3extraDmamagePerSelfHPLostHP");
+			}
+			
+			String moreDamagePerEnemyHPLostDamage3 = null;
+			String moreDamagePerEnemyHPLostHP3 = null;
+			String damagePerHPEnemy3 = request.getParameter("ability3extraDmamagePerEnemyHPLost");
+			if (damagePerHPEnemy3.equalsIgnoreCase("no")) {
+				moreDamagePerEnemyHPLostDamage3 = "0";
+				moreDamagePerEnemyHPLostHP3 = "0";
+			}
+			else {
+				moreDamagePerEnemyHPLostDamage3 = request.getParameter("ability3extraDmamagePerEnemyHPLostNumber");
+				moreDamagePerEnemyHPLostHP3 = request.getParameter("ability3extraDmamagePerEnemyHPLostHP");
+			}
+			
+			String temporaryDamageIncreaseDamage3 = null;
+			String temporaryDamageIncreaseDuration3 = null;
+			String damageTemp3 = request.getParameter("ability3extraDamageTemporary");
+			if (damageTemp3.equalsIgnoreCase("no")) {
+				temporaryDamageIncreaseDamage3 = "0";
+				temporaryDamageIncreaseDuration3 = "0";
+			}
+			else {
+				temporaryDamageIncreaseDamage3 = request.getParameter("ability3extraDamageTemporaryNumber");
+				temporaryDamageIncreaseDuration3 = request.getParameter("ability3extraDamageTemporaryDuration");
+			}
+			
+			String destroyDD3 = request.getParameter("ability3destroyDD");; 
+	
+			
+			writeXML(""+ability3ID, ability3Name, ability3Description, ability3taijutsu, ability3heart,
+					ability3energy, ability3spirit, ability3random, ability3cooldown, targetClick3, 
+					damageNumber3, damageDuration3, nTimesUsed3, ignoresInvul3, stunDuration3, becomesInvul3, 
+					damageIncreasePerUse3, destroyDD3, permanentDamageIncrease3, removeNatureNumber3, 
+					removeNatureDuration3, gainNatureNumber3, gainNatureDuration3, gainHPNumber3, 
+					gainHPDuration3, gainDDNumber3, gainDDDuration3, gainDRNumber3, gainDRDuration3, 
+					moreDamagePerHPLostDamage3, moreDamagePerHPLostHP3, moreDamagePerEnemyHPLostDamage3, 
+					moreDamagePerEnemyHPLostHP3, temporaryDamageIncreaseDamage3, temporaryDamageIncreaseDuration3);
+			
 			
 			//ABILITY 4
 			String ability4Name = request.getParameter("ability4");
@@ -357,6 +755,136 @@ public class CreateCharacterMission extends HttpServlet {
 				insert.createAbilityTheme(ability4ID, 1, ability4Name, inputAbility4, ability4Description);
 			}
 			
+			String targetClick4 = request.getParameter("ability4target");
+			
+			String damageNumber4 = null;
+			String damageDuration4 = null;
+			String doesDamage4 = request.getParameter("ability4damage");
+			if (doesDamage4.equalsIgnoreCase("no")) {
+				damageNumber4 = "0";
+				damageDuration4 = "0";
+			}
+			else {
+				damageNumber4 = request.getParameter("ability4damageNumber");
+				damageDuration4 = request.getParameter("ability4damageDuration");
+			}
+			String nTimesUsed4 = "0"; //TODO delete this
+			String damageIncreasePerUse4 = request.getParameter("ability4increaseAbilityDamage");
+			String permanentDamageIncrease4 = request.getParameter("ability4increasePermanentDamage");
+			String stunDuration4 = request.getParameter("ability4stun");
+			String becomesInvul4 = request.getParameter("ability4beInvul");
+			String ignoresInvul4 = request.getParameter("ability4ignoreInvul");
+			
+			String removeNatureNumber4 = null;
+			String removeNatureDuration4 = null;
+			String removesNature4 = request.getParameter("ability4removeNature");
+			if (removesNature.equalsIgnoreCase("no")) {
+				removeNatureNumber4 = "0";
+				removeNatureDuration4 = "0";
+			}
+			else {
+				removeNatureNumber4 = request.getParameter("ability4removesNatureNumber");
+				removeNatureDuration4 = request.getParameter("ability4removesNatureDuration");
+			}
+			
+			String gainNatureNumber4 = null;
+			String gainNatureDuration4 = null;
+			String gainsNature4 = request.getParameter("ability4gainNature");
+			if (gainsNature.equalsIgnoreCase("no")) {
+				gainNatureNumber4 = "0";
+				gainNatureDuration4 = "0";
+			}
+			else {
+				gainNatureNumber4 = request.getParameter("ability4gainNatureNumber");
+				gainNatureDuration4 = request.getParameter("ability4gainNatureDuration");
+			}
+			
+			
+			String gainHPNumber4 = null;
+			String gainHPDuration4 = null;
+			String gainsHP4 = request.getParameter("ability4gainHP");
+			if (gainsHP.equalsIgnoreCase("no")) {
+				gainHPNumber4 = "0";
+				gainNatureDuration4 = "0";
+			}
+			else {
+				gainHPNumber4 = request.getParameter("ability4gainHPNumber");
+				gainNatureDuration4 = request.getParameter("ability4gainHPDuration");
+			}
+			
+			String gainDDNumber4 = null;
+			String gainDDDuration4 = null;
+			String gainsDD4 = request.getParameter("ability4gainDD");
+			if (gainsDD4.equalsIgnoreCase("no")) {
+				gainDDNumber4 = "0";
+				gainDDDuration4 = "0";
+			}
+			else {
+				gainDDNumber4 = request.getParameter("ability4gainDDNumber");
+				gainDDDuration4 = request.getParameter("ability4gainDDDuration");
+			}
+			
+			String gainDRNumber4 = null;
+			String gainDRDuration4 = null;
+			String gainsDR4 = request.getParameter("ability4gainDR");
+			if (gainsDR4.equalsIgnoreCase("no")) {
+				gainDRNumber4 = "0";
+				gainDRDuration4 = "0";
+			}
+			else {
+				gainDRNumber4 = request.getParameter("ability4gainDRNumber");
+				gainDRDuration4 = request.getParameter("ability4gainDRDuration");
+			}
+			
+			String moreDamagePerHPLostDamage4 = null;
+			String moreDamagePerHPLostHP4 = null;
+			String damagePerHP4 = request.getParameter("ability4extraDmamagePerSelfHPLost");
+			if (damagePerHP4.equalsIgnoreCase("no")) {
+				moreDamagePerHPLostDamage4 = "0";
+				moreDamagePerHPLostHP4 = "0";
+			}
+			else {
+				moreDamagePerHPLostDamage4 = request.getParameter("ability4extraDmamagePerSelfHPLostNumber");
+				moreDamagePerHPLostHP4 = request.getParameter("ability4extraDmamagePerSelfHPLostHP");
+			}
+			
+			String moreDamagePerEnemyHPLostDamage4 = null;
+			String moreDamagePerEnemyHPLostHP4 = null;
+			String damagePerHPEnemy4 = request.getParameter("ability4extraDmamagePerEnemyHPLost");
+			if (damagePerHPEnemy4.equalsIgnoreCase("no")) {
+				moreDamagePerEnemyHPLostDamage4 = "0";
+				moreDamagePerEnemyHPLostHP4 = "0";
+			}
+			else {
+				moreDamagePerEnemyHPLostDamage4 = request.getParameter("ability4extraDmamagePerEnemyHPLostNumber");
+				moreDamagePerEnemyHPLostHP4 = request.getParameter("ability4extraDmamagePerEnemyHPLostHP");
+			}
+			
+			String temporaryDamageIncreaseDamage4 = null;
+			String temporaryDamageIncreaseDuration4 = null;
+			String damageTemp4 = request.getParameter("ability4extraDamageTemporary");
+			if (damageTemp4.equalsIgnoreCase("no")) {
+				temporaryDamageIncreaseDamage4 = "0";
+				temporaryDamageIncreaseDuration4 = "0";
+			}
+			else {
+				temporaryDamageIncreaseDamage4 = request.getParameter("ability4extraDamageTemporaryNumber");
+				temporaryDamageIncreaseDuration4 = request.getParameter("ability4extraDamageTemporaryDuration");
+			}
+			
+			String destroyDD4 = request.getParameter("ability4destroyDD");; 
+	
+			
+			writeXML(""+ability4ID, ability4Name, ability4Description, ability4taijutsu, ability4heart,
+					ability4energy, ability4spirit, ability4random, ability4cooldown, targetClick4, 
+					damageNumber4, damageDuration4, nTimesUsed4, ignoresInvul4, stunDuration4, becomesInvul4, 
+					damageIncreasePerUse4, destroyDD4, permanentDamageIncrease4, removeNatureNumber4, 
+					removeNatureDuration4, gainNatureNumber4, gainNatureDuration4, gainHPNumber4, 
+					gainHPDuration4, gainDDNumber4, gainDDDuration4, gainDRNumber4, gainDRDuration4, 
+					moreDamagePerHPLostDamage4, moreDamagePerHPLostHP4, moreDamagePerEnemyHPLostDamage4, 
+					moreDamagePerEnemyHPLostHP4, temporaryDamageIncreaseDamage4, temporaryDamageIncreaseDuration4);
+			
+			
 			
 			//MISSION
 			String isMission = request.getParameter("defaultmission"); 
@@ -412,6 +940,187 @@ public class CreateCharacterMission extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/create.jsp");
 		rd.include(request, response);
 		return;
+	}
+	
+	private boolean writeXML(String abilityID, String name, String description, String taijutsu, String heart, String energy, 
+			String spirit, String random, String cooldown, String targetClick, String damageNumber, String damageDuration,
+			String nTimesUsed, String ignoresInvul, String stunDuration, String becomesInvul, String damageIncreasePerUse,
+			String destroyDD, String permanentDamageIncrease, String removeNatureNumber, String removeNatureDuration,
+			String gainNatureNumber, String gainNatureDuration, String gainHPNumber, String gainHPDuration, String gainDDNumber,
+			String gainDDDuration, String gainDRNumber, String gainDRDuration, String moreDamagePerHPLostDamage, 
+			String moreDamagePerHPLostHP, String moreDamagePerEnemyHPLostDamage, String moreDamagePerEnemyHPLostHP, 
+			String temporaryDamageIncreaseDamage, String temporaryDamageIncreaseDuration) {
+		
+		try {
+			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+			Document document = documentBuilder.parse("xml/abilities.xml");
+			DOMSource source = new DOMSource(document);
+			
+			Element root = document.getDocumentElement();
+		
+			Element newAbility = document.createElement("ability");
+			((Element) newAbility).setAttribute("abilityID", abilityID);
+			
+			
+			Element abilityName = document.createElement("name");
+			abilityName.appendChild(document.createTextNode(name));
+			newAbility.appendChild(abilityName);
+			
+			Element descricao = document.createElement("description");
+			descricao.appendChild(document.createTextNode(description));
+			newAbility.appendChild(descricao);
+			
+			Element nature = document.createElement("nature");
+			Element tai = document.createElement("taijutsu");
+			tai.appendChild(document.createTextNode(taijutsu));
+			nature.appendChild(tai);
+			Element hear = document.createElement("heart");
+			hear.appendChild(document.createTextNode(heart));
+			nature.appendChild(hear);
+			Element ener = document.createElement("energy");
+			ener.appendChild(document.createTextNode(energy));
+			nature.appendChild(ener);
+			Element spir = document.createElement("spirit");
+			spir.appendChild(document.createTextNode(spirit));
+			nature.appendChild(spir);
+			Element ran = document.createElement("random");
+			ran.appendChild(document.createTextNode(random));
+			nature.appendChild(ran);
+			newAbility.appendChild(nature);
+			
+			Element cool = document.createElement("cooldown");
+			cool.appendChild(document.createTextNode(cooldown));
+			newAbility.appendChild(cool);
+			
+			Element clickT = document.createElement("targetClick");
+			clickT.appendChild(document.createTextNode(targetClick));
+			newAbility.appendChild(clickT);
+			
+			Element dmg = document.createElement("damage");
+			Element dmgNumber = document.createElement("number");
+			dmgNumber.appendChild(document.createTextNode(damageNumber));
+			dmg.appendChild(dmgNumber);
+			Element dmgDuration = document.createElement("duration");
+			dmgDuration.appendChild(document.createTextNode(damageDuration));
+			dmg.appendChild(dmgDuration);
+			newAbility.appendChild(dmg);
+			
+			Element nTimes = document.createElement("nTimesUsed");
+			nTimes.appendChild(document.createTextNode(nTimesUsed));
+			newAbility.appendChild(nTimes);
+			
+			Element ignoresInv = document.createElement("ignoresInvulnerability");
+			ignoresInv.appendChild(document.createTextNode(ignoresInvul));
+			newAbility.appendChild(ignoresInv);
+			
+			Element stun = document.createElement("stunDuration");
+			stun.appendChild(document.createTextNode(stunDuration));
+			newAbility.appendChild(stun);
+			
+			Element invul = document.createElement("becomeInvulnerable");
+			invul.appendChild(document.createTextNode(becomesInvul));
+			newAbility.appendChild(invul);
+			
+			Element damageIncreaseUse = document.createElement("damageIncreasePerUse");
+			damageIncreaseUse.appendChild(document.createTextNode(damageIncreasePerUse));
+			newAbility.appendChild(damageIncreaseUse);
+			
+			Element ddDestroy = document.createElement("destroyDD");
+			ddDestroy.appendChild(document.createTextNode(destroyDD));
+			newAbility.appendChild(ddDestroy);
+			
+			Element permDamageInc = document.createElement("permanentDamageIncrease");
+			permDamageInc.appendChild(document.createTextNode(permanentDamageIncrease));
+			newAbility.appendChild(permDamageInc);
+			
+			Element removeEner = document.createElement("removeNature");
+			Element removeEnerNumber = document.createElement("number");
+			removeEnerNumber.appendChild(document.createTextNode(removeNatureNumber));
+			removeEner.appendChild(removeEnerNumber);
+			Element removeEnerDuration = document.createElement("duration");
+			removeEnerDuration.appendChild(document.createTextNode(removeNatureDuration));
+			removeEner.appendChild(removeEnerDuration);
+			newAbility.appendChild(removeEner);
+			
+			Element gainEner = document.createElement("gainNature");
+			Element gainEnerNumber = document.createElement("number");
+			gainEnerNumber.appendChild(document.createTextNode(gainNatureNumber));
+			gainEner.appendChild(gainEnerNumber);
+			Element gainEnerDuration = document.createElement("duration");
+			gainEnerDuration.appendChild(document.createTextNode(gainNatureDuration));
+			gainEner.appendChild(gainEnerDuration);
+			newAbility.appendChild(gainEner);
+			
+			Element hp = document.createElement("gainHP");
+			Element hpNumber = document.createElement("number");
+			hpNumber.appendChild(document.createTextNode(gainHPNumber));
+			hp.appendChild(hpNumber);
+			Element hpDuration = document.createElement("duration");
+			hpDuration.appendChild(document.createTextNode(gainHPDuration));
+			hp.appendChild(hpDuration);
+			newAbility.appendChild(hp);
+			
+			Element dd = document.createElement("gainDD");
+			Element ddNumberdd = document.createElement("number");
+			ddNumberdd.appendChild(document.createTextNode(gainDDNumber));
+			dd.appendChild(ddNumberdd);
+			Element ddDurationdd = document.createElement("duration");
+			ddDurationdd.appendChild(document.createTextNode(gainDDDuration));
+			dd.appendChild(ddDurationdd);
+			newAbility.appendChild(dd);
+			
+			Element dr = document.createElement("gainDR");
+			Element drNumber = document.createElement("number");
+			drNumber.appendChild(document.createTextNode(gainDRNumber));
+			dr.appendChild(drNumber);
+			Element drDuration = document.createElement("duration");
+			drDuration.appendChild(document.createTextNode(gainDRDuration));
+			dr.appendChild(drDuration);
+			newAbility.appendChild(dr);
+			
+			Element moreDmgHP = document.createElement("moreDamagePerHPLost");
+			Element extraDmg = document.createElement("extraDamage");
+			extraDmg.appendChild(document.createTextNode(moreDamagePerHPLostDamage));
+			moreDmgHP.appendChild(extraDmg);
+			Element extraDmgHP = document.createElement("hpLost");
+			extraDmgHP.appendChild(document.createTextNode(moreDamagePerHPLostHP));
+			moreDmgHP.appendChild(extraDmgHP);
+			newAbility.appendChild(moreDmgHP);
+			
+			Element moreDmgHPenemy = document.createElement("moreDamageEnemyHPLost");
+			Element extraDmgenemy = document.createElement("extraDamage");
+			extraDmgenemy.appendChild(document.createTextNode(moreDamagePerEnemyHPLostDamage));
+			moreDmgHPenemy.appendChild(extraDmgenemy);
+			Element extraDmgHPenemy = document.createElement("hpLost");
+			extraDmgHPenemy.appendChild(document.createTextNode(moreDamagePerEnemyHPLostHP));
+			moreDmgHPenemy.appendChild(extraDmgHPenemy);
+			newAbility.appendChild(moreDmgHPenemy);
+			
+			Element temporaryDamage = document.createElement("temporaryDamageIncrease");
+			Element tempDamage = document.createElement("extraDamage");
+			tempDamage.appendChild(document.createTextNode(temporaryDamageIncreaseDamage));
+			temporaryDamage.appendChild(tempDamage);
+			Element tempDuration = document.createElement("duration");
+			tempDuration.appendChild(document.createTextNode(temporaryDamageIncreaseDuration));
+			temporaryDamage.appendChild(tempDuration);
+			newAbility.appendChild(temporaryDamage);
+			
+			root.appendChild(newAbility);
+			
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			StreamResult result = new StreamResult("xml/abilities.xml");
+			transformer.transform(source, result);
+
+			return true;
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }
