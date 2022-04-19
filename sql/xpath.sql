@@ -173,3 +173,6 @@ select * from THEME_CHARACTER;
 select * from BLEACH;
 
 select * from THEME_CHARACTER where characterID=9;
+
+select * from SAO;
+select * from THEME_CHARACTER where themeID=1;

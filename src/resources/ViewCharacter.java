@@ -33,7 +33,7 @@ public class ViewCharacter extends HttpServlet {
 		try {
 			Connection con = Connector.getConnection();
 			PreparedStatement bleach = con.prepareStatement(
-					"select * from BLEACH INNER JOIN THEME_CHARACTER where BLEACH.bleachID=THEME_CHARACTER.characterID and THEME_CHARACTER.themeID=1 and BLEACH.bleachID=?");
+					"select * from THEME_CHARACTER where themeID=1 and characterID=?");
 			bleach.setInt(1, id);
 			ResultSet rs = bleach.executeQuery();
 
@@ -46,7 +46,7 @@ public class ViewCharacter extends HttpServlet {
 				o.flush();
 				o.close();
 			} else {
-				System.out.println("Character Bleach "+ id + " not found");
+				System.out.println("Character "+ id + " not found");
 			}
 			rs.close();
 			bleach.close();
