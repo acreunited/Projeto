@@ -36,12 +36,14 @@ public class FindOpponent extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
-		
+		//Matchmaking.matchFoundQuick.clear();
 		String battle = request.getParameter("matchType");
-		String userID = request.getParameter("userID");
+		int userID = (int) session.getAttribute("userID");
 		String char1 = request.getParameter("char1");
 		String char2 = request.getParameter("char2");
 		String char3 = request.getParameter("char3");
+		
+		System.out.println("User "+userID+" entered battle!");
 		
 		session.setAttribute("this_id", userID);
 		session.setAttribute("this_char1", char1);
@@ -49,7 +51,7 @@ public class FindOpponent extends HttpServlet {
 		session.setAttribute("this_char3", char3);
 		
 		//Queue.queueQuick.add(new Team(userID, char1, char2, char3));
-		Queue playerTeam = new Queue(new Player(userID), new Team(char1, char2, char3));
+		Queue playerTeam = new Queue(new Player(""+userID), new Team(char1, char2, char3));
 		//Matchmaking.matchQuick.add( new Queue(new Player(userID), new Team(char1, char2, char3)) );
 		
 		boolean cancel = false;
@@ -90,7 +92,7 @@ public class FindOpponent extends HttpServlet {
 					Queue key = (Queue) me.getKey();
 					String playerID_key = key.getPlayer().getPlayerID();
 					
-					if (playerID_key.equals(userID)) {
+					if (playerID_key.equals(""+userID)) {
 						player_match = (Queue) me.getKey();
 						opp_match = (Queue) me.getValue();
 						
@@ -101,15 +103,15 @@ public class FindOpponent extends HttpServlet {
 						
 						Matchmaking.matchFoundQuick.remove(player_match);
 						Matchmaking.matchFoundQuick.remove(opp_match);
-						
+						Matchmaking.matchFoundQuick.clear();
 						response.sendRedirect("battle.jsp");
 						break;
 					}
 
 					
 		          }
-			
-				
+				//Matchmaking.matchFoundQuick.clear();
+				//response.sendRedirect("battle.jsp");
 				System.out.println("SIZE: "+Matchmaking.matchFoundQuick.size());
 
 				

@@ -41,9 +41,12 @@ public class ViewAvatar extends HttpServlet {
 				response.setContentType("image/png");
 				OutputStream o = response.getOutputStream();
 				Blob img = rs.getBlob("avatar");
-				byte[] sImage = img.getBytes(1, (int) img.length());
-				o.write(sImage, 0, sImage.length);
-				o.flush();
+				if (img!=null) {
+					byte[] sImage = img.getBytes(1, (int) img.length());
+					o.write(sImage, 0, sImage.length);
+					o.flush();
+				}
+				
 				o.close();
 			} else {
 				System.out.println("Avatar "+ id + " not found");

@@ -176,3 +176,8 @@ select * from THEME_CHARACTER where characterID=9;
 
 select * from SAO;
 select * from THEME_CHARACTER where themeID=1;
+
+select * from USERS;
+
+select * from THEME_CHARACTER where themeID=1;
+select * from THEME_CHARACTER where themeID=0;

@@ -228,10 +228,7 @@
 					} catch (SQLException | IOException e) {
 					System.out.println(e.getMessage());
 					}
-					%>
-                  
-                  
-                <%
+					
 				Class.forName(Connector.drv);
 				try (Connection conn = Connector.getConnection();) {
 					Statement stmt = conn.createStatement();
@@ -290,7 +287,7 @@
 					try (Connection conn = Connector.getConnection();) {
 						Statement stmt = conn.createStatement();
 						
-						ResultSet player0 = stmt.executeQuery("select * from USERS where userID=0;");
+						ResultSet player0 = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("this_id")+";");
 						
 						if (player0.next()) {
 							String userID = player0.getString("userID");
@@ -313,9 +310,9 @@
                      Ladderrank: <br>
                      Ratio: <%=wins %>-<%=losses %> (+<%=streak %>)</div>
                      <div class="mc_info_team">
-                        <div class="mc_info_team1"><img src="ViewCharacter?id=0"></div>
-                        <div class="mc_info_team2"><img src="ViewCharacter?id=6"></div>
-                        <div class="mc_info_team3"><img src="ViewCharacter?id=7"></div>
+                        <div class="mc_info_team1"><img src="ViewCharacter?id=<%=session.getAttribute("this_char1")%>"></div>
+                        <div class="mc_info_team2"><img src="ViewCharacter?id=<%=session.getAttribute("this_char2")%>"></div>
+                        <div class="mc_info_team3"><img src="ViewCharacter?id=<%=session.getAttribute("this_char3")%>"></div>
                      </div>
                   </div>
                   <%
@@ -324,13 +321,12 @@
 					} catch (SQLException | IOException e) {
 					System.out.println(e.getMessage());
 					}	
-                  %>
-                             <%
+              
 					Class.forName(Connector.drv);
 					try (Connection conn = Connector.getConnection();) {
 						Statement stmt = conn.createStatement();
 						
-						ResultSet player1 = stmt.executeQuery("select * from USERS where userID=1;");
+						ResultSet player1 = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("opp_id")+";");
 						
 						if (player1.next()) {
 							String userID = player1.getString("userID");
@@ -353,9 +349,9 @@
                      Ladderrank: <br>
                      Ratio: <%=wins %>-<%=losses %> (+<%=streak %>)</div>
                      <div class="mc_info_team">
-                        <div class="mc_info_team1"><img src="ViewCharacter?id=0"></div>
-                        <div class="mc_info_team2"><img src="ViewCharacter?id=1"></div>
-                        <div class="mc_info_team3"><img src="ViewCharacter?id=4"></div>
+                        <div class="mc_info_team1"><img src="ViewCharacter?id=<%=session.getAttribute("opp_char1")%>"></div>
+                        <div class="mc_info_team2"><img src="ViewCharacter?id=<%=session.getAttribute("opp_char2")%>"></div>
+                        <div class="mc_info_team3"><img src="ViewCharacter?id=<%=session.getAttribute("opp_char3")%>"></div>
                      </div>
                   </div>
                   <%
@@ -372,7 +368,11 @@
 					try (Connection conn = Connector.getConnection();) {
 						Statement stmt = conn.createStatement();
 						
-						ResultSet characters = stmt.executeQuery("select * from THEME_CHARACTER where themeID=1 and (characterID=0 or characterID=4 or characterID=6 or characterID=1 or characterID=7);");
+						ResultSet characters = stmt.executeQuery(
+								"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("this_char1")+ 
+								" or characterID="+session.getAttribute("this_char2")+ " or characterID="+session.getAttribute("this_char3")+ 
+								" or characterID="+session.getAttribute("opp_char1")+"  or characterID="+session.getAttribute("opp_char2")+ 
+								"  or characterID="+session.getAttribute("opp_char3")+");");
 						
 						while (characters.next()) {
 							String characterID = characters.getString("characterID");
@@ -457,6 +457,7 @@ function displayNones() {
 }
 
 function characterFooterInfo(id) {
+	console.log(id);
 	displayNones();
 	document.getElementById("character"+id).style.display="block";
 }
