@@ -12,7 +12,7 @@ public class Matchmaking {
 	public static CopyOnWriteArrayList<Queue> matchQuickRemove = new CopyOnWriteArrayList<>();
 	public static ConcurrentHashMap<Queue, Queue> matchFoundQuick = new ConcurrentHashMap<>();
 	
-	public static boolean search = true;
+	
 	
 	
 }

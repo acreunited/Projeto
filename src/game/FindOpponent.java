@@ -30,30 +30,71 @@ public class FindOpponent extends HttpServlet {
 		super();
 	}
 	
+
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
-		//Matchmaking.matchFoundQuick.clear();
-		String battle = request.getParameter("matchType");
+		
 		int userID = (int) session.getAttribute("userID");
 		String char1 = request.getParameter("char1");
 		String char2 = request.getParameter("char2");
 		String char3 = request.getParameter("char3");
-		
-		System.out.println("User "+userID+" entered battle!");
 		
 		session.setAttribute("this_id", userID);
 		session.setAttribute("this_char1", char1);
 		session.setAttribute("this_char2", char2);
 		session.setAttribute("this_char3", char3);
 		
-		//Queue.queueQuick.add(new Team(userID, char1, char2, char3));
-		Queue playerTeam = new Queue(new Player(""+userID), new Team(char1, char2, char3));
-		//Matchmaking.matchQuick.add( new Queue(new Player(userID), new Team(char1, char2, char3)) );
+		Queue playerTeam = new Queue(userID, new Team(char1, char2, char3));
 		
+		boolean searching = true;
+		String state = "START";
+		
+		while (searching) {
+			
+			switch (state) {
+			
+			case "END":
+				searching = false;
+				break;
+			
+			//enter Queue
+			case "START":
+				Matchmaking.matchQuick.add(playerTeam);
+				state = "WAITING";
+				break;
+				
+			case "WAITING":
+				state = (Matchmaking.matchQuick.size()>1) ? "PAIRING" : "WAITING";
+				break;
+				
+			case "PAIRING":
+				for (Queue q : Matchmaking.matchQuick) {
+					if (q.getPlayer()!=userID) {
+						//System.out.println("THIS USER "+userID+"\nOPP: "+q.getPlayer());
+						session.setAttribute("opp_id", q.getPlayer());
+						session.setAttribute("opp_char1", q.getTeam().getChar1());
+						session.setAttribute("opp_char2", q.getTeam().getChar2());
+						session.setAttribute("opp_char3", q.getTeam().getChar3());
+						state = "END";
+						break;
+					}
+				}
+				break;
+				
+			case "REDIRECT":
+				
+				break;
+				
+			}
+		}
+		response.sendRedirect("battle.jsp");
+		
+		/*
 		boolean cancel = false;
 		String state = "ENTERING";
 		
@@ -119,7 +160,7 @@ public class FindOpponent extends HttpServlet {
 				break;
 				
 			}
-		}
+		}*/
 		
 		
 
@@ -131,7 +172,7 @@ public class FindOpponent extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	private void tryAdd(CopyOnWriteArrayList<Queue> arr, Queue queue) {
+	/*private void tryAdd(CopyOnWriteArrayList<Queue> arr, Queue queue) {
 		
 		for (Queue q : arr) {
 			if (q.getPlayer().getPlayerID().equalsIgnoreCase(queue.getPlayer().getPlayerID())) {
@@ -139,9 +180,9 @@ public class FindOpponent extends HttpServlet {
 			}
 		}
 		arr.add(queue);		
-	}
+	}*/
 	
-	private boolean oppFound(CopyOnWriteArrayList<Queue> arr, Queue player) {
+	/*private boolean oppFound(CopyOnWriteArrayList<Queue> arr, Queue player) {
 		
 		if (arr.size()<=1) {
 			return false;
@@ -158,13 +199,13 @@ public class FindOpponent extends HttpServlet {
 			}
 		}
 		return false;
-	}
-	private void removeFromQueue(CopyOnWriteArrayList<Queue> queue, CopyOnWriteArrayList<Queue> remove) {
+	}*/
+	/*private void removeFromQueue(CopyOnWriteArrayList<Queue> queue, CopyOnWriteArrayList<Queue> remove) {
 
 		for (Queue q : remove) {
 			queue.remove(q);
 		}
-	}
+	}*/
 	
 	/*private void tryRemove(ArrayList<Queue> arr, Queue entry) {
 		if (arr.size()<=1) {
