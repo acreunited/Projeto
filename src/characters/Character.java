@@ -1,5 +1,7 @@
 package characters;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Character {
@@ -20,12 +22,50 @@ public class Character {
 
 	}
 	
-	public void applyAbility(Character c, String abilityName) {
-		//Ability.abilityName(c);
+	public void ability1() {
+		incrementalDamage(20, 5);
+	}
+	public void ability2() {
+		damage(40);
+		stun(1);
+	}
+	public void ability3() {
+		bePiercing(3);
+		gainDefense(15);
+	}
+	public void ability4() {
+		beInvulnerable(1);
+	}
+	
+	
+	public void applyAbility(String abilityName) {
+	
+		Method metodo;
+		try {
+			metodo = this.getClass().getMethod(abilityName);
+			try {
+				metodo.invoke(this);
+			} catch (IllegalAccessException e) {
 		
-		if (abilityName.equals("ZangetsuSlash")) {
-			 Ability.ZengetsuSlash(c);
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+			
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				
+				e.printStackTrace();
+			}
+		} catch (NoSuchMethodException e) {
+		
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			
+			e.printStackTrace();
 		}
+		
+		
+		
+		
 	}
 	
 	public void addAbility(String abilityName) {

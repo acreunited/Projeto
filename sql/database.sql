@@ -205,7 +205,7 @@ ALTER TABLE ABILITY add
 create table THEME_CHARACTER (
 	characterID int not null, 
     themeID int not null,
-    nome varchar(16) not null,
+    nome varchar(32) not null,
     avatar blob,
     descricao varchar(5000) not null,
     constraint pk_associates_character primary key (themeID, characterID),
@@ -216,7 +216,7 @@ create table THEME_CHARACTER (
 create table THEME_ABILITY (
 	abilityID int not null, 
     themeID int not null,
-    nome varchar(16) not null,
+    nome varchar(32) not null,
     avatar blob,
     descricao varchar(5000) not null,
     constraint pk_associates_character primary key (themeID, abilityID),

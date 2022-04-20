@@ -19,7 +19,9 @@ import org.w3c.dom.Element;
 
 public class ManipulateXML {
 	
-	
+	private String zeroIfNull(String s) {
+		return (s==null) ? "0" : s;
+	}
 	
 	public boolean writeXML(String abilityID, String name, String description, String taijutsu, String heart, String energy, 
 			String spirit, String random, String cooldown, String targetClick, String damageNumber, String damageDuration,
@@ -29,6 +31,25 @@ public class ManipulateXML {
 			String gainDDDuration, String gainDRNumber, String gainDRDuration, String moreDamagePerHPLostDamage, 
 			String moreDamagePerHPLostHP, String moreDamagePerEnemyHPLostDamage, String moreDamagePerEnemyHPLostHP, 
 			String temporaryDamageIncreaseDamage, String temporaryDamageIncreaseDuration) {
+		
+		damageNumber = zeroIfNull(damageNumber);
+		damageDuration = zeroIfNull(damageDuration);
+		removeNatureNumber = zeroIfNull(removeNatureNumber);
+		removeNatureDuration = zeroIfNull(removeNatureDuration);
+		gainNatureNumber = zeroIfNull(gainNatureNumber);
+		gainNatureDuration = zeroIfNull(gainNatureDuration);
+		gainHPNumber = zeroIfNull(gainHPNumber);
+		gainHPDuration = zeroIfNull(gainHPDuration);
+		gainDDNumber = zeroIfNull(gainDDNumber);
+		gainDDDuration = zeroIfNull(gainDDDuration);
+		gainDRNumber = zeroIfNull(gainDRNumber);
+		gainDRDuration = zeroIfNull(gainDRDuration);
+		moreDamagePerHPLostDamage = zeroIfNull(moreDamagePerHPLostDamage);
+		moreDamagePerHPLostHP = zeroIfNull(moreDamagePerHPLostHP);
+		moreDamagePerEnemyHPLostDamage = zeroIfNull(moreDamagePerEnemyHPLostDamage);
+		moreDamagePerEnemyHPLostHP = zeroIfNull(moreDamagePerEnemyHPLostHP);
+		temporaryDamageIncreaseDamage = zeroIfNull(temporaryDamageIncreaseDamage);
+		temporaryDamageIncreaseDuration = zeroIfNull(temporaryDamageIncreaseDuration);
 		
 		
 		try {
@@ -159,10 +180,10 @@ public class ManipulateXML {
 			moreDmgHP.appendChild(extraDmgHP);
 			newAbility.appendChild(moreDmgHP);
 			
-			if (gainHPNumber==null || gainHPDuration==null) {
+			/*if (gainHPNumber==null || gainHPDuration==null) {
 				gainHPNumber = "0";
 				gainHPDuration = "0";
-			}
+			}*/
 			Element gainHP = document.createElement("gainHP");
 			Element hpNumber = document.createElement("number");
 			hpNumber.appendChild(document.createTextNode(gainHPNumber));

@@ -395,7 +395,7 @@ public class CreateCharacterMission extends HttpServlet {
 			String removeNatureNumber2 = null;
 			String removeNatureDuration2 = null;
 			String removesNature2 = request.getParameter("ability2removeNature");
-			if (removesNature.equalsIgnoreCase("no")) {
+			if (removesNature2.equalsIgnoreCase("no")) {
 				removeNatureNumber2 = "0";
 				removeNatureDuration2 = "0";
 			}
@@ -407,7 +407,7 @@ public class CreateCharacterMission extends HttpServlet {
 			String gainNatureNumber2 = null;
 			String gainNatureDuration2 = null;
 			String gainsNature2 = request.getParameter("ability2gainNature");
-			if (gainsNature.equalsIgnoreCase("no")) {
+			if (gainsNature2.equalsIgnoreCase("no")) {
 				gainNatureNumber2 = "0";
 				gainNatureDuration2 = "0";
 			}
@@ -588,7 +588,7 @@ public class CreateCharacterMission extends HttpServlet {
 			String removeNatureNumber3 = null;
 			String removeNatureDuration3 = null;
 			String removesNature3 = request.getParameter("ability3removeNature");
-			if (removesNature.equalsIgnoreCase("no")) {
+			if (removesNature3.equalsIgnoreCase("no")) {
 				removeNatureNumber3 = "0";
 				removeNatureDuration3 = "0";
 			}
@@ -600,7 +600,7 @@ public class CreateCharacterMission extends HttpServlet {
 			String gainNatureNumber3 = null;
 			String gainNatureDuration3 = null;
 			String gainsNature3 = request.getParameter("ability3gainNature");
-			if (gainsNature.equalsIgnoreCase("no")) {
+			if (gainsNature3.equalsIgnoreCase("no")) {
 				gainNatureNumber3 = "0";
 				gainNatureDuration3 = "0";
 			}
@@ -781,7 +781,7 @@ public class CreateCharacterMission extends HttpServlet {
 			String removeNatureNumber4 = null;
 			String removeNatureDuration4 = null;
 			String removesNature4 = request.getParameter("ability4removeNature");
-			if (removesNature.equalsIgnoreCase("no")) {
+			if (removesNature4.equalsIgnoreCase("no")) {
 				removeNatureNumber4 = "0";
 				removeNatureDuration4 = "0";
 			}
@@ -793,7 +793,7 @@ public class CreateCharacterMission extends HttpServlet {
 			String gainNatureNumber4 = null;
 			String gainNatureDuration4 = null;
 			String gainsNature4 = request.getParameter("ability4gainNature");
-			if (gainsNature.equalsIgnoreCase("no")) {
+			if (gainsNature4.equalsIgnoreCase("no")) {
 				gainNatureNumber4 = "0";
 				gainNatureDuration4 = "0";
 			}

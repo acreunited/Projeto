@@ -237,7 +237,7 @@
 								<b>Character Name</b>
 							</label>
 							<input type="text" placeholder="Character Name" name="characterName"
-								pattern="[A-Za-z\s]{1,16}" required
+								pattern="[A-Za-z\s]{1,32}" required
 							/>
 						</div>
 						<div class="container">
@@ -263,7 +263,7 @@
 								<b>Ability<%=i%> Name</b>
 							</label>
 							<input type="text" placeholder="Ability Name" name="ability<%=i%>"
-								pattern="[A-Za-z\s]{1,16}" required
+								pattern="[A-Za-z\s]{1,32}" required
 							/>
 						</div>
 						
