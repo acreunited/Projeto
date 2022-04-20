@@ -51,6 +51,8 @@ public class FindOpponent extends HttpServlet {
 		
 		Queue playerTeam = new Queue(userID, new Team(char1, char2, char3));
 		
+		System.out.println(Matchmaking.matchQuick.size());
+		
 		boolean searching = true;
 		String state = "START";
 		
@@ -92,6 +94,9 @@ public class FindOpponent extends HttpServlet {
 				
 			}
 		}
+		
+		//TODO melhorar isto. Não pode ficar assim
+		Matchmaking.matchQuick.clear();
 		response.sendRedirect("battle.jsp");
 		
 		/*
