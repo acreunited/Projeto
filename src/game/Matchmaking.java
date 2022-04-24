@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import communication.Client;
+import communication.Server;
+
 
 public class Matchmaking {
 	
@@ -12,7 +15,8 @@ public class Matchmaking {
 	public static CopyOnWriteArrayList<Queue> matchQuickRemove = new CopyOnWriteArrayList<>();
 	public static ConcurrentHashMap<Queue, Queue> matchFoundQuick = new ConcurrentHashMap<>();
 	
-	
+	public static  ArrayList<Server> allServers = new ArrayList<>();
+	public static CopyOnWriteArrayList<Integer> allClients = new CopyOnWriteArrayList<>();
 	
 	
 }
