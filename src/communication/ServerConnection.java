@@ -33,8 +33,26 @@ public class ServerConnection extends Thread {
 				
 				switch (state) {
 				
-				//esperar que jogador termine o turno
+				//waiting for the 2 players to enter
 				case "WAITING":
+					state = (this.server.getConnections().size()==2) ? "START" : "WAITING";
+					break;
+					
+				//give turns to the players
+				case "START":
+					boolean player0 = Math.random() < 0.5;
+					
+					ServerConnection conect0 = this.server.getConnections().get(0);
+					ServerConnection conect1 = this.server.getConnections().get(1);
+					
+					break;
+				
+				case "READING":
+					break;
+				
+				
+				//esperar que jogador termine o turno
+				/*case "WAITING":
 					state = (isButtonTurnClicked()) ? "TURN" : "WAITING";
 					break;
 					
@@ -42,7 +60,7 @@ public class ServerConnection extends Thread {
 					System.out.println("BUTTON WAS CLICKED");
 					setButtonTurnClicked(false);
 					state = "WAITING";
-					break;
+					break;*/
 				}
 				
 				
@@ -83,11 +101,6 @@ public class ServerConnection extends Thread {
 			sc.sendStringToClient(text);
 		}
 	}
-	
-	
-	
-	
-	
 	
 	public Socket getSocket() {
 		return socket;

@@ -16,7 +16,7 @@ public class Matchmaking {
 	public static ConcurrentHashMap<Queue, Queue> matchFoundQuick = new ConcurrentHashMap<>();
 	
 	public static  ArrayList<Server> allServers = new ArrayList<>();
-	public static CopyOnWriteArrayList<Integer> allClients = new CopyOnWriteArrayList<>();
+	public static CopyOnWriteArrayList<Client> allClients = new CopyOnWriteArrayList<>();
 	
 	
 }

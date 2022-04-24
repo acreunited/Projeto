@@ -125,6 +125,7 @@ public class ClientConnection extends Thread {
 		return buttonTurnClicked;
 	}
 	public void setButtonTurnClicked(boolean buttonTurnClicked) {
+		System.out.println("mudar bptao");
 		this.buttonTurnClicked = buttonTurnClicked;
 	}
 

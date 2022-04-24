@@ -10,6 +10,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="main.Connector"%>
 <%@page import="users.UserInfo"%>
+<%@page import="game.InGame"%>
 
 <html lang="en" id="move">
 
@@ -23,6 +24,7 @@
   <title>Game Selection</title>
   
  <link href="css/ingameBattle.css" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 <body>
@@ -75,7 +77,7 @@
                         <div class="mc_bar_ready opp_text" style="display:none;" onclick="changeTurnTo('my')">
                            Opponent Turn...
                         </div>
-                        <div class="mc_bar_ready my_turn" onclick="changeTurnTo('opp')">
+                        <div class="mc_bar_ready my_turn" id="passTurn">
                            Press To End Turn
                         </div>
                         <div class="mc_energy_system my_turn">
@@ -440,6 +442,18 @@
          </div>
     
 <script  type="text/javascript">
+
+$('#passTurn').click(function() {
+	$.ajax({
+		type: "POST",
+		url: "InGame",
+		data: {
+			"name" : "sdcsdc"
+		}
+	});
+});
+
+
 
 
 function displayNones() {

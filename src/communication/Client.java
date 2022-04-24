@@ -64,10 +64,6 @@ public class Client {
 		return cc;
 	}
 
-	public void setCc(ClientConnection cc) {
-		this.cc = cc;
-	}
-
 	public int getPort() {
 		return port;
 	}

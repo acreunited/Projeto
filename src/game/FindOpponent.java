@@ -96,7 +96,6 @@ public class FindOpponent extends HttpServlet {
 				break;
 				
 			case "PAIRING":
-				System.out.println("STATE: "+state);
 				for (Queue q : Matchmaking.matchQuick) {
 					if (q.getPlayer()!=userID) {
 						session.setAttribute("opp_id", q.getPlayer());
@@ -110,9 +109,9 @@ public class FindOpponent extends HttpServlet {
 				break;
 				
 			case "CLIENT":
-				System.out.println("STATE: "+state);
 				Client cliente = new Client(3333, userID);
-				session.setAttribute("thread", cliente);
+				Matchmaking.allClients.add(cliente);
+				//session.setAttribute("thread", cliente);
 
 				state = "END";
 				break;
@@ -122,7 +121,7 @@ public class FindOpponent extends HttpServlet {
 		
 		//TODO melhorar isto. Não pode ficar assim
 		Matchmaking.matchQuick.clear();
-		Matchmaking.allClients.clear();
+		//Matchmaking.allClients.clear();
 		
 		response.sendRedirect("battle.jsp");
 	}
