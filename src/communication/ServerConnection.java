@@ -3,7 +3,15 @@ package communication;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.math.MathContext;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+
+import game.Matchmaking;
 
 public class ServerConnection extends Thread {
 	
@@ -13,6 +21,7 @@ public class ServerConnection extends Thread {
 	private DataOutputStream dout;
 	private boolean shouldRun;
 	private boolean buttonTurnClicked;
+	private boolean turnsDefined;
 	
 	public ServerConnection(Socket socket, Server server) {
 		super("ServerConnectionThread"+server.getPort());
@@ -20,8 +29,10 @@ public class ServerConnection extends Thread {
 		this.server = server;
 		this.shouldRun = true;
 		this.buttonTurnClicked = false;
+		this.turnsDefined = false;
 	}
 	
+
 
 	public void run() {
 		try {
@@ -35,16 +46,16 @@ public class ServerConnection extends Thread {
 				
 				//waiting for the 2 players to enter
 				case "WAITING":
-					state = (this.server.getConnections().size()==2) ? "START" : "WAITING";
+					state = (nConections()==2) ? "START" : "WAITING";
 					break;
 					
 				//give turns to the players
 				case "START":
 					boolean player0 = Math.random() < 0.5;
-					
-					ServerConnection conect0 = this.server.getConnections().get(0);
-					ServerConnection conect1 = this.server.getConnections().get(1);
-					
+					setTurns(player0);
+					//ServerConnection conect0 = this.server.getConnections().get(0);
+					//ServerConnection conect1 = this.server.getConnections().get(1);
+					state = "READING";
 					break;
 				
 				case "READING":
@@ -87,6 +98,62 @@ public class ServerConnection extends Thread {
 		
 	}
 	
+	private void setTurns(boolean first) {
+		Client one = getFirstPlayer();
+		Client two = getSecondPlayer();
+		
+		one.getCc().setPlayerTurn(first);
+		two.getCc().setPlayerTurn(!first);
+		
+		one.getCc().setTurnsDefined(true);
+		two.getCc().setTurnsDefined(true);
+	}
+	
+	private synchronized int nConections() {
+		int count = 0;
+		ConcurrentHashMap<Client, Integer> map = Matchmaking.connections;
+		
+		for (Entry<Client, Integer> entry : map.entrySet()) {
+		    //Integer list = entry.getValue();
+		    // Do things with the list
+			if (entry.getValue()==this.getServer().getPort()) {
+				count++;
+			}
+		}
+		
+		return count;
+	}
+	private Client getFirstPlayer() {
+		ConcurrentHashMap<Client, Integer> map = Matchmaking.connections;
+		
+		for (Entry<Client, Integer> entry : map.entrySet()) {
+			if (entry.getValue()==this.getServer().getPort()) {
+				return entry.getKey();
+			}
+		}
+		return null;
+	}
+	private Client getSecondPlayer() {
+		ConcurrentHashMap<Client, Integer> map = Matchmaking.connections;
+		Client[] clients = new Client[2];
+		int count = 0;
+		
+		for (Entry<Client, Integer> entry : map.entrySet()) {
+			if (entry.getValue()==this.getServer().getPort()) {
+				clients[count] = entry.getKey();
+				count++;
+			}
+		}
+		return clients[1];
+	}
+	
+	
+	
+	
+	
+	
+	
+	/*
 	public void sendStringToClient(String text) {
 		try {
 			dout.writeUTF(text);
@@ -100,7 +167,7 @@ public class ServerConnection extends Thread {
 			ServerConnection sc = server.connections.get(i);
 			sc.sendStringToClient(text);
 		}
-	}
+	}*/
 	
 	public Socket getSocket() {
 		return socket;
@@ -151,6 +218,7 @@ public class ServerConnection extends Thread {
 	public void setButtonTurnClicked(boolean buttonTurnClicked) {
 		this.buttonTurnClicked = buttonTurnClicked;
 	}
+
 
 
 }

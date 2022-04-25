@@ -29,7 +29,12 @@
 </head>
 <body>
 
-      <div id="app" class="central">
+<script>
+window.onload = function() {
+	defineTurns();
+};
+</script>
+<div id="app" class="central">
          <div id="root">
             <div class="mc_custom">
                
@@ -74,7 +79,7 @@
                         <div class="mc_bar_back">
                            <div class="mc_bar_fill" style="width: 133.7px;"></div>
                         </div>
-                        <div class="mc_bar_ready opp_text" style="display:none;" onclick="changeTurnTo('my')">
+                        <div class="mc_bar_ready opp_text" style="display:none;">
                            Opponent Turn...
                         </div>
                         <div class="mc_bar_ready my_turn" id="passTurn">
@@ -492,13 +497,15 @@ function playerFooterInfo(my_opp) {
 	
 }
 
-function changeTurnTo(turn) {
+function defineTurns() {
+
+	var turn = <%=session.getAttribute("turn")%>;
 	
 	var opp = document.getElementsByClassName ("opp_turn");
 	var opp_text = document.getElementsByClassName ("opp_text");
 	var my = document.getElementsByClassName ("my_turn");
 	
-	if (turn=="my") {
+	if (turn==true) {
 		
 		 
 		for (var i = 0; i < opp.length; i++) {
@@ -511,7 +518,7 @@ function changeTurnTo(turn) {
 			my[i].style.display="block";
 		}
 	}
-	else if (turn=="opp") {
+	else if (turn==false) {
 
 		for (var i = 0; i < opp.length; i++) {
 			opp[i].style.display="block";

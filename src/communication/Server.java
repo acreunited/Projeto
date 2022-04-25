@@ -16,7 +16,6 @@ public class Server {
 	//private DataOutputStream dout;
 	//private boolean shouldRun;
 	private ServerSocket ss;
-	public ArrayList<ServerConnection> connections = new ArrayList<ServerConnection>();
 	private int port;
 
 	public Server(int port) {
@@ -29,7 +28,7 @@ public class Server {
 				Socket s = ss.accept();
 				ServerConnection sc = new ServerConnection(s, this);
 				sc.start();
-				connections.add(sc);
+				
 				//}
 			} catch (IOException e) {
 				
@@ -44,14 +43,6 @@ public class Server {
 
 	public void setSs(ServerSocket ss) {
 		this.ss = ss;
-	}
-
-	public ArrayList<ServerConnection> getConnections() {
-		return connections;
-	}
-
-	public void setConnections(ArrayList<ServerConnection> connections) {
-		this.connections = connections;
 	}
 
 	public int getPort() {

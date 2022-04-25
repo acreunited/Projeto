@@ -5,7 +5,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+
+import game.Matchmaking;
 
 public class Client {
 
@@ -27,6 +31,7 @@ public class Client {
 			Socket s = new Socket("localhost", this.port);
 			cc = new ClientConnection(s, this);
 			cc.start();
+			Matchmaking.connections.put(this, this.port);
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

@@ -62,6 +62,7 @@ public class FindOpponent extends HttpServlet {
 		
 		boolean searching = true;
 		String state = "PORT";
+		Client cliente = null;
 		
 		while (searching) {
 			
@@ -72,7 +73,7 @@ public class FindOpponent extends HttpServlet {
 				break;
 				
 			case "PORT":
-				state = (isPortInUse(3333)) ? "START" : "SERVER";
+				state = (isPortInUse(3333)) ? "CLIENT" : "SERVER";
 				break;
 				
 			case "SERVER":
@@ -81,9 +82,18 @@ public class FindOpponent extends HttpServlet {
 					Server server = new Server(3333);
 					Matchmaking.allServers.add(server);
 				}
-				state = "START";
+				state = "CLIENT";
 					
 				break;
+				
+			case "CLIENT":
+				cliente = new Client(3333, userID);
+				Matchmaking.allClients.add(cliente);
+				//session.setAttribute("thread", cliente);
+
+				state = "START";
+				break;
+			
 			
 			//enter Queue
 			case "START":
@@ -103,21 +113,28 @@ public class FindOpponent extends HttpServlet {
 						session.setAttribute("opp_char2", q.getTeam().getChar2());
 						session.setAttribute("opp_char3", q.getTeam().getChar3());
 						
-						state = "CLIENT";
+						state = "TURNS";
 					}
 				}
 				break;
 				
-			case "CLIENT":
-				Client cliente = new Client(3333, userID);
-				Matchmaking.allClients.add(cliente);
-				//session.setAttribute("thread", cliente);
-
-				state = "END";
+			case "TURNS":
+				state = (cliente.getCc().isTurnsDefined()) ? "SESSION" : "TURNS";
 				break;
+				
+			case "SESSION":
+				
+				System.out.println("SERVLET TURN: "+cliente.getCc().isPlayerTurn());
+				session.setAttribute("turn", cliente.getCc().isPlayerTurn());
+				state = "END";
+				
+				break;
+			
 			}
+		
 		}
 
+		
 		
 		//TODO melhorar isto. Não pode ficar assim
 		Matchmaking.matchQuick.clear();

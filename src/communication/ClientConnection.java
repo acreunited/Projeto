@@ -13,13 +13,18 @@ public class ClientConnection extends Thread {
 	private boolean shouldRun;
 	private Client client;
 	private boolean buttonTurnClicked;
+	private boolean playerTurn;
+	private boolean turnsDefined;
 	
 	
 	public ClientConnection(Socket socket, Client client) {
+		super("ClientConnectionThread"+client.getPort());
+		
 		this.socket = socket; 
 		this.client = client;
 		this.shouldRun = true;
 		this.buttonTurnClicked = false;
+		this.turnsDefined = false;
 	}
 	public void sendStringToServer(String text) {
 		try {
@@ -43,6 +48,12 @@ public class ClientConnection extends Thread {
 				
 				case "WAITING":
 					state = (isButtonTurnClicked()) ? "ENDTURN" : "WAITING";
+					try {
+						System.out.println("Player "+this.getClient().getId()+ " Turn: "+this.isPlayerTurn());
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 					break;
 					
 				case "ENDTURN":
@@ -127,6 +138,18 @@ public class ClientConnection extends Thread {
 	public void setButtonTurnClicked(boolean buttonTurnClicked) {
 		System.out.println("mudar bptao");
 		this.buttonTurnClicked = buttonTurnClicked;
+	}
+	public boolean isPlayerTurn() {
+		return playerTurn;
+	}
+	public void setPlayerTurn(boolean playerTurn) {
+		this.playerTurn = playerTurn;
+	}
+	public boolean isTurnsDefined() {
+		return turnsDefined;
+	}
+	public void setTurnsDefined(boolean turnsDefined) {
+		this.turnsDefined = turnsDefined;
 	}
 
 
