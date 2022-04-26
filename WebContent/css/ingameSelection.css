@@ -103,7 +103,9 @@
     
 }
 .borda {
-    border: 1px solid #000
+    outline-style: solid ;
+	outline-color: #000000;
+	outline-width: 1px;
 }
 .personagem {
     height: 48px;
@@ -136,7 +138,10 @@
 
 .avatar {
     height: 75px;
-    width: 75px
+    width: 75px;
+    outline-style: solid ;
+	outline-color: #000000;
+	outline-width: 1px;
 }
 
 .mold {
@@ -243,7 +248,9 @@
     top: 32px;
 }
 .borda {
-    border: 1px solid #000;
+    outline-style: solid ;
+	outline-color: #000000;
+	outline-width: 1px;
 }
 .desc, .nomeskill {
     position: absolute;
@@ -326,7 +333,9 @@
     width: 75px;
 }
 .borda {
-    border: 1px solid #000;
+    outline-style: solid ;
+	outline-color: #000000;
+	outline-width: 1px;
 }
 nav {
     display: block;
