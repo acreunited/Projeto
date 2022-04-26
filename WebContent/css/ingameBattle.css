@@ -754,11 +754,11 @@
 .mc_energy_bar{
     background-image:url(../battle/energy_bar.png);
     background-repeat:no-repeat;
-    height:10px;
+    height:18px;
     left:3px;
     position:absolute;
-    top:-13px;
-    width:175px;
+    top:-19px;
+    width:180px;
 
 }
 .mc_energy_txt strong{
@@ -766,23 +766,23 @@
     margin-right:26px
 }
 .mc_energy_txt .energy0{
-    left:2px;
+    left:6px;
     position:absolute
 }
 .mc_energy_txt .energy1{
-    left:42px;
+    left:46px;
     position:absolute
 }
 .mc_energy_txt .energy2{
-    left:82px;
+    left:88px;
     position:absolute
 }
 .mc_energy_txt .energy3{
-    left:122px;
+    left:128px;
     position:absolute
 }
 .mc_energy_txt .energy4{
-    left:162px;
+    left:168px;
     position:absolute
 }
 .mc_energy_txt{
