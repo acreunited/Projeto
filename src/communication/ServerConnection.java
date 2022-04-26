@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 import game.Matchmaking;
@@ -50,7 +51,7 @@ public class ServerConnection extends Thread {
 				//give turns to the players
 				case "START":
 					boolean player0 = Math.random() < 0.5;
-					setTurns(player0, !player0);
+					setFirstTurns(player0, !player0);
 					
 					//state = (!player0) ? "PLAYER0" : "PLAYER1";
 					state = "IDLE";
@@ -148,7 +149,48 @@ public class ServerConnection extends Thread {
 		
 		
 	}
+	
+	private void generateRandomNatures(Client c, int number) {
+		for (int i = 0; i < number; i++) {
+			Random r = new Random();
+			int randomInt = r.nextInt(100) + 1;
+			if (randomInt <=25) {
+				c.getCc().addTaijutsu();
+			}
+			else if (randomInt <= 50) {
+				c.getCc().addEnergy();
+			}
+			else if (randomInt <=75) {
+				c.getCc().addSpirit();
+			}
+			else {
+				c.getCc().addHeart();
+			}
+			c.getCc().setRandom();
+		}
+		
+	}
 
+	private void setFirstTurns(boolean first, boolean second) {
+		Client one = getFirstPlayer();
+		Client two = getSecondPlayer();
+		
+		one.getCc().setPlayerTurn(first);
+		two.getCc().setPlayerTurn(second);
+		
+		if (first) {
+			this.generateRandomNatures(one, 1);
+			//this.generateRandomNatures(two, 3);
+		}
+		else {
+			//this.generateRandomNatures(one, 3);
+			this.generateRandomNatures(two, 1);
+		}
+		
+		
+		one.getCc().setTurnsDefined(true);
+		two.getCc().setTurnsDefined(true);
+	}
 
 	private void setTurns(boolean first, boolean second) {
 		Client one = getFirstPlayer();
@@ -157,11 +199,19 @@ public class ServerConnection extends Thread {
 		one.getCc().setPlayerTurn(first);
 		two.getCc().setPlayerTurn(second);
 		
+		if (first) {
+			this.generateRandomNatures(one, 3);
+			//this.generateRandomNatures(two, 3);
+		}
+		else {
+			//this.generateRandomNatures(one, 3);
+			this.generateRandomNatures(two, 3);
+		}
+		
 		one.getCc().setNeedsRefresh(true);
 		two.getCc().setNeedsRefresh(true);
 		
-		one.getCc().setTurnsDefined(true);
-		two.getCc().setTurnsDefined(true);
+		
 	}
 	
 	private synchronized int nConections() {

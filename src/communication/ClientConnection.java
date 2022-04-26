@@ -16,6 +16,12 @@ public class ClientConnection extends Thread {
 	private boolean playerTurn;
 	private boolean turnsDefined;
 	private boolean needsRefresh;
+	private int taijutsu;
+	private int energy;
+	private int heart;
+	private int spirit;
+	private int random;
+	
 	
 	
 	public ClientConnection(Socket socket, Client client) {
@@ -27,6 +33,11 @@ public class ClientConnection extends Thread {
 		this.buttonTurnClicked = false;
 		this.turnsDefined = false;
 		this.needsRefresh = false;
+		this.taijutsu = 0;
+		this.energy = 0;
+		this.spirit = 0;
+		this.random = 0;
+		this.heart = 0;
 	}
 	public void sendStringToServer(String text) {
 		try {
@@ -100,8 +111,48 @@ public class ClientConnection extends Thread {
 	
 	
 	
-	
-	
+	public int getTaijutsu() {
+		return taijutsu;
+	}
+	public void setTaijutsu(int taijutsu) {
+		this.taijutsu = taijutsu;
+	}
+	public int getEnergy() {
+		return energy;
+	}
+	public void setEnergy(int energy) {
+		this.energy = energy;
+	}
+	public int getHeart() {
+		return heart;
+	}
+	public void setHeart(int heart) {
+		this.heart = heart;
+	}
+	public int getSpirit() {
+		return spirit;
+	}
+	public void setSpirit(int spirit) {
+		this.spirit = spirit;
+	}
+	public int getRandom() {
+		return random;
+	}
+	public void setRandom() {
+		this.random = this.getEnergy()+this.getHeart()+this.getSpirit()+this.getTaijutsu();
+	}
+	public void addSpirit() {
+		this.setSpirit( this.getSpirit()+1 );
+	}
+	public void addTaijutsu() {
+		this.setTaijutsu( this.getTaijutsu()+1 );
+	}
+	public void addHeart() {
+		this.setHeart( this.getHeart()+1 );
+	}
+	public void addEnergy() {
+		this.setEnergy( this.getEnergy()+1 );
+	}
 	
 	public Socket getSocket() {
 		return socket;

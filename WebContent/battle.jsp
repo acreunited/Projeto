@@ -90,14 +90,31 @@ window.onload = function() {
                         <div class="mc_bar_ready my_turn" id="passTurn">
                            Press To End Turn
                         </div>
+                         <%
+							int userID_energy = (int) session.getAttribute("userID");
+							int taijutsu = 0;
+							int energy = 0;
+							int heart = 0;
+							int spirit = 0;
+							int random = 0;
+							for (Client c : Matchmaking.allClients) {
+								if (c.getId()==userID_energy) {
+							 		taijutsu = c.getCc().getTaijutsu();
+							 		energy = c.getCc().getEnergy();
+							 		heart = c.getCc().getHeart();
+							 		spirit = c.getCc().getSpirit();
+							 		random = c.getCc().getRandom();
+								}
+							}
+							%>
                         <div class="mc_energy_system my_turn">
 			                <div class="mc_energy_bar"></div>
 			                <div class="mc_energy_txt">
-			                  <strong class="energy0">x1</strong>
-			                  <strong class="energy1">x2</strong>
-			                  <strong class="energy2">x0</strong>
-			                  <strong class="energy3">x0</strong>
-			                  <strong class="energy4">x3</strong>
+			                  <strong class="energy0">x<%=taijutsu %></strong>
+			                  <strong class="energy1">x<%=heart %></strong>
+			                  <strong class="energy2">x<%=energy %></strong>
+			                  <strong class="energy3">x<%=spirit %></strong>
+			                  <strong class="energy4">x<%=random %></strong>
 			                </div>
 			                <div class="mc_energy_exchange">EXCHANGE ENERGY</div>
 			              </div>
