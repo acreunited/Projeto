@@ -123,8 +123,6 @@ public class FindOpponent extends HttpServlet {
 				break;
 				
 			case "SESSION":
-				
-				System.out.println("SERVLET TURN: "+cliente.getCc().isPlayerTurn());
 				session.setAttribute("turn", cliente.getCc().isPlayerTurn());
 				state = "END";
 				

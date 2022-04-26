@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import communication.Client;
+import communication.Server;
 
 
 @WebServlet("/InGame")
@@ -30,14 +31,27 @@ public class InGame extends HttpServlet {
 		int userID = (int) session.getAttribute("userID");
 
 		Client este = null;
+		int port = 0; 
+		
 		for (Client c : Matchmaking.allClients) {
 			if (c.getId()==userID) {
 				este = c;
+				port = c.getPort();
 			}
 		}
-		if (este!=null) {
-			este.getCc().setButtonTurnClicked(true);
+		
+		Server server = null;
+		for (Server s : Matchmaking.allServers) {
+			if (s.getPort()==port) {
+				server = s;
+			}
 		}
+
+		if (server!=null) {
+			server.getSc().setButtonTurnClicked(true);
+		}
+		
+		
 		
 		response.sendRedirect("battle.jsp");
 	}

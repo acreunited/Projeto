@@ -31,7 +31,7 @@ public class Client {
 			Socket s = new Socket("localhost", this.port);
 			cc = new ClientConnection(s, this);
 			cc.start();
-			Matchmaking.connections.put(this, this.port);
+			Matchmaking.connectionsClient.put(this, this.port);
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

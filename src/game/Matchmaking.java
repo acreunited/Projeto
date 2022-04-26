@@ -18,7 +18,8 @@ public class Matchmaking {
 	public static  ArrayList<Server> allServers = new ArrayList<>();
 	public static CopyOnWriteArrayList<Client> allClients = new CopyOnWriteArrayList<>();
 	
-	public static ConcurrentHashMap<Client, Integer> connections = new ConcurrentHashMap<>();
+	public static ConcurrentHashMap<Client, Integer> connectionsClient = new ConcurrentHashMap<>();
+	public static ConcurrentHashMap<Server, Integer> connectionsServer = new ConcurrentHashMap<>();
 	
 	
 }

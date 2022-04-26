@@ -11,6 +11,8 @@
 <%@page import="main.Connector"%>
 <%@page import="users.UserInfo"%>
 <%@page import="game.InGame"%>
+<%@page import="communication.Client"%>
+<%@page import="game.Matchmaking"%>
 
 <html lang="en" id="move">
 
@@ -30,9 +32,12 @@
 <body>
 
 <script>
+
 window.onload = function() {
 	defineTurns();
 };
+
+
 </script>
 <div id="app" class="central">
          <div id="root">
@@ -79,7 +84,7 @@ window.onload = function() {
                         <div class="mc_bar_back">
                            <div class="mc_bar_fill" style="width: 133.7px;"></div>
                         </div>
-                        <div class="mc_bar_ready opp_text" style="display:none;">
+                        <div class="mc_bar_ready opp_text">
                            Opponent Turn...
                         </div>
                         <div class="mc_bar_ready my_turn" id="passTurn">
@@ -309,7 +314,7 @@ window.onload = function() {
                      <div class="mc_info_avatar">
                         <img src="ViewAvatar?id=<%=userID%>"> 
                      </div>
-                     <
+                     
                      <div class="mc_info_name"><%=username %></div>
                      <div class="mc_info_desc">
                      Cabin Boy<br>
@@ -452,9 +457,13 @@ $('#passTurn').click(function() {
 	$.ajax({
 		type: "POST",
 		url: "InGame",
-		data: {
-			"name" : "sdcsdc"
-		}
+		success: function(){
+			defineTurns();
+		    //setTimeout(function(){// wait for 5 secs(2)
+		    location.reload(); // then reload the page.(3)
+		    //}, 5000); 
+		   }
+			
 	});
 });
 
@@ -498,7 +507,18 @@ function playerFooterInfo(my_opp) {
 }
 
 function defineTurns() {
-
+	<%
+	Client este = null;
+	int port = 0; 
+	int userID = (int) session.getAttribute("userID");
+	
+	for (Client c : Matchmaking.allClients) {
+		if (c.getId()==userID) {
+	 		session.setAttribute("turn", c.getCc().isPlayerTurn());
+	 		c.getCc().setNeedsRefresh(false);
+		}
+	}
+	%>
 	var turn = <%=session.getAttribute("turn")%>;
 	
 	var opp = document.getElementsByClassName ("opp_turn");
@@ -506,8 +526,6 @@ function defineTurns() {
 	var my = document.getElementsByClassName ("my_turn");
 	
 	if (turn==true) {
-		
-		 
 		for (var i = 0; i < opp.length; i++) {
 			opp[i].style.display="none";
 		}
@@ -531,6 +549,23 @@ function defineTurns() {
 		}
 	}
 }
+
+
+setInterval(function() {
+   // if (needsChange()) {
+    	//console.log("change reload");
+    	//defineTurns();
+    	//location.reload();
+    //}
+   
+	defineTurns();
+	location.reload();
+}, 10000);
+
+
+
+
+
 
 </script>
     

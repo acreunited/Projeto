@@ -8,6 +8,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import game.Matchmaking;
+
 public class Server {
 
 	
@@ -15,6 +17,8 @@ public class Server {
 	//private DataInputStream din;
 	//private DataOutputStream dout;
 	//private boolean shouldRun;
+	private ServerConnection sc;
+
 	private ServerSocket ss;
 	private int port;
 
@@ -26,8 +30,9 @@ public class Server {
 				//while para correr mesmo quando recebe conexão
 				//while (shouldRun) {
 				Socket s = ss.accept();
-				ServerConnection sc = new ServerConnection(s, this);
+				sc = new ServerConnection(s, this);
 				sc.start();
+				Matchmaking.connectionsServer.put(this, this.port);
 				
 				//}
 			} catch (IOException e) {
@@ -37,13 +42,6 @@ public class Server {
 	
 	}
 	
-	public ServerSocket getSs() {
-		return ss;
-	}
-
-	public void setSs(ServerSocket ss) {
-		this.ss = ss;
-	}
 
 	public int getPort() {
 		return port;
@@ -53,5 +51,8 @@ public class Server {
 		this.port = port;
 	}
 
+	public ServerConnection getSc() {
+		return sc;
+	}
 
 }

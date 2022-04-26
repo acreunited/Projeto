@@ -21,7 +21,7 @@ public class ServerConnection extends Thread {
 	private DataOutputStream dout;
 	private boolean shouldRun;
 	private boolean buttonTurnClicked;
-	private boolean turnsDefined;
+	
 	
 	public ServerConnection(Socket socket, Server server) {
 		super("ServerConnectionThread"+server.getPort());
@@ -29,11 +29,9 @@ public class ServerConnection extends Thread {
 		this.server = server;
 		this.shouldRun = true;
 		this.buttonTurnClicked = false;
-		this.turnsDefined = false;
+		
 	}
 	
-
-
 	public void run() {
 		try {
 			din = new DataInputStream(socket.getInputStream());
@@ -52,14 +50,67 @@ public class ServerConnection extends Thread {
 				//give turns to the players
 				case "START":
 					boolean player0 = Math.random() < 0.5;
-					setTurns(player0);
-					//ServerConnection conect0 = this.server.getConnections().get(0);
-					//ServerConnection conect1 = this.server.getConnections().get(1);
-					state = "READING";
+					setTurns(player0, !player0);
+					
+					//state = (!player0) ? "PLAYER0" : "PLAYER1";
+					state = "IDLE";
+					break;
+					
+				case "IDLE":
+					state = (this.isButtonTurnClicked()) ? "TURNS" : "IDLE";
+					break;
+					
+				case "TURNS":
+					Client c1 = this.getFirstPlayer();
+					boolean turn1 = c1.getCc().isPlayerTurn();
+					Client c2 = this.getSecondPlayer();
+					boolean turn2 = c2.getCc().isPlayerTurn();
+					
+					this.setTurns(!turn1, !turn2);
+	
+					
+					this.setButtonTurnClicked(false);
+					state = "IDLE";
 					break;
 				
-				case "READING":
-					break;
+				/*case "PLAYER0":
+					Client p0 = this.getFirstPlayer();
+					
+					try {
+						System.out.println("SERVER P0: "+p0.getCc().isButtonTurnClicked());
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					if( p0.getCc().isButtonTurnClicked() ) {
+						p0.getCc().setButtonTurnClicked(false);
+						setTurns(false);
+						state = "PLAYER1";
+					}
+					else {
+						state = "PLAYER0";
+					}
+					
+					break;*/
+					
+				/*case "PLAYER1":
+					Client p1 = this.getFirstPlayer();
+					try {
+						System.out.println("SERVER P1: "+p1.getCc().isButtonTurnClicked());
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					if( p1.getCc().isButtonTurnClicked() ) {
+						p1.getCc().setButtonTurnClicked(false);
+						setTurns(false);
+						state = "PLAYER0";
+					}
+					else {
+						state = "PLAYER1";
+					}
+					break;*/
 				
 				
 				//esperar que jogador termine o turno
@@ -97,13 +148,17 @@ public class ServerConnection extends Thread {
 		
 		
 	}
-	
-	private void setTurns(boolean first) {
+
+
+	private void setTurns(boolean first, boolean second) {
 		Client one = getFirstPlayer();
 		Client two = getSecondPlayer();
 		
 		one.getCc().setPlayerTurn(first);
-		two.getCc().setPlayerTurn(!first);
+		two.getCc().setPlayerTurn(second);
+		
+		one.getCc().setNeedsRefresh(true);
+		two.getCc().setNeedsRefresh(true);
 		
 		one.getCc().setTurnsDefined(true);
 		two.getCc().setTurnsDefined(true);
@@ -111,7 +166,7 @@ public class ServerConnection extends Thread {
 	
 	private synchronized int nConections() {
 		int count = 0;
-		ConcurrentHashMap<Client, Integer> map = Matchmaking.connections;
+		ConcurrentHashMap<Client, Integer> map = Matchmaking.connectionsClient;
 		
 		for (Entry<Client, Integer> entry : map.entrySet()) {
 		    //Integer list = entry.getValue();
@@ -124,7 +179,7 @@ public class ServerConnection extends Thread {
 		return count;
 	}
 	private Client getFirstPlayer() {
-		ConcurrentHashMap<Client, Integer> map = Matchmaking.connections;
+		ConcurrentHashMap<Client, Integer> map = Matchmaking.connectionsClient;
 		
 		for (Entry<Client, Integer> entry : map.entrySet()) {
 			if (entry.getValue()==this.getServer().getPort()) {
@@ -134,7 +189,7 @@ public class ServerConnection extends Thread {
 		return null;
 	}
 	private Client getSecondPlayer() {
-		ConcurrentHashMap<Client, Integer> map = Matchmaking.connections;
+		ConcurrentHashMap<Client, Integer> map = Matchmaking.connectionsClient;
 		Client[] clients = new Client[2];
 		int count = 0;
 		
