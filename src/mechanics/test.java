@@ -7,16 +7,31 @@ public class test {
 		Character c = new Character(4);
 		//System.out.println(c.getHp());
 		
-		System.out.println(c.getAbility1().getCooldown());
-		System.out.println(c.getAbility2().getCooldown());
-		System.out.println(c.getAbility3().getCooldown());
-		System.out.println(c.getAbility4().getCooldown());
+		System.out.println(c.getAbility1().getDamage()[0]);
 		
-		
-		System.out.println(c.getAbility1().getBecomeInvulDuration());
-		System.out.println(c.getAbility2().getTargetClick());
-		System.out.println(c.getAbility3().getDamageIncreasePerUse());
-		System.out.println(c.getAbility4().getPermanentDamageIncrease());
+		Character c2 = new Character(8);
+		//System.out.println(c2.getDd());
+		//System.out.println(c2.getDr());
+		System.out.println(c2.getHp());
+		//System.out.println(c2.getInvulDuration());
+		//System.out.println(c2.getNatureGain());
+		//System.out.println(c2.getNatureLoss());
+		//System.out.println(c2.getStunnedDuration());
+		//System.out.println(c2.getPermanentDamageIncrease());
+		//System.out.println(c2.getTemporaryDamageIncrease());
+		//System.out.println(c2.isStunned());
+		System.out.println("--------------------------------------------------");
+		c.applyAbility(c.getAbility1(), c2);
+//		System.out.println(c2.getDd());
+//		System.out.println(c2.getDr());
+		System.out.println(c2.getHp());
+//		System.out.println(c2.getInvulDuration());
+//		System.out.println(c2.getNatureGain());
+//		System.out.println(c2.getNatureLoss());
+//		System.out.println(c2.getStunnedDuration());
+//		System.out.println(c2.getPermanentDamageIncrease());
+//		System.out.println(c2.getTemporaryDamageIncrease());
+//		System.out.println(c2.isStunned());
 	
 	}
 

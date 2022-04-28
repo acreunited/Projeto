@@ -12,10 +12,15 @@ public class Character {
 	private int id;
 	private int hp;
 	private boolean isStunned;
+	private int stunnedDuration;
 	private boolean isInvul;
+	private int invulDuration;
 	private int permanentDamageIncrease;
+	private int temporaryDamageIncrease;
 	private int dd;
 	private int dr;
+	private int natureGain;
+	private int natureLoss;
 	private Ability ability1;
 	private Ability ability2;
 	private Ability ability3;
@@ -25,19 +30,130 @@ public class Character {
 		this.id = id;
 		this.hp = 100;
 		this.isStunned = false;
+		this.stunnedDuration = 0;
 		this.isInvul = false;
+		this.invulDuration = 0;
 		this.permanentDamageIncrease = 0;
+		this.temporaryDamageIncrease = 0;
 		this.dr = 0;
 		this.dd = 0;
+		this.natureGain = 0;
+		this.natureLoss = 0;
 		this.ability1 = new Ability( this.getCharacterAbilities(this.id)[0] );
 		this.ability2 = new Ability( this.getCharacterAbilities(this.id)[1] );
 		this.ability3 = new Ability( this.getCharacterAbilities(this.id)[2] );
 		this.ability4 = new Ability( this.getCharacterAbilities(this.id)[3] );
 	}
 	
-	public void applyAbility1(Character c) {
-		//TODO ver o que habilidade faz
-		//afetar c
+	public void applyAbility(Ability a, Character c) {
+		//damage
+		int damage = doDamage(a, c);
+		if (damage>0) {
+			c.setHp( c.getHp()-damage );
+			
+		}
+		
+		//stun
+		c.setStunnedDuration( a.getStunDuration() );
+		
+		//become invulnerable
+		c.setInvulDuration( a.getBecomeInvulDuration() );
+		
+		//TODO DD e DR - quando duração acaba, tirar DR ou DD mas só da habilidade
+		
+		//gain DD
+		int dd = a.getGainDD()[0];
+		if (dd>0) {
+			c.setDd( c.getDd() + dd );
+		}
+		
+		//gain DR
+		int dr = a.getDR()[0];
+		if (dr>0) {
+			c.setDr( c.getDr() + dr );
+		}
+		
+		//gainHP
+		int hp = a.getGainHP()[0];
+		if (hp > 0) {
+			c.setHp(c.getHp() + a.getGainHP()[0]);
+		}
+		
+		//gain nature
+		int natureGain = a.getGainNature()[0];
+		if (natureGain>0) {
+			c.setNatureGain( c.getNatureGain() + natureGain );
+		}
+		
+		//lose nature
+		int natureLoss = a.getRemoveNature()[0];
+		if (natureLoss > 0) {
+			c.setNatureLoss( c.getNatureLoss() + natureLoss );
+		}
+			
+	}
+
+	
+	private int doDamage(Ability a, Character c) {
+		int damage = a.getDamage()[0];
+		
+		int permanent = this.getPermanentDamageIncrease();
+		int temporary = this.getTemporaryDamageIncrease();
+		int damageIncreaseUse = a.getDamageIncreasePerUse();
+		if (damageIncreaseUse>0) {
+			damageIncreaseUse = damageIncreaseUse*a.getnTimesUsed();
+		}
+		
+		damage += permanent + temporary + damageIncreaseUse;
+		
+		int damagePerEnemyHPLost = this.getAbilityDamageEnemyHP(a, c);
+		if (damagePerEnemyHPLost>0) {
+			damage += damagePerEnemyHPLost;
+		}
+		int damagePerSelfHPLost = this.getAbilityDamageSelfHP(a);
+		if (damagePerSelfHPLost>0) {
+			damage += damagePerSelfHPLost;
+		}
+
+		return damage;
+	}
+	private int getAbilityDamageEnemyHP(Ability a, Character c) {
+		int damagePerEnemyHPLost = 0;
+		
+		int enemyHP_damage = a.getDamagePerEnemyHPLost()[0];
+		int enemyHP_hp = a.getDamagePerHPLost()[1];
+		if (enemyHP_damage<0 || enemyHP_hp<0) {
+			return -1;
+		}
+		
+		int currentEnemyHP = c.getHp();
+		int currentEnemyHP_lost = 100-currentEnemyHP;
+		if (currentEnemyHP_lost>=enemyHP_hp) {
+			do {
+				damagePerEnemyHPLost += enemyHP_damage;
+				currentEnemyHP_lost -= enemyHP_hp;
+			}
+			while (currentEnemyHP_lost-enemyHP_hp>0);
+		}
+		return damagePerEnemyHPLost;
+	}
+	private int getAbilityDamageSelfHP(Ability a) {
+		int damagePerSelfHPLost = 0;
+		
+		int selfHP_damage = a.getDamagePerHPLost()[0];
+		int selfHP_hp = a.getDamagePerHPLost()[1];
+		if (selfHP_damage<0 || selfHP_hp<0) {
+			return -1;
+		}
+		int currentHP_lost = 100-this.getHp();
+		if(currentHP_lost >= selfHP_hp) {
+			do {
+				damagePerSelfHPLost += selfHP_damage;
+				currentHP_lost -= selfHP_hp;
+			}
+			while(currentHP_lost-selfHP_hp > 0);
+		}
+		return damagePerSelfHPLost;
 	}
 	
 	public int getId() {
@@ -52,8 +168,9 @@ public class Character {
 		return hp;
 	}
 
+	//nao pode passar dos 100 TODO
 	public void setHp(int hp) {
-		this.hp = hp;
+		this.hp = (hp<=100) ? hp : 100;
 	}
 
 	public boolean isStunned() {
@@ -143,6 +260,48 @@ public class Character {
 			e.printStackTrace();
 		}
 		return abilitiesID;
+	}
+
+	public int getTemporaryDamageIncrease() {
+		return temporaryDamageIncrease;
+	}
+
+	public void setTemporaryDamageIncrease(int temporaryDamageIncrease) {
+		this.temporaryDamageIncrease = temporaryDamageIncrease;
+	}
+
+	public int getStunnedDuration() {
+		return stunnedDuration;
+	}
+
+	public void setStunnedDuration(int stunnedDuration) {
+		this.stunnedDuration = stunnedDuration;
+		this.setStunned( (stunnedDuration>0) ? true : false );
+	}
+
+	public int getInvulDuration() {
+		return invulDuration;
+	}
+
+	public void setInvulDuration(int invulDuration) {
+		this.invulDuration = invulDuration;
+		this.setInvul( (invulDuration>0) ? true : false );
+	}
+
+	public int getNatureGain() {
+		return natureGain;
+	}
+
+	public void setNatureGain(int natureGain) {
+		this.natureGain = natureGain;
+	}
+
+	public int getNatureLoss() {
+		return natureLoss;
+	}
+
+	public void setNatureLoss(int natureLoss) {
+		this.natureLoss = natureLoss;
 	}
 
 }
