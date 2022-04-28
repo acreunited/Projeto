@@ -46,7 +46,6 @@ public class Login extends HttpServlet {
 	
 
 		PreparedStatement stmt = null;
-		System.out.println("USER " + username + " PASS " + password);
 		response.getWriter().write("USER " + username + " PASS " + password);
 
 		session.setAttribute("loggedIn", false);
@@ -67,8 +66,6 @@ public class Login extends HttpServlet {
 					session.setAttribute("username", username);
 					session.setAttribute("loggedIn", true);
 
-					System.out.println("login com sucesso");
-
 					int id = rs.getInt("userID");
 					session.setAttribute("userID", id);
 
@@ -85,7 +82,6 @@ public class Login extends HttpServlet {
 
 				} else {
 					session.setAttribute("username", null);
-					System.out.println("login sem sucesso");
 					
 					session.setAttribute("tipoUser", "guest");
 					response.sendRedirect("login.jsp");

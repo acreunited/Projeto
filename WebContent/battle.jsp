@@ -576,7 +576,8 @@ setInterval(function() {
     //}
    
 	defineTurns();
-	location.reload();
+	//location.reload();
+	window.location.reload(true);
 }, 10000);
 
 

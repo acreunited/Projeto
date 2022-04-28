@@ -181,3 +181,5 @@ select * from USERS;
 
 select * from THEME_CHARACTER where themeID=1;
 select * from THEME_CHARACTER where themeID=0;
+
+select abilityID from ABILITY where characterID=4;

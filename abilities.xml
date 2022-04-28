@@ -1,2473 +1,2514 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <abilities>
 
-<ability abilityID="0">
-<name>Linear</name>
-<description>Asuna Yuuki deals 20 damage to one enemy. For 3 turns, her abilities will deal an additional 5 damage.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="1">
-<name>Rapier Repel</name>
-<description>For 2 turns, Asuna Yuuki will deal 15 damage to one enemy.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>3</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>15</number>
-<duration>2</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>15</extraDamage>
-<duration>2</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="2">
-<name>Serene Shooting Star</name>
-<description>Asuna Yuuki deals 30 damage to one enemy. This skills ignores invulnerability.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>30</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>yes</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>30</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="3">
-<name>Asuna Dodge</name>
-<description>This skill makes Asuna Yuuki invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="4">
-<name>Cyborg Kick</name>
-<description>Genos deals 15 damage to one enemy and stuns them for 1 turn.</description>
-<nature>
-<taijutsu>1</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>0</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>15</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>1</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>15</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="5">
-<name>Incineration Cannon</name>
-<description>Genos targets an enemy, dealing 20 damage and removing 1 random nature from them.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>1</number>
-<duration>1</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="6">
-<name>Gauge Incineration Cannon</name>
-<description>Genos deals 30 damage to all enemies.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>2</random>
-</nature>
-<cooldown>2</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>30</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>30</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="7">
-<name>Hyper Sensors</name>
-<description>This skill makes Genos invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="8">
-<name>Nen Kick</name>
-<description>Gon Freecss deals 20 damage to one enemy.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>0</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="9">
-<name>Paper</name>
-<description>Gon Freecss deals 20 damage to all enemies.</description>
-<nature>
-<taijutsu>1</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="10">
-<name>Rock</name>
-<description>Gon Freecss deals 30 damage to one enemy.</description>
-<nature>
-<taijutsu>1</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>30</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>30</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="11">
-<name>Gon Block</name>
-<description>This skill makes Gon Freecss invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="12">
-<name>Lightning Palm</name>
-<description>Killua Zoldyck deals 20 damage to all enemies.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>0</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="13">
-<name>Lightning Charge</name>
-<description>This skill deals 20 damage to one enemy and ignores invulnerability.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>1</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>2</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>yes</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="14">
-<name>Whirlwind</name>
-<description>Killua Zoldyck stuns one enemy for 2 turns and deals 20 damage each turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>1</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>2</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>2</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>2</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>2</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="15">
-<name>Rhythm Echo</name>
-<description>This skill makes Killua Zoldyck invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="16">
-<name>Emission Nen Punch</name>
-<description>This skill deals 25 damage to one enemy.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>1</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>0</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>25</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>25</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="17">
-<name>Healing Case</name>
-<description>Leorio heals an ally 20 health.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>ally</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
+	<ability abilityID="0">
+		<name>Linear</name>
+		<description>Asuna Yuuki deals 20 damage to one enemy. For 3 turns,
+			her abilities will deal an additional 5 damage.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="1">
+		<name>Rapier Repel</name>
+		<description>For 2 turns, Asuna Yuuki will deal 15 damage to one
+			enemy.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>3</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>15</number>
+			<duration>2</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>15</extraDamage>
+			<duration>2</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="2">
+		<name>Serene Shooting Star</name>
+		<description>Asuna Yuuki deals 30 damage to one enemy. This skills
+			ignores invulnerability.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>30</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>yes</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>30</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="3">
+		<name>Asuna Dodge</name>
+		<description>This skill makes Asuna Yuuki invulnerable for 1 turn.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="4">
+		<name>Cyborg Kick</name>
+		<description>Genos deals 15 damage to one enemy and stuns them for 1
+			turn.</description>
+		<nature>
+			<taijutsu>1</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>0</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>15</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>1</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>15</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="5">
+		<name>Incineration Cannon</name>
+		<description>Genos targets an enemy, dealing 20 damage and removing 1
+			random nature from them.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>1</number>
+			<duration>1</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="6">
+		<name>Gauge Incineration Cannon</name>
+		<description>Genos deals 30 damage to all enemies.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>2</random>
+		</nature>
+		<cooldown>2</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>30</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>30</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="7">
+		<name>Hyper Sensors</name>
+		<description>This skill makes Genos invulnerable for 1 turn.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="8">
+		<name>Nen Kick</name>
+		<description>Gon Freecss deals 20 damage to one enemy.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>0</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="9">
+		<name>Paper</name>
+		<description>Gon Freecss deals 20 damage to all enemies.</description>
+		<nature>
+			<taijutsu>1</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="10">
+		<name>Rock</name>
+		<description>Gon Freecss deals 30 damage to one enemy.</description>
+		<nature>
+			<taijutsu>1</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>30</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>30</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="11">
+		<name>Gon Block</name>
+		<description>This skill makes Gon Freecss invulnerable for 1 turn.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="12">
+		<name>Lightning Palm</name>
+		<description>Killua Zoldyck deals 20 damage to all enemies.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>0</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="13">
+		<name>Lightning Charge</name>
+		<description>This skill deals 20 damage to one enemy and ignores
+			invulnerability.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>1</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>2</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>yes</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="14">
+		<name>Whirlwind</name>
+		<description>Killua Zoldyck stuns one enemy for 2 turns and deals 20
+			damage each turn.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>1</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>2</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>2</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>2</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>2</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="15">
+		<name>Rhythm Echo</name>
+		<description>This skill makes Killua Zoldyck invulnerable for 1 turn.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="16">
+		<name>Emission Nen Punch</name>
+		<description>This skill deals 25 damage to one enemy.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>1</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>0</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>25</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>25</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="17">
+		<name>Healing Case</name>
+		<description>Leorio heals an ally 20 health.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>ally</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
 
 
-<ability abilityID="18">
-	<name>Remote Punch</name>
-	<description>Leorio deals 25 damage to one enemy and an additional 10 damage for each 25 health Leorio has lost.</description>
-	<nature>
-		<taijutsu>0</taijutsu>
-		<heart>1</heart>
-		<energy>0</energy>
-		<spirit>0</spirit>
-		<random>1</random>
-	</nature>
-	<cooldown>1</cooldown>
-	<targetClick>enemy</targetClick>
-	<damage>
-		<number>25</number>
-		<duration>1</duration>
-	</damage>
-	<nTimesUsed>0</nTimesUsed>
-	<ignoresInvulnerability>no</ignoresInvulnerability>
-	<stunDuration>0</stunDuration>
-	<becomeInvulnerable>0</becomeInvulnerable>
-	<damageIncreasePerUse>0</damageIncreasePerUse>
-	<destroyDD>no</destroyDD>
-	<permanentDamageIncrease>0</permanentDamageIncrease>
-	<removeNature>
-	<number>0</number>
-	<duration>0</duration>
-	</removeNature>
-	<gainNature>
-	<number>0</number>
-	<duration>0</duration>
-	</gainNature>
-	<gainDD>
-	<number>0</number>
-	<duration>0</duration>
-	</gainDD>
-	<gainDR>
-	<number>0</number>
-	<duration>0</duration>
-	</gainDR>
-	<moreDamagePerHPLost>
-	<extraDamage>10</extraDamage>
-	<hpLost>25</hpLost>
-	</moreDamagePerHPLost>
-	<gainHP>
-	<number>0</number>
-	<duration>0</duration>
-	</gainHP>
-	<moreDamageEnemyHPLost>
-	<extraDamage>0</extraDamage>
-	<hpLost>0</hpLost>
-	</moreDamageEnemyHPLost>
-	<temporaryDamageIncrease>
-	<extraDamage>25</extraDamage>
-	<duration>1</duration>
-	</temporaryDamageIncrease>
-</ability>
+	<ability abilityID="18">
+		<name>Remote Punch</name>
+		<description>Leorio deals 25 damage to one enemy and an additional 10
+			damage for each 25 health Leorio has lost.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>1</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>25</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>10</extraDamage>
+			<hpLost>25</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>25</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
 
 
 
-<ability abilityID="19">
-<name>Leorio Jump</name>
-<description>This skill makes Leorio Paradinight invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="20">
-<name>Zangetsu Slash</name>
-<description>Kurasaki Ichigo deals 20 damage to one enemy. This skill will deal 5 more damage each time it is used.</description>
-<nature>
-<taijutsu>1</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>0</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>5</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="21">
-<name>Getsuga Tenshou</name>
-<description>Kurasaki Ichigo deals 40 damage to one enemy and stuns him for 1 turn.</description>
-<nature>
-<taijutsu>1</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>40</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>1</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>40</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="22">
-<name>Zangetsu Fusion</name>
-<description>For 3 turns, Kurasaki Ichigo will gain 15 Destructible Defense and his attacks will deal an additional 5 damage.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>15</number>
-<duration>3</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="23">
-<name>Zangetsu Defense</name>
-<description>This skill makes Kurasaki Ichigo invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="24">
-<name>Cutting Shield</name>
-<description>Inoue Orihime destroys one enemy´s Destructible Defense and deals 15 damage to him. For 1 turn, she will gains 10 points of damage reduction.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>0</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>15</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>yes</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>10</number>
-<duration>1</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>15</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="25">
-<name>Return Shield</name>
-<description>For 2 turns, Inoue Orihime heals one ally for 20 health.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>2</random>
-</nature>
-<cooldown>2</cooldown>
-<targetClick>ally</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>2</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>20</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="26">
-<name>Shielding Flowers</name>
-<description>For the next 3 turns, Inoue Orihime will gain 30 Destructible Defense.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>30</number>
-<duration>3</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="27">
-<name>Links Shield</name>
-<description>This skill makes Inoue Orihime invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="28">
-<name>Kojaku Shot</name>
-<description>Uryu Ishida fires an arrow from his bow, dealing 20 damage to one enemy for 2 turns.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>2</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>2</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>2</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="29">
-<name>Reiatsu Chain Shot</name>
-<description>Uryu Ishida shoots the reiatsu chain of one enemy, dealing 30 damage that ignores invulnerability.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>0</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>30</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>yes</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>30</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="30">
-<name>Kojaku Preparation</name>
-<description>Uryu Ishida prepares himself for his next attack gaining 1 random nature.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>3</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>1</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="31">
-<name>Uryu Evasion</name>
-<description>This skill makes Uryu Ishida invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="32">
-<name>Sixth Form Whirlpool</name>
-<description>Tanjiro Kamado deals 20 damage and stuns one enemy for 1 turn.</description>
-<nature>
-<taijutsu>1</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>1</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="33">
-<name>Hinokami Kagura Dance</name>
-<description>Tanjiro Kamado deals 35 damage to one enemy.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>1</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>2</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>35</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>35</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="34">
-<name>Rage</name>
-<description>Tanjiro Kamado takes 10 damage and becomes invulnerable for 1 turn. His skills will deal 10 additional damage permanently. </description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>3</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>10</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>10</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>10</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="35">
-<name>Sword Block</name>
-<description>This skill makes Tanjiro Kamado invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="36">
-<name>Exploding Blood</name>
-<description>Nezuko Kamado deals 20 damage to one enemy. The next turn, this skill will deal an additional 5 damage.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>0</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="37">
-<name>Healing</name>
-<description>Nezuko Kamado heals one ally or herself for 25 health.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>ally</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>1</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>25</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="38">
-<name>Protect</name>
-<description>Nezuko Kamado protects on ally for 2 turn making them invulnerable. </description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>ally</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>2</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="39">
-<name>Hiding</name>
-<description>This skill makes Nezuko Kamado invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="40">
-<name>Thunderclap and Flash</name>
-<description>Zenitsu Agatsuma launches a fast attack dealing 25 damage to one enemy.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>0</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>20</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>20</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="41">
-<name>Eightfold</name>
-<description>Zenitsu Agatsuma deals 40 damage that ignores invulnerability to one enemy.</description>
-<nature>
-<taijutsu>1</taijutsu>
-<heart>0</heart>
-<energy>1</energy>
-<spirit>0</spirit>
-<random>0</random>
-</nature>
-<cooldown>1</cooldown>
-<targetClick>enemy</targetClick>
-<damage>
-<number>40</number>
-<duration>1</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>yes</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>40</extraDamage>
-<duration>1</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="42">
-<name>Stance</name>
-<description>For 1 turn, Zenitsu Agatsuma will gain 30 Destructible Defense and 1 random nature.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>3</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>0</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>1</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>30</number>
-<duration>1</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
-<ability abilityID="43">
-<name>Sword Block</name>
-<description>This skill makes Zenitsu Agatsuma invulnerable for 1 turn.</description>
-<nature>
-<taijutsu>0</taijutsu>
-<heart>0</heart>
-<energy>0</energy>
-<spirit>0</spirit>
-<random>1</random>
-</nature>
-<cooldown>4</cooldown>
-<targetClick>self</targetClick>
-<damage>
-<number>0</number>
-<duration>0</duration>
-</damage>
-<nTimesUsed>0</nTimesUsed>
-<ignoresInvulnerability>no</ignoresInvulnerability>
-<stunDuration>0</stunDuration>
-<becomeInvulnerable>1</becomeInvulnerable>
-<damageIncreasePerUse>0</damageIncreasePerUse>
-<destroyDD>no</destroyDD>
-<permanentDamageIncrease>0</permanentDamageIncrease>
-<removeNature>
-<number>0</number>
-<duration>0</duration>
-</removeNature>
-<gainNature>
-<number>0</number>
-<duration>0</duration>
-</gainNature>
-<gainDD>
-<number>0</number>
-<duration>0</duration>
-</gainDD>
-<gainDR>
-<number>0</number>
-<duration>0</duration>
-</gainDR>
-<moreDamagePerHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamagePerHPLost>
-<gainHP>
-<number>0</number>
-<duration>0</duration>
-</gainHP>
-<moreDamageEnemyHPLost>
-<extraDamage>0</extraDamage>
-<hpLost>0</hpLost>
-</moreDamageEnemyHPLost>
-<temporaryDamageIncrease>
-<extraDamage>0</extraDamage>
-<duration>0</duration>
-</temporaryDamageIncrease>
-</ability>
+	<ability abilityID="19">
+		<name>Leorio Jump</name>
+		<description>This skill makes Leorio Paradinight invulnerable for 1
+			turn.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="20">
+		<name>Zangetsu Slash</name>
+		<description>Kurasaki Ichigo deals 20 damage to one enemy. This skill
+			will deal 5 more damage each time it is used.</description>
+		<nature>
+			<taijutsu>1</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>0</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>5</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="21">
+		<name>Getsuga Tenshou</name>
+		<description>Kurasaki Ichigo deals 40 damage to one enemy and stuns
+			him for 1 turn.</description>
+		<nature>
+			<taijutsu>1</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>40</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>1</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>40</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="22">
+		<name>Zangetsu Fusion</name>
+		<description>For 3 turns, Kurasaki Ichigo will gain 15 Destructible
+			Defense and his attacks will deal an additional 5 damage.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>15</number>
+			<duration>3</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="23">
+		<name>Zangetsu Defense</name>
+		<description>This skill makes Kurasaki Ichigo invulnerable for 1 turn.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="24">
+		<name>Cutting Shield</name>
+		<description>Inoue Orihime destroys one enemy´s Destructible Defense
+			and deals 15 damage to him. For 1 turn, she will gains 10 points of
+			damage reduction.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>0</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>15</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>yes</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>10</number>
+			<duration>1</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>15</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="25">
+		<name>Return Shield</name>
+		<description>For 2 turns, Inoue Orihime heals one ally for 20 health.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>2</random>
+		</nature>
+		<cooldown>2</cooldown>
+		<targetClick>ally</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>2</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>20</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="26">
+		<name>Shielding Flowers</name>
+		<description>For the next 3 turns, Inoue Orihime will gain 30
+			Destructible Defense.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>30</number>
+			<duration>3</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="27">
+		<name>Links Shield</name>
+		<description>This skill makes Inoue Orihime invulnerable for 1 turn.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="28">
+		<name>Kojaku Shot</name>
+		<description>Uryu Ishida fires an arrow from his bow, dealing 20
+			damage to one enemy for 2 turns.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>2</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>2</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>2</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="29">
+		<name>Reiatsu Chain Shot</name>
+		<description>Uryu Ishida shoots the reiatsu chain of one enemy,
+			dealing 30 damage that ignores invulnerability.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>0</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>30</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>yes</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>30</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="30">
+		<name>Kojaku Preparation</name>
+		<description>Uryu Ishida prepares himself for his next attack gaining
+			1 random nature.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>3</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>1</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="31">
+		<name>Uryu Evasion</name>
+		<description>This skill makes Uryu Ishida invulnerable for 1 turn.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="32">
+		<name>Sixth Form Whirlpool</name>
+		<description>Tanjiro Kamado deals 20 damage and stuns one enemy for 1
+			turn.</description>
+		<nature>
+			<taijutsu>1</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>1</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="33">
+		<name>Hinokami Kagura Dance</name>
+		<description>Tanjiro Kamado deals 35 damage to one enemy.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>1</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>2</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>35</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>35</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="34">
+		<name>Rage</name>
+		<description>Tanjiro Kamado takes 10 damage and becomes invulnerable
+			for 1 turn. His skills will deal 10 additional damage permanently.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>3</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>10</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>10</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>10</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="35">
+		<name>Sword Block</name>
+		<description>This skill makes Tanjiro Kamado invulnerable for 1 turn.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="36">
+		<name>Exploding Blood</name>
+		<description>Nezuko Kamado deals 20 damage to one enemy. The next
+			turn, this skill will deal an additional 5 damage.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>0</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="37">
+		<name>Healing</name>
+		<description>Nezuko Kamado heals one ally or herself for 25 health.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>ally</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>1</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>25</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="38">
+		<name>Protect</name>
+		<description>Nezuko Kamado protects on ally for 2 turn making them
+			invulnerable. </description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>ally</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>2</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="39">
+		<name>Hiding</name>
+		<description>This skill makes Nezuko Kamado invulnerable for 1 turn.
+		</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="40">
+		<name>Thunderclap and Flash</name>
+		<description>Zenitsu Agatsuma launches a fast attack dealing 25 damage
+			to one enemy.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>0</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>20</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>20</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="41">
+		<name>Eightfold</name>
+		<description>Zenitsu Agatsuma deals 40 damage that ignores
+			invulnerability to one enemy.</description>
+		<nature>
+			<taijutsu>1</taijutsu>
+			<heart>0</heart>
+			<energy>1</energy>
+			<spirit>0</spirit>
+			<random>0</random>
+		</nature>
+		<cooldown>1</cooldown>
+		<targetClick>enemy</targetClick>
+		<damage>
+			<number>40</number>
+			<duration>1</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>yes</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>40</extraDamage>
+			<duration>1</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="42">
+		<name>Stance</name>
+		<description>For 1 turn, Zenitsu Agatsuma will gain 30 Destructible
+			Defense and 1 random nature.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>3</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>0</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>1</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>30</number>
+			<duration>1</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
+	<ability abilityID="43">
+		<name>Sword Block</name>
+		<description>This skill makes Zenitsu Agatsuma invulnerable for 1
+			turn.</description>
+		<nature>
+			<taijutsu>0</taijutsu>
+			<heart>0</heart>
+			<energy>0</energy>
+			<spirit>0</spirit>
+			<random>1</random>
+		</nature>
+		<cooldown>4</cooldown>
+		<targetClick>self</targetClick>
+		<damage>
+			<number>0</number>
+			<duration>0</duration>
+		</damage>
+		<nTimesUsed>0</nTimesUsed>
+		<ignoresInvulnerability>no</ignoresInvulnerability>
+		<stunDuration>0</stunDuration>
+		<becomeInvulnerable>1</becomeInvulnerable>
+		<damageIncreasePerUse>0</damageIncreasePerUse>
+		<destroyDD>no</destroyDD>
+		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<removeNature>
+			<number>0</number>
+			<duration>0</duration>
+		</removeNature>
+		<gainNature>
+			<number>0</number>
+			<duration>0</duration>
+		</gainNature>
+		<gainDD>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDD>
+		<gainDR>
+			<number>0</number>
+			<duration>0</duration>
+		</gainDR>
+		<moreDamagePerHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamagePerHPLost>
+		<gainHP>
+			<number>0</number>
+			<duration>0</duration>
+		</gainHP>
+		<moreDamageEnemyHPLost>
+			<extraDamage>0</extraDamage>
+			<hpLost>0</hpLost>
+		</moreDamageEnemyHPLost>
+		<temporaryDamageIncrease>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
+		</temporaryDamageIncrease>
+	</ability>
 </abilities>

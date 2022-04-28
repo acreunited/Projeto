@@ -1,10 +1,10 @@
-package characters;
+package mechanics;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public class Character {
+public class Character_old {
 	
 	int life = 100;
 	int stun = 0;
@@ -16,7 +16,7 @@ public class Character {
 	String description;
 	ArrayList<String> abilities = new ArrayList<String>();
 	
-	public Character(String name, String description) {
+	public Character_old(String name, String description) {
 		this.name = name;
 		this.description = description;
 
