@@ -1,4 +1,4 @@
-package communication;
+package legacy;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -7,8 +7,6 @@ import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-
-import game.Matchmaking;
 
 public class Server {
 
@@ -32,7 +30,7 @@ public class Server {
 				Socket s = ss.accept();
 				sc = new ServerConnection(s, this);
 				sc.start();
-				Matchmaking.connectionsServer.put(this, this.port);
+				//Matchmaking.connectionsServer.put(this, this.port);
 				
 				//}
 			} catch (IOException e) {

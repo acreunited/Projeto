@@ -1,7 +1,26 @@
 package game;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.BindException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.Semaphore;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,51 +28,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import communication.Client;
-import communication.Server;
 
+import main.Connector;
 
 @WebServlet("/InGame")
 public class InGame extends HttpServlet {
 	
 	private static final long serialVersionUID = 7215979604673189309L;
+	private static Hashtable<String,  Semaphore> games = new Hashtable<String,  Semaphore>();
+	private static String uuid = "uuidJogoTODO";
+	// proteger esta estrutura de dados jogos com um monitor/semaforo
 	
 	public InGame() {
 		super();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
+
 		HttpSession session = request.getSession();
 		
-		int userID = (int) session.getAttribute("userID");
-
-		Client este = null;
-		int port = 0; 
+		String metodo = request.getParameter("metodo");
 		
-		for (Client c : Matchmaking.allClients) {
-			if (c.getId()==userID) {
-				este = c;
-				port = c.getPort();
-			}
+		if (metodo.equalsIgnoreCase("create")) {
+			createSemaphore(session);
 		}
-		
-		Server server = null;
-		for (Server s : Matchmaking.allServers) {
-			if (s.getPort()==port) {
-				server = s;
-			}
+		else if (metodo.equalsIgnoreCase("lock")) {
+			lock(session);
 		}
-
-		if (server!=null) {
-			server.getSc().setButtonTurnClicked(true);
+		else if (metodo.equalsIgnoreCase("unlock")) {
+			unlock(session);
 		}
-		
 		
 		
 		response.sendRedirect("battle.jsp");
+		
+		//RequestDispatcher reqDispatcher = request.getRequestDispatcher("battle.jsp");
+       // reqDispatcher.forward(request, response);
+		//return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -61,6 +75,41 @@ public class InGame extends HttpServlet {
 		
 		doGet(request, response);
 	}
+	
+	private  void createSemaphore(HttpSession session) {
+		 Enumeration<String> e = games.keys();
+		 boolean exists = false;
+		 if (e.hasMoreElements()) {
+			 exists = true;
+	     }
+		
+		 if (!exists) {
+			 games.put(uuid, new Semaphore(1));
+			 session.setAttribute("turn", true);
+			 lock(session);
+		 }
+		 else {
+			 session.setAttribute("turn", false);
+		 }
+
+	}
+	private void lock(HttpSession session) {
+		try {
+			games.get(uuid).acquire();
+			session.setAttribute("turn", true);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			
+		}
+	
+	}
+	private void unlock(HttpSession session) {
+		games.get(uuid).release();
+		session.setAttribute("turn", false);
+	}
+	
+
+
 
 	
 	

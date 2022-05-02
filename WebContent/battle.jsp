@@ -10,8 +10,6 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="main.Connector"%>
 <%@page import="users.UserInfo"%>
-<%@page import="game.InGame"%>
-<%@page import="communication.Client"%>
 <%@page import="game.Matchmaking"%>
 
 <html lang="en" id="move">
@@ -36,6 +34,21 @@
 window.onload = function() {
 	defineTurns();
 };
+/*
+$(document).ready(function(){
+	$.ajax({
+		type: "POST",
+		url: "InGame",
+		 data:{metodo:'create'},
+		success: function(){
+			defineTurns();
+		    //setTimeout(function(){// wait for 5 secs(2)
+		    location.reload(); // then reload the page.(3)
+		    //}, 5000); 
+		   }
+			
+	});
+});*/
 
 
 </script>
@@ -46,36 +59,35 @@ window.onload = function() {
                <img src="battle/thebackground.png" style="width: 770px; height: 560px;">
                <div class="mc_top">
                  <%
-				Class.forName(Connector.drv);
-				try (Connection conn = Connector.getConnection();) {
-					Statement stmt = conn.createStatement();
-					
-					ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("this_id")+";");
-					
-					if (rs.next()) {
-						String userID = rs.getString("userID");
-						String username = rs.getString("username");
-							
-				%>
+                 	Class.forName(Connector.drv);
+                 		try (Connection conn = Connector.getConnection();) {
+                 			Statement stmt = conn.createStatement();
+                 			
+                 			ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("this_id")+";");
+                 			
+                 			if (rs.next()) {
+                 				String userID = rs.getString("userID");
+                 				String username = rs.getString("username");
+                 %>
                   <div class="mc_play1">
                      <div class="mc_username1">
-                        <%=username %>
+                        <%=username%>
                      </div>
                      <div class="mc_userrank1">
                         CABIN BOY
                      </div>
                      <div class="mc_avatar1">
                      
-                       <img src="ViewAvatar?id=<%=userID %>" onclick="playerFooterInfo('my')" alt="" > 
+                       <img src="ViewAvatar?id=<%=userID%>" onclick="playerFooterInfo('my')" alt="" > 
                      </div>
                   </div>
                   <%
-					}
-					rs.close();
-					} catch (SQLException | IOException e) {
-					System.out.println(e.getMessage());
-					}
-					%>
+                  	}
+                  			rs.close();
+                  			} catch (SQLException | IOException e) {
+                  			System.out.println(e.getMessage());
+                  			}
+                  %>
                   
                   
                   <!----> 
@@ -90,31 +102,15 @@ window.onload = function() {
                         <div class="mc_bar_ready my_turn" id="passTurn">
                            Press To End Turn
                         </div>
-                         <%
-							int userID_energy = (int) session.getAttribute("userID");
-							int taijutsu = 0;
-							int energy = 0;
-							int heart = 0;
-							int spirit = 0;
-							int random = 0;
-							for (Client c : Matchmaking.allClients) {
-								if (c.getId()==userID_energy) {
-							 		taijutsu = c.getCc().getTaijutsu();
-							 		energy = c.getCc().getEnergy();
-							 		heart = c.getCc().getHeart();
-							 		spirit = c.getCc().getSpirit();
-							 		random = c.getCc().getRandom();
-								}
-							}
-							%>
+
                         <div class="mc_energy_system my_turn">
 			                <div class="mc_energy_bar"></div>
 			                <div class="mc_energy_txt">
-			                  <strong class="energy0">x<%=taijutsu %></strong>
-			                  <strong class="energy1">x<%=heart %></strong>
-			                  <strong class="energy2">x<%=energy %></strong>
-			                  <strong class="energy3">x<%=spirit %></strong>
-			                  <strong class="energy4">x<%=random %></strong>
+			                  <strong class="energy0">x0</strong>
+			                  <strong class="energy1">x1</strong>
+			                  <strong class="energy2">x2</strong>
+			                  <strong class="energy3">x3</strong>
+			                  <strong class="energy4">x6</strong>
 			                </div>
 			                <div class="mc_energy_exchange">EXCHANGE ENERGY</div>
 			              </div>
@@ -122,53 +118,51 @@ window.onload = function() {
                      <!---->
                   </div>
                 <%
-				Class.forName(Connector.drv);
-				try (Connection conn = Connector.getConnection();) {
-					Statement stmt = conn.createStatement();
-					
-					ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("opp_id")+";");
-					
-					if (rs.next()) {
-						String userID = rs.getString("userID");
-						String username = rs.getString("username");
-							
-				%>
+                	Class.forName(Connector.drv);
+                		try (Connection conn = Connector.getConnection();) {
+                			Statement stmt = conn.createStatement();
+                			
+                			ResultSet rs = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("opp_id")+";");
+                			
+                			if (rs.next()) {
+                				String userID = rs.getString("userID");
+                				String username = rs.getString("username");
+                %>
                   <div class="mc_play2">
                      <div class="mc_username2">
-                        <%=username %>
+                        <%=username%>
                      </div>
                      <div class="mc_userrank2">
                         CABIN BOY
                      </div>
                      <div class="mc_avatar2">
-                        <a><img src="ViewAvatar?id=<%=userID %>" onclick="playerFooterInfo('opp')"> </a>
+                        <a><img src="ViewAvatar?id=<%=userID%>" onclick="playerFooterInfo('opp')"> </a>
      	             </div>
                   </div>
                       <%
-					}
-					rs.close();
-					} catch (SQLException | IOException e) {
-					System.out.println(e.getMessage());
-					}
-					%>
+                      	}
+                      			rs.close();
+                      			} catch (SQLException | IOException e) {
+                      			System.out.println(e.getMessage());
+                      			}
+                      %>
                   <!---->
                </div>
                <div class="mc_combat">
                  <%
-				Class.forName(Connector.drv);
-				try (Connection conn = Connector.getConnection();) {
-					Statement stmt = conn.createStatement();
-					
-					ResultSet rs = stmt.executeQuery(
-							"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("this_char1")+ 
-							" or characterID="+ session.getAttribute("this_char2")+" or characterID="+session.getAttribute("this_char3")+");");
-					int countChars = 0;
-					while (rs.next()) {
-						String characterID = rs.getString("characterID");
-						int count = 0;
-						int count_my = 0;
-						
-				%>
+                 	Class.forName(Connector.drv);
+                 		try (Connection conn = Connector.getConnection();) {
+                 			Statement stmt = conn.createStatement();
+                 			
+                 			ResultSet rs = stmt.executeQuery(
+                 					"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("this_char1")+ 
+                 					" or characterID="+ session.getAttribute("this_char2")+" or characterID="+session.getAttribute("this_char3")+");");
+                 			int countChars = 0;
+                 			while (rs.next()) {
+                 				String characterID = rs.getString("characterID");
+                 				int count = 0;
+                 				int count_my = 0;
+                 %>
                   <div class="mc_char_0<%=countChars%>">
                   	
                      <div class="mc_char_section">
@@ -178,21 +172,21 @@ window.onload = function() {
                               <div class="mc_char_section_selected"></div>
                               <div class="mc_char_section_skills">
                               
-                        <%  
-                        ResultSet abilities = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
-					    while (abilities.next()) {
-									
-							String abilityID = abilities.getString("abilityID");
-							 %>
+                        <%
+                                                      	ResultSet abilities = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
+                                                      			    while (abilities.next()) {
+                                                      							
+                                                      					String abilityID = abilities.getString("abilityID");
+                                                      %>
                                  <div class="skillimg<%=count%>">
-                                    <a onclick="abilityFooterInfo(<%=abilityID %>)"><img src="ViewAbility?id=<%=abilityID %>" class="disabled" > </a>
+                                    <a onclick="abilityFooterInfo(<%=abilityID%>)"><img src="ViewAbility?id=<%=abilityID%>" class="disabled" > </a>
                                  </div>
   
                                   <%
-                                  count++;
-					   }
-					   abilities.close();
-                                  %>
+                                    	count++;
+                                    			   }
+                                    			   abilities.close();
+                                    %>
                               </div>
                            </div>
                            
@@ -200,21 +194,21 @@ window.onload = function() {
                               <div class="mc_char_section_selected"></div>
                               <div class="mc_char_section_skills">
                               
-                        <%  
-                        ResultSet abilities_my = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
-					    while (abilities_my.next()) {
-									
-							String abilityID_my = abilities_my.getString("abilityID");
-							 %>
+                        <%
+                                                      	ResultSet abilities_my = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
+                                                      			    while (abilities_my.next()) {
+                                                      							
+                                                      					String abilityID_my = abilities_my.getString("abilityID");
+                                                      %>
                                  <div class="skillimg<%=count_my%>">
-                                    <a onclick="abilityFooterInfo(<%=abilityID_my %>)"><img src="ViewAbility?id=<%=abilityID_my %>"></a>
+                                    <a onclick="abilityFooterInfo(<%=abilityID_my%>)"><img src="ViewAbility?id=<%=abilityID_my%>"></a>
                                  </div>
   
                                   <%
-                                  count_my++;
-					   }
-					   abilities_my.close();
-                                  %>
+                                    	count_my++;
+                                    			   }
+                                    			   abilities_my.close();
+                                    %>
                               </div>
                            </div>
                         </div>
@@ -227,11 +221,11 @@ window.onload = function() {
                         </div> 
                     
                         <div class="mc_char_card_rank ">
-                           <a onclick="characterFooterInfo(<%=characterID %>)"><img src="https://naruto-arena.net/images/ranks/10.png"></a>
+                           <a onclick="characterFooterInfo(<%=characterID%>)"><img src="https://naruto-arena.net/images/ranks/10.png"></a>
                         </div> 
                             <div class="mc_char_card_avatar  ">
                          <img class="abs " src="https://naruto-arena.net/images/dead.png">
-                         <img class="abs" id="dead_0<%=countChars %>" src="ViewCharacter?id=<%=characterID %>">
+                         <img class="abs" id="dead_0<%=countChars%>" src="ViewCharacter?id=<%=characterID%>">
                         </div>
                      </div>
                     
@@ -251,38 +245,39 @@ window.onload = function() {
                   </div>
                   
                     <%
-                    countChars++; 
-					}
-					rs.close();
-					} catch (SQLException | IOException e) {
-					System.out.println(e.getMessage());
-					}
-					
-				Class.forName(Connector.drv);
-				try (Connection conn = Connector.getConnection();) {
-					Statement stmt = conn.createStatement();
-					
-					ResultSet rs = stmt.executeQuery(
-							"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("opp_char1")+ 
-							" or characterID="+ session.getAttribute("opp_char2")+" or characterID="+session.getAttribute("opp_char3")+");");
-					int countChars = 0;
-					while (rs.next()) {
-						String characterID = rs.getString("characterID");
-						int count = 0;
-						
-				%>
+                     	countChars++; 
+                     			}
+                     			rs.close();
+                     			} catch (SQLException | IOException e) {
+                     			System.out.println(e.getMessage());
+                     			}
+                     			
+                     		Class.forName(Connector.drv);
+                     		try (Connection conn = Connector.getConnection();) {
+                     			Statement stmt = conn.createStatement();
+                     			
+                     			ResultSet rs = stmt.executeQuery(
+                     					"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("opp_char1")+ 
+                     					" or characterID="+ session.getAttribute("opp_char2")+" or characterID="+session.getAttribute("opp_char3")+");");
+                     			int countChars = 0;
+                     			while (rs.next()) {
+                     				String characterID = rs.getString("characterID");
+                     				int count = 0;
+                                      %>
                   <div class="mc_char_1<%=countChars%>">
-                  	<%countChars++; %>
+                  	<%
+                  		countChars++;
+                  	%>
                      <div class="mc_char_card">
                         <div class="mc_char_card_rank2 revert rankenemy">
                            <img src="https://naruto-arena.net/images/ranks/9v2.png">
                         </div>
                         <div class="mc_char_card_avatar revert mc_char_card_avatar_en">
                           <!--  <img class="abs revert" src="https://naruto-arena.net/images/dead.png"> -->
-                           <img class="abs" id="dead_1<%=countChars %>" src="ViewCharacter?id=<%=characterID %>">
+                           <img class="abs" id="dead_1<%=countChars%>" src="ViewCharacter?id=<%=characterID%>">
                         </div>
                         <div class="mc_char_card_rank revert">
-                           <a onclick="characterFooterInfo(<%=characterID %>)"><img src="https://naruto-arena.net/images/ranks/9.png"></a>
+                           <a onclick="characterFooterInfo(<%=characterID%>)"><img src="https://naruto-arena.net/images/ranks/9.png"></a>
                         </div>
                      </div>
                      <!----> 
@@ -300,44 +295,43 @@ window.onload = function() {
                      <div class="effects1"></div>
                   </div>
                     <%
-                    
-					}
-					rs.close();
-					} catch (SQLException | IOException e) {
-					System.out.println(e.getMessage());
-					}
-					%>
+                    	}
+                    			rs.close();
+                    			} catch (SQLException | IOException e) {
+                    			System.out.println(e.getMessage());
+                    			}
+                    %>
                  
                   </div>
                </div>
                <div class="mc_footer">
                <%
-					Class.forName(Connector.drv);
-					try (Connection conn = Connector.getConnection();) {
-						Statement stmt = conn.createStatement();
-						
-						ResultSet player0 = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("this_id")+";");
-						
-						if (player0.next()) {
-							String userID = player0.getString("userID");
-							String username = player0.getString("username");
-							String xp = player0.getString("xp");
-							String wins = player0.getString("nWins");
-							String losses = player0.getString("nLosses");
-							String streak = player0.getString("streak");
-					%>
+               	Class.forName(Connector.drv);
+               			try (Connection conn = Connector.getConnection();) {
+               				Statement stmt = conn.createStatement();
+               				
+               				ResultSet player0 = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("this_id")+";");
+               				
+               				if (player0.next()) {
+               					String userID = player0.getString("userID");
+               					String username = player0.getString("username");
+               					String xp = player0.getString("xp");
+               					String wins = player0.getString("nWins");
+               					String losses = player0.getString("nLosses");
+               					String streak = player0.getString("streak");
+               %>
 					<div class="mc_info" id="player0" style="display:none;">
 					 
                      <div class="mc_info_avatar">
                         <img src="ViewAvatar?id=<%=userID%>"> 
                      </div>
                      
-                     <div class="mc_info_name"><%=username %></div>
+                     <div class="mc_info_name"><%=username%></div>
                      <div class="mc_info_desc">
                      Cabin Boy<br>
-                     Level: <%=UserInfo.getLevel(xp) %><br>
+                     Level: <%=UserInfo.getLevel(xp)%><br>
                      Ladderrank: <br>
-                     Ratio: <%=wins %>-<%=losses %> (+<%=streak %>)</div>
+                     Ratio: <%=wins%>-<%=losses%> (+<%=streak%>)</div>
                      <div class="mc_info_team">
                         <div class="mc_info_team1"><img src="ViewCharacter?id=<%=session.getAttribute("this_char1")%>"></div>
                         <div class="mc_info_team2"><img src="ViewCharacter?id=<%=session.getAttribute("this_char2")%>"></div>
@@ -345,38 +339,38 @@ window.onload = function() {
                      </div>
                   </div>
                   <%
-					}
-					player0.close();
-					} catch (SQLException | IOException e) {
-					System.out.println(e.getMessage());
-					}	
-              
-					Class.forName(Connector.drv);
-					try (Connection conn = Connector.getConnection();) {
-						Statement stmt = conn.createStatement();
-						
-						ResultSet player1 = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("opp_id")+";");
-						
-						if (player1.next()) {
-							String userID = player1.getString("userID");
-							String username = player1.getString("username");
-							String xp = player1.getString("xp");
-							String wins = player1.getString("nWins");
-							String losses = player1.getString("nLosses");
-							String streak = player1.getString("streak");
-					%>
+                  	}
+                  			player0.close();
+                  			} catch (SQLException | IOException e) {
+                  			System.out.println(e.getMessage());
+                  			}	
+                                
+                  			Class.forName(Connector.drv);
+                  			try (Connection conn = Connector.getConnection();) {
+                  				Statement stmt = conn.createStatement();
+                  				
+                  				ResultSet player1 = stmt.executeQuery("select * from USERS where userID="+session.getAttribute("opp_id")+";");
+                  				
+                  				if (player1.next()) {
+                  					String userID = player1.getString("userID");
+                  					String username = player1.getString("username");
+                  					String xp = player1.getString("xp");
+                  					String wins = player1.getString("nWins");
+                  					String losses = player1.getString("nLosses");
+                  					String streak = player1.getString("streak");
+                  %>
 					<div class="mc_info" id="player1" style="display:block;">
 					 
                      <div class="mc_info_avatar">
                         <img src="ViewAvatar?id=<%=userID%>"> 
                      </div>
                      
-                     <div class="mc_info_name"><%=username %></div>
+                     <div class="mc_info_name"><%=username%></div>
                      <div class="mc_info_desc">
                      Cabin Boy<br>
-                     Level: <%=UserInfo.getLevel(xp) %><br>
+                     Level: <%=UserInfo.getLevel(xp)%><br>
                      Ladderrank: <br>
-                     Ratio: <%=wins %>-<%=losses %> (+<%=streak %>)</div>
+                     Ratio: <%=wins%>-<%=losses%> (+<%=streak%>)</div>
                      <div class="mc_info_team">
                         <div class="mc_info_team1"><img src="ViewCharacter?id=<%=session.getAttribute("opp_char1")%>"></div>
                         <div class="mc_info_team2"><img src="ViewCharacter?id=<%=session.getAttribute("opp_char2")%>"></div>
@@ -384,74 +378,72 @@ window.onload = function() {
                      </div>
                   </div>
                   <%
-					}
-					player1.close();
-					} catch (SQLException | IOException e) {
-					System.out.println(e.getMessage());
-					}	
+                  	}
+                  			player1.close();
+                  			} catch (SQLException | IOException e) {
+                  			System.out.println(e.getMessage());
+                  			}
                   %>
                   
                   
                     <%
-					Class.forName(Connector.drv);
-					try (Connection conn = Connector.getConnection();) {
-						Statement stmt = conn.createStatement();
-						
-						ResultSet characters = stmt.executeQuery(
-								"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("this_char1")+ 
-								" or characterID="+session.getAttribute("this_char2")+ " or characterID="+session.getAttribute("this_char3")+ 
-								" or characterID="+session.getAttribute("opp_char1")+"  or characterID="+session.getAttribute("opp_char2")+ 
-								"  or characterID="+session.getAttribute("opp_char3")+");");
-						
-						while (characters.next()) {
-							String characterID = characters.getString("characterID");
-							String nome = characters.getString("nome");
-							String descricao = characters.getString("descricao");
-							
-					%>
-					<div class="mc_info" id="character<%=characterID %>" style="display:none;">
+                  	Class.forName(Connector.drv);
+                  			try (Connection conn = Connector.getConnection();) {
+                  				Statement stmt = conn.createStatement();
+                  				
+                  				ResultSet characters = stmt.executeQuery(
+                  						"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("this_char1")+ 
+                  						" or characterID="+session.getAttribute("this_char2")+ " or characterID="+session.getAttribute("this_char3")+ 
+                  						" or characterID="+session.getAttribute("opp_char1")+"  or characterID="+session.getAttribute("opp_char2")+ 
+                  						"  or characterID="+session.getAttribute("opp_char3")+");");
+                  				
+                  				while (characters.next()) {
+                  					String characterID = characters.getString("characterID");
+                  					String nome = characters.getString("nome");
+                  					String descricao = characters.getString("descricao");
+                  %>
+					<div class="mc_info" id="character<%=characterID%>" style="display:none;">
 					 
                      <div class="mc_info_avatar">
                         <img src="ViewCharacter?id=<%=characterID%>"> 
                      </div>
                      
-                     <div class="char_info_name"><%=nome %></div>
-                     <div class="char_info_desc"><%=descricao %></div>
+                     <div class="char_info_name"><%=nome%></div>
+                     <div class="char_info_desc"><%=descricao%></div>
 
                    </div>
                   
                   		<%
-                  		 ResultSet abilities = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
-						   while (abilities.next()) {
-							   String abilityID = abilities.getString("abilityID");
-							   
-							   ResultSet abilit = conn.createStatement().executeQuery("select * from THEME_ABILITY where themeID=1 and abilityID="+abilityID+";");
-							   while (abilit.next()) {
-								   String nome_ab = abilit.getString("nome");
-								   String descricao_ab = abilit.getString("descricao");
-								   
-								   %>
-								   <div class="mc_info" id="ability<%=abilityID %>" style="display:none;">
+                  			ResultSet abilities = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
+                  						   while (abilities.next()) {
+                  							   String abilityID = abilities.getString("abilityID");
+                  							   
+                  							   ResultSet abilit = conn.createStatement().executeQuery("select * from THEME_ABILITY where themeID=1 and abilityID="+abilityID+";");
+                  							   while (abilit.next()) {
+                  								   String nome_ab = abilit.getString("nome");
+                  								   String descricao_ab = abilit.getString("descricao");
+                  		%>
+								   <div class="mc_info" id="ability<%=abilityID%>" style="display:none;">
 					 
 				                     <div class="mc_info_avatar">
 				                        <img src="ViewAbility?id=<%=abilityID%>"> 
 				                     </div>
 				                     
-				                     <div class="ability_info_name"><%=nome_ab %></div>
-				                     <div class="ability_info_desc"><%=descricao_ab %></div>
+				                     <div class="ability_info_name"><%=nome_ab%></div>
+				                     <div class="ability_info_desc"><%=descricao_ab%></div>
 				
 				                   </div>
-								 <%  
-							   }
-							   abilit.close();
-						   }
-                 		abilities.close();
-					}
-				characters.close();
-					} catch (SQLException | IOException e) {
-					System.out.println(e.getMessage());
-					}	
-                  %>
+								 <%
+								 	}
+								 					   abilit.close();
+								 				   }
+								                  		abilities.close();
+								 			}
+								 		characters.close();
+								 			} catch (SQLException | IOException e) {
+								 			System.out.println(e.getMessage());
+								 			}
+								 %>
                   
                   <div class="mc_menu">
                      <div class="mc_surrender"></div>
@@ -474,6 +466,7 @@ $('#passTurn').click(function() {
 	$.ajax({
 		type: "POST",
 		url: "InGame",
+		data:{metodo:'unlock'},
 		success: function(){
 			defineTurns();
 		    //setTimeout(function(){// wait for 5 secs(2)
@@ -523,19 +516,9 @@ function playerFooterInfo(my_opp) {
 	
 }
 
+
 function defineTurns() {
-	<%
-	Client este = null;
-	int port = 0; 
-	int userID = (int) session.getAttribute("userID");
-	
-	for (Client c : Matchmaking.allClients) {
-		if (c.getId()==userID) {
-	 		session.setAttribute("turn", c.getCc().isPlayerTurn());
-	 		c.getCc().setNeedsRefresh(false);
-		}
-	}
-	%>
+
 	var turn = <%=session.getAttribute("turn")%>;
 	
 	var opp = document.getElementsByClassName ("opp_turn");
@@ -564,10 +547,28 @@ function defineTurns() {
 		for (var i = 0; i < my.length; i++) {
 			my[i].style.display="none";
 		}
+		
+		lockSemaphore();
 	}
+	
 }
 
+function lockSemaphore() {
+	$.ajax({
+		type: "POST",
+		url: "InGame",
+		data:{metodo:'lock'},
+		success: function(){
+			defineTurns();
+		    //setTimeout(function(){// wait for 5 secs(2)
+		    location.reload(); // then reload the page.(3)
+		    //}, 5000); 
+		   }
+			
+	});
+}
 
+/*
 setInterval(function() {
    // if (needsChange()) {
     	//console.log("change reload");
@@ -580,7 +581,7 @@ setInterval(function() {
 	window.location.reload(true);
 }, 10000);
 
-
+*/
 
 
 

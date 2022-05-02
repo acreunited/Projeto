@@ -1,4 +1,4 @@
-package communication;
+package legacy;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,8 +11,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
-
-import game.Matchmaking;
 
 public class ServerConnection extends Thread {
 	
@@ -34,7 +32,7 @@ public class ServerConnection extends Thread {
 	}
 	
 	public void run() {
-		try {
+		/*try {
 			din = new DataInputStream(socket.getInputStream());
 			dout = new DataOutputStream(socket.getOutputStream());
 			
@@ -124,7 +122,7 @@ public class ServerConnection extends Thread {
 					setButtonTurnClicked(false);
 					state = "WAITING";
 					break;*/
-				}
+				/*}*/
 				
 				
 				/*while (din.available()==0) {
@@ -137,7 +135,7 @@ public class ServerConnection extends Thread {
 				String textIn = din.readUTF();
 				sendStringToAllClients(textIn);
 				*/
-			}
+			/*}
 			
 			din.close();
 			dout.close();
@@ -146,7 +144,7 @@ public class ServerConnection extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		
 	}
 	
@@ -171,7 +169,7 @@ public class ServerConnection extends Thread {
 		
 	}
 
-	private void setFirstTurns(boolean first, boolean second) {
+	/*private void setFirstTurns(boolean first, boolean second) {
 		Client one = getFirstPlayer();
 		Client two = getSecondPlayer();
 		
@@ -190,9 +188,9 @@ public class ServerConnection extends Thread {
 		
 		one.getCc().setTurnsDefined(true);
 		two.getCc().setTurnsDefined(true);
-	}
+	}*/
 
-	private void setTurns(boolean first, boolean second) {
+	/*private void setTurns(boolean first, boolean second) {
 		Client one = getFirstPlayer();
 		Client two = getSecondPlayer();
 		
@@ -212,9 +210,9 @@ public class ServerConnection extends Thread {
 		two.getCc().setNeedsRefresh(true);
 		
 		
-	}
+	}*/
 	
-	private synchronized int nConections() {
+	/*private synchronized int nConections() {
 		int count = 0;
 		ConcurrentHashMap<Client, Integer> map = Matchmaking.connectionsClient;
 		
@@ -227,8 +225,8 @@ public class ServerConnection extends Thread {
 		}
 		
 		return count;
-	}
-	private Client getFirstPlayer() {
+	}*/
+	/*private Client getFirstPlayer() {
 		ConcurrentHashMap<Client, Integer> map = Matchmaking.connectionsClient;
 		
 		for (Entry<Client, Integer> entry : map.entrySet()) {
@@ -237,8 +235,8 @@ public class ServerConnection extends Thread {
 			}
 		}
 		return null;
-	}
-	private Client getSecondPlayer() {
+	}*/
+	/*private Client getSecondPlayer() {
 		ConcurrentHashMap<Client, Integer> map = Matchmaking.connectionsClient;
 		Client[] clients = new Client[2];
 		int count = 0;
@@ -250,7 +248,7 @@ public class ServerConnection extends Thread {
 			}
 		}
 		return clients[1];
-	}
+	}*/
 	
 	
 	

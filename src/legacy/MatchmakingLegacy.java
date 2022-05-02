@@ -1,4 +1,4 @@
-package game;
+package legacy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import game.Queue;
 
 
 
-public class Matchmaking {
+public class MatchmakingLegacy {
 	
 	public static CopyOnWriteArrayList<Queue> matchQuick = new CopyOnWriteArrayList<>();
 	public static CopyOnWriteArrayList<Queue> matchQuickRemove = new CopyOnWriteArrayList<>();

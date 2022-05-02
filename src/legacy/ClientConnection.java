@@ -1,4 +1,4 @@
-package communication;
+package legacy;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

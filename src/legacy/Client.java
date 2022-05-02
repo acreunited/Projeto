@@ -1,4 +1,4 @@
-package communication;
+package legacy;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -8,8 +8,6 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
-import game.Matchmaking;
 
 public class Client {
 
@@ -31,7 +29,7 @@ public class Client {
 			Socket s = new Socket("localhost", this.port);
 			cc = new ClientConnection(s, this);
 			cc.start();
-			Matchmaking.connectionsClient.put(this, this.port);
+			//Matchmaking.connectionsClient.put(this, this.port);
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

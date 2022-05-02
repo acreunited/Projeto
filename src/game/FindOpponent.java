@@ -12,8 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
 
@@ -24,22 +27,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import communication.Client;
-import communication.Server;
-import communication.ServerConnection;
+import legacy.MatchmakingLegacy;
 import main.Connector;
 
 @WebServlet("/FindOpponent")
 public class FindOpponent extends HttpServlet {
 	
 	private static final long serialVersionUID = 7215979604673189309L;
+	private static Hashtable<String,  Semaphore> games = new Hashtable<String,  Semaphore>();
+	private static String uuid = "uuidJogoTODO";
+	// proteger esta estrutura de dados jogos com um monitor/semaforo
 	
 	public FindOpponent() {
 		super();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
@@ -56,56 +59,40 @@ public class FindOpponent extends HttpServlet {
 		session.setAttribute("this_char2", char2);
 		session.setAttribute("this_char3", char3);
 		
+		/*session.setAttribute("opp_id", q.getPlayer());
+		session.setAttribute("opp_char1", q.getTeam().getChar1());
+		session.setAttribute("opp_char2", q.getTeam().getChar2());
+		session.setAttribute("opp_char3", q.getTeam().getChar3());*/
+		
 		Queue playerTeam = new Queue(userID, new Team(char1, char2, char3));
 		
-		System.out.println(Matchmaking.matchQuick.size());
-		
 		boolean searching = true;
-		String state = "PORT";
-		Client cliente = null;
+		String state = "START";
 		
 		while (searching) {
 			
 			switch (state) {
 			
 			case "END":
+				
 				searching = false;
 				break;
-				
-			case "PORT":
-				state = (isPortInUse(3333)) ? "CLIENT" : "SERVER";
-				break;
-				
-			case "SERVER":
-				
-				if(!isPortInUse(3333)) {
-					Server server = new Server(3333);
-					Matchmaking.allServers.add(server);
-				}
-				state = "CLIENT";
-					
-				break;
-				
-			case "CLIENT":
-				cliente = new Client(3333, userID);
-				Matchmaking.allClients.add(cliente);
-				//session.setAttribute("thread", cliente);
-
-				state = "START";
-				break;
 			
-			
-			//enter Queue
 			case "START":
-				Matchmaking.matchQuick.add(playerTeam);
-				state = "WAITING";
+				//criar Semaphore
+				
+				//createSemaphore(session);
+				addQuick(playerTeam);
+				state = "QUEUE";
 				break;
 				
-			case "WAITING":
-				state = (Matchmaking.matchQuick.size()>1) ? "PAIRING" : "WAITING";
+			case "QUEUE":
+				
+				state = (Matchmaking.matchQuick.size()<=1) ? "QUEUE" : "SEARCHING";
 				break;
 				
-			case "PAIRING":
+			case "SEARCHING":
+				
 				for (Queue q : Matchmaking.matchQuick) {
 					if (q.getPlayer()!=userID) {
 						session.setAttribute("opp_id", q.getPlayer());
@@ -113,32 +100,16 @@ public class FindOpponent extends HttpServlet {
 						session.setAttribute("opp_char2", q.getTeam().getChar2());
 						session.setAttribute("opp_char3", q.getTeam().getChar3());
 						
-						state = "TURNS";
+						state = "END";
 					}
 				}
 				break;
-				
-			case "TURNS":
-				state = (cliente.getCc().isTurnsDefined()) ? "SESSION" : "TURNS";
-				break;
-				
-			case "SESSION":
-				session.setAttribute("turn", cliente.getCc().isPlayerTurn());
-				state = "END";
-				
-				break;
-			
 			}
-		
 		}
-
-		
-		
-		//TODO melhorar isto. Não pode ficar assim
+		//System.out.println("SERVLET: "+session.getAttribute("turn"));
+		games.clear();
 		Matchmaking.matchQuick.clear();
-		//Matchmaking.allClients.clear();
-		
-		response.sendRedirect("battle.jsp");
+		response.sendRedirect("loadingBattle.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -147,22 +118,14 @@ public class FindOpponent extends HttpServlet {
 		doGet(request, response);
 	}
 	
-
-
 	
-	private boolean isPortInUse(int portNr) {
-
-	    try {
-	        // Socket try to open a REMOTE port
-	        (new Socket("localhost", portNr)).close();
-	        // remote port can be opened, this is a listening port on remote machine
-	        // this port is in use on the remote machine !
-	        return true;
-	    } catch(Exception e) {
-	        // remote port is closed, nothing is running on
-	        return false;
-	    }
+	
+	private  void addQuick(Queue q) {
+		Matchmaking.matchQuick.add(q);
 	}
+	
+
+
 	
 	
 	
