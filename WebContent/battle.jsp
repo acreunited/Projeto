@@ -142,10 +142,10 @@ $(document).ready(function(){
                   </div>
                       <%
                       	}
-                      			rs.close();
-                      			} catch (SQLException | IOException e) {
-                      			System.out.println(e.getMessage());
-                      			}
+               			rs.close();
+               			} catch (SQLException | IOException e) {
+               			System.out.println(e.getMessage());
+               			}
                       %>
                   <!---->
                </div>
@@ -174,19 +174,19 @@ $(document).ready(function(){
                               <div class="mc_char_section_skills">
                               
                         <%
-                                                      	ResultSet abilities = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
-                                                      			    while (abilities.next()) {
-                                                      							
-                                                      					String abilityID = abilities.getString("abilityID");
-                                                      %>
+                     	ResultSet abilities = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
+                     			    while (abilities.next()) {
+                     							
+                     					String abilityID = abilities.getString("abilityID");
+                     %>
                                  <div class="skillimg<%=count%>">
                                     <a onclick="abilityFooterInfo(<%=abilityID%>)"><img src="ViewAbility?id=<%=abilityID%>" class="disabled" > </a>
                                  </div>
   
                                   <%
                                     	count++;
-                                    			   }
-                                    			   abilities.close();
+                           			   }
+                           			   abilities.close();
                                     %>
                               </div>
                            </div>
@@ -196,19 +196,19 @@ $(document).ready(function(){
                               <div class="mc_char_section_skills">
                               
                         <%
-                                                      	ResultSet abilities_my = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
-                                                      			    while (abilities_my.next()) {
+                          ResultSet abilities_my = conn.createStatement().executeQuery("select * from ABILITY where characterID="+characterID+";");
+                          while (abilities_my.next()) {
                                                       							
-                                                      					String abilityID_my = abilities_my.getString("abilityID");
-                                                      %>
+                          String abilityID_my = abilities_my.getString("abilityID");
+                          %>
                                  <div class="skillimg<%=count_my%>">
                                     <a onclick="abilityFooterInfo(<%=abilityID_my%>)"><img src="ViewAbility?id=<%=abilityID_my%>"></a>
                                  </div>
   
                                   <%
                                     	count_my++;
-                                    			   }
-                                    			   abilities_my.close();
+                                    	}
+                                    	abilities_my.close();
                                     %>
                               </div>
                            </div>
@@ -241,8 +241,19 @@ $(document).ready(function(){
                            <img style="border: none" id="dead_00" >
                         </div>
                      </div>-->
-                     <div class="effects"></div>
                      
+                     <!-- TODO CRIAR MANUALMENTE -->
+                   <!-- <div class="effects">
+                     	<div class="effects_border0 zindex1">
+                  			<img src="ViewAbility?id=id" onmouseover="seeActiveSkill(id)" onmouseleave="hideActiveSkill()">
+                  			<span class="tooltiptext" id="tooltiptextid">
+	                    		<span class="tooltiptextname">SPRINKLING NEEDLES</span>
+	                    		<span class="tooltiptextdesc">This character will take 10 damage.</span>
+	                    		<span class="tooltiptextduration">1 TURN LEFT</span>
+                    		</span>
+                   		</div>
+                    </div>
+                      -->
                   </div>
                   
                     <%
@@ -293,7 +304,19 @@ $(document).ready(function(){
                           <img style="border: none" id="dead_10" >
                         </div>
                      </div> -->
-                     <div class="effects1"></div>
+                     
+                    <!-- TODO CRIAR MANUALMENTE --> 
+                    <!--  <div class="effects1">
+                     	<div class="effects_border1 zindex1">
+                  			<img src="ViewAbility?id=id" onmouseover="seeActiveSkillEnemy(id)" onmouseleave="hideActiveSkillEnemy()">
+                  			<span class="tooltiptext1" id="tooltiptext1id">
+	                    		<span class="tooltiptextname">SPRINKLING NEEDLES</span>
+	                    		<span class="tooltiptextdesc">This character will take 10 damage.</span>
+	                    		<span class="tooltiptextduration">1 TURN LEFT</span>
+                    		</span>
+                   		</div>
+                    </div>
+                     -->
                   </div>
                     <%
                     	}
@@ -567,6 +590,42 @@ function lockSemaphore() {
 		   }
 			
 	});
+}
+
+function seeActiveSkillEnemy(activeSkill) {
+	
+	var id = "tooltiptext1"+activeSkill;
+	var skill = document.getElementsByClassName ("tooltiptext1");
+	for (var i = 0; i < skill.length; i++) {
+		if (id==skill[i].id) {
+			skill[i].style.visibility = "visible" ;
+		}
+	}
+}
+
+function hideActiveSkillEnemy() {
+	var skill = document.getElementsByClassName ("tooltiptext1");
+	for (var i = 0; i < skill.length; i++) {
+		skill[i].style.visibility = "hidden" ;
+	}
+}
+
+function seeActiveSkill(activeSkill) {
+	
+	var id = "tooltiptext"+activeSkill;
+	var skill = document.getElementsByClassName ("tooltiptext");
+	for (var i = 0; i < skill.length; i++) {
+		if (id==skill[i].id) {
+			skill[i].style.visibility = "visible" ;
+		}
+	}
+}
+
+function hideActiveSkill() {
+	var skill = document.getElementsByClassName ("tooltiptext");
+	for (var i = 0; i < skill.length; i++) {
+		skill[i].style.visibility = "hidden" ;
+	}
 }
 
 /*

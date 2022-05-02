@@ -831,6 +831,107 @@
     width: 381px;
 }
 
+
+
+.effects {
+    display: flex;
+    height: 22px;
+    left: 114px;
+    position: absolute;
+    top: 18px;
+    width: 400px;
+}
+.effects_border0 {
+    margin-right: 5px;
+    position: relative;
+    width: 20px;
+    
+}
+.effects_border0 img {
+    height: 20px;
+    width: 20px;
+    outline-style: solid ;
+	outline-color: #000000;
+	outline-width: 1px;
+}
+
+.effects1 {
+    display: flex;
+    left: -27px;
+    position: absolute;
+    top: 18px;
+}
+.zindex1 {
+    z-index: 2;
+}
+.effects_border1 {
+    height: 20px;
+    margin-right: -49px;
+    position: relative;
+    width: 20px;
+}
+.effects_border1 img {
+    height: 20px;
+    width: 20px;
+        outline-style: solid ;
+	outline-color: #000000;
+	outline-width: 1px;
+}
+
+.tooltiptext {
+    background-color: #282828;
+    border: 1px solid #000;
+    color: #151311;
+    left: 0px;
+    min-width: 229px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: absolute;
+    top: 25px;
+    visibility: hidden;
+    width: 110px;
+    z-index: 1;
+}
+.tooltiptext1 {
+    background-color: #282828;
+    border: 1px solid #000;
+    color: #151311;
+    left: -220px;
+    min-width: 229px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: absolute;
+    top: 25px;
+    visibility: hidden;
+    width: 110px;
+    z-index: 1;
+}
+
+.tooltiptextname {
+    color: #ff1d20;
+    font-size: 11pt;
+    font-family: "franklin_gothic_medium_condRg";
+   /* line-height: 16px;*/
+}
+.tooltiptextdesc {
+    display: block;
+    color: #ffffff;
+    font-size: 11pt;
+    font-family: "uni_sanslight";
+    /*line-height: 13px;*/
+}
+.tooltiptextduration {
+    color: #ff1d20;
+    display: block;
+    font-size: 10pt;
+   /* margin-top: 1.8px;*/
+   font-family: "franklin_gothic_medium_condRg";
+}
+
+
+
 /*
 #cursor{
     background-image:url(../images/kunai.png);
