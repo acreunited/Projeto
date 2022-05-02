@@ -34,8 +34,8 @@ import main.Connector;
 public class FindOpponent extends HttpServlet {
 	
 	private static final long serialVersionUID = 7215979604673189309L;
-	private static Hashtable<String,  Semaphore> games = new Hashtable<String,  Semaphore>();
-	private static String uuid = "uuidJogoTODO";
+	//private static Hashtable<String,  Semaphore> games = new Hashtable<String,  Semaphore>();
+	//private static String uuid = "uuidJogoTODO";
 	// proteger esta estrutura de dados jogos com um monitor/semaforo
 	
 	public FindOpponent() {
@@ -48,6 +48,13 @@ public class FindOpponent extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
+		
+		//natures
+		session.setAttribute("taijutsu", 0);
+		session.setAttribute("heart", 0);
+		session.setAttribute("energy", 0);
+		session.setAttribute("spirit", 0);
+		session.setAttribute("random", 0);
 		
 		int userID = (int) session.getAttribute("userID");
 		String char1 = request.getParameter("char1");
@@ -107,7 +114,7 @@ public class FindOpponent extends HttpServlet {
 			}
 		}
 		//System.out.println("SERVLET: "+session.getAttribute("turn"));
-		games.clear();
+		//games.clear(); //TODO
 		Matchmaking.matchQuick.clear();
 		response.sendRedirect("loadingBattle.jsp");
 	}

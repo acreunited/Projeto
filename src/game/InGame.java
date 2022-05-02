@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import legacy.Client;
 import main.Connector;
 
 @WebServlet("/InGame")
@@ -56,7 +56,7 @@ public class InGame extends HttpServlet {
 			createSemaphore(session);
 		}
 		else if (metodo.equalsIgnoreCase("lock")) {
-			lock(session);
+			lock(session, 3);
 		}
 		else if (metodo.equalsIgnoreCase("unlock")) {
 			unlock(session);
@@ -86,29 +86,61 @@ public class InGame extends HttpServlet {
 		 if (!exists) {
 			 games.put(uuid, new Semaphore(1));
 			 session.setAttribute("turn", true);
-			 lock(session);
+			 lock(session, 1);
+			 
 		 }
 		 else {
 			 session.setAttribute("turn", false);
 		 }
 
 	}
-	private void lock(HttpSession session) {
+	
+	private void lock(HttpSession session, int natures) {
 		try {
 			games.get(uuid).acquire();
 			session.setAttribute("turn", true);
+			generateRandomNatures(session, natures);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			
 		}
-	
 	}
+	
 	private void unlock(HttpSession session) {
 		games.get(uuid).release();
 		session.setAttribute("turn", false);
 	}
 	
-
+	private void generateRandomNatures(HttpSession session, int number) {
+		for (int i = 0; i < number; i++) {
+			
+			Random r = new Random();
+			int randomInt = r.nextInt(100) + 1;
+			
+			if (randomInt <=25) {
+				session.setAttribute("taijutsu", (int) session.getAttribute("taijutsu")+1);
+			}
+			else if (randomInt <= 50) {
+				session.setAttribute("heart", (int) session.getAttribute("heart")+1);
+			}
+			else if (randomInt <=75) {
+				session.setAttribute("energy", (int) session.getAttribute("energy")+1);
+			}
+			else {
+				session.setAttribute("spirit", (int) session.getAttribute("spirit")+1);
+			}			
+		}
+		updateRandom(session);
+		
+	}
+	
+	private void updateRandom(HttpSession session) {
+		int taijutsu = (int) session.getAttribute("taijutsu");
+		int heart = (int) session.getAttribute("heart");
+		int energy = (int) session.getAttribute("energy");
+		int spirit = (int) session.getAttribute("spirit");
+		
+		session.setAttribute("random", taijutsu+heart+energy+spirit);
+	}
 
 
 	

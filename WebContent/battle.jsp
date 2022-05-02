@@ -10,7 +10,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="main.Connector"%>
 <%@page import="users.UserInfo"%>
-<%@page import="game.Matchmaking"%>
+<%@page import="game.InGame"%>
 
 <html lang="en" id="move">
 
@@ -83,10 +83,10 @@ $(document).ready(function(){
                   </div>
                   <%
                   	}
-                  			rs.close();
-                  			} catch (SQLException | IOException e) {
-                  			System.out.println(e.getMessage());
-                  			}
+           			rs.close();
+           			} catch (SQLException | IOException e) {
+           			System.out.println(e.getMessage());
+           			}
                   %>
                   
                   
@@ -103,17 +103,18 @@ $(document).ready(function(){
                            Press To End Turn
                         </div>
 
+				
                         <div class="mc_energy_system my_turn">
 			                <div class="mc_energy_bar"></div>
 			                <div class="mc_energy_txt">
-			                  <strong class="energy0">x0</strong>
-			                  <strong class="energy1">x1</strong>
-			                  <strong class="energy2">x2</strong>
-			                  <strong class="energy3">x3</strong>
-			                  <strong class="energy4">x6</strong>
+			                  <strong class="energy0">x<%=session.getAttribute("taijutsu") %></strong>
+			                  <strong class="energy1">x<%=session.getAttribute("heart") %> </strong>
+			                  <strong class="energy2">x<%=session.getAttribute("energy") %></strong>
+			                  <strong class="energy3">x<%=session.getAttribute("spirit") %></strong>
+			                  <strong class="energy4">x<%=session.getAttribute("random") %></strong>
 			                </div>
 			                <div class="mc_energy_exchange">EXCHANGE ENERGY</div>
-			              </div>
+			             </div>
                      </div>
                      <!---->
                   </div>
