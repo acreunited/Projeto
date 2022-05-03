@@ -37,6 +37,7 @@ public class InGame extends HttpServlet {
 	private static final long serialVersionUID = 7215979604673189309L;
 	private static Hashtable<String,  Semaphore> games = new Hashtable<String,  Semaphore>();
 	private static String uuid = "uuidJogoTODO";
+	private static boolean oppSurrender = false;
 	// proteger esta estrutura de dados jogos com um monitor/semaforo
 	
 	public InGame() {
@@ -50,6 +51,13 @@ public class InGame extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		
+		if (oppSurrender) {
+			session.setAttribute("result", "winner");
+		}
+		else {
+			session.setAttribute("result", "");
+		}
+		
 		String metodo = request.getParameter("metodo");
 		
 		if (metodo.equalsIgnoreCase("create")) {
@@ -59,6 +67,11 @@ public class InGame extends HttpServlet {
 			lock(session, 3);
 		}
 		else if (metodo.equalsIgnoreCase("unlock")) {
+			unlock(session);
+		}
+		else if (metodo.equalsIgnoreCase("loser")) {
+			session.setAttribute("result", "loser");
+			oppSurrender = true;
 			unlock(session);
 		}
 		

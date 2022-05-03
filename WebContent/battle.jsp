@@ -32,23 +32,18 @@
 <script>
 
 window.onload = function() {
-	defineTurns();
+	console.log(<%= (String) session.getAttribute("result")=="winner"%>);
+	if (<%= (String) session.getAttribute("result")=="winner"%>) {
+		winner();
+	}
+	else if (<%= (String) session.getAttribute("result")=="loser"%>) {
+		loser();
+	}
+	else {
+		defineTurns();
+	}
+	
 };
-/*
-$(document).ready(function(){
-	$.ajax({
-		type: "POST",
-		url: "InGame",
-		 data:{metodo:'create'},
-		success: function(){
-			defineTurns();
-		    //setTimeout(function(){// wait for 5 secs(2)
-		    location.reload(); // then reload the page.(3)
-		    //}, 5000); 
-		   }
-			
-	});
-});*/
 
 
 </script>
@@ -96,13 +91,18 @@ $(document).ready(function(){
                         <div class="mc_bar_back">
                            <div class="mc_bar_fill" style="width: 133.7px;"></div>
                         </div>
-                        <div class="mc_bar_ready opp_text">
+                        <div class="mc_bar_ready opp_text" id="oppTurnDisable">
                            Opponent Turn...
                         </div>
                         <div class="mc_bar_ready my_turn" id="passTurn">
                            Press To End Turn
                         </div>
-
+						<div class="mc_bar_ready" id="winnerTurn" style="display: none;">
+                           WINNER
+                        </div>
+                        <div class="mc_bar_ready" id="loserTurn" style="display: none;">
+                           LOSER
+                        </div>
 				
                         <div class="mc_energy_system my_turn">
 			                <div class="mc_energy_bar"></div>
@@ -320,10 +320,10 @@ $(document).ready(function(){
                   </div>
                     <%
                     	}
-                    			rs.close();
-                    			} catch (SQLException | IOException e) {
-                    			System.out.println(e.getMessage());
-                    			}
+               			rs.close();
+               			} catch (SQLException | IOException e) {
+               			System.out.println(e.getMessage());
+               			}
                     %>
                  
                   </div>
@@ -470,7 +470,7 @@ $(document).ready(function(){
 								 %>
                   
                   <div class="mc_menu">
-                     <div class="mc_surrender"></div>
+                     <div class="mc_surrender" id="surrenderClick"></div>
                      <div class="mc_chat"></div>
                      <div class="mc_volume">
                      	<input type="range" min="1" max="100" value="50" class="slider">
@@ -479,12 +479,101 @@ $(document).ready(function(){
                   </div>
                </div>
                
+				<div class="holder holdanime" id="askingSurrender" style="display: none;">
+					<div class="txtsurrender">Are you sure you wish to surrender?</div> 
+					<img class="surrenderimg"> 
+					<div class="btncancel" id="surrenderCancel"></div>
+					<div class="btnok" id="surrenderConfirm"></div> 
+				</div>
+				
+				<%
+				Class.forName(Connector.drv);
+         		try (Connection conn = Connector.getConnection();) {
+         			Statement stmt = conn.createStatement();
+         			
+				ResultSet vs = conn.createStatement().executeQuery("select username from USERS where userID="+session.getAttribute("opp_id"));
+				   if (vs.next()) {
+					   String opp_username = vs.getString("username");
+					   
+				%>
+				<div class="endgame holdanime" id="winnerQuick" style="display: none;">
+					<img src="battle/winner.png"> 
+					<div class="endtitle">WINNER</div> 
+					<div class="txtendgame">
+					You have won a Quick Game against <%=opp_username %>.<br><br>
+					Quick Games count for missions.<br>Quick games do not count as Ladder Matches.
+					</div> 
+					<div class="btncontinue">
+						<span>CONTINUE</span>
+					</div>
+				</div> 
+				
+				<div class="endgame holdanime" id="loserQuick" style="display: none;">
+					<img src="battle/loser.png"> 
+					<div class="endtitle">LOSER</div> 
+					<div class="txtendgame">
+					You have lost a Quick Game against <%=opp_username %>.<br><br>
+					Quick Games count for missions.<br>Quick games do not count as Ladder Matches.
+					</div> 
+					<div class="btncontinue">
+						<span>CONTINUE</span>
+					</div>
+				</div>  
+				<%
+				   }
+         		}
+         		catch (SQLException | IOException e) {
+		 			System.out.println(e.getMessage());
+		 			}
+				%>
+				             
             </div>
             <!-- <div id="cursor" style="opacity: 1; left: 616px; top: 324px; background-image: url(&quot;../images/kunai.png&quot;);"></div>
             <div id="shuri" style="opacity: 0; left: 616px; top: 324px;"></div>-->
          </div>
     
 <script  type="text/javascript">
+
+$('#surrenderClick').click(function() {
+	$('#askingSurrender').css("display", "block");
+});
+$('#surrenderCancel').click(function() {
+	$('#askingSurrender').css("display", "none");
+});
+$('#surrenderConfirm').click(function() {
+	/*$('#oppTurnDisable').css("display", "none");
+	$('#passTurn').css("display", "none");
+	$('#loserTurn').css("display", "block");
+	$('#loserQuick').css("display", "block");*/
+	loser();
+
+});
+
+function loser() {
+	document.getElementById("oppTurnDisable").style.display="none";
+	document.getElementById("passTurn").style.display="none";
+	document.getElementById("winnerTurn").style.display="none";
+	document.getElementById("winnerQuick").style.display="none";
+	document.getElementById("loserTurn").style.display="block";
+	document.getElementById("loserQuick").style.display="block";
+	$.ajax({
+		type: "POST",
+		url: "InGame",
+		data:{metodo:'loser'},
+		success: function() {
+			
+	    }
+	});
+}
+
+function winner() {
+	document.getElementById("oppTurnDisable").style.display="none";
+	document.getElementById("passTurn").style.display="none";
+	document.getElementById("loserTurn").style.display="none";
+	document.getElementById("loserQuick").style.display="none";
+	document.getElementById("winnerTurn").style.display="block";
+	document.getElementById("winnerQuick").style.display="block";
+}
 
 $('#passTurn').click(function() {
 	$.ajax({
@@ -584,9 +673,7 @@ function lockSemaphore() {
 		data:{metodo:'lock'},
 		success: function(){
 			defineTurns();
-		    //setTimeout(function(){// wait for 5 secs(2)
-		    location.reload(); // then reload the page.(3)
-		    //}, 5000); 
+		    location.reload(); 
 		   }
 			
 	});
@@ -627,22 +714,6 @@ function hideActiveSkill() {
 		skill[i].style.visibility = "hidden" ;
 	}
 }
-
-/*
-setInterval(function() {
-   // if (needsChange()) {
-    	//console.log("change reload");
-    	//defineTurns();
-    	//location.reload();
-    //}
-   
-	defineTurns();
-	//location.reload();
-	window.location.reload(true);
-}, 10000);
-
-*/
-
 
 
 

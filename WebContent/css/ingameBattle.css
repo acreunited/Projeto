@@ -20,6 +20,13 @@
     font-style: normal;
 }
 
+@font-face {
+ font-family: 'UniSansBook';
+ src: url('../fonts/Uni Sans Book.otf');
+ font-weight: normal;
+ font-style: normal;
+}
+
 #app{
     display:flex
 }
@@ -873,7 +880,7 @@
 .effects_border1 img {
     height: 20px;
     width: 20px;
-        outline-style: solid ;
+    outline-style: solid ;
 	outline-color: #000000;
 	outline-width: 1px;
 }
@@ -930,6 +937,118 @@
    font-family: "franklin_gothic_medium_condRg";
 }
 
+/*Surrender*/
+.holder, .loadshu {
+    position: absolute;
+}
+.holder {
+    background-image: url(../selection/privategamebackground.png);
+    height: 233px;
+    left: 188px;
+    top: 140px;
+    width: 435px;
+    z-index: 999;
+}
+.holdanime {
+    -webkit-animation-duration: .2s;
+    animation-duration: .2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: hold;
+    animation-name: hold;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+txtexchange, .txtsurrender {
+    color: #000;
+    position: absolute;
+}
+.txtsurrender {
+	font-family: "franklin_gothic_medium_condRg";
+	color: #ffffff;
+    font-size: 18pt;
+    left: 60px;
+    text-align: center;
+    top: 20px;
+    width: 320px;
+}
+.surrenderimg {
+    outline-style: solid ;
+	outline-color: #000000;
+	outline-width: 1px;
+    left: 120px;
+    position: absolute;
+    top: 50px;
+    content: url(../battle/surrenderImage.png);
+}
+.btnok {
+	content: url(../battle/OKIngame.png);
+    height: 26px;
+    left: 239px;
+    position: absolute;
+    text-align: center;
+    top: 187px;
+    width: 74px;
+    z-index: 1000;
+}
+.btncancel {
+    content: url(../battle/CancelIngame.png);
+    height: 26px;
+    left: 119px;
+    position: absolute;
+    text-align: center;
+    top: 187px;
+    width: 74px;
+    z-index: 1000;
+    
+}
+/*WINNER*/
+.endgame {
+  background-image: url(../battle/battleResult.png);
+  height: 321px;
+  left: 58px;
+  position: absolute;
+  top: 100px;
+  width: 716px;
+  z-index: 999;
+}
+.endgame img {
+  
+  left: 82px;
+  position: absolute;
+  top: 48px;
+}
+.btncontinue, .endtitle {
+  color: #bd262c;
+  position: absolute;
+}
+.endtitle {
+	font-family: "franklin_gothic_medium_condRg";
+	font-size: 48pt;
+	color: #ffffff;
+	left: 400px;
+	top: 26px;
+}
+.txtendgame {
+  font-family: "UniSansBook";
+  color: #ffffff;
+  font-size: 12pt;
+  height: 160px;
+  left: 341px;
+  position: absolute;
+  top: 100px;
+  width: 330px;
+}
+.btncontinue {
+	font-family: "franklin_gothic_medium_condRg";
+  font-size: 26pt;
+  color: #b70000;
+  height: 30px;
+  left: 417px;
+  text-align: center;
+  top: 250px;
+  width: 120px;
+}
 
 
 /*
