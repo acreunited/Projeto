@@ -12,6 +12,8 @@
 <%@page import="users.UserInfo"%>
 <%@page import="game.InGame"%>
 
+
+
 <html lang="en" id="move">
 
 <head>
@@ -32,7 +34,7 @@
 <script>
 
 window.onload = function() {
-	console.log(<%= (String) session.getAttribute("result")=="winner"%>);
+	
 	if (<%= (String) session.getAttribute("result")=="winner"%>) {
 		winner();
 	}
@@ -164,7 +166,7 @@ window.onload = function() {
                  				int count = 0;
                  				int count_my = 0;
                  %>
-                  <div class="mc_char_0<%=countChars%>">
+                  <div class="mc_char_0<%=countChars%>" id="ally<%=countChars%>">
                   	
                      <div class="mc_char_section">
                         <div class="mc_char_section_perg"></div>
@@ -180,7 +182,7 @@ window.onload = function() {
                      					String abilityID = abilities.getString("abilityID");
                      %>
                                  <div class="skillimg<%=count%>">
-                                    <a onclick="abilityFooterInfo(<%=abilityID%>)"><img src="ViewAbility?id=<%=abilityID%>" class="disabled" > </a>
+                                    <a onclick="abilityFooterInfo(<%=abilityID%>, -1)"><img src="ViewAbility?id=<%=abilityID%>" class="disabled" > </a>
                                  </div>
   
                                   <%
@@ -202,7 +204,7 @@ window.onload = function() {
                           String abilityID_my = abilities_my.getString("abilityID");
                           %>
                                  <div class="skillimg<%=count_my%>">
-                                    <a onclick="abilityFooterInfo(<%=abilityID_my%>)"><img src="ViewAbility?id=<%=abilityID_my%>"></a>
+                                    <a onclick="abilityFooterInfo(<%=abilityID_my%>, <%=countChars%>)"><img src="ViewAbility?id=<%=abilityID_my%>"></a>
                                  </div>
   
                                   <%
@@ -224,11 +226,12 @@ window.onload = function() {
                         <div class="mc_char_card_rank ">
                            <a onclick="characterFooterInfo(<%=characterID%>)"><img src="https://naruto-arena.net/images/ranks/10.png"></a>
                         </div> 
-                            <div class="mc_char_card_avatar  ">
-                         <img class="abs " src="https://naruto-arena.net/images/dead.png">
-                         <img class="abs" id="dead_0<%=countChars%>" src="ViewCharacter?id=<%=characterID%>">
+                         <div class="mc_char_card_avatar  ">
+                         	<img class="abs " src="https://naruto-arena.net/images/dead.png">
+                         	<img class="abs" id="dead_0<%=countChars%>" src="ViewCharacter?id=<%=characterID%>">
                         </div>
                      </div>
+                     <!-- <div class="choose"></div> -->
                     
                      <div class="mc_char_card_lifebar">
                         <div id="bar_0<%=countChars%>" style=" background-color: #3BDF3F; width: 100%"></div>
@@ -292,7 +295,8 @@ window.onload = function() {
                            <a onclick="characterFooterInfo(<%=characterID%>)"><img src="https://naruto-arena.net/images/ranks/9.png"></a>
                         </div>
                      </div>
-                     <!----> 
+                     
+                     <!--<div class="nochoose en2"></div>--> 
                      <div class="mc_char_card_lifebar en">
                         <div id="bar_10" style=" background-color: #3BDF3F; width: 100%"></div>
                         <div id="bar_text_10" class="mc_char_card_lifetext">
@@ -582,9 +586,9 @@ $('#passTurn').click(function() {
 		data:{metodo:'unlock'},
 		success: function(){
 			defineTurns();
-		    //setTimeout(function(){// wait for 5 secs(2)
-		    location.reload(); // then reload the page.(3)
-		    //}, 5000); 
+		 
+		    location.reload(); 
+
 		   }
 			
 	});
@@ -612,10 +616,51 @@ function characterFooterInfo(id) {
 	displayNones();
 	document.getElementById("character"+id).style.display="block";
 }
-function abilityFooterInfo(id) {
+
+
+function abilityFooterInfo(abilityID, selfChar) {
+	//console.log(count);
+	//mostrar no footer
 	displayNones();
-	document.getElementById("ability"+id).style.display="block";
+	document.getElementById("ability"+abilityID).style.display="block";
+	
+	//target da habilidade
+	removeAllTargetClick()
+	
+	if (selfChar>-1) {
+		var element = document.createElement("div");
+		element.classList.add("choose");
+
+		document.getElementById("ally"+selfChar).appendChild(element);
+	}
+	
+	
+	//var target = "/ViewTargetAbility?id=" + abilityID;
+	//console.log(target);
+	 /*$.get('${pageContext.request.contextPath}/ViewTargetAbility', function(data) {
+	        alert(data);
+	 });*/
+	/*$.ajax({
+		type: "POST",
+		url: "ViewTargetAbility",
+		data:{id : abilityID},
+		success: function(){
+
+		   }
+			
+	});*/
 }
+
+function removeAllTargetClick() {
+	/*var targets = document.getElementsByClassName ("choose");
+	for (var i = 0; i < targets.length; i++) {
+		targets[i].style.display="none";
+	}*/
+	document.querySelectorAll('.choose').forEach(e => e.remove());
+
+}
+
+
 function playerFooterInfo(my_opp) {
 	
 	displayNones();

@@ -32,6 +32,7 @@ public class test {
 //		System.out.println(c2.getPermanentDamageIncrease());
 //		System.out.println(c2.getTemporaryDamageIncrease());
 //		System.out.println(c2.isStunned());
+		System.out.println(c2.getAbility1().getTargetClick());
 	
 	}
 
