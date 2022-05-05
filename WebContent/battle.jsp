@@ -11,6 +11,7 @@
 <%@page import="main.Connector"%>
 <%@page import="users.UserInfo"%>
 <%@page import="game.InGame"%>
+<%@page import="mechanics.Character"%>
 
 
 
@@ -26,7 +27,10 @@
   <title>Game Selection</title>
   
  <link href="css/ingameBattle.css" rel="stylesheet">
+ 
+ <script src="js/battle.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 </head>
 <body>
@@ -156,6 +160,8 @@ window.onload = function() {
                  	Class.forName(Connector.drv);
                  		try (Connection conn = Connector.getConnection();) {
                  			Statement stmt = conn.createStatement();
+                 			
+                 			
                  			
                  			ResultSet rs = stmt.executeQuery(
                  					"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("this_char1")+ 
@@ -534,147 +540,23 @@ window.onload = function() {
             </div>
             <!-- <div id="cursor" style="opacity: 1; left: 616px; top: 324px; background-image: url(&quot;../images/kunai.png&quot;);"></div>
             <div id="shuri" style="opacity: 0; left: 616px; top: 324px;"></div>-->
+            
+            
+            <div id="playerMoves" style="display:none;">
+            	<div class="abilityID">
+            		TargetCharacterID
+            	</div>
+            	<div class="4">
+            		10
+            	</div>
+            	<div class="8">
+            		
+            	</div>
+            </div>
+            
          </div>
     
-<script  type="text/javascript">
-
-$('#surrenderClick').click(function() {
-	$('#askingSurrender').css("display", "block");
-});
-$('#surrenderCancel').click(function() {
-	$('#askingSurrender').css("display", "none");
-});
-$('#surrenderConfirm').click(function() {
-	/*$('#oppTurnDisable').css("display", "none");
-	$('#passTurn').css("display", "none");
-	$('#loserTurn').css("display", "block");
-	$('#loserQuick').css("display", "block");*/
-	loser();
-
-});
-
-function loser() {
-	document.getElementById("oppTurnDisable").style.display="none";
-	document.getElementById("passTurn").style.display="none";
-	document.getElementById("winnerTurn").style.display="none";
-	document.getElementById("winnerQuick").style.display="none";
-	document.getElementById("loserTurn").style.display="block";
-	document.getElementById("loserQuick").style.display="block";
-	$.ajax({
-		type: "POST",
-		url: "InGame",
-		data:{metodo:'loser'},
-		success: function() {
-			
-	    }
-	});
-}
-
-function winner() {
-	document.getElementById("oppTurnDisable").style.display="none";
-	document.getElementById("passTurn").style.display="none";
-	document.getElementById("loserTurn").style.display="none";
-	document.getElementById("loserQuick").style.display="none";
-	document.getElementById("winnerTurn").style.display="block";
-	document.getElementById("winnerQuick").style.display="block";
-}
-
-$('#passTurn').click(function() {
-	$.ajax({
-		type: "POST",
-		url: "InGame",
-		data:{metodo:'unlock'},
-		success: function(){
-			defineTurns();
-		 
-		    location.reload(); 
-
-		   }
-			
-	});
-});
-
-
-
-
-function displayNones() {
-	document.getElementById("player0").style.display="none";
-	document.getElementById("player1").style.display="none";
-	
-	for (let i = 0; i < 999; i++) {
-		if (document.getElementById("character"+i)!=null) {
-			document.getElementById("character"+i).style.display="none";
-		}
-		if (document.getElementById("ability"+i)!=null) {
-			document.getElementById("ability"+i).style.display="none";
-		}
-	}
-}
-
-function characterFooterInfo(id) {
-	console.log(id);
-	displayNones();
-	document.getElementById("character"+id).style.display="block";
-}
-
-
-function abilityFooterInfo(abilityID, selfChar) {
-	//console.log(count);
-	//mostrar no footer
-	displayNones();
-	document.getElementById("ability"+abilityID).style.display="block";
-	
-	//target da habilidade
-	removeAllTargetClick()
-	
-	if (selfChar>-1) {
-		var element = document.createElement("div");
-		element.classList.add("choose");
-
-		document.getElementById("ally"+selfChar).appendChild(element);
-	}
-	
-	
-	//var target = "/ViewTargetAbility?id=" + abilityID;
-	//console.log(target);
-	 /*$.get('${pageContext.request.contextPath}/ViewTargetAbility', function(data) {
-	        alert(data);
-	 });*/
-	/*$.ajax({
-		type: "POST",
-		url: "ViewTargetAbility",
-		data:{id : abilityID},
-		success: function(){
-
-		   }
-			
-	});*/
-}
-
-function removeAllTargetClick() {
-	/*var targets = document.getElementsByClassName ("choose");
-	for (var i = 0; i < targets.length; i++) {
-		targets[i].style.display="none";
-	}*/
-	document.querySelectorAll('.choose').forEach(e => e.remove());
-
-}
-
-
-function playerFooterInfo(my_opp) {
-	
-	displayNones();
-
-	if (my_opp=="my") {
-		document.getElementById("player0").style.display="block";
-	} 
-	else if (my_opp=="opp") {
-		document.getElementById("player1").style.display="block";
-	}
-	
-}
-
-
+<script>
 function defineTurns() {
 
 	var turn = <%=session.getAttribute("turn")%>;
@@ -710,6 +592,132 @@ function defineTurns() {
 	}
 	
 }
+
+
+function loser() {
+	document.getElementById("oppTurnDisable").style.display="none";
+	document.getElementById("passTurn").style.display="none";
+	document.getElementById("winnerTurn").style.display="none";
+	document.getElementById("winnerQuick").style.display="none";
+	document.getElementById("loserTurn").style.display="block";
+	document.getElementById("loserQuick").style.display="block";
+	$.ajax({
+		type: "POST",
+		url: "InGame",
+		data:{metodo:'loser'},
+		success: function() {
+			
+	    }
+	});
+}
+
+function winner() {
+	document.getElementById("oppTurnDisable").style.display="none";
+	document.getElementById("passTurn").style.display="none";
+	document.getElementById("loserTurn").style.display="none";
+	document.getElementById("loserQuick").style.display="none";
+	document.getElementById("winnerTurn").style.display="block";
+	document.getElementById("winnerQuick").style.display="block";
+}
+
+
+function displayNones() {
+	document.getElementById("player0").style.display="none";
+	document.getElementById("player1").style.display="none";
+	
+	for (let i = 0; i < 999; i++) {
+		if (document.getElementById("character"+i)!=null) {
+			document.getElementById("character"+i).style.display="none";
+		}
+		if (document.getElementById("ability"+i)!=null) {
+			document.getElementById("ability"+i).style.display="none";
+		}
+	}
+}
+
+function characterFooterInfo(id) {
+	console.log(id);
+	displayNones();
+	document.getElementById("character"+id).style.display="block";
+	
+	abilityOnThisChar(id);
+	
+}
+function abilityOnThisChar(charID) {
+	/*let fullText = []; 
+    $('#playerMoves').children('div').each(function () {
+    	let childText = this.innerHTML;
+      if(childText.trim().length)
+      {
+        fullText.push(childText);
+      }
+      else {
+    	  console.log("ability sem target");
+      }
+    });
+    console.log(fullText.join(";"));*/
+    
+	let fullText = []; 
+    $('#playerMoves').children('div').each(function () {
+    	let childText = this.innerHTML;
+      if (childText.trim().length==0) {
+        console.log($(childText).attr("id"));
+      }
+     
+    });
+    
+}
+
+function abilityFooterInfo(abilityID, selfChar) {
+	//console.log(count);
+	//mostrar no footer
+	displayNones();
+	document.getElementById("ability"+abilityID).style.display="block";
+	
+	//usar habilidade
+	useAbilityCurrent(abilityID);
+	
+	//target da habilidade
+	removeAllTargetClick()
+	
+	/*
+	if (selfChar>-1) {
+		var element = document.createElement("div");
+		element.classList.add("choose");
+
+		document.getElementById("ally"+selfChar).appendChild(element);
+	}
+	*/
+}
+
+function removeAllTargetClick() {
+
+	//document.querySelectorAll('.choose').forEach(e => e.remove());
+
+}
+
+function useAbilityCurrent(abilityID) {
+	var element = document.createElement("div");
+	element.setAttribute('id', abilityID);
+	document.getElementById("playerMoves").appendChild(element);
+}
+
+
+function playerFooterInfo(my_opp) {
+	
+	displayNones();
+
+	if (my_opp=="my") {
+		document.getElementById("player0").style.display="block";
+	} 
+	else if (my_opp=="opp") {
+		document.getElementById("player1").style.display="block";
+	}
+	
+}
+
+
+
 
 function lockSemaphore() {
 	$.ajax({
@@ -761,6 +769,31 @@ function hideActiveSkill() {
 }
 
 
+
+$('#surrenderClick').click(function() {
+	$('#askingSurrender').css("display", "block");
+});
+$('#surrenderCancel').click(function() {
+	$('#askingSurrender').css("display", "none");
+});
+$('#surrenderConfirm').click(function() {
+	loser();
+});
+
+$('#passTurn').click(function() {
+	$.ajax({
+		type: "POST",
+		url: "InGame",
+		data:{metodo:'unlock'},
+		success: function(){
+			defineTurns();
+		 
+		    location.reload(); 
+
+		   }
+			
+	});
+});
 
 </script>
     

@@ -30,10 +30,6 @@
 
 
 <body style="padding: 0px;">
-<form method="GET" id="form" name='searchingBattle' action='FindOpponent'>
-
-
-          
 
 <div id="app" class="central">
     <div id="root">
@@ -233,8 +229,7 @@
                         	<input type="hidden" name="char2" id="inputChar2">
                         	<input type="hidden" name="char3" id="inputChar3">
                         	
-                        	<input type="hidden" id="battleType" name="battle"/>
-                        	<input type="hidden" name="userID" value="<%=session.getAttribute("userID")%>"/>
+                        	
               		
                         </div>
                     </div>
@@ -251,7 +246,7 @@
                     <li><img src="selection/buttonLadder.png"></li>
                     <li style="margin-left: 3px;">
               		<!-- <input type="hidden" id="inputChar1" name="inputChar1" value="getChar1()"/> -->
- 					<img src="selection/buttons_quick.png" onclick="findOpp('quick')">
+ 					<img src="selection/buttons_quick.png" onclick="searchOpp()">
                     </li>
                     <li style="margin-left: 2px;"><img src="selection/button_private.png"></li>
                     
@@ -265,6 +260,14 @@
                 </div>
                 <div class="btncancels" onclick="hideSearching()"></div>
              </div>
+             
+              <div class="holders holdanimes" id="foundOpp" style="display: none;">
+                <span class="rbattle">Opponent Found</span> 
+                <div class="lds-hourglass-found">
+            
+                </div>
+                
+             </div>
            
             <div class="arrow_left"></div>
             <div class="arrow_right"></div>
@@ -275,7 +278,6 @@
     </div>
 </div>
 
-</form>
 
 <script>
 
@@ -298,6 +300,41 @@ function displayInfo(id) {
 	}		
 }
 
+function searchOpp() {
+	var char1 = getChar(0);
+	var char2 = getChar(1);
+	var char3 = getChar(2);
+
+	const xhttp = new XMLHttpRequest();
+
+	xhttp.onload = function() {
+		if (xhttp.status === 200 && xhttp.readyState === 4) {
+		  	document.getElementById("searchingOpp").style.display="block";
+		  	
+		}
+	}
+	xhttp.open("GET", "FindOpponent?metodo=enterQueue&char1="+char1+"&char2="+char2+"&char3="+char3, true);  // assincrono
+	xhttp.send(null);
+ 	
+	matchmaking(char1, char2, char3);
+
+}
+
+function matchmaking(char1, char2, char3) {
+	const xhttp = new XMLHttpRequest();
+
+	xhttp.onload = function() {
+	   if (xhttp.status === 200 && xhttp.readyState === 4) {
+		   document.getElementById("searchingOpp").style.display="none";
+		   document.getElementById("foundOpp").style.display="block";
+		} 
+	}
+	xhttp.open("GET", "FindOpponent?metodo=searchingOpp&char1="+char1+"&char2="+char2+"&char3="+char3, true);  // assincrono
+	xhttp.send(null);
+
+	  
+}
+
 function findOpp(type) {
 	document.getElementById("searchingOpp").style.display="block";
 	
@@ -318,11 +355,11 @@ function findOpp(type) {
 		
 }
 
-function getChar1() {
+function getChar(pos) {
 	var items = document.getElementsByClassName("items");
-	let first = items[0].firstChild.id;
-	console.log(first);
-	return first;
+	let first = items[pos].firstChild.id;
+
+	return first.split("charpic")[1];
 }
 	
 function displayAbilityDescription(id) {

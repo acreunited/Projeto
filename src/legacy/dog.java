@@ -1,4 +1,4 @@
-package mechanics;
+package legacy;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

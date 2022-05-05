@@ -437,7 +437,20 @@ li {
     width:252px;
     background-image:url(../selection/newsearch.gif);
 
-}/*
+}
+.lds-hourglass-found{
+    display:inline-block;
+    height:125px;
+    left:90px;
+    position:absolute;
+    top:50px;
+    width:252px;
+    background-image:url(../selection/newfound.gif);
+
+}
+
+
+/*
 .lds-hourglass:after{
     -webkit-animation:lds-hourglass 1.2s infinite;
     animation:lds-hourglass 1.2s infinite;

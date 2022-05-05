@@ -34,89 +34,97 @@ import main.Connector;
 public class FindOpponent extends HttpServlet {
 	
 	private static final long serialVersionUID = 7215979604673189309L;
-	//private static Hashtable<String,  Semaphore> games = new Hashtable<String,  Semaphore>();
-	//private static String uuid = "uuidJogoTODO";
-	// proteger esta estrutura de dados jogos com um monitor/semaforo
+
 	
 	public FindOpponent() {
 		super();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
 		
-		//natures
-		session.setAttribute("taijutsu", 0);
-		session.setAttribute("heart", 0);
-		session.setAttribute("energy", 0);
-		session.setAttribute("spirit", 0);
-		session.setAttribute("random", 0);
+		String metodo = request.getParameter("metodo");
 		
-		int userID = (int) session.getAttribute("userID");
-		String char1 = request.getParameter("char1");
-		String char2 = request.getParameter("char2");
-		String char3 = request.getParameter("char3");
 		
-		session.setAttribute("this_id", userID);
-		session.setAttribute("this_char1", char1);
-		session.setAttribute("this_char2", char2);
-		session.setAttribute("this_char3", char3);
 		
-		/*session.setAttribute("opp_id", q.getPlayer());
-		session.setAttribute("opp_char1", q.getTeam().getChar1());
-		session.setAttribute("opp_char2", q.getTeam().getChar2());
-		session.setAttribute("opp_char3", q.getTeam().getChar3());*/
+		int id = (int) session.getAttribute("userID");
 		
-		Queue playerTeam = new Queue(userID, new Team(char1, char2, char3));
 		
-		boolean searching = true;
-		String state = "START";
-		
-		while (searching) {
-			
-			switch (state) {
-			
-			case "END":
-				
-				searching = false;
-				break;
-			
-			case "START":
-				//criar Semaphore
-				
-				//createSemaphore(session);
-				addQuick(playerTeam);
-				state = "QUEUE";
-				break;
-				
-			case "QUEUE":
-				
-				state = (Matchmaking.matchQuick.size()<=1) ? "QUEUE" : "SEARCHING";
-				break;
-				
-			case "SEARCHING":
-				
-				for (Queue q : Matchmaking.matchQuick) {
-					if (q.getPlayer()!=userID) {
-						session.setAttribute("opp_id", q.getPlayer());
-						session.setAttribute("opp_char1", q.getTeam().getChar1());
-						session.setAttribute("opp_char2", q.getTeam().getChar2());
-						session.setAttribute("opp_char3", q.getTeam().getChar3());
-						
-						state = "END";
-					}
-				}
-				break;
+		String char1 = (String) request.getParameter("char1");
+		String char2 = (String) request.getParameter("char2");
+		String char3 = (String) request.getParameter("char3");
+
+	
+
+		if (metodo.equalsIgnoreCase("enterQueue")) {
+			System.out.println("enter queue");
+			Queue queue = new Queue(id, new Team(char1, char2, char3));
+			try {
+				GameUtils.semQuick.acquire();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
+			GameUtils.matchQuick.add(queue);
+			GameUtils.semQuick.release();
 		}
-		//System.out.println("SERVLET: "+session.getAttribute("turn"));
-		//games.clear(); //TODO
-		Matchmaking.matchQuick.clear();
-		response.sendRedirect("loadingBattle.jsp");
+		
+		else if (metodo.equalsIgnoreCase("searchingOpp")) {
+			
+			String state = "START";
+			boolean search = true;
+			
+			while(search) {
+				switch (state) {
+				
+				case "END":
+					System.out.println("matchQuick "+GameUtils.matchQuick.size());
+					System.out.println("matchQuickFound "+GameUtils.matchQuickFound.size());
+					search = false;
+					break;
+				
+				case "START":
+					state = (GameUtils.matchQuick.size()>1) ? "PAIRING" : "START";
+					break;
+				
+				case "PAIRING":
+
+					try {
+						GameUtils.semQuick.acquire();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					
+					Queue thisQueue = getThisQueue(id);
+					
+					//se for null é porque já tiraram = já tem oponente definido
+					if (thisQueue!=null) {
+						for (Queue q : GameUtils.matchQuick) {
+							if (q.getPlayer()!=id) {
+								GameUtils.matchQuickFound.put(thisQueue, q);
+								GameUtils.matchQuick.remove(thisQueue);
+								GameUtils.matchQuick.remove(q);
+								break;
+							}
+						}
+					}
+					
+					GameUtils.semQuick.release();
+					//.remove(id);
+					state = "END";
+					break;
+				}
+			}
+			
+		}
+		
+//		PrintWriter pw=response.getWriter();//get the stream to write the data  
+//		pw.println("OPP FOUND");
+//		pw.close();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -125,12 +133,16 @@ public class FindOpponent extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	
-	
-	private  void addQuick(Queue q) {
-		Matchmaking.matchQuick.add(q);
+	private Queue getThisQueue(int id) {
+		for (Queue q : GameUtils.matchQuick) {
+			if (q.getPlayer()==id) {
+				return q;
+			}
+		}
+		return null;
 	}
 	
+
 
 
 	
