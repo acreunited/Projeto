@@ -62,7 +62,7 @@ public class FindOpponent extends HttpServlet {
 	
 
 		if (metodo.equalsIgnoreCase("enterQueue")) {
-			System.out.println("enter queue");
+			
 			Queue queue = new Queue(id, new Team(char1, char2, char3));
 			try {
 				GameUtils.semQuick.acquire();
@@ -74,7 +74,7 @@ public class FindOpponent extends HttpServlet {
 		}
 		
 		else if (metodo.equalsIgnoreCase("searchingOpp")) {
-			
+	
 			String state = "START";
 			boolean search = true;
 			
@@ -88,11 +88,12 @@ public class FindOpponent extends HttpServlet {
 					break;
 				
 				case "START":
-					state = (GameUtils.matchQuick.size()>1) ? "PAIRING" : "START";
+				
+					state = (GameUtils.matchQuick.size()!=1) ? "PAIRING" : "START";
 					break;
 				
 				case "PAIRING":
-
+				
 					try {
 						GameUtils.semQuick.acquire();
 					} catch (InterruptedException e) {
@@ -122,9 +123,7 @@ public class FindOpponent extends HttpServlet {
 			
 		}
 		
-//		PrintWriter pw=response.getWriter();//get the stream to write the data  
-//		pw.println("OPP FOUND");
-//		pw.close();
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

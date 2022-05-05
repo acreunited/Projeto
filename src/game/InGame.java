@@ -21,6 +21,7 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,6 +52,7 @@ public class InGame extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
+		int id = (int) session.getAttribute("userID");
 		
 		if (oppSurrender) {
 			session.setAttribute("result", "winner");
@@ -62,8 +64,30 @@ public class InGame extends HttpServlet {
 		String metodo = request.getParameter("metodo");
 		
 		if (metodo.equalsIgnoreCase("create")) {
-			gameInfo = new GamesInfo((int)session.getAttribute("userID"), (int)session.getAttribute("opp_id"));
-			session.setAttribute("turn", gameInfo.isturn());
+			
+			try {
+				GameUtils.semQuick.acquire();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			for(Map.Entry<Queue, Queue> entry : GameUtils.matchQuickFound.entrySet()) {
+				Queue key = entry.getKey();
+				Queue value = entry.getValue();
+				
+				if (key.getPlayer()==id) {
+					createSetAttributes(session, key, value);
+
+					break;
+				}
+				else if (value.getPlayer()==id) {
+					createSetAttributes(session, value, key);
+					break;
+				}
+			}
+			GameUtils.semQuick.release();
+
+			
 		}
 		else if (metodo.equalsIgnoreCase("lock")) {
 			gameInfo.lock((String) session.getAttribute("uuid"));
@@ -79,7 +103,7 @@ public class InGame extends HttpServlet {
 			gameInfo.unlock((String) session.getAttribute("uuid"));
 		}
 		
-		System.out.println( (boolean) session.getAttribute("turn") );
+		//System.out.println( (boolean) session.getAttribute("turn") );
 		//response.sendRedirect("battle.jsp");
 		
 		//RequestDispatcher reqDispatcher = request.getRequestDispatcher("battle.jsp");
@@ -93,6 +117,24 @@ public class InGame extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	private void createSetAttributes(HttpSession session, Queue player, Queue opp) {
+		session.setAttribute("opp_id", opp.getPlayer());
+		session.setAttribute("this_id", player.getPlayer());
+		session.setAttribute("this_char1", player.getTeam().getChar1());
+		session.setAttribute("this_char2", player.getTeam().getChar2());
+		session.setAttribute("this_char3", player.getTeam().getChar3());
+		session.setAttribute("opp_char1", opp.getTeam().getChar1());
+		session.setAttribute("opp_char2", opp.getTeam().getChar2());
+		session.setAttribute("opp_char3", opp.getTeam().getChar3());
+		
+		gameInfo = new GamesInfo(player.getPlayer(), opp.getPlayer());
+		session.setAttribute("turn", gameInfo.isturn());
+		session.setAttribute("uuid", gameInfo.getUuid());
+		System.out.println("ID: "+ player.getPlayer());
+		System.out.println("TURN: "+ gameInfo.isturn());
+		System.out.println("UUID: "+ gameInfo.getUuid());
+	}
+
 
 	private void generateRandomNatures(HttpSession session, int number) {
 		for (int i = 0; i < number; i++) {

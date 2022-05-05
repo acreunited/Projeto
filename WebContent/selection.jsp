@@ -309,14 +309,17 @@ function searchOpp() {
 
 	xhttp.onload = function() {
 		if (xhttp.status === 200 && xhttp.readyState === 4) {
-		  	document.getElementById("searchingOpp").style.display="block";
-		  	
+		  	document.getElementById("searchingOpp").style.display="block";	
+		  	matchmaking(char1, char2, char3);
 		}
 	}
 	xhttp.open("GET", "FindOpponent?metodo=enterQueue&char1="+char1+"&char2="+char2+"&char3="+char3, true);  // assincrono
 	xhttp.send(null);
  	
-	matchmaking(char1, char2, char3);
+	/*if (xhttp.status === 200 && xhttp.readyState === 4) {
+		matchmaking(char1, char2, char3);
+	} */
+	
 
 }
 
@@ -327,12 +330,30 @@ function matchmaking(char1, char2, char3) {
 	   if (xhttp.status === 200 && xhttp.readyState === 4) {
 		   document.getElementById("searchingOpp").style.display="none";
 		   document.getElementById("foundOpp").style.display="block";
+		   enterQuickBattle();
 		} 
 	}
 	xhttp.open("GET", "FindOpponent?metodo=searchingOpp&char1="+char1+"&char2="+char2+"&char3="+char3, true);  // assincrono
 	xhttp.send(null);
 
-	  
+	/*if (xhttp.status === 200 && xhttp.readyState === 4) {
+		enterQuickBattle();
+	}*/
+}
+
+function enterQuickBattle() {
+	$(document).ready(function(){
+		$.ajax({
+			type: "POST",
+			url: "InGame",
+			data:{metodo:'create'},
+			success: function(){
+				window.location.href = "battle.jsp";
+			   }
+				
+		});
+	});
+	
 }
 
 function findOpp(type) {

@@ -51,7 +51,6 @@ $(document).ready(function(){
 		data:{metodo:'create'},
 		success: function(){
 			window.location.href = "battle.jsp";
-
 		   }
 			
 	});
