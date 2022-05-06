@@ -52,7 +52,7 @@ function lockSemaphore() {
 		   
 		} 
 	}
-	xhttp.open("GET", "InGame?metodo=lock", true);  // assincrono
+	xhttp.open("POST", "InGame?metodo=lock", true);  // assincrono
 	xhttp.send(null);
 
 }
@@ -63,10 +63,20 @@ function endTurn() {
 	xhttp.onload = function() {
 	   if (xhttp.status === 200 && xhttp.readyState === 4) {
 		   //document.getElementById("natures").innerHTML = this.responseText;
-		   defineTurns(false);
+		   if (this.responseText.trim()=="winner") {
+			   winner();
+		   }
+		   else if (this.responseText.trim()=="loser") {
+			   loser();
+		   }
+		   else {
+			   defineTurns(false);
+		   }
+		   
+		   
 		} 
 	}
-	xhttp.open("GET", "InGame?metodo=unlock", true);  // assincrono
+	xhttp.open("POST", "InGame?metodo=unlock", true);  // assincrono
 	xhttp.send(null);
 }
 
@@ -83,7 +93,7 @@ function loser() {
 			document.getElementById("loserQuick").style.display="block";
 		} 
 	}
-	xhttp.open("GET", "InGame?metodo=loser", true);  // assincrono
+	xhttp.open("POST", "InGame?metodo=loser", true);  // assincrono
 	xhttp.send(null);
 }
 
@@ -95,6 +105,19 @@ function winner() {
 	document.getElementById("loserQuick").style.display="none";
 	document.getElementById("winnerTurn").style.display="block";
 	document.getElementById("winnerQuick").style.display="block";
+}
+
+function redirectSelection() {
+	const xhttp = new XMLHttpRequest();
+
+	xhttp.onload = function() {
+	   if (xhttp.status === 200 && xhttp.readyState === 4) {
+		   window.location.href = "selection.jsp";
+		} 
+	}
+	xhttp.open("POST", "InGame?metodo=remove", true);  // assincrono
+	xhttp.send(null);
+	
 }
 
 

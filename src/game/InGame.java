@@ -88,34 +88,52 @@ public class InGame extends HttpServlet {
 		else if (metodo.equalsIgnoreCase("lock")) {
 			
 			gameInfo.lock((String) session.getAttribute("uuid"));
-
-			if(gameInfo.getWinner()==id) {
-				response.setContentType("text/plain");
-				pw.println("winner");
-				//removeGame((String) session.getAttribute("uuid"), id);
-			}
-			else if (gameInfo.getLoser()==id) {
-				response.setContentType("text/plain");
-				pw.println("loser");
-				
+			
+			//winner
+			if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))!=null) {
+				if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))==id) {
+					response.setContentType("text/plain");
+					pw.println("winner");
+					System.out.println("WINNER");
+					
+				}
+				else if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))==(int) session.getAttribute("opp_id")) {
+					response.setContentType("text/plain");
+					pw.println("loser");
+					System.out.println("LOSER");
+				}
 			}
 			else {
 				response.setContentType("text/html");
 				generateRandomNatures(session, 3);
 				updateNatureInGame(session, pw);
 			}
-			
+
 			session.setAttribute("turn", true);
 			
 		}
 		else if (metodo.equalsIgnoreCase("unlock")) {
 			gameInfo.unlock((String) session.getAttribute("uuid"));
+			
+//			System.out.println("UNLOCK GAMEINFO WINNER: "+gameInfo.getWinner((String) session.getAttribute("uuid")));
+//			System.out.println("UNLOCK GAMEINFO LOSER: "+gameInfo.getWinner((String) session.getAttribute("uuid")));
+//			if(gameInfo.getWinner((String) session.getAttribute("uuid"))==id) {
+//				response.setContentType("text/plain");
+//				pw.println("winner");
+//	
+//			}
+//			else if (gameInfo.getLoser((String) session.getAttribute("uuid"))==id) {
+//				response.setContentType("text/plain");
+//				pw.println("loser");
+//			}
+			
 			session.setAttribute("turn", false);
 		}
 		
 		else if (metodo.equalsIgnoreCase("loser")) {
 			session.setAttribute("result", "loser");
-			gameInfo.setLoser(id);
+			//gameInfo.setLoser(id, (String) session.getAttribute("uuid"));
+			GameUtils.gamesWinner.put((String) session.getAttribute("uuid"), (int) session.getAttribute("opp_id"));
 			gameInfo.unlock((String) session.getAttribute("uuid"));
 		}
 		else if(metodo.equalsIgnoreCase("remove")) {
@@ -138,9 +156,10 @@ public class InGame extends HttpServlet {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("NLEFT; "+gameInfo.getnPlayersLeft());
-		if (gameInfo.getnPlayersLeft()>=1) {
+		
+		if (GameUtils.gamesFinish.get(uuid)>=1) {
 			GameUtils.games.remove(uuid);
+			
 			for(Map.Entry<Queue, Queue> entry : GameUtils.matchQuickFound.entrySet()) {
 				Queue key = entry.getKey();
 				Queue value = entry.getValue();
@@ -150,9 +169,11 @@ public class InGame extends HttpServlet {
 					break;
 				}
 			}
+			GameUtils.gamesFinish.remove(uuid);
+			GameUtils.gamesWinner.remove(uuid);
 		}
 		else {
-			gameInfo.setnPlayersLeft( gameInfo.getnPlayersLeft()+1 );
+			GameUtils.gamesFinish.replace(uuid, GameUtils.gamesFinish.get(uuid)+1);
 		}
 		
 		GameUtils.semQuickRemove.release();

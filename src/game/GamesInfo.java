@@ -10,17 +10,15 @@ public class GamesInfo {
 	private int player1;
 	private int player2;
 	private boolean turn;
-	private int loser;
-	private int winner;
-	private int nPlayersLeft;
+	//private int loser;
+	//private int winner;
 
 	public GamesInfo(int player1, int player2) {
 		this.player1 = player1;
 		this.player2 = player2;
 		
-		this.loser = -1;
-		this.winner = -1;
-		this.nPlayersLeft = 0;
+		//this.loser = -1;
+		//this.winner = -1;
 		
 		String uuidCheck = this.player2+"-"+this.player1;
 	
@@ -33,6 +31,7 @@ public class GamesInfo {
 			this.turn = true;
 			createSemaphore();
 			lock(this.uuid);
+			GameUtils.gamesFinish.put(this.uuid, 0);
 		}
 
 
@@ -102,31 +101,42 @@ public class GamesInfo {
 	public void setturn(boolean turn) {
 		this.turn = turn;
 	}
-
-	public int getLoser() {
-		return this.loser;
+/*
+	public int getLoser(String uuid) {
+		if (this.getUuid().equalsIgnoreCase(uuid)) {
+			return this.loser;
+		}
+		else {
+			return -1;
+		}
+		
 	}
 
-	public void setLoser(int player) {
-		this.loser = player;
-		this.winner = (player==player1) ? player2 : player1;
+	public void setLoser(int player, String uuid) {
+		if (this.getUuid().equalsIgnoreCase(uuid)) {
+			this.loser = player;
+			this.winner = (player==player1) ? player2 : player1;
+		}
+		
 	}
 
-	public int getWinner() {
-		return this.winner;
+	public int getWinner(String uuid) {
+		if (this.getUuid().equalsIgnoreCase(uuid)) {
+			return this.winner;
+		}
+		else {
+			return -1;
+		}
+		
 	}
 
-	public void setWinner(int player) {
-		this.winner = player;
-		this.loser = (player==player1) ? player2 : player1;
+	public void setWinner(int player, String uuid) {
+		if (this.getUuid().equalsIgnoreCase(uuid)) {
+			this.winner = player;
+			this.loser = (player==player1) ? player2 : player1;
+		}
+		
 	}
-
-	public int getnPlayersLeft() {
-		return nPlayersLeft;
-	}
-
-	public void setnPlayersLeft(int nPlayersLeft) {
-		this.nPlayersLeft = nPlayersLeft;
-	}
+*/
 
 }
