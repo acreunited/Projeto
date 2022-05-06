@@ -120,6 +120,8 @@ public class FindOpponent extends HttpServlet {
 			
 		}
 		
+		System.out.println("SIZE"+GameUtils.matchQuickFound.size());
+		
 
 	}
 

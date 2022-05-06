@@ -36,10 +36,7 @@ import mechanics.Character;
 public class InGame extends HttpServlet {
 	
 	private static final long serialVersionUID = 7215979604673189309L;
-	//private static Hashtable<String,  Semaphore> games = new Hashtable<String,  Semaphore>();
-	//private static String uuid = "uuidJogoTODO";
-	private static boolean oppSurrender = false;
-	// proteger esta estrutura de dados jogos com um monitor/semaforo
+
 	public GamesInfo gameInfo;
 	
 	public InGame() {
@@ -49,7 +46,7 @@ public class InGame extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//response.setContentType("text/plain");
-		response.setContentType("text/html");
+		
 		response.setCharacterEncoding("UTF-8");
 		
 		//setting the content type  
@@ -57,14 +54,8 @@ public class InGame extends HttpServlet {
 		  
 
 		HttpSession session = request.getSession();
+
 		int id = (int) session.getAttribute("userID");
-		
-		if (oppSurrender) {
-			session.setAttribute("result", "winner");
-		}
-		else {
-			session.setAttribute("result", "");
-		}
 		
 		String metodo = request.getParameter("metodo");
 		
@@ -95,22 +86,43 @@ public class InGame extends HttpServlet {
 			
 		}
 		else if (metodo.equalsIgnoreCase("lock")) {
-	
+			
 			gameInfo.lock((String) session.getAttribute("uuid"));
+
+			if(gameInfo.getWinner()==id) {
+				response.setContentType("text/plain");
+				pw.println("winner");
+				//removeGame((String) session.getAttribute("uuid"), id);
+			}
+			else if (gameInfo.getLoser()==id) {
+				response.setContentType("text/plain");
+				pw.println("loser");
+				
+			}
+			else {
+				response.setContentType("text/html");
+				generateRandomNatures(session, 3);
+				updateNatureInGame(session, pw);
+			}
+			
 			session.setAttribute("turn", true);
-			generateRandomNatures(session, 3);
-			updateNatureInGame(session, pw);
 			
 		}
 		else if (metodo.equalsIgnoreCase("unlock")) {
 			gameInfo.unlock((String) session.getAttribute("uuid"));
 			session.setAttribute("turn", false);
 		}
+		
 		else if (metodo.equalsIgnoreCase("loser")) {
 			session.setAttribute("result", "loser");
-			oppSurrender = true;
+			gameInfo.setLoser(id);
 			gameInfo.unlock((String) session.getAttribute("uuid"));
 		}
+		else if(metodo.equalsIgnoreCase("remove")) {
+			removeGame((String) session.getAttribute("uuid"), id);
+		}
+		
+		pw.close();
 
 	}
 
@@ -118,6 +130,33 @@ public class InGame extends HttpServlet {
 			throws ServletException, IOException {
 		
 		doGet(request, response);
+	}
+	
+	private void removeGame(String uuid, int id) {
+		try {
+			GameUtils.semQuickRemove.acquire();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("NLEFT; "+gameInfo.getnPlayersLeft());
+		if (gameInfo.getnPlayersLeft()>=1) {
+			GameUtils.games.remove(uuid);
+			for(Map.Entry<Queue, Queue> entry : GameUtils.matchQuickFound.entrySet()) {
+				Queue key = entry.getKey();
+				Queue value = entry.getValue();
+				
+				if (key.getPlayer()==id || value.getPlayer()==id) {
+					GameUtils.matchQuickFound.remove(key);
+					break;
+				}
+			}
+		}
+		else {
+			gameInfo.setnPlayersLeft( gameInfo.getnPlayersLeft()+1 );
+		}
+		
+		GameUtils.semQuickRemove.release();
+		
 	}
 	
 	private void createSetAttributes(HttpSession session, Queue player, Queue opp) {
@@ -188,7 +227,7 @@ public class InGame extends HttpServlet {
 		pw.println(" <strong class=\"energy3\">x"+session.getAttribute("spirit")+"</strong>");
 		pw.println(" <strong class=\"energy4\">x"+session.getAttribute("random")+"</strong>");
 
-		pw.close();
+
 	}
 
 	private void createCharacters(HttpSession session, HttpServletRequest req) {

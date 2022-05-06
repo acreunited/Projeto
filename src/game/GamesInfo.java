@@ -10,10 +10,17 @@ public class GamesInfo {
 	private int player1;
 	private int player2;
 	private boolean turn;
+	private int loser;
+	private int winner;
+	private int nPlayersLeft;
 
 	public GamesInfo(int player1, int player2) {
 		this.player1 = player1;
 		this.player2 = player2;
+		
+		this.loser = -1;
+		this.winner = -1;
+		this.nPlayersLeft = 0;
 		
 		String uuidCheck = this.player2+"-"+this.player1;
 	
@@ -35,23 +42,21 @@ public class GamesInfo {
 		Set<String> keys = GameUtils.games.keySet();
 		for(String key: keys) {
 			if (uuid.equalsIgnoreCase(key)) {
-				System.out.println("exists");
 				return true;
 			}
 		}
-		System.out.println("doesnt exist");
+
 		return false;
 	}
 	     
 	public void createSemaphore() {
 		GameUtils.games.putIfAbsent(this.getUuid(),new Semaphore(1));
-		System.out.println("CREATE");
+
 	}
 	
 	public void lock(String gameID) {
 		try {
 			GameUtils.games.get(gameID).acquire();
-			System.out.println("ACQUIRE " + this.isturn());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -59,7 +64,6 @@ public class GamesInfo {
 	
 	public void unlock(String gameID) {
 		GameUtils.games.get(gameID).release();
-		System.out.println("RELEASE " + this.isturn());
 	}
 	
 	public void removeSemaphore(String gameID) {
@@ -99,5 +103,30 @@ public class GamesInfo {
 		this.turn = turn;
 	}
 
+	public int getLoser() {
+		return this.loser;
+	}
+
+	public void setLoser(int player) {
+		this.loser = player;
+		this.winner = (player==player1) ? player2 : player1;
+	}
+
+	public int getWinner() {
+		return this.winner;
+	}
+
+	public void setWinner(int player) {
+		this.winner = player;
+		this.loser = (player==player1) ? player2 : player1;
+	}
+
+	public int getnPlayersLeft() {
+		return nPlayersLeft;
+	}
+
+	public void setnPlayersLeft(int nPlayersLeft) {
+		this.nPlayersLeft = nPlayersLeft;
+	}
 
 }

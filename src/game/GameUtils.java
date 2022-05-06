@@ -15,5 +15,6 @@ public class GameUtils {
 
 	
 	public static Semaphore semQuick = new Semaphore(1);
+	public static Semaphore semQuickRemove = new Semaphore(1);
 
 }

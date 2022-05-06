@@ -19,7 +19,6 @@
 
 <head>
 
-
   <meta charset="UTF-8">
   <meta name="viewport" content="minimum-scale=0.5">
 
@@ -28,79 +27,19 @@
   
  <link href="css/ingameBattle.css" rel="stylesheet">
  
- <script src="js/battle.js"></script>
+ <script type="text/javascript" src="js/battle.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<script>
-function defineTurns(turn) {
-	
-	var opp = document.getElementsByClassName ("opp_turn");
-	var opp_text = document.getElementsByClassName ("opp_text");
-	var my = document.getElementsByClassName ("my_turn");
-	
-	if (turn==true) {
-		for (var i = 0; i < opp.length; i++) {
-			opp[i].style.display="none";
-		}
-		for (var i = 0; i < opp_text.length; i++) {
-			opp_text[i].style.display="none";
-		}
-		for (var i = 0; i < my.length; i++) {
-			my[i].style.display="block";
-		}
-	}
-	else if (turn==false) {
-
-		for (var i = 0; i < opp.length; i++) {
-			opp[i].style.display="block";
-		}
-		for (var i = 0; i < opp_text.length; i++) {
-			opp_text[i].style.display="block";
-		}
-		for (var i = 0; i < my.length; i++) {
-			my[i].style.display="none";
-		}
-		
-		lockSemaphore();
-	}
-	
-}
-
-function lockSemaphore() {
-	
-	const xhttp = new XMLHttpRequest();
-
-	xhttp.onload = function() {
-	   if (xhttp.status === 200 && xhttp.readyState === 4) {
-		   document.getElementById("natures").innerHTML = this.responseText;
-		   defineTurns(true);
-		} 
-	}
-	xhttp.open("GET", "InGame?metodo=lock", true);  // assincrono
-	xhttp.send(null);
-
-}
-</script>
 
 </head>
 <body>
 
+
 <script>
 
 window.onload = function() {
-	
-	if (<%= (String) session.getAttribute("result")=="winner"%>) {
-		winner();
-	}
-	else if (<%= (String) session.getAttribute("result")=="loser"%>) {
-		loser();
-	}
-	else {
-		var turn = <%=session.getAttribute("turn")%>;
-		defineTurns(turn);
-		
-	}
-	
+	var turn = <%=session.getAttribute("turn")%>;
+	defineTurns(turn);
 };
 
 
@@ -152,7 +91,7 @@ window.onload = function() {
                         <div class="mc_bar_ready opp_text" id="oppTurnDisable">
                            Opponent Turn...
                         </div>
-                        <div class="mc_bar_ready my_turn" id="passTurn">
+                        <div class="mc_bar_ready my_turn" id="passTurn" onclick="endTurn()">
                            Press To End Turn
                         </div>
 						<div class="mc_bar_ready" id="winnerTurn" style="display: none;">
@@ -565,7 +504,7 @@ window.onload = function() {
 					You have won a Quick Game against <%=opp_username %>.<br><br>
 					Quick Games count for missions.<br>Quick games do not count as Ladder Matches.
 					</div> 
-					<div class="btncontinue">
+					<div class="btncontinue" onclick="redirectSelection()">
 						<span>CONTINUE</span>
 					</div>
 				</div> 
@@ -577,7 +516,7 @@ window.onload = function() {
 					You have lost a Quick Game against <%=opp_username %>.<br><br>
 					Quick Games count for missions.<br>Quick games do not count as Ladder Matches.
 					</div> 
-					<div class="btncontinue">
+					<div class="btncontinue" onclick="redirectSelection()">
 						<span>CONTINUE</span>
 					</div>
 				</div>  
@@ -609,174 +548,6 @@ window.onload = function() {
          </div>
     
 <script>
-
-
-
-function loser() {
-	document.getElementById("oppTurnDisable").style.display="none";
-	document.getElementById("passTurn").style.display="none";
-	document.getElementById("winnerTurn").style.display="none";
-	document.getElementById("winnerQuick").style.display="none";
-	document.getElementById("loserTurn").style.display="block";
-	document.getElementById("loserQuick").style.display="block";
-	$.ajax({
-		type: "POST",
-		url: "InGame",
-		data:{metodo:'loser'},
-		success: function() {
-			
-	    }
-	});
-}
-
-function winner() {
-	document.getElementById("oppTurnDisable").style.display="none";
-	document.getElementById("passTurn").style.display="none";
-	document.getElementById("loserTurn").style.display="none";
-	document.getElementById("loserQuick").style.display="none";
-	document.getElementById("winnerTurn").style.display="block";
-	document.getElementById("winnerQuick").style.display="block";
-}
-
-
-function displayNones() {
-	document.getElementById("player0").style.display="none";
-	document.getElementById("player1").style.display="none";
-	
-	for (let i = 0; i < 999; i++) {
-		if (document.getElementById("character"+i)!=null) {
-			document.getElementById("character"+i).style.display="none";
-		}
-		if (document.getElementById("ability"+i)!=null) {
-			document.getElementById("ability"+i).style.display="none";
-		}
-	}
-}
-
-function characterFooterInfo(id) {
-	console.log(id);
-	displayNones();
-	document.getElementById("character"+id).style.display="block";
-	
-	abilityOnThisChar(id);
-	
-}
-function abilityOnThisChar(charID) {
-	/*let fullText = []; 
-    $('#playerMoves').children('div').each(function () {
-    	let childText = this.innerHTML;
-      if(childText.trim().length)
-      {
-        fullText.push(childText);
-      }
-      else {
-    	  console.log("ability sem target");
-      }
-    });
-    console.log(fullText.join(";"));*/
-    
-	let fullText = []; 
-    $('#playerMoves').children('div').each(function () {
-    	let childText = this.innerHTML;
-      if (childText.trim().length==0) {
-        console.log($(childText).attr("id"));
-      }
-     
-    });
-    
-}
-
-function abilityFooterInfo(abilityID, selfChar) {
-	//console.log(count);
-	//mostrar no footer
-	displayNones();
-	document.getElementById("ability"+abilityID).style.display="block";
-	
-	//usar habilidade
-	useAbilityCurrent(abilityID);
-	
-	//target da habilidade
-	removeAllTargetClick()
-	
-	/*
-	if (selfChar>-1) {
-		var element = document.createElement("div");
-		element.classList.add("choose");
-
-		document.getElementById("ally"+selfChar).appendChild(element);
-	}
-	*/
-}
-
-function removeAllTargetClick() {
-
-	//document.querySelectorAll('.choose').forEach(e => e.remove());
-
-}
-
-function useAbilityCurrent(abilityID) {
-	var element = document.createElement("div");
-	element.setAttribute('id', abilityID);
-	document.getElementById("playerMoves").appendChild(element);
-}
-
-
-function playerFooterInfo(my_opp) {
-	
-	displayNones();
-
-	if (my_opp=="my") {
-		document.getElementById("player0").style.display="block";
-	} 
-	else if (my_opp=="opp") {
-		document.getElementById("player1").style.display="block";
-	}
-	
-}
-
-
-
-
-
-
-function seeActiveSkillEnemy(activeSkill) {
-	
-	var id = "tooltiptext1"+activeSkill;
-	var skill = document.getElementsByClassName ("tooltiptext1");
-	for (var i = 0; i < skill.length; i++) {
-		if (id==skill[i].id) {
-			skill[i].style.visibility = "visible" ;
-		}
-	}
-}
-
-function hideActiveSkillEnemy() {
-	var skill = document.getElementsByClassName ("tooltiptext1");
-	for (var i = 0; i < skill.length; i++) {
-		skill[i].style.visibility = "hidden" ;
-	}
-}
-
-function seeActiveSkill(activeSkill) {
-	
-	var id = "tooltiptext"+activeSkill;
-	var skill = document.getElementsByClassName ("tooltiptext");
-	for (var i = 0; i < skill.length; i++) {
-		if (id==skill[i].id) {
-			skill[i].style.visibility = "visible" ;
-		}
-	}
-}
-
-function hideActiveSkill() {
-	var skill = document.getElementsByClassName ("tooltiptext");
-	for (var i = 0; i < skill.length; i++) {
-		skill[i].style.visibility = "hidden" ;
-	}
-}
-
-
-
 $('#surrenderClick').click(function() {
 	$('#askingSurrender').css("display", "block");
 });
@@ -786,21 +557,20 @@ $('#surrenderCancel').click(function() {
 $('#surrenderConfirm').click(function() {
 	loser();
 });
+function redirectSelection() {
+	const xhttp = new XMLHttpRequest();
 
-$('#passTurn').click(function() {
-	$.ajax({
-		type: "POST",
-		url: "InGame",
-		data:{metodo:'unlock'},
-		success: function(){
-			defineTurns();
-		 
-		    location.reload(); 
+	xhttp.onload = function() {
+	   if (xhttp.status === 200 && xhttp.readyState === 4) {
+		   window.location.href = "selection.jsp";
+		} 
+	}
+	xhttp.open("GET", "InGame?metodo=remove", true);  // assincrono
+	xhttp.send(null);
+	
+}
 
-		   }
-			
-	});
-});
+
 
 </script>
     
