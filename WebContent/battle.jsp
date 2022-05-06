@@ -31,6 +31,75 @@
  <script src="js/battle.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<script>
+function defineTurns(turn) {
+	
+	
+	
+	var opp = document.getElementsByClassName ("opp_turn");
+	var opp_text = document.getElementsByClassName ("opp_text");
+	var my = document.getElementsByClassName ("my_turn");
+	
+	if (turn==true) {
+		for (var i = 0; i < opp.length; i++) {
+			opp[i].style.display="none";
+		}
+		for (var i = 0; i < opp_text.length; i++) {
+			opp_text[i].style.display="none";
+		}
+		for (var i = 0; i < my.length; i++) {
+			my[i].style.display="block";
+		}
+	}
+	else if (turn==false) {
+
+		for (var i = 0; i < opp.length; i++) {
+			opp[i].style.display="block";
+		}
+		for (var i = 0; i < opp_text.length; i++) {
+			opp_text[i].style.display="block";
+		}
+		for (var i = 0; i < my.length; i++) {
+			my[i].style.display="none";
+		}
+		
+		lockSemaphore();
+	}
+	
+}
+
+function lockSemaphore() {
+	
+	const xhttp = new XMLHttpRequest();
+
+	xhttp.onload = function() {
+	   if (xhttp.status === 200 && xhttp.readyState === 4) {
+		   //location.reload(); 
+		   defineTurns(true);
+		  
+		} 
+	}
+	xhttp.open("GET", "InGame?metodo=lock", true);  // assincrono
+	xhttp.send(null);
+	
+	/* if (xhttp.status === 200 && xhttp.readyState === 4) {
+		 alert("oioi");
+		   defineTurns();
+		  
+		} */
+
+	/*$.ajax({
+		type: "POST",
+		url: "InGame",
+		data:{metodo:'lock'},
+		success: function(){
+			defineTurns();
+		    //location.reload(); 
+		   }
+			
+	});*/
+}
+</script>
 
 </head>
 <body>
@@ -46,7 +115,9 @@ window.onload = function() {
 		loser();
 	}
 	else {
-		defineTurns();
+		var turn = <%=session.getAttribute("turn")%>;
+		defineTurns(turn);
+		
 	}
 	
 };
@@ -557,41 +628,7 @@ window.onload = function() {
          </div>
     
 <script>
-function defineTurns() {
 
-	var turn = <%=session.getAttribute("turn")%>;
-	
-	var opp = document.getElementsByClassName ("opp_turn");
-	var opp_text = document.getElementsByClassName ("opp_text");
-	var my = document.getElementsByClassName ("my_turn");
-	
-	if (turn==true) {
-		for (var i = 0; i < opp.length; i++) {
-			opp[i].style.display="none";
-		}
-		for (var i = 0; i < opp_text.length; i++) {
-			opp_text[i].style.display="none";
-		}
-		for (var i = 0; i < my.length; i++) {
-			my[i].style.display="block";
-		}
-	}
-	else if (turn==false) {
-
-		for (var i = 0; i < opp.length; i++) {
-			opp[i].style.display="block";
-		}
-		for (var i = 0; i < opp_text.length; i++) {
-			opp_text[i].style.display="block";
-		}
-		for (var i = 0; i < my.length; i++) {
-			my[i].style.display="none";
-		}
-		
-		lockSemaphore();
-	}
-	
-}
 
 
 function loser() {
@@ -719,18 +756,7 @@ function playerFooterInfo(my_opp) {
 
 
 
-function lockSemaphore() {
-	$.ajax({
-		type: "POST",
-		url: "InGame",
-		data:{metodo:'lock'},
-		success: function(){
-			defineTurns();
-		    location.reload(); 
-		   }
-			
-	});
-}
+
 
 function seeActiveSkillEnemy(activeSkill) {
 	

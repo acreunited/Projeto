@@ -130,9 +130,9 @@ public class InGame extends HttpServlet {
 		gameInfo = new GamesInfo(player.getPlayer(), opp.getPlayer());
 		session.setAttribute("turn", gameInfo.isturn());
 		session.setAttribute("uuid", gameInfo.getUuid());
-		System.out.println("ID: "+ player.getPlayer());
-		System.out.println("TURN: "+ gameInfo.isturn());
-		System.out.println("UUID: "+ gameInfo.getUuid());
+	//	System.out.println("ID: "+ player.getPlayer());
+	//	System.out.println("TURN: "+ gameInfo.isturn());
+	//	System.out.println("UUID: "+ gameInfo.getUuid());
 	}
 
 

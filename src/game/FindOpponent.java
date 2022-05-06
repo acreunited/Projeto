@@ -49,9 +49,6 @@ public class FindOpponent extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String metodo = request.getParameter("metodo");
-		
-		
-		
 		int id = (int) session.getAttribute("userID");
 		
 		
@@ -82,8 +79,8 @@ public class FindOpponent extends HttpServlet {
 				switch (state) {
 				
 				case "END":
-					System.out.println("matchQuick "+GameUtils.matchQuick.size());
-					System.out.println("matchQuickFound "+GameUtils.matchQuickFound.size());
+					//System.out.println("matchQuick "+GameUtils.matchQuick.size());
+					//System.out.println("matchQuickFound "+GameUtils.matchQuickFound.size());
 					search = false;
 					break;
 				
