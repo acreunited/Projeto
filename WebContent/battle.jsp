@@ -34,8 +34,6 @@
 <script>
 function defineTurns(turn) {
 	
-	
-	
 	var opp = document.getElementsByClassName ("opp_turn");
 	var opp_text = document.getElementsByClassName ("opp_text");
 	var my = document.getElementsByClassName ("my_turn");
@@ -74,30 +72,13 @@ function lockSemaphore() {
 
 	xhttp.onload = function() {
 	   if (xhttp.status === 200 && xhttp.readyState === 4) {
-		   //location.reload(); 
+		   document.getElementById("natures").innerHTML = this.responseText;
 		   defineTurns(true);
-		  
 		} 
 	}
 	xhttp.open("GET", "InGame?metodo=lock", true);  // assincrono
 	xhttp.send(null);
-	
-	/* if (xhttp.status === 200 && xhttp.readyState === 4) {
-		 alert("oioi");
-		   defineTurns();
-		  
-		} */
 
-	/*$.ajax({
-		type: "POST",
-		url: "InGame",
-		data:{metodo:'lock'},
-		success: function(){
-			defineTurns();
-		    //location.reload(); 
-		   }
-			
-	});*/
 }
 </script>
 
@@ -183,7 +164,7 @@ window.onload = function() {
 				
                         <div class="mc_energy_system my_turn">
 			                <div class="mc_energy_bar"></div>
-			                <div class="mc_energy_txt">
+			                <div class="mc_energy_txt" id="natures">
 			                  <strong class="energy0">x<%=session.getAttribute("taijutsu") %></strong>
 			                  <strong class="energy1">x<%=session.getAttribute("heart") %> </strong>
 			                  <strong class="energy2">x<%=session.getAttribute("energy") %></strong>

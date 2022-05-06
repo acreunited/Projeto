@@ -48,8 +48,13 @@ public class InGame extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.setContentType("text/plain");
+		//response.setContentType("text/plain");
+		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
+		
+		//setting the content type  
+		PrintWriter pw = response.getWriter(); 
+		  
 
 		HttpSession session = request.getSession();
 		int id = (int) session.getAttribute("userID");
@@ -62,6 +67,7 @@ public class InGame extends HttpServlet {
 		}
 		
 		String metodo = request.getParameter("metodo");
+		
 		
 		if (metodo.equalsIgnoreCase("create")) {
 			
@@ -77,7 +83,6 @@ public class InGame extends HttpServlet {
 				
 				if (key.getPlayer()==id) {
 					createSetAttributes(session, key, value);
-
 					break;
 				}
 				else if (value.getPlayer()==id) {
@@ -90,8 +95,12 @@ public class InGame extends HttpServlet {
 			
 		}
 		else if (metodo.equalsIgnoreCase("lock")) {
+	
 			gameInfo.lock((String) session.getAttribute("uuid"));
 			session.setAttribute("turn", true);
+			generateRandomNatures(session, 3);
+			updateNatureInGame(session, pw);
+			
 		}
 		else if (metodo.equalsIgnoreCase("unlock")) {
 			gameInfo.unlock((String) session.getAttribute("uuid"));
@@ -102,13 +111,7 @@ public class InGame extends HttpServlet {
 			oppSurrender = true;
 			gameInfo.unlock((String) session.getAttribute("uuid"));
 		}
-		
-		//System.out.println( (boolean) session.getAttribute("turn") );
-		//response.sendRedirect("battle.jsp");
-		
-		//RequestDispatcher reqDispatcher = request.getRequestDispatcher("battle.jsp");
-       // reqDispatcher.forward(request, response);
-		//return;
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -126,13 +129,22 @@ public class InGame extends HttpServlet {
 		session.setAttribute("opp_char1", opp.getTeam().getChar1());
 		session.setAttribute("opp_char2", opp.getTeam().getChar2());
 		session.setAttribute("opp_char3", opp.getTeam().getChar3());
+		session.setAttribute("taijutsu", 0);
+		session.setAttribute("heart", 0);
+		session.setAttribute("energy", 0);
+		session.setAttribute("spirit", 0);
+		session.setAttribute("random", 0);
 		
 		gameInfo = new GamesInfo(player.getPlayer(), opp.getPlayer());
 		session.setAttribute("turn", gameInfo.isturn());
 		session.setAttribute("uuid", gameInfo.getUuid());
-	//	System.out.println("ID: "+ player.getPlayer());
-	//	System.out.println("TURN: "+ gameInfo.isturn());
-	//	System.out.println("UUID: "+ gameInfo.getUuid());
+		
+	
+		
+		if ( gameInfo.isturn()) {
+			generateRandomNatures(session, 1);
+		}
+
 	}
 
 
@@ -166,6 +178,17 @@ public class InGame extends HttpServlet {
 		int spirit = (int) session.getAttribute("spirit");
 		
 		session.setAttribute("random", taijutsu+heart+energy+spirit);
+	}
+	
+	private void updateNatureInGame(HttpSession session, PrintWriter pw) {
+
+		pw.println(" <strong class=\"energy0\">x"+session.getAttribute("taijutsu")+"</strong>");
+		pw.println(" <strong class=\"energy1\">x"+session.getAttribute("heart")+"</strong>");
+		pw.println(" <strong class=\"energy2\">x"+session.getAttribute("energy")+"</strong>");
+		pw.println(" <strong class=\"energy3\">x"+session.getAttribute("spirit")+"</strong>");
+		pw.println(" <strong class=\"energy4\">x"+session.getAttribute("random")+"</strong>");
+
+		pw.close();
 	}
 
 	private void createCharacters(HttpSession session, HttpServletRequest req) {
