@@ -93,14 +93,11 @@ public class InGame extends HttpServlet {
 			if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))!=null) {
 				if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))==id) {
 					response.setContentType("text/plain");
-					pw.println("winner");
-					System.out.println("WINNER");
-					
+					pw.println("winner");					
 				}
 				else if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))==(int) session.getAttribute("opp_id")) {
 					response.setContentType("text/plain");
 					pw.println("loser");
-					System.out.println("LOSER");
 				}
 			}
 			else {
@@ -114,19 +111,7 @@ public class InGame extends HttpServlet {
 		}
 		else if (metodo.equalsIgnoreCase("unlock")) {
 			gameInfo.unlock((String) session.getAttribute("uuid"));
-			
-//			System.out.println("UNLOCK GAMEINFO WINNER: "+gameInfo.getWinner((String) session.getAttribute("uuid")));
-//			System.out.println("UNLOCK GAMEINFO LOSER: "+gameInfo.getWinner((String) session.getAttribute("uuid")));
-//			if(gameInfo.getWinner((String) session.getAttribute("uuid"))==id) {
-//				response.setContentType("text/plain");
-//				pw.println("winner");
-//	
-//			}
-//			else if (gameInfo.getLoser((String) session.getAttribute("uuid"))==id) {
-//				response.setContentType("text/plain");
-//				pw.println("loser");
-//			}
-			
+
 			session.setAttribute("turn", false);
 		}
 		

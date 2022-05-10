@@ -228,7 +228,12 @@
 .opp_turn{
     transform:translateX(-67px);
     transition:transform .5s;
-    will-change:transform
+   
+  /*  transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: 0s;*/
+    will-change:transform;
 }
 .mc_char_section_selected{
     /*background-image:url(../images/skillact.png);*/
@@ -258,7 +263,7 @@
 .mc_char_section_skills .skillimgselected0{
     transform:translateX(-76px);
     transition:transform .4s;
-    will-change:transform
+    will-change:transform;
 }
 .mc_char_section_skills .skillimg1{
     border:1px solid #000;
@@ -286,8 +291,9 @@
 .mc_char_section_skills .skillimgselected2{
     transform:translateX(-200px);
     transition:transform .5s;
-    will-change:transform
+    will-change:transform;
 }
+
 .mc_char_section_skills .skillimg3{
     border:1px solid #000;
     display:inline-block;
@@ -376,42 +382,7 @@
     margin-top: -1px;
  
 }
-/*
-.pulse_avt{
-    -webkit-animation-duration:1.1s;
-    animation-duration:1.1s;
-    -webkit-animation-fill-mode:forwards;
-    animation-fill-mode:forwards;
-    -webkit-animation-name:pulse_avt;
-    animation-name:pulse_avt;
-    left:33px;
-    position:absolute;
-    top:19px
-}
-@-webkit-keyframes pulse_avt{
-    0%{
-        opacity:1;
-        transform:scale(1);
-        will-change:transform
-    }
-    to{
-        opacity:0;
-        transform:scale(2);
-        will-change:transform
-    }
-}
-@keyframes pulse_avt{
-    0%{
-        opacity:1;
-        transform:scale(1);
-        will-change:transform
-    }
-    to{
-        opacity:0;
-        transform:scale(2);
-        will-change:transform
-    }
-}*/
+
 .effects{
     display:flex;
     height:22px;
@@ -815,8 +786,9 @@
 .my_turn{
     transform:translateX(0);
     transition:transform .5s;
-    will-change:transform
+    will-change:transform;
 }
+
 .mc_char_section_selected {
     background-image: url(../battle/skillact.png);
     background-repeat: no-repeat;
@@ -1070,6 +1042,45 @@ txtexchange, .txtsurrender {
     animation: opacidade .8s infinite alternate;
 }
 
+
+/*Animations*/
+/*
+.pulse_avt{
+    -webkit-animation-duration:1.1s;
+    animation-duration:1.1s;
+    -webkit-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+    -webkit-animation-name:pulse_avt;
+    animation-name:pulse_avt;
+    left:33px;
+    position:absolute;
+    top:19px
+}
+@-webkit-keyframes pulse_avt{
+    0%{
+        opacity:1;
+        transform:scale(1);
+        will-change:transform
+    }
+    to{
+        opacity:0;
+        transform:scale(2);
+        will-change:transform
+    }
+}
+@keyframes pulse_avt{
+    0%{
+        opacity:1;
+        transform:scale(1);
+        will-change:transform
+    }
+    to{
+        opacity:0;
+        transform:scale(2);
+        will-change:transform
+    }
+}
+*/
 /*
 #cursor{
     background-image:url(../images/kunai.png);

@@ -56,8 +56,6 @@ public class FindOpponent extends HttpServlet {
 		String char2 = (String) request.getParameter("char2");
 		String char3 = (String) request.getParameter("char3");
 
-	
-
 		if (metodo.equalsIgnoreCase("enterQueue")) {
 			
 			Queue queue = new Queue(id, new Team(char1, char2, char3));
@@ -79,13 +77,10 @@ public class FindOpponent extends HttpServlet {
 				switch (state) {
 				
 				case "END":
-					//System.out.println("matchQuick "+GameUtils.matchQuick.size());
-					//System.out.println("matchQuickFound "+GameUtils.matchQuickFound.size());
 					search = false;
 					break;
 				
 				case "START":
-				
 					state = (GameUtils.matchQuick.size()!=1) ? "PAIRING" : "START";
 					break;
 				
@@ -112,16 +107,12 @@ public class FindOpponent extends HttpServlet {
 					}
 					
 					GameUtils.semQuick.release();
-					//.remove(id);
 					state = "END";
 					break;
 				}
 			}
 			
-		}
-		
-		System.out.println("SIZE"+GameUtils.matchQuickFound.size());
-		
+		}		
 
 	}
 

@@ -62,8 +62,7 @@ function endTurn() {
 
 	xhttp.onload = function() {
 	   if (xhttp.status === 200 && xhttp.readyState === 4) {
-		   //document.getElementById("natures").innerHTML = this.responseText;
-		   if (this.responseText.trim()=="winner") {
+		   /*if (this.responseText.trim()=="winner") {
 			   winner();
 		   }
 		   else if (this.responseText.trim()=="loser") {
@@ -71,8 +70,8 @@ function endTurn() {
 		   }
 		   else {
 			   defineTurns(false);
-		   }
-		   
+		   }*/
+		   defineTurns(false);
 		   
 		} 
 	}
