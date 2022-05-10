@@ -185,3 +185,8 @@ select * from THEME_CHARACTER where themeID=0;
 select abilityID from ABILITY where characterID=4;
 
 select username from USERS where userID=1;
+
+select nome from THEME_CHARACTER where ThemeId=1 and characterID=10;
+select abilityID from ABILITY where characterID=10;
+
+select * from THEME_CHARACTER where themeID=1 and (characterID=10 or characterID=7 or characterID=4) order by case when characterID = 10 then 1 when characterID=7 then 2 when characterID=4 then 3 else null end ;

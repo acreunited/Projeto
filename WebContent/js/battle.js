@@ -62,15 +62,7 @@ function endTurn() {
 
 	xhttp.onload = function() {
 	   if (xhttp.status === 200 && xhttp.readyState === 4) {
-		   /*if (this.responseText.trim()=="winner") {
-			   winner();
-		   }
-		   else if (this.responseText.trim()=="loser") {
-			   loser();
-		   }
-		   else {
-			   defineTurns(false);
-		   }*/
+
 		   defineTurns(false);
 		   
 		} 
@@ -135,75 +127,63 @@ function displayNones() {
 }
 
 function characterFooterInfo(id) {
-	console.log(id);
+	removeAllTargetClick();
 	displayNones();
 	document.getElementById("character"+id).style.display="block";
 	
-	abilityOnThisChar(id);
-	
-}
-function abilityOnThisChar(charID) {
-	/*let fullText = []; 
-    $('#playerMoves').children('div').each(function () {
-    	let childText = this.innerHTML;
-      if(childText.trim().length)
-      {
-        fullText.push(childText);
-      }
-      else {
-    	  console.log("ability sem target");
-      }
-    });
-    console.log(fullText.join(";"));*/
-    
-	let fullText = []; 
-    $('#playerMoves').children('div').each(function () {
-    	let childText = this.innerHTML;
-      if (childText.trim().length==0) {
-        console.log($(childText).attr("id"));
-      }
-     
-    });
-    
 }
 
-function abilityFooterInfo(abilityID, selfChar) {
-	//console.log(count);
-	//mostrar no footer
+
+function abilityClick(abilityID, selfChar, abilityPos) {
+	const xhttp = new XMLHttpRequest();
+
+	xhttp.onload = function() {
+	   if (xhttp.status === 200 && xhttp.readyState === 4) {
+		   removeAllTargetClick();
+		   
+		   abilityFooterInfo(abilityID);
+		   
+		   var element = document.createElement("div");
+		   element.classList.add("choose");
+		   
+		   if (this.responseText.trim()=="self") {
+				document.getElementById("ally"+selfChar).appendChild(element);
+		   }
+		   else if (this.responseText.trim()=="ally") {
+				document.getElementById("ally0").appendChild(element.cloneNode(true));
+				document.getElementById("ally1").appendChild(element.cloneNode(true));
+				document.getElementById("ally2").appendChild(element.cloneNode(true));
+		   }
+		   else if (this.responseText.trim()=="enemy") {
+			   var elementEnemy = document.createElement("div");
+			   elementEnemy.classList.add("chooseEnemy");
+			  
+			   document.getElementById("enemy0").appendChild(elementEnemy.cloneNode(true));
+			   document.getElementById("enemy1").appendChild(elementEnemy.cloneNode(true));
+			   document.getElementById("enemy2").appendChild(elementEnemy.cloneNode(true));
+		   }
+		} 
+	}
+	xhttp.open("POST", "AbilityActions?action=seeTarget&selfChar="+selfChar+"&abilityPos="+abilityPos, true);  // assincrono
+	xhttp.send(null);
+}
+
+function abilityFooterInfo(abilityID) {
+
 	displayNones();
 	document.getElementById("ability"+abilityID).style.display="block";
 	
-	//usar habilidade
-	useAbilityCurrent(abilityID);
-	
-	//target da habilidade
-	removeAllTargetClick()
-	
-	/*
-	if (selfChar>-1) {
-		var element = document.createElement("div");
-		element.classList.add("choose");
-
-		document.getElementById("ally"+selfChar).appendChild(element);
-	}
-	*/
 }
 
 function removeAllTargetClick() {
 
-	//document.querySelectorAll('.choose').forEach(e => e.remove());
+	document.querySelectorAll('.choose').forEach(e => e.remove());
+	document.querySelectorAll('.chooseEnemy').forEach(e => e.remove());
 
 }
-
-function useAbilityCurrent(abilityID) {
-	var element = document.createElement("div");
-	element.setAttribute('id', abilityID);
-	document.getElementById("playerMoves").appendChild(element);
-}
-
 
 function playerFooterInfo(my_opp) {
-	
+	removeAllTargetClick();
 	displayNones();
 
 	if (my_opp=="my") {

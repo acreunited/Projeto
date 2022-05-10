@@ -2,6 +2,7 @@ package game;
 
 import java.io.IOException;
 
+
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.BindException;
@@ -68,16 +69,20 @@ public class InGame extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+			
+			
 			for(Map.Entry<Queue, Queue> entry : GameUtils.matchQuickFound.entrySet()) {
 				Queue key = entry.getKey();
 				Queue value = entry.getValue();
 				
 				if (key.getPlayer()==id) {
 					createSetAttributes(session, key, value);
+					createCharacters(session);
 					break;
 				}
 				else if (value.getPlayer()==id) {
 					createSetAttributes(session, value, key);
+					createCharacters(session);
 					break;
 				}
 			}
@@ -117,7 +122,7 @@ public class InGame extends HttpServlet {
 		
 		else if (metodo.equalsIgnoreCase("loser")) {
 			session.setAttribute("result", "loser");
-			//gameInfo.setLoser(id, (String) session.getAttribute("uuid"));
+
 			GameUtils.gamesWinner.put((String) session.getAttribute("uuid"), (int) session.getAttribute("opp_id"));
 			gameInfo.unlock((String) session.getAttribute("uuid"));
 		}
@@ -184,8 +189,6 @@ public class InGame extends HttpServlet {
 		session.setAttribute("turn", gameInfo.isturn());
 		session.setAttribute("uuid", gameInfo.getUuid());
 		
-	
-		
 		if ( gameInfo.isturn()) {
 			generateRandomNatures(session, 1);
 		}
@@ -236,21 +239,21 @@ public class InGame extends HttpServlet {
 
 	}
 
-	private void createCharacters(HttpSession session, HttpServletRequest req) {
+	private void createCharacters(HttpSession session) {
 
-		int this_char1 = (int) session.getAttribute("this_char1");
-		int this_char2 = (int) session.getAttribute("this_char2");
-		int this_char3 = (int) session.getAttribute("this_char3");
-		int opp_char1 = (int) session.getAttribute("opp_char1");
-		int opp_char2 = (int) session.getAttribute("opp_char2");
-		int opp_char3 = (int) session.getAttribute("opp_char3");
+		int this_char1 = Integer.parseInt( (String) session.getAttribute("this_char1") );
+		int this_char2 = Integer.parseInt( (String) session.getAttribute("this_char2") );
+		int this_char3 = Integer.parseInt( (String) session.getAttribute("this_char3") );
+		int opp_char1 = Integer.parseInt( (String) session.getAttribute("opp_char1") );
+		int opp_char2 = Integer.parseInt( (String) session.getAttribute("opp_char2") );
+		int opp_char3 = Integer.parseInt( (String) session.getAttribute("opp_char3") );
 		
-		req.getServletContext().setAttribute("this_char1", new Character(this_char1));
-		req.getServletContext().setAttribute("this_char2", new Character(this_char2));
-		req.getServletContext().setAttribute("this_char3", new Character(this_char3));
-		req.getServletContext().setAttribute("opp_char1", new Character(opp_char1));
-		req.getServletContext().setAttribute("opp_char2", new Character(opp_char2));
-		req.getServletContext().setAttribute("opp_char3", new Character(opp_char3));
+		session.setAttribute("this_char1_game", new Character(this_char1));
+		session.setAttribute("this_char2_game", new Character(this_char2));
+		session.setAttribute("this_char3_game", new Character(this_char3));
+		session.setAttribute("opp_char1_game", new Character(opp_char1));
+		session.setAttribute("opp_char2_game", new Character(opp_char2));
+		session.setAttribute("opp_char3_game", new Character(opp_char3));
 		
 	}
 	

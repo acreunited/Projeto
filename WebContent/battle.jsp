@@ -156,7 +156,8 @@ window.onload = function() {
                  			
                  			ResultSet rs = stmt.executeQuery(
                  					"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("this_char1")+ 
-                 					" or characterID="+ session.getAttribute("this_char2")+" or characterID="+session.getAttribute("this_char3")+");");
+                 					" or characterID="+ session.getAttribute("this_char2")+" or characterID="+session.getAttribute("this_char3")+")"+
+                 					"order by case when characterID="+session.getAttribute("this_char1")+" then 1 when characterID="+session.getAttribute("this_char2")+" then 2 when characterID="+session.getAttribute("this_char3")+" then 3 else null end;");
                  			int countChars = 0;
                  			while (rs.next()) {
                  				String characterID = rs.getString("characterID");
@@ -201,7 +202,7 @@ window.onload = function() {
                           String abilityID_my = abilities_my.getString("abilityID");
                           %>
                                  <div class="skillimg<%=count_my%>">
-                                    <a onclick="abilityFooterInfo(<%=abilityID_my%>, <%=countChars%>)"><img src="ViewAbility?id=<%=abilityID_my%>"></a>
+                                    <a onclick="abilityClick(<%=abilityID_my%>, <%=countChars%>, <%=count_my%>)"><img src="ViewAbility?id=<%=abilityID_my%>"></a>
                                  </div>
   
                                   <%
@@ -270,13 +271,14 @@ window.onload = function() {
                      			
                      			ResultSet rs = stmt.executeQuery(
                      					"select * from THEME_CHARACTER where themeID=1 and (characterID="+session.getAttribute("opp_char1")+ 
-                     					" or characterID="+ session.getAttribute("opp_char2")+" or characterID="+session.getAttribute("opp_char3")+");");
+                     					" or characterID="+ session.getAttribute("opp_char2")+" or characterID="+session.getAttribute("opp_char3")+")"+
+                     					"order by case when characterID="+session.getAttribute("opp_char1")+" then 1 when characterID="+session.getAttribute("opp_char2")+" then 2 when characterID="+session.getAttribute("opp_char3")+" then 3 else null end;");
                      			int countChars = 0;
                      			while (rs.next()) {
                      				String characterID = rs.getString("characterID");
                      				int count = 0;
                                       %>
-                  <div class="mc_char_1<%=countChars%>">
+                  <div class="mc_char_1<%=countChars%>" id="enemy<%=countChars%>">
                   	<%
                   		countChars++;
                   	%>
@@ -533,17 +535,6 @@ window.onload = function() {
             <div id="shuri" style="opacity: 0; left: 616px; top: 324px;"></div>-->
             
             
-            <div id="playerMoves" style="display:none;">
-            	<div class="abilityID">
-            		TargetCharacterID
-            	</div>
-            	<div class="4">
-            		10
-            	</div>
-            	<div class="8">
-            		
-            	</div>
-            </div>
             
          </div>
     

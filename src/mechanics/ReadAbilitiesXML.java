@@ -1,5 +1,6 @@
 package mechanics;
 
+import java.io.File;
 import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,7 +18,7 @@ import org.w3c.dom.NodeList;
 public class ReadAbilitiesXML {
 	
 	public static int getCooldown(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -34,7 +35,29 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 		}
 	public static String getTargetClick(int id) {
-		Document document = readDocument("abilities.xml");
+//		File f = new File("D:\\GitHub\\Projeto\\abilities.xml");
+//		if (f.exists()) {
+//			System.out.println("existe");
+//			if (f.canRead()) {
+//				System.out.println("pode ler");
+//				if (f.canWrite()) {
+//					System.out.println("pode escrever");
+//				}
+//				else {
+//					System.out.println("nao pode escrever");
+//				}
+//			}
+//			else {
+//				System.out.println("não pode ler");
+//			}
+//		}
+//		else {
+//			System.out.println("não existe");
+//		}
+		
+//		return null;
+		
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -51,7 +74,7 @@ public class ReadAbilitiesXML {
 		return value;
 	}
 	public static boolean ignoresInvul(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -68,7 +91,7 @@ public class ReadAbilitiesXML {
 		return (value.equalsIgnoreCase("yes")) ? true : false;
 	}
 	public static boolean destroyDD(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -85,7 +108,7 @@ public class ReadAbilitiesXML {
 		return (value.equalsIgnoreCase("yes")) ? true : false;
 	}
 	public static int stunDuration(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -102,7 +125,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	public static int permanentDamageIncrease(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -120,7 +143,7 @@ public class ReadAbilitiesXML {
 	}
 	
 	public static int becomeInvulnerable(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -137,7 +160,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	public static int damageIncreasePerUse(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -155,7 +178,7 @@ public class ReadAbilitiesXML {
 	}
 	
 	private static int damageNumber(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -172,7 +195,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	private static int damageDuration(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -199,7 +222,7 @@ public class ReadAbilitiesXML {
 	}
 	
 	private static int removeNatureNumber(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -216,7 +239,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	private static int removeNatureDuration(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -242,7 +265,7 @@ public class ReadAbilitiesXML {
 		return arr;
 	}
 	private static int gainNatureNumber(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -259,7 +282,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	private static int gainNatureDuration(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -286,7 +309,7 @@ public class ReadAbilitiesXML {
 	}
 	
 	private static int gainDDNumber(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -303,7 +326,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	private static int gainDDDuration(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -329,7 +352,7 @@ public class ReadAbilitiesXML {
 	}
 	
 	private static int gainDRNumber(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -346,7 +369,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	private static int gainDRDuration(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -372,7 +395,7 @@ public class ReadAbilitiesXML {
 	}
 	
 	private static int gainHPNumber(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -389,7 +412,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	private static int gainHPDuration(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -416,7 +439,7 @@ public class ReadAbilitiesXML {
 	
 	
 	private static int moreDamagePerHPLostDamage(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -433,7 +456,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	private static int moreDamagePerHPLostHP(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -459,7 +482,7 @@ public class ReadAbilitiesXML {
 	}
 	
 	private static int moreDamageEnemyHPLostDamage(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -476,7 +499,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	private static int moreDamageEnemyHPLostHP(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -502,7 +525,7 @@ public class ReadAbilitiesXML {
 	}
 	
 	private static int temporaryDamageIncreaseDamage(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -519,7 +542,7 @@ public class ReadAbilitiesXML {
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
 	private static int temporaryDamageIncreaseDuration(int id) {
-		Document document = readDocument("abilities.xml");
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
 		
 		XPath xpath = XPathFactory.newInstance().newXPath();

@@ -29,7 +29,7 @@ public class Ability {
 	public Ability(int id) {
 		this.id = id;
 		this.nTimesUsed = 0;
-		this.targetClick = ReadAbilitiesXML.getTargetClick(this.id);
+		this.targetClick = ReadAbilitiesXML.getTargetClick(id);
 		this.cooldown = ReadAbilitiesXML.getCooldown(id);
 		this.ignoresInvul = ReadAbilitiesXML.ignoresInvul(id);
 		this.stunDuration = ReadAbilitiesXML.stunDuration(id);
