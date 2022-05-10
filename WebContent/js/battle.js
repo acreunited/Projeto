@@ -58,11 +58,13 @@ function lockSemaphore() {
 }
 
 function endTurn() {
+	
+	
 	const xhttp = new XMLHttpRequest();
 
 	xhttp.onload = function() {
 	   if (xhttp.status === 200 && xhttp.readyState === 4) {
-
+		   removeAllTargetClick();
 		   defineTurns(false);
 		   
 		} 

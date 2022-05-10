@@ -180,7 +180,7 @@ window.onload = function() {
                      					String abilityID = abilities.getString("abilityID");
                      %>
                                  <div class="skillimg<%=count%>">
-                                    <a onclick="abilityFooterInfo(<%=abilityID%>, -1)"><img src="ViewAbility?id=<%=abilityID%>" class="disabled" > </a>
+                                    <a onclick="abilityFooterInfo(<%=abilityID%>)"><img src="ViewAbility?id=<%=abilityID%>" class="disabled" > </a>
                                  </div>
   
                                   <%
