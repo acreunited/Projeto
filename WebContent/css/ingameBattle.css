@@ -191,14 +191,24 @@
 .mc_char_00,.mc_char_01,.mc_combat{
     position:absolute
 }
+/*
 .mc_char_section_perg{
-    /*background-image:url(../images/perg.png);*/
+    background-image:url(../images/perg.png);
     background-repeat:no-repeat;
     height:88px;
     left:81px;
     position:absolute;
     top:38px;
     width:25px
+}*/
+.mc_char_section_perg{
+    background-image:url(../battle/behindskillcard.png);
+    background-repeat:no-repeat;
+    height:88px;
+    left:63px;
+    position:absolute;
+    top:112px;
+    width:55px;
 }
 
 .mask{
@@ -401,7 +411,7 @@
 }
 .mc_char_10,.mc_char_11{
     height:130px;
-    left:658px;
+    left:659px;
     position:absolute;
     width:110px
 }
@@ -410,7 +420,7 @@
 }
 .mc_char_12{
     height:130px;
-    left:658px;
+    left:659px;
     top:242px
 }
 .rankenemy{
@@ -1049,11 +1059,11 @@ txtexchange, .txtsurrender {
     display: flex;
     height: 75px;
     justify-content: center;
-    left: 4px;
+    left: 3px;
     opacity: .6;
     pointer-events: none;
     position: absolute;
-    top: 17px;
+    top: 18px;
     width: 75px;
     z-index: 2;
 }
@@ -1146,7 +1156,8 @@ html{
     height:35px;
     width:35px;
     z-index:1001
-}
+}*/
+
 @-webkit-keyframes transform{
     0%{
         transform:rotate(0deg);
@@ -1167,4 +1178,4 @@ html{
         will-change:transform
     }
 }
-*/
+

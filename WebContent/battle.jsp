@@ -222,7 +222,7 @@ window.onload = function() {
                         </div> 
                     
                         <div class="mc_char_card_rank ">
-                           <a onclick="characterFooterInfo(<%=characterID%>)"><img src="https://naruto-arena.net/images/ranks/10.png"></a>
+                           <a onclick="characterFooterInfo(<%=characterID%>, 'ally', <%=countChars%>)"><img src="https://naruto-arena.net/images/ranks/10.png"></a>
                         </div> 
                          <div class="mc_char_card_avatar  ">
                          	<img class="abs " src="https://naruto-arena.net/images/dead.png">
@@ -242,6 +242,9 @@ window.onload = function() {
                            <img style="border: none" id="dead_00" >
                         </div>
                      </div>-->
+                     
+                      <div class="effects" id="effectsAlly<%=countChars%>">
+                     </div>
                      
                      <!-- TODO CRIAR MANUALMENTE -->
                    <!-- <div class="effects">
@@ -291,7 +294,7 @@ window.onload = function() {
                            <img class="abs" id="dead_1<%=countChars%>" src="ViewCharacter?id=<%=characterID%>">
                         </div>
                         <div class="mc_char_card_rank revert">
-                           <a onclick="characterFooterInfo(<%=characterID%>)"><img src="https://naruto-arena.net/images/ranks/9.png"></a>
+                           <a onclick="characterFooterInfo(<%=characterID%>, 'enemy', <%=countChars%>)"><img src="https://naruto-arena.net/images/ranks/9.png"></a>
                         </div>
                      </div>
                      
@@ -309,6 +312,8 @@ window.onload = function() {
                      </div> -->
                      
                     <!-- TODO CRIAR MANUALMENTE --> 
+                     <div class="effects1" id="effectsEnemy<%=countChars%>">
+                     </div>
                     <!--  <div class="effects1">
                      	<div class="effects_border1 zindex1">
                   			<img src="ViewAbility?id=id" onmouseover="seeActiveSkillEnemy(id)" onmouseleave="hideActiveSkillEnemy()">

@@ -1,3 +1,7 @@
+let abilityClicked = null;
+let charPosUsedSkill = null;
+let abilityUsedPos = null;
+
 function defineTurns(turn) {
 	
 	var opp = document.getElementsByClassName ("opp_turn");
@@ -128,10 +132,47 @@ function displayNones() {
 	}
 }
 
-function characterFooterInfo(id) {
-	removeAllTargetClick();
-	displayNones();
-	document.getElementById("character"+id).style.display="block";
+function characterFooterInfo(id, allyEnemy, charPos) {
+	//removeAllTargetClick();
+	//displayNones();
+	//document.getElementById("character"+id).style.display="block";
+	
+	//console.log(
+	//		"CharPos: "+charPosUsedSkill+" AbilityPos: "+abilityUsedPos+" on AllyEnemy: "+allyEnemy+" charPos: "+charPos);
+	
+	const xhttp = new XMLHttpRequest();
+
+	xhttp.onload = function() {
+	   if (xhttp.status === 200 && xhttp.readyState === 4) {
+		   removeAllTargetClick();
+		   displayNones();
+		   document.getElementById("character"+id).style.display="block";
+		   
+		   console.log(allyEnemy);
+		
+		   if (allyEnemy=="enemy") {
+			   document.getElementById("effectsEnemy"+charPos).innerHTML = this.responseText;
+		   }
+		   else if (allyEnemy=="ally") {
+			   document.getElementById("effectsAlly"+charPos).innerHTML = this.responseText;
+		   }
+		   
+		  /* var skill = document.getElementsByClassName ("skillimg1");
+			for (var i = 0; i < skill.length; i++) {
+				if (id==skill[i].id) {
+					skill[i].style.visibility = "visible" ;
+				}
+			}*/
+		   
+		   abilityClicked = null;
+		   charPosUsedSkill = null;
+		   abilityUsedPos = null;
+		} 
+	}
+	xhttp.open("POST", "AbilityActions?action=applyAbility&abilityUsedID="+abilityClicked, true);  // assincrono
+	xhttp.send(null);
+	
+	
 	
 }
 
@@ -164,6 +205,10 @@ function abilityClick(abilityID, selfChar, abilityPos) {
 			   document.getElementById("enemy1").appendChild(elementEnemy.cloneNode(true));
 			   document.getElementById("enemy2").appendChild(elementEnemy.cloneNode(true));
 		   }
+		   
+		   abilityClicked = abilityID;
+		   charPosUsedSkill = selfChar;
+		   abilityUsedPos = abilityPos;
 		} 
 	}
 	xhttp.open("POST", "AbilityActions?action=seeTarget&selfChar="+selfChar+"&abilityPos="+abilityPos, true);  // assincrono
@@ -185,6 +230,7 @@ function removeAllTargetClick() {
 }
 
 function playerFooterInfo(my_opp) {
+	abilityClicked = null;
 	removeAllTargetClick();
 	displayNones();
 
@@ -194,6 +240,7 @@ function playerFooterInfo(my_opp) {
 	else if (my_opp=="opp") {
 		document.getElementById("player1").style.display="block";
 	}
+	//console.log(abilityClicked);
 	
 }
 

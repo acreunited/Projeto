@@ -61,15 +61,16 @@ public class AbilityActions extends HttpServlet {
 		Character oppChar2 = (Character) session.getAttribute("opp_char2_game");
 		Character oppChar3 = (Character) session.getAttribute("opp_char3_game");
 
-		int abilityPos = Integer.parseInt( request.getParameter("abilityPos") );
-		int selfChar = Integer.parseInt( request.getParameter("selfChar") );
+		
 		
 		String action = request.getParameter("action");
 		
 		if (action.equalsIgnoreCase("seeTarget")) {
+			
+			int abilityPos = Integer.parseInt( request.getParameter("abilityPos") );
+			int selfChar = Integer.parseInt( request.getParameter("selfChar") );
 
 			Ability a = getSelectedAbility(abilityPos, selfChar, thisChar1, thisChar2, thisChar3);
-			
 			
 			if (a!=null) {
 				pw.write(a.getTargetClick());
@@ -78,6 +79,26 @@ public class AbilityActions extends HttpServlet {
 				System.out.println("HABILIDADE NULL");
 			}
 		
+		}
+//		AbilityActions?action=applyAbility&target="+charPos+"
+//				&abilityUsedID="+abilityClicked+"&allyEnemy="+allyEnemy
+		
+//		pw.println("<html><body>");  
+//		pw.println("Welcome to servlet<br/>");
+		else if (action.equalsIgnoreCase("applyAbility")) {
+			//System.out.println("chegou servlet apply ability");
+			String abilityUsedID = request.getParameter("abilityUsedID");
+			
+			//pw.println("<div class='effects'>");
+				pw.println("<div class='effects_border0 zindex1'>");
+					pw.println("<img src='ViewAbility?id="+abilityUsedID+"' onmouseover='seeActiveSkill(id)' onmouseleave='hideActiveSkill()'>");
+					pw.println("<span class='tooltiptext' id='tooltiptextid'>");
+						pw.println("<span class='tooltiptextname'>SPRINKLING NEEDLES</span>");
+						pw.println("<span class='tooltiptextdesc'>This character will take 10 damage.</span>");
+						pw.println("<span class='tooltiptextduration'>1 TURN LEFT</span>");
+					pw.println("</span>");
+				pw.println("</div>");
+			//pw.println("</div>");
 		}
 		
 		
