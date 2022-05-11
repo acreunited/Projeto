@@ -247,7 +247,7 @@
 }
 .mc_char_section_selected{
     /*background-image:url(../images/skillact.png);*/
-    background-repeat:no-repeat;
+   /* background-repeat:no-repeat;*/
     height:56px;
     left:3px;
     position:absolute;
@@ -801,7 +801,7 @@
 
 .mc_char_section_selected img{
    /* background-image: url(../battle/skillact.png);*/
-    background-repeat: no-repeat;
+   /* background-repeat: no-repeat;*/
     height: 56px;
     left: 32px;
     position: absolute;

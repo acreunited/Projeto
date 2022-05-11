@@ -192,9 +192,7 @@ window.onload = function() {
                            </div>
                            
                            <div class="mc_char_section_skill my_turn">
-                              <div class="mc_char_section_selected" id="selected<%=countChars%>">
-                              	<img src='battle/skillact.png'>
-                              </div>
+                              
                               <div class="mc_char_section_skills">
                               
                         <%
@@ -213,6 +211,9 @@ window.onload = function() {
                                     	abilities_my.close();
                                     %>
                               </div>
+                              <div class="mc_char_section_selected" id="selected<%=countChars%>"  ondblclick="cancelAbility(<%=countChars%>)">
+                              	<img src='battle/skillact.png' id="selectedNone">
+                              </div>
                            </div>
                         </div>
                  
@@ -223,7 +224,7 @@ window.onload = function() {
                            <img src="https://naruto-arena.net/images/ranks/10v2.png">
                         </div> 
                     
-                        <div class="mc_char_card_rank ">
+                        <div class="mc_char_card_rank">
                            <a onclick="characterFooterInfo(<%=characterID%>, 'ally', <%=countChars%>)"><img src="https://naruto-arena.net/images/ranks/10.png"></a>
                         </div> 
                          <div class="mc_char_card_avatar  ">
@@ -544,6 +545,7 @@ window.onload = function() {
             
             
          </div>
+         
     
 <script>
 $('#surrenderClick').click(function() {
@@ -555,9 +557,6 @@ $('#surrenderCancel').click(function() {
 $('#surrenderConfirm').click(function() {
 	loser();
 });
-
-
-
 
 </script>
     

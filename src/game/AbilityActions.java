@@ -88,10 +88,15 @@ public class AbilityActions extends HttpServlet {
 		else if (action.equalsIgnoreCase("applyAbility")) {
 			//System.out.println("chegou servlet apply ability");
 			String abilityUsedID = request.getParameter("abilityUsedID");
+			System.out.println(abilityUsedID);
 			
-			//pw.println("<div class='effects'>");
+			if (abilityUsedID.equalsIgnoreCase("null")) {
+				pw.println("nada");
+			}
+			else {
+				//pw.println("<div class='effects'>");
 				pw.println("<div class='effects_border0 zindex1'>");
-					pw.println("<img src='ViewAbility?id="+abilityUsedID+"' onmouseover='seeActiveSkill(id)' onmouseleave='hideActiveSkill()'>");
+					pw.println("<img src='ViewAbility?id="+abilityUsedID+"' id='activeSkill"+abilityUsedID+"' onmouseover='seeActiveSkill(id)' onmouseleave='hideActiveSkill()'>");
 					pw.println("<span class='tooltiptext' id='tooltiptextid'>");
 						pw.println("<span class='tooltiptextname'>SPRINKLING NEEDLES</span>");
 						pw.println("<span class='tooltiptextdesc'>This character will take 10 damage.</span>");
@@ -99,6 +104,9 @@ public class AbilityActions extends HttpServlet {
 					pw.println("</span>");
 				pw.println("</div>");
 			//pw.println("</div>");
+			
+			}
+		
 		}
 		
 		

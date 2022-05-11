@@ -133,12 +133,6 @@ function displayNones() {
 }
 
 function characterFooterInfo(id, allyEnemy, charPos) {
-	//removeAllTargetClick();
-	//displayNones();
-	//document.getElementById("character"+id).style.display="block";
-	
-	//console.log(
-	//		"CharPos: "+charPosUsedSkill+" AbilityPos: "+abilityUsedPos+" on AllyEnemy: "+allyEnemy+" charPos: "+charPos);
 	
 	const xhttp = new XMLHttpRequest();
 
@@ -147,36 +141,35 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 		   removeAllTargetClick();
 		   displayNones();
 		   document.getElementById("character"+id).style.display="block";
-		   //document.getElementsByTagName('img')[0];
+		   
+		   if (this.responseText.trim()!="nada") {
+			  // alert("existe");
+			   
+			   if (allyEnemy=="enemy") {
+				   document.getElementById("effectsEnemy"+charPos).innerHTML = this.responseText;
+			   }
+			   else if (allyEnemy=="ally") {
+				   document.getElementById("effectsAlly"+charPos).innerHTML = this.responseText;
+			   }
+			   
+			//   if(abilityClicked!==null) {
+				   document.getElementById("selected"+charPosUsedSkill).innerHTML = "<img src='ViewAbility?id="+abilityClicked+"' id='abilitySelected"+abilityClicked+"'>";
+				   if (charPosUsedSkill==0) {
+					   $('#allSkillsChar0 img').addClass('disabled');
+				   }
+				   else if (charPosUsedSkill==1) {
+					   $('#allSkillsChar1 img').addClass('disabled');
+				   }
+				   else if (charPosUsedSkill==2) {
+					   $('#allSkillsChar2 img').addClass('disabled');
+				   }
+			 //  }
+		   }
+		  // else {
+			//   alert("nada");
+		  // }
 	
-		
-		   if (allyEnemy=="enemy") {
-			   document.getElementById("effectsEnemy"+charPos).innerHTML = this.responseText;
-		   }
-		   else if (allyEnemy=="ally") {
-			   document.getElementById("effectsAlly"+charPos).innerHTML = this.responseText;
-		   }
-		   
-		   document.getElementById("selected"+charPosUsedSkill).innerHTML = "<img src='ViewAbility?id="+abilityClicked+"'>";
-		   var skill = document.getElementsByClassName ("skillimg1");
-		   
-	
-		  /* $('.skillimg0 img').addClass('disabled');
-		   $('.skillimg1 img').addClass('disabled');
-		   $('.skillimg2 img').addClass('disabled');
-		   $('.skillimg3 img').addClass('disabled');*/
-		   if (charPosUsedSkill==0) {
-			   $('#allSkillsChar0 img').addClass('disabled');
-		   }
-		   else if (charPosUsedSkill==1) {
-			   $('#allSkillsChar1 img').addClass('disabled');
-		   }
-		   else if (charPosUsedSkill==2) {
-			   $('#allSkillsChar2 img').addClass('disabled');
-		   }
-		   
-		   
-		   
+		  
 		   abilityClicked = null;
 		   charPosUsedSkill = null;
 		   abilityUsedPos = null;
@@ -185,8 +178,44 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 	xhttp.open("POST", "AbilityActions?action=applyAbility&abilityUsedID="+abilityClicked, true);  // assincrono
 	xhttp.send(null);
 	
+}
+
+function cancelAbility(pos) {
 	
+	//console.log("AB: "+idget.id);	
+	var id = document.getElementById("selected"+pos).getElementsByTagName('img')[0].id;
+	//console.log(id.getElementsByTagName('img')[0].id);
+	//var currentID = 
 	
+	document.getElementById("selected"+pos).innerHTML = "<a><img src='battle/skillact.png'></a>";
+
+
+	   if (pos==0) {
+		  $('#allSkillsChar0 img').removeClass('disabled');
+	   }
+	   else if (pos==1) {
+		   $('#allSkillsChar1 img').removeClass('disabled');
+	   }
+	   else if (pos==2) {
+		   $('#allSkillsChar2 img').removeClass('disabled');
+	   }
+	   
+	   var allActive = [];
+	   
+	   document.querySelectorAll('.effects_border0').forEach(function(e){
+		   allActive.push(e.getElementsByTagName('img')[0].id);
+	   });
+	   
+	   document.querySelectorAll('.effects_border0').forEach(function(e){
+		  var actives = e.getElementsByTagName('img')[0].id;
+		  console.log(actives.charAt(actives.length - 1) + " "+id.charAt(id.length - 1));
+		  if (actives.charAt(actives.length - 1) == id.charAt(id.length - 1)) {
+			  e.remove();
+		  }
+		  console.log("----");
+	   });
+	   
+	 
 }
 
 
