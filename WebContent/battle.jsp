@@ -192,7 +192,9 @@ window.onload = function() {
                            </div>
                            
                            <div class="mc_char_section_skill my_turn">
-                              <div class="mc_char_section_selected"></div>
+                              <div class="mc_char_section_selected" id="selected<%=countChars%>">
+                              	<img src='battle/skillact.png'>
+                              </div>
                               <div class="mc_char_section_skills">
                               
                         <%
@@ -201,7 +203,7 @@ window.onload = function() {
                                                       							
                           String abilityID_my = abilities_my.getString("abilityID");
                           %>
-                                 <div class="skillimg<%=count_my%>">
+                                 <div class="skillimg<%=count_my%>" id="allSkillsChar<%=countChars%>">
                                     <a onclick="abilityClick(<%=abilityID_my%>, <%=countChars%>, <%=count_my%>)"><img src="ViewAbility?id=<%=abilityID_my%>"></a>
                                  </div>
   

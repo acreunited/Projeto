@@ -147,8 +147,8 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 		   removeAllTargetClick();
 		   displayNones();
 		   document.getElementById("character"+id).style.display="block";
-		   
-		   console.log(allyEnemy);
+		   //document.getElementsByTagName('img')[0];
+	
 		
 		   if (allyEnemy=="enemy") {
 			   document.getElementById("effectsEnemy"+charPos).innerHTML = this.responseText;
@@ -157,12 +157,25 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 			   document.getElementById("effectsAlly"+charPos).innerHTML = this.responseText;
 		   }
 		   
-		  /* var skill = document.getElementsByClassName ("skillimg1");
-			for (var i = 0; i < skill.length; i++) {
-				if (id==skill[i].id) {
-					skill[i].style.visibility = "visible" ;
-				}
-			}*/
+		   document.getElementById("selected"+charPosUsedSkill).innerHTML = "<img src='ViewAbility?id="+abilityClicked+"'>";
+		   var skill = document.getElementsByClassName ("skillimg1");
+		   
+	
+		  /* $('.skillimg0 img').addClass('disabled');
+		   $('.skillimg1 img').addClass('disabled');
+		   $('.skillimg2 img').addClass('disabled');
+		   $('.skillimg3 img').addClass('disabled');*/
+		   if (charPosUsedSkill==0) {
+			   $('#allSkillsChar0 img').addClass('disabled');
+		   }
+		   else if (charPosUsedSkill==1) {
+			   $('#allSkillsChar1 img').addClass('disabled');
+		   }
+		   else if (charPosUsedSkill==2) {
+			   $('#allSkillsChar2 img').addClass('disabled');
+		   }
+		   
+		   
 		   
 		   abilityClicked = null;
 		   charPosUsedSkill = null;

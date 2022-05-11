@@ -249,9 +249,9 @@
     /*background-image:url(../images/skillact.png);*/
     background-repeat:no-repeat;
     height:56px;
-    left:22px;
+    left:3px;
     position:absolute;
-    top:11px;
+    top:6px;
     width:56px
 }
 .mc_char_section_skills{
@@ -799,13 +799,13 @@
     will-change:transform;
 }
 
-.mc_char_section_selected {
-    background-image: url(../battle/skillact.png);
+.mc_char_section_selected img{
+   /* background-image: url(../battle/skillact.png);*/
     background-repeat: no-repeat;
     height: 56px;
     left: 32px;
     position: absolute;
-    top: 11px;
+    top: 5px;
     width: 56px;
 }
 .my_turn {
