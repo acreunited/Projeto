@@ -2,6 +2,13 @@ let abilityClicked = null;
 let charPosUsedSkill = null;
 let abilityUsedPos = null;
 
+let allAbilitiesUsed = [];
+let allCharsUsedSkill = [];
+let allTargets = [];
+let allAllyEnemy = [];
+let allAbilitiesID = [];
+
+
 function defineTurns(turn) {
 	
 	var opp = document.getElementsByClassName ("opp_turn");
@@ -73,7 +80,8 @@ function endTurn() {
 		   
 		} 
 	}
-	xhttp.open("POST", "InGame?metodo=unlock", true);  // assincrono
+	xhttp.open("POST", "InGame?metodo=unlock&allAbilitiesUsed="+allAbilitiesUsed+"&allCharsUsedSkill="+allCharsUsedSkill+
+			"&allTargets="+allTargets+"&allAllyEnemy="+allAllyEnemy+"&allAbilitiesID="+allAbilitiesID, true);  // assincrono
 	xhttp.send(null);
 }
 
@@ -202,6 +210,21 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 		   if (xhttp.status === 200 && xhttp.readyState === 4) {
 			   
 			   if (this.responseText.trim()!="nada") {
+
+				   allAbilitiesUsed.push(abilityUsedPos);
+				   allCharsUsedSkill.push(charPosUsedSkill);
+				   allAllyEnemy.push(allyEnemy);
+				   allTargets.push(charPos);
+				   allAbilitiesID.push(abilityClicked);
+				   
+//				   for (let i = 0; i < allAbilitiesUsed.length; i++) {
+//					   console.log("ability pos: "+allAbilitiesUsed[i]);
+//					   console.log("char used skill: "+allCharsUsedSkill[i]);
+//					   console.log("target: "+allTargets[i]);
+//					   console.log("ally-enemy: "+allAllyEnemy[i]);
+//					   console.log("----------------");
+//				   }
+				   
 				   if (allyEnemy=="enemy") {
 					   document.getElementById("effectsEnemy"+charPos).insertAdjacentHTML('beforeend', this.responseText);
 				   }

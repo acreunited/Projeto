@@ -233,11 +233,14 @@ window.onload = function() {
                         </div>
                      </div>
                      <!-- <div class="choose"></div> -->
-                    
+                    <%
+
+            		Character oppChar3 = (Character) session.getAttribute("opp_char3_game");
+                    %>
                      <div class="mc_char_card_lifebar">
                         <div id="bar_0<%=countChars%>" style=" background-color: #3BDF3F; width: 100%"></div>
                         <div id="bar_text_0<%=countChars%>" class="mc_char_card_lifetext">
-                           100/100
+                           <%=oppChar3.getHp() %>/100
                         </div>
                      </div>
                    <!--  <div>

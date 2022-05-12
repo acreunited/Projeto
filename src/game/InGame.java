@@ -1,28 +1,9 @@
 package game;
 
 import java.io.IOException;
-
-
-import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.BindException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.Semaphore;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,9 +33,14 @@ public class InGame extends HttpServlet {
 		
 		//setting the content type  
 		PrintWriter pw = response.getWriter(); 
-		  
-
+		
 		HttpSession session = request.getSession();
+		Character thisChar1 = (Character) session.getAttribute("this_char1_game");
+		Character thisChar2 = (Character) session.getAttribute("this_char2_game");
+		Character thisChar3 = (Character) session.getAttribute("this_char3_game");
+		Character oppChar1 = (Character) session.getAttribute("opp_char1_game");
+		Character oppChar2 = (Character) session.getAttribute("opp_char2_game");
+		Character oppChar3 = (Character) session.getAttribute("opp_char3_game");
 
 		int id = (int) session.getAttribute("userID");
 		
@@ -68,8 +54,6 @@ public class InGame extends HttpServlet {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
-			
 			
 			for(Map.Entry<Queue, Queue> entry : GameUtils.matchQuickFound.entrySet()) {
 				Queue key = entry.getKey();
@@ -116,6 +100,23 @@ public class InGame extends HttpServlet {
 		}
 		else if (metodo.equalsIgnoreCase("unlock")) {
 			gameInfo.unlock((String) session.getAttribute("uuid"));
+
+			String[] allAbilitiesUsed = request.getParameterValues("allAbilitiesUsed");
+			String[] allCharsUsedSkill = request.getParameterValues("allCharsUsedSkill");
+			String[] allTargets = request.getParameterValues("allTargets");
+			String[] allAllyEnemy = request.getParameterValues("allAllyEnemy");
+			String[] allAbilitiesID = request.getParameterValues("allAbilitiesID");
+			
+			//System.out.println("LENGTH: "+allAbilitiesUsed.length());
+//			for (int i = 0; i < allAbilitiesUsed.length; i++) {
+//				System.out.println("ability pos: "+allAbilitiesUsed[i]);
+//				System.out.println("char used skill: "+allCharsUsedSkill[i]);
+//				System.out.println("target: "+allTargets[i]);
+//				System.out.println("ally-enemy: "+allAllyEnemy[i]);
+//				System.out.println("abilitiesID: "+allAbilitiesID[i]);
+//			}
+			thisChar1.applyAbility(thisChar1.getAbility1(), oppChar3);
+			System.out.println("HP: "+oppChar3.getHp());
 
 			session.setAttribute("turn", false);
 		}
