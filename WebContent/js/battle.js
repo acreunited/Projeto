@@ -249,7 +249,7 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 function cancelAbility(pos) {
 	
 	var id = document.getElementById("selected"+pos).getElementsByTagName('img')[0].id;
-	document.getElementById("selected"+pos).innerHTML = "<a><img src='battle/skillact.png'></a>";
+	document.getElementById("selected"+pos).innerHTML = "<a><img src='battle/skillact.png'  id='selectedNone'></a>";
 
    if (pos==0) {
 	  $('#allSkillsChar0 img').removeClass('disabled');
@@ -281,41 +281,49 @@ function cancelAbility(pos) {
 
 function abilityClick(abilityID, selfChar, abilityPos) {
 	
+	var imgIDselected = $.map($("#selected"+selfChar+" > img"), div => div.id);
+	//console.log(imgIDselected[0]);
+	if(imgIDselected[0] == "selectedNone" || imgIDselected[0] == null) {
+		
+		const xhttp = new XMLHttpRequest();
+
+		xhttp.onload = function() {
+		   if (xhttp.status === 200 && xhttp.readyState === 4) {
+			   removeAllTargetClick();
+			   
+			   var element = document.createElement("div");
+			   element.classList.add("choose");
+			   
+			   if (this.responseText.trim()=="self") {
+					document.getElementById("ally"+selfChar).appendChild(element);
+			   }
+			   else if (this.responseText.trim()=="ally") {
+					document.getElementById("ally0").appendChild(element.cloneNode(true));
+					document.getElementById("ally1").appendChild(element.cloneNode(true));
+					document.getElementById("ally2").appendChild(element.cloneNode(true));
+			   }
+			   else if (this.responseText.trim()=="enemy") {
+				   var elementEnemy = document.createElement("div");
+				   elementEnemy.classList.add("chooseEnemy");
+				  
+				   document.getElementById("enemy0").appendChild(elementEnemy.cloneNode(true));
+				   document.getElementById("enemy1").appendChild(elementEnemy.cloneNode(true));
+				   document.getElementById("enemy2").appendChild(elementEnemy.cloneNode(true));
+			   }
+			   
+			   abilityClicked = abilityID;
+			   charPosUsedSkill = selfChar;
+			   abilityUsedPos = abilityPos;
+			} 
+		}
+		xhttp.open("POST", "AbilityActions?action=seeTarget&selfChar="+selfChar+"&abilityPos="+abilityPos, true);  // assincrono
+		xhttp.send(null);
+		
+	}
+
 	abilityFooterInfo(abilityID);
 	
-	const xhttp = new XMLHttpRequest();
-
-	xhttp.onload = function() {
-	   if (xhttp.status === 200 && xhttp.readyState === 4) {
-		   removeAllTargetClick();
-		   
-		   var element = document.createElement("div");
-		   element.classList.add("choose");
-		   
-		   if (this.responseText.trim()=="self") {
-				document.getElementById("ally"+selfChar).appendChild(element);
-		   }
-		   else if (this.responseText.trim()=="ally") {
-				document.getElementById("ally0").appendChild(element.cloneNode(true));
-				document.getElementById("ally1").appendChild(element.cloneNode(true));
-				document.getElementById("ally2").appendChild(element.cloneNode(true));
-		   }
-		   else if (this.responseText.trim()=="enemy") {
-			   var elementEnemy = document.createElement("div");
-			   elementEnemy.classList.add("chooseEnemy");
-			  
-			   document.getElementById("enemy0").appendChild(elementEnemy.cloneNode(true));
-			   document.getElementById("enemy1").appendChild(elementEnemy.cloneNode(true));
-			   document.getElementById("enemy2").appendChild(elementEnemy.cloneNode(true));
-		   }
-		   
-		   abilityClicked = abilityID;
-		   charPosUsedSkill = selfChar;
-		   abilityUsedPos = abilityPos;
-		} 
-	}
-	xhttp.open("POST", "AbilityActions?action=seeTarget&selfChar="+selfChar+"&abilityPos="+abilityPos, true);  // assincrono
-	xhttp.send(null);
+	
 }
 
 function abilityFooterInfo(abilityID) {
