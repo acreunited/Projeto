@@ -132,28 +132,85 @@ function displayNones() {
 	}
 }
 
-function characterFooterInfo(id, allyEnemy, charPos) {
+function hasEffect(allyEnemy, charPos) {
+	//console.log("AllyEnemy: "+ allyEnemy);
+	//console.log("charPos: " + charPos);
+	if (allyEnemy=="enemy") {
+		if (charPos==1) {
+			if($('.mc_char_10').find('.chooseEnemy').length !== 0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		if (charPos==2) {
+			if($('.mc_char_11').find('.chooseEnemy').length !== 0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		if (charPos==3) {
+			if($('.mc_char_12').find('.chooseEnemy').length !== 0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
+	else if (allyEnemy=="ally") {
+		if (charPos==0) {
+			if($('.mc_char_00').find('.choose').length !== 0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		if (charPos==1) {
+			if($('.mc_char_01').find('.choose').length !== 0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		if (charPos==2) {
+			if($('.mc_char_02').find('.choose').length !== 0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
 	
-	const xhttp = new XMLHttpRequest();
+	console.log("NAO VERIFICOU");
+	return false;
+}
 
-	xhttp.onload = function() {
-	   if (xhttp.status === 200 && xhttp.readyState === 4) {
-		   removeAllTargetClick();
-		   displayNones();
-		   document.getElementById("character"+id).style.display="block";
-		   
-		   if (this.responseText.trim()!="nada") {
-			  // alert("existe");
+function characterFooterInfo(id, allyEnemy, charPos) {
+
+	if (hasEffect(allyEnemy, charPos)) {
+		//console.log("TEM EFEITO");
+		const xhttp = new XMLHttpRequest();
+
+		xhttp.onload = function() {
+		   if (xhttp.status === 200 && xhttp.readyState === 4) {
 			   
-			   if (allyEnemy=="enemy") {
-				   document.getElementById("effectsEnemy"+charPos).innerHTML = this.responseText;
-			   }
-			   else if (allyEnemy=="ally") {
-				   document.getElementById("effectsAlly"+charPos).innerHTML = this.responseText;
-			   }
-			   
-			//   if(abilityClicked!==null) {
+			   if (this.responseText.trim()!="nada") {
+				   if (allyEnemy=="enemy") {
+					   document.getElementById("effectsEnemy"+charPos).insertAdjacentHTML('beforeend', this.responseText);
+				   }
+				   else if (allyEnemy=="ally") {
+					   document.getElementById("effectsAlly"+charPos).insertAdjacentHTML('beforeend', this.responseText);
+				   }
+				   
 				   document.getElementById("selected"+charPosUsedSkill).innerHTML = "<img src='ViewAbility?id="+abilityClicked+"' id='abilitySelected"+abilityClicked+"'>";
+				   
 				   if (charPosUsedSkill==0) {
 					   $('#allSkillsChar0 img').addClass('disabled');
 				   }
@@ -163,70 +220,74 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 				   else if (charPosUsedSkill==2) {
 					   $('#allSkillsChar2 img').addClass('disabled');
 				   }
-			 //  }
-		   }
-		  // else {
-			//   alert("nada");
-		  // }
-	
-		  
-		   abilityClicked = null;
-		   charPosUsedSkill = null;
-		   abilityUsedPos = null;
-		} 
+				   
+				   removeAllTargetClick();
+				   abilityClicked = null;
+				   charPosUsedSkill = null;
+				   abilityUsedPos = null;
+		
+			   }
+			} 
+		}
+		xhttp.open("POST", "AbilityActions?action=applyAbility&abilityUsedID="+abilityClicked+"&allyEnemy="+allyEnemy, true);  // assincrono
+		xhttp.send(null);
 	}
-	xhttp.open("POST", "AbilityActions?action=applyAbility&abilityUsedID="+abilityClicked, true);  // assincrono
-	xhttp.send(null);
+	else {
+		displayNones();
+		document.getElementById("character"+id).style.display="block";
+		
+		removeAllTargetClick();
+		abilityClicked = null;
+		charPosUsedSkill = null;
+		abilityUsedPos = null;
+	}
+	
+	
 	
 }
 
 function cancelAbility(pos) {
 	
-	//console.log("AB: "+idget.id);	
 	var id = document.getElementById("selected"+pos).getElementsByTagName('img')[0].id;
-	//console.log(id.getElementsByTagName('img')[0].id);
-	//var currentID = 
-	
 	document.getElementById("selected"+pos).innerHTML = "<a><img src='battle/skillact.png'></a>";
 
+   if (pos==0) {
+	  $('#allSkillsChar0 img').removeClass('disabled');
+   }
+   else if (pos==1) {
+	   $('#allSkillsChar1 img').removeClass('disabled');
+   }
+   else if (pos==2) {
+	   $('#allSkillsChar2 img').removeClass('disabled');
+   }
 
-	   if (pos==0) {
-		  $('#allSkillsChar0 img').removeClass('disabled');
-	   }
-	   else if (pos==1) {
-		   $('#allSkillsChar1 img').removeClass('disabled');
-	   }
-	   else if (pos==2) {
-		   $('#allSkillsChar2 img').removeClass('disabled');
-	   }
-	   
-	   var allActive = [];
-	   
-	   document.querySelectorAll('.effects_border0').forEach(function(e){
-		   allActive.push(e.getElementsByTagName('img')[0].id);
-	   });
-	   
-	   document.querySelectorAll('.effects_border0').forEach(function(e){
-		  var actives = e.getElementsByTagName('img')[0].id;
-		  console.log(actives.charAt(actives.length - 1) + " "+id.charAt(id.length - 1));
-		  if (actives.charAt(actives.length - 1) == id.charAt(id.length - 1)) {
-			  e.remove();
-		  }
-		  console.log("----");
-	   });
+   document.querySelectorAll('.effects_border0').forEach(function(e){
+	  var actives = e.getElementsByTagName('img')[0].id;
+	  if (actives.split("activeSkill")[1] == id.split("abilitySelected")[1]) {
+		  e.remove();
+	  }
+   });
+
+   document.querySelectorAll('.effects_border1').forEach(function(e){
+	  var actives = e.getElementsByTagName('img')[0].id;
+	  if (actives.split("activeSkill")[1] == id.split("abilitySelected")[1]) {
+		  e.remove();
+	  }
+   });
 	   
 	 
 }
 
 
 function abilityClick(abilityID, selfChar, abilityPos) {
+	
+	abilityFooterInfo(abilityID);
+	
 	const xhttp = new XMLHttpRequest();
 
 	xhttp.onload = function() {
 	   if (xhttp.status === 200 && xhttp.readyState === 4) {
 		   removeAllTargetClick();
-		   
-		   abilityFooterInfo(abilityID);
 		   
 		   var element = document.createElement("div");
 		   element.classList.add("choose");

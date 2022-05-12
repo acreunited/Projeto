@@ -850,15 +850,22 @@
     position: absolute;
     top: 18px;
 }
+
+.zindex0 {
+    z-index: 3;
+}
+
 .zindex1 {
     z-index: 2;
 }
 .effects_border1 {
+	border: 1px solid #000;
     height: 20px;
     margin-right: -49px;
     position: relative;
     width: 20px;
 }
+
 .effects_border1 img {
     height: 20px;
     width: 20px;

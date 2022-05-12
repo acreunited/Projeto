@@ -80,30 +80,33 @@ public class AbilityActions extends HttpServlet {
 			}
 		
 		}
-//		AbilityActions?action=applyAbility&target="+charPos+"
-//				&abilityUsedID="+abilityClicked+"&allyEnemy="+allyEnemy
-		
-//		pw.println("<html><body>");  
-//		pw.println("Welcome to servlet<br/>");
+
 		else if (action.equalsIgnoreCase("applyAbility")) {
 			//System.out.println("chegou servlet apply ability");
 			String abilityUsedID = request.getParameter("abilityUsedID");
-			System.out.println(abilityUsedID);
+			String allyEnemy = request.getParameter("allyEnemy");
 			
 			if (abilityUsedID.equalsIgnoreCase("null")) {
 				pw.println("nada");
 			}
 			else {
-				//pw.println("<div class='effects'>");
-				pw.println("<div class='effects_border0 zindex1'>");
-					pw.println("<img src='ViewAbility?id="+abilityUsedID+"' id='activeSkill"+abilityUsedID+"' onmouseover='seeActiveSkill(id)' onmouseleave='hideActiveSkill()'>");
-					pw.println("<span class='tooltiptext' id='tooltiptextid'>");
-						pw.println("<span class='tooltiptextname'>SPRINKLING NEEDLES</span>");
-						pw.println("<span class='tooltiptextdesc'>This character will take 10 damage.</span>");
-						pw.println("<span class='tooltiptextduration'>1 TURN LEFT</span>");
-					pw.println("</span>");
+				
+				if (allyEnemy.trim().equalsIgnoreCase("ally")) {
+					//System.out.println("ALLY");
+					pw.println("<div class='effects_border0 zindex1'>");
+				}
+				else if (allyEnemy.trim().equalsIgnoreCase("enemy")) {
+					//System.out.println("ENEMY");
+					pw.println("<div class='effects_border1 zindex0'>");
+				}
+
+				pw.println("<img src='ViewAbility?id="+abilityUsedID+"' id='activeSkill"+abilityUsedID+"' onmouseover='seeActiveSkill(id)' onmouseleave='hideActiveSkill()'>");
+				pw.println("<span class='tooltiptext' id='tooltiptextid'>");
+					pw.println("<span class='tooltiptextname'>SPRINKLING NEEDLES</span>");
+					pw.println("<span class='tooltiptextdesc'>This character will take 10 damage.</span>");
+					pw.println("<span class='tooltiptextduration'>1 TURN LEFT</span>");
+				pw.println("</span>");
 				pw.println("</div>");
-			//pw.println("</div>");
 			
 			}
 		
