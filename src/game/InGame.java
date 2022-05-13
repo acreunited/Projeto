@@ -92,41 +92,51 @@ public class InGame extends HttpServlet {
 			else {
 				response.setContentType("text/html");
 				generateRandomNatures(session, 3);
-				updateNatureInGame(session, pw);
-			}
+				String uuid = (String) session.getAttribute("uuid");	
+				/*
+				String[] allAbilitiesUsed = GameUtils.allAbilitiesUsed.get(uuid);
+				String[] allCharsUsedSkill = GameUtils.allCharsUsedSkill.get(uuid);
+				String[] allTargets = GameUtils.allTargets.get(uuid);
+				String[] allAllyEnemy = GameUtils.allAllyEnemy.get(uuid);
+				String[] allAbilitiesID = GameUtils.allAbilitiesID.get(uuid);
 
+				
+				for (int i = 0; i < allAbilitiesUsed.length; i++) {
+					Character c = getCharacterUsed(allCharsUsedSkill[i], oppChar1, oppChar2, oppChar3);
+					Character target = getTarget(allAllyEnemy[i], allTargets[i], 
+							oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3);
+					
+					
+					if (allAbilitiesUsed[i].equalsIgnoreCase("0")) {
+						c.applyAbility(c.getAbility1(), target);
+					}
+					else if (allAbilitiesUsed[i].equalsIgnoreCase("1")) {
+						c.applyAbility(c.getAbility2(), target);
+					}
+					else if (allAbilitiesUsed[i].equalsIgnoreCase("2")) {
+						c.applyAbility(c.getAbility3(), target);
+					}
+					else if (allAbilitiesUsed[i].equalsIgnoreCase("3")) {
+						c.applyAbility(c.getAbility4(), target);
+					}
+				}*/
+				calculateAbilities(oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, uuid);
+				writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
+				
+				updateNatureInGame(session, pw);
+				//GameUtils.allAbilitiesUsed.remove(uuid);
+				
+			}
+			
 			session.setAttribute("turn", true);
 			
 		}
 		else if (metodo.equalsIgnoreCase("unlock")) {
 			
 			response.setContentType("text/html");
-
-			String[] allAbilitiesUsed = (String[]) request.getServletContext().getAttribute("allAbilitiesUsed");
-			String[] allCharsUsedSkill = (String[]) request.getServletContext().getAttribute("allCharsUsedSkill");
-			String[] allTargets = (String[]) request.getServletContext().getAttribute("allTargets");
-			String[] allAllyEnemy = (String[]) request.getServletContext().getAttribute("allAllyEnemy");
-			String[] allAbilitiesID = (String[]) request.getServletContext().getAttribute("allAbilitiesID");
-
-			for (int i = 0; i < allAbilitiesUsed.length; i++) {
-				Character c = getCharacterUsed(allCharsUsedSkill[i], thisChar1, thisChar2, thisChar3);
-				Character target = getTarget(allAllyEnemy[i], allTargets[i], 
-						thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
-				
-				
-				if (allAbilitiesUsed[i].equalsIgnoreCase("0")) {
-					c.applyAbility(c.getAbility1(), target);
-				}
-				else if (allAbilitiesUsed[i].equalsIgnoreCase("1")) {
-					c.applyAbility(c.getAbility2(), target);
-				}
-				else if (allAbilitiesUsed[i].equalsIgnoreCase("2")) {
-					c.applyAbility(c.getAbility3(), target);
-				}
-				else if (allAbilitiesUsed[i].equalsIgnoreCase("3")) {
-					c.applyAbility(c.getAbility4(), target);
-				}
-			}
+			
+			String uuid = (String) session.getAttribute("uuid");	
+			calculateAbilities(thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, uuid);
 			
 			writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 
@@ -149,6 +159,39 @@ public class InGame extends HttpServlet {
 
 	}
 	
+	private void calculateAbilities(Character thisChar1, Character thisChar2, Character thisChar3, Character oppChar1,
+			Character oppChar2, Character oppChar3, String uuid) {
+		
+		
+		String[] allAbilitiesUsed = GameUtils.allAbilitiesUsed.get(uuid);
+		String[] allCharsUsedSkill = GameUtils.allCharsUsedSkill.get(uuid);
+		String[] allTargets = GameUtils.allTargets.get(uuid);
+		String[] allAllyEnemy = GameUtils.allAllyEnemy.get(uuid);
+		String[] allAbilitiesID = GameUtils.allAbilitiesID.get(uuid);
+
+		
+		for (int i = 0; i < allAbilitiesUsed.length; i++) {
+			Character c = getCharacterUsed(allCharsUsedSkill[i], thisChar1, thisChar2, thisChar3);
+			Character target = getTarget(allAllyEnemy[i], allTargets[i], 
+					thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
+			
+			
+			if (allAbilitiesUsed[i].equalsIgnoreCase("0")) {
+				c.applyAbility(c.getAbility1(), target);
+			}
+			else if (allAbilitiesUsed[i].equalsIgnoreCase("1")) {
+				c.applyAbility(c.getAbility2(), target);
+			}
+			else if (allAbilitiesUsed[i].equalsIgnoreCase("2")) {
+				c.applyAbility(c.getAbility3(), target);
+			}
+			else if (allAbilitiesUsed[i].equalsIgnoreCase("3")) {
+				c.applyAbility(c.getAbility4(), target);
+			}
+		}
+		
+	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -313,7 +356,7 @@ public class InGame extends HttpServlet {
 	}
 	
 	private void updateNatureInGame(HttpSession session, PrintWriter pw) {
-
+		pw.println("break");
 		pw.println(" <strong class=\"energy0\">x"+session.getAttribute("taijutsu")+"</strong>");
 		pw.println(" <strong class=\"energy1\">x"+session.getAttribute("heart")+"</strong>");
 		pw.println(" <strong class=\"energy2\">x"+session.getAttribute("energy")+"</strong>");

@@ -57,10 +57,24 @@ function lockSemaphore() {
 			   loser();
 		   }
 		   else {
-			   document.getElementById("natures").innerHTML = this.responseText;
+			   var x = this.responseText.split("break");
+			   
+			   document.getElementById("hpAlly0").innerHTML = x[0];
+			   document.getElementById("hpAlly1").innerHTML = x[1];
+			   document.getElementById("hpAlly2").innerHTML = x[2];
+		       document.getElementById("hpEnemy1").innerHTML = x[3];
+			   document.getElementById("hpEnemy2").innerHTML = x[4];
+			   document.getElementById("hpEnemy3").innerHTML = x[5];
+			   document.getElementById("natures").innerHTML = x[6];
+			   //document.getElementById("natures").innerHTML = this.responseText;
 			   defineTurns(true);
 		   }
 		   
+		   allAbilitiesUsed = [];
+		   allCharsUsedSkill = [];
+		   allTargets = [];
+		   allAllyEnemy = [];
+		   allAbilitiesID = [];
 		} 
 	}
 	xhttp.open("POST", "InGame?metodo=lock", true);  // assincrono
@@ -90,6 +104,9 @@ function endTurn() {
 	xhttp.onload = function() {
 	   if (xhttp.status === 200 && xhttp.readyState === 4) {
 		   removeAllTargetClick();
+		   cancelAbility(0);
+		   cancelAbility(1);
+		   cancelAbility(2);
 		   defineTurns(false);
 		   
 		   var x = this.responseText.split("break");

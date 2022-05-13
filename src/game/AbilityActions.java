@@ -93,18 +93,25 @@ public class AbilityActions extends HttpServlet {
 		
 		}
 		else if (action.equalsIgnoreCase("saveAbilities")) {
-
+			
+			String uuid = (String) session.getAttribute("uuid");
+			
 			String[] allAbilitiesUsed = request.getParameterValues("allAbilitiesUsed");
 			String[] allCharsUsedSkill = request.getParameterValues("allCharsUsedSkill");
 			String[] allTargets = request.getParameterValues("allTargets");
 			String[] allAllyEnemy = request.getParameterValues("allAllyEnemy");
 			String[] allAbilitiesID = request.getParameterValues("allAbilitiesID");
-	
-			request.getServletContext().setAttribute("allAbilitiesUsed", allAbilitiesUsed);
-			request.getServletContext().setAttribute("allCharsUsedSkill", allCharsUsedSkill);
-			request.getServletContext().setAttribute("allTargets", allTargets);
-			request.getServletContext().setAttribute("allAllyEnemy", allAllyEnemy);
-			request.getServletContext().setAttribute("allAbilitiesID", allAbilitiesID);
+			
+			GameUtils.allAbilitiesUsed.put(uuid, allAbilitiesUsed);
+			GameUtils.allCharsUsedSkill.put(uuid, allCharsUsedSkill);
+			GameUtils.allTargets.put(uuid, allTargets);
+			GameUtils.allAllyEnemy.put(uuid, allAllyEnemy);
+			GameUtils.allAbilitiesID.put(uuid, allAbilitiesID);
+//			request.getServletContext().setAttribute("allAbilitiesUsed", allAbilitiesUsed);
+//			request.getServletContext().setAttribute("allCharsUsedSkill", allCharsUsedSkill);
+//			request.getServletContext().setAttribute("allTargets", allTargets);
+//			request.getServletContext().setAttribute("allAllyEnemy", allAllyEnemy);
+//			request.getServletContext().setAttribute("allAbilitiesID", allAbilitiesID);
 		}
 		
 	
