@@ -55,7 +55,7 @@ public class Character {
 		}
 		
 		//stun
-		c.setStunnedDuration( a.getStunDuration() );
+		/*c.setStunnedDuration( a.getStunDuration() );
 		
 		//become invulnerable
 		c.setInvulDuration( a.getBecomeInvulDuration() );
@@ -90,7 +90,7 @@ public class Character {
 		int natureLoss = a.getRemoveNature()[0];
 		if (natureLoss > 0) {
 			c.setNatureLoss( c.getNatureLoss() + natureLoss );
-		}
+		}*/
 			
 	}
 
@@ -140,7 +140,7 @@ public class Character {
 		return 0;
 	}
 	private int getAbilityDamageSelfHP(Ability a) {
-		int damagePerSelfHPLost = 0;
+		/*int damagePerSelfHPLost = 0;
 		
 		int selfHP_damage = a.getDamagePerHPLost()[0];
 		int selfHP_hp = a.getDamagePerHPLost()[1];
@@ -155,7 +155,8 @@ public class Character {
 			}
 			while(currentHP_lost-selfHP_hp > 0);
 		}
-		return damagePerSelfHPLost;
+		return damagePerSelfHPLost;*/
+		return 0;
 	}
 	
 	public int getId() {

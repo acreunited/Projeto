@@ -96,17 +96,17 @@ public class AbilityActions extends HttpServlet {
 			
 			String uuid = (String) session.getAttribute("uuid");
 			
-			String[] allAbilitiesUsed = request.getParameterValues("allAbilitiesUsed");
-			String[] allCharsUsedSkill = request.getParameterValues("allCharsUsedSkill");
-			String[] allTargets = request.getParameterValues("allTargets");
-			String[] allAllyEnemy = request.getParameterValues("allAllyEnemy");
-			String[] allAbilitiesID = request.getParameterValues("allAbilitiesID");
+			String allAbilitiesUsed = request.getParameter("allAbilitiesUsed");
+			String allCharsUsedSkill = request.getParameter("allCharsUsedSkill");
+			String allTargets = request.getParameter("allTargets");
+			String allAllyEnemy = request.getParameter("allAllyEnemy");
+			String allAbilitiesID = request.getParameter("allAbilitiesID");
 			
-			GameUtils.allAbilitiesUsed.put(uuid, allAbilitiesUsed);
-			GameUtils.allCharsUsedSkill.put(uuid, allCharsUsedSkill);
-			GameUtils.allTargets.put(uuid, allTargets);
-			GameUtils.allAllyEnemy.put(uuid, allAllyEnemy);
-			GameUtils.allAbilitiesID.put(uuid, allAbilitiesID);
+			GameUtils.allAbilitiesUsed.put(uuid, allAbilitiesUsed.split(","));
+			GameUtils.allCharsUsedSkill.put(uuid, allCharsUsedSkill.split(","));
+			GameUtils.allTargets.put(uuid, allTargets.split(","));
+			GameUtils.allAllyEnemy.put(uuid, allAllyEnemy.split(","));
+			GameUtils.allAbilitiesID.put(uuid, allAbilitiesID.split(","));
 //			request.getServletContext().setAttribute("allAbilitiesUsed", allAbilitiesUsed);
 //			request.getServletContext().setAttribute("allCharsUsedSkill", allCharsUsedSkill);
 //			request.getServletContext().setAttribute("allTargets", allTargets);
