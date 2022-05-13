@@ -119,7 +119,7 @@ public class Character {
 		return damage;
 	}
 	private int getAbilityDamageEnemyHP(Ability a, Character c) {
-		int damagePerEnemyHPLost = 0;
+		/*int damagePerEnemyHPLost = 0;
 		
 		int enemyHP_damage = a.getDamagePerEnemyHPLost()[0];
 		int enemyHP_hp = a.getDamagePerHPLost()[1];
@@ -136,7 +136,8 @@ public class Character {
 			}
 			while (currentEnemyHP_lost-enemyHP_hp>0);
 		}
-		return damagePerEnemyHPLost;
+		return damagePerEnemyHPLost;*/
+		return 0;
 	}
 	private int getAbilityDamageSelfHP(Ability a) {
 		int damagePerSelfHPLost = 0;

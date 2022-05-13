@@ -91,7 +91,7 @@ window.onload = function() {
                         <div class="mc_bar_ready opp_text" id="oppTurnDisable">
                            Opponent Turn...
                         </div>
-                        <div class="mc_bar_ready my_turn" id="passTurn" onclick="endTurn()">
+                        <div class="mc_bar_ready my_turn" id="passTurn" onclick="storeAbilities()">
                            Press To End Turn
                         </div>
 						<div class="mc_bar_ready" id="winnerTurn" style="display: none;">
@@ -232,15 +232,11 @@ window.onload = function() {
                          	<img class="abs" id="dead_0<%=countChars%>" src="ViewCharacter?id=<%=characterID%>">
                         </div>
                      </div>
-                     <!-- <div class="choose"></div> -->
-                    <%
-
-            		Character oppChar3 = (Character) session.getAttribute("opp_char3_game");
-                    %>
-                     <div class="mc_char_card_lifebar">
+                   
+                     <div class="mc_char_card_lifebar" id="hpAlly<%=countChars%>">
                         <div id="bar_0<%=countChars%>" style=" background-color: #3BDF3F; width: 100%"></div>
                         <div id="bar_text_0<%=countChars%>" class="mc_char_card_lifetext">
-                           <%=oppChar3.getHp() %>/100
+                           100/100
                         </div>
                      </div>
                    <!--  <div>
@@ -303,9 +299,9 @@ window.onload = function() {
                            <a onclick="characterFooterInfo(<%=characterID%>, 'enemy', <%=countChars%>)"><img src="https://naruto-arena.net/images/ranks/9.png"></a>
                         </div>
                      </div>
-                     
+                 
                      <!--<div class="nochoose en2"></div>--> 
-                     <div class="mc_char_card_lifebar en">
+                     <div class="mc_char_card_lifebar en" id="hpEnemy<%=countChars%>">
                         <div id="bar_10" style=" background-color: #3BDF3F; width: 100%"></div>
                         <div id="bar_text_10" class="mc_char_card_lifetext">
                            100/100

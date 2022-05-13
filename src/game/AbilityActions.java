@@ -2,26 +2,7 @@ package game;
 
 import java.io.IOException;
 
-import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.BindException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.Semaphore;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -111,6 +92,22 @@ public class AbilityActions extends HttpServlet {
 			}
 		
 		}
+		else if (action.equalsIgnoreCase("saveAbilities")) {
+
+			String[] allAbilitiesUsed = request.getParameterValues("allAbilitiesUsed");
+			String[] allCharsUsedSkill = request.getParameterValues("allCharsUsedSkill");
+			String[] allTargets = request.getParameterValues("allTargets");
+			String[] allAllyEnemy = request.getParameterValues("allAllyEnemy");
+			String[] allAbilitiesID = request.getParameterValues("allAbilitiesID");
+	
+			request.getServletContext().setAttribute("allAbilitiesUsed", allAbilitiesUsed);
+			request.getServletContext().setAttribute("allCharsUsedSkill", allCharsUsedSkill);
+			request.getServletContext().setAttribute("allTargets", allTargets);
+			request.getServletContext().setAttribute("allAllyEnemy", allAllyEnemy);
+			request.getServletContext().setAttribute("allAbilitiesID", allAbilitiesID);
+		}
+		
+	
 		
 		
 		pw.close();

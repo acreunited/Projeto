@@ -99,26 +99,40 @@ public class InGame extends HttpServlet {
 			
 		}
 		else if (metodo.equalsIgnoreCase("unlock")) {
-			gameInfo.unlock((String) session.getAttribute("uuid"));
-
-			String[] allAbilitiesUsed = request.getParameterValues("allAbilitiesUsed");
-			String[] allCharsUsedSkill = request.getParameterValues("allCharsUsedSkill");
-			String[] allTargets = request.getParameterValues("allTargets");
-			String[] allAllyEnemy = request.getParameterValues("allAllyEnemy");
-			String[] allAbilitiesID = request.getParameterValues("allAbilitiesID");
 			
-			//System.out.println("LENGTH: "+allAbilitiesUsed.length());
-//			for (int i = 0; i < allAbilitiesUsed.length; i++) {
-//				System.out.println("ability pos: "+allAbilitiesUsed[i]);
-//				System.out.println("char used skill: "+allCharsUsedSkill[i]);
-//				System.out.println("target: "+allTargets[i]);
-//				System.out.println("ally-enemy: "+allAllyEnemy[i]);
-//				System.out.println("abilitiesID: "+allAbilitiesID[i]);
-//			}
-			thisChar1.applyAbility(thisChar1.getAbility1(), oppChar3);
-			System.out.println("HP: "+oppChar3.getHp());
+			response.setContentType("text/html");
+
+			String[] allAbilitiesUsed = (String[]) request.getServletContext().getAttribute("allAbilitiesUsed");
+			String[] allCharsUsedSkill = (String[]) request.getServletContext().getAttribute("allCharsUsedSkill");
+			String[] allTargets = (String[]) request.getServletContext().getAttribute("allTargets");
+			String[] allAllyEnemy = (String[]) request.getServletContext().getAttribute("allAllyEnemy");
+			String[] allAbilitiesID = (String[]) request.getServletContext().getAttribute("allAbilitiesID");
+
+			for (int i = 0; i < allAbilitiesUsed.length; i++) {
+				Character c = getCharacterUsed(allCharsUsedSkill[i], thisChar1, thisChar2, thisChar3);
+				Character target = getTarget(allAllyEnemy[i], allTargets[i], 
+						thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
+				
+				
+				if (allAbilitiesUsed[i].equalsIgnoreCase("0")) {
+					c.applyAbility(c.getAbility1(), target);
+				}
+				else if (allAbilitiesUsed[i].equalsIgnoreCase("1")) {
+					c.applyAbility(c.getAbility2(), target);
+				}
+				else if (allAbilitiesUsed[i].equalsIgnoreCase("2")) {
+					c.applyAbility(c.getAbility3(), target);
+				}
+				else if (allAbilitiesUsed[i].equalsIgnoreCase("3")) {
+					c.applyAbility(c.getAbility4(), target);
+				}
+			}
+			
+			writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 
 			session.setAttribute("turn", false);
+
+			gameInfo.unlock((String) session.getAttribute("uuid"));
 		}
 		
 		else if (metodo.equalsIgnoreCase("loser")) {
@@ -134,11 +148,80 @@ public class InGame extends HttpServlet {
 		pw.close();
 
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		doGet(request, response);
+	}
+
+	private void writeResponse(PrintWriter pw, Character this1,Character this2,Character this3,
+			Character opp1,Character opp2,Character opp3) {
+		
+			pw.println("<div id=\"bar_00\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
+			pw.println("<div id=\"bar_text_00\" class=\"mc_char_card_lifetext\">");
+			pw.println(this1.getHp()+"/100</div>");
+			pw.println("break");
+			pw.println("<div id=\"bar_01\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
+			pw.println("<div id=\"bar_text_01\" class=\"mc_char_card_lifetext\">");
+			pw.println(this2.getHp()+"/100</div>");
+			pw.println("break");
+			pw.println("<div id=\"bar_02\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
+			pw.println("<div id=\"bar_text_02\" class=\"mc_char_card_lifetext\">");
+			pw.println(this2.getHp()+"/100</div>");
+			pw.println("break");
+			pw.println("<div id=\"bar_10\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
+			pw.println("<div id=\"bar_text_10\" class=\"mc_char_card_lifetext\">");
+			pw.println(opp1.getHp()+"/100</div>");
+			pw.println("break");
+			pw.println("<div id=\"bar_10\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
+			pw.println("<div id=\"bar_text_10\" class=\"mc_char_card_lifetext\">");
+			pw.println(opp2.getHp()+"/100</div>");
+			pw.println("break");
+			pw.println("<div id=\"bar_10\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
+			pw.println("<div id=\"bar_text_10\" class=\"mc_char_card_lifetext\">");
+			pw.println(opp3.getHp()+"/100</div>");
+		
+	}
+	
+	private Character getTarget(String allyEnemy, String pos, 
+			Character thisChar1, Character thisChar2, Character thisChar3, Character oppChar1, Character oppChar2, Character oppChar3) {
+		
+		Character target = null; 
+		
+		switch (pos) {
+		case "1":
+			target = (allyEnemy.equalsIgnoreCase("ally")) ? thisChar1 : oppChar1;
+			break;
+		case "2":
+			target = (allyEnemy.equalsIgnoreCase("ally")) ? thisChar2 : oppChar2;
+			break;
+		case "3":
+			target = (allyEnemy.equalsIgnoreCase("ally")) ? thisChar3 : oppChar3;
+			break;
+	
+		}
+		
+		
+		return target;
+	}
+
+	private Character getCharacterUsed(String pos, Character this1, Character this2, Character this3) {
+		
+		Character c = null;
+		
+		switch (pos) {
+		case "0":
+			c = this1;
+			break;
+		case "1":
+			c = this2;
+			break;
+		case "2":
+			c = this3;
+			break;
+		}
+		return c;
 	}
 	
 	private void removeGame(String uuid, int id) {

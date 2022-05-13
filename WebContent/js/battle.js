@@ -68,8 +68,22 @@ function lockSemaphore() {
 
 }
 
+function storeAbilities() {
+	const xhttp = new XMLHttpRequest();
+
+	xhttp.onload = function() {
+	   if (xhttp.status === 200 && xhttp.readyState === 4) {
+		   endTurn();
+		} 
+	}
+	//xhttp.open("POST", "InGame?metodo=unlock&allAbilitiesUsed="+allAbilitiesUsed+"&allCharsUsedSkill="+allCharsUsedSkill+
+	//		"&allTargets="+allTargets+"&allAllyEnemy="+allAllyEnemy+"&allAbilitiesID="+allAbilitiesID, true);  // assincrono
+	xhttp.open("POST", "AbilityActions?action=saveAbilities&allAbilitiesUsed="+allAbilitiesUsed+"&allCharsUsedSkill="+allCharsUsedSkill+
+			"&allTargets="+allTargets+"&allAllyEnemy="+allAllyEnemy+"&allAbilitiesID="+allAbilitiesID, true);
+	xhttp.send(null);
+}
+
 function endTurn() {
-	
 	
 	const xhttp = new XMLHttpRequest();
 
@@ -78,10 +92,20 @@ function endTurn() {
 		   removeAllTargetClick();
 		   defineTurns(false);
 		   
+		   var x = this.responseText.split("break");
+		   
+		   document.getElementById("hpAlly0").innerHTML = x[0];
+		   document.getElementById("hpAlly1").innerHTML = x[1];
+		   document.getElementById("hpAlly2").innerHTML = x[2];
+	       document.getElementById("hpEnemy1").innerHTML = x[3];
+		   document.getElementById("hpEnemy2").innerHTML = x[4];
+		   document.getElementById("hpEnemy3").innerHTML = x[5];
+
 		} 
 	}
-	xhttp.open("POST", "InGame?metodo=unlock&allAbilitiesUsed="+allAbilitiesUsed+"&allCharsUsedSkill="+allCharsUsedSkill+
-			"&allTargets="+allTargets+"&allAllyEnemy="+allAllyEnemy+"&allAbilitiesID="+allAbilitiesID, true);  // assincrono
+	//xhttp.open("POST", "InGame?metodo=unlock&allAbilitiesUsed="+allAbilitiesUsed+"&allCharsUsedSkill="+allCharsUsedSkill+
+	//		"&allTargets="+allTargets+"&allAllyEnemy="+allAllyEnemy+"&allAbilitiesID="+allAbilitiesID, true);  // assincrono
+	xhttp.open("POST", "InGame?metodo=unlock", true);
 	xhttp.send(null);
 }
 
