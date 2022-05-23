@@ -42,7 +42,7 @@ public class AbilityActions extends HttpServlet {
 		Character oppChar2 = (Character) session.getAttribute("opp_char2_game");
 		Character oppChar3 = (Character) session.getAttribute("opp_char3_game");
 
-		
+		int id = (int) session.getAttribute("userID");
 		
 		String action = request.getParameter("action");
 		
@@ -92,20 +92,7 @@ public class AbilityActions extends HttpServlet {
 		}
 		else if (action.equalsIgnoreCase("saveAbilities")) {
 			
-			String uuid = (String) session.getAttribute("uuid");
-			
-			String allAbilitiesUsed = request.getParameter("allAbilitiesUsed");
-			String allCharsUsedSkill = request.getParameter("allCharsUsedSkill");
-			String allTargets = request.getParameter("allTargets");
-			String allAllyEnemy = request.getParameter("allAllyEnemy");
-			String allAbilitiesID = request.getParameter("allAbilitiesID");
-			
-			GameUtils.allAbilitiesUsed.put(uuid, allAbilitiesUsed.split(","));
-			GameUtils.allCharsUsedSkill.put(uuid, allCharsUsedSkill.split(","));
-			GameUtils.allTargets.put(uuid, allTargets.split(","));
-			GameUtils.allAllyEnemy.put(uuid, allAllyEnemy.split(","));
-			GameUtils.allAbilitiesID.put(uuid, allAbilitiesID.split(","));
-
+			saveAbilities(request, session, id);
 		}
 		
 	
@@ -114,6 +101,8 @@ public class AbilityActions extends HttpServlet {
 		pw.close();
 
 	}
+	
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -148,6 +137,39 @@ public class AbilityActions extends HttpServlet {
 			a = c.getAbility4();
 		}
 		return a;
+	}
+	
+	private void saveAbilities(HttpServletRequest request, HttpSession session, int id) {
+		String uuid = (String) session.getAttribute("uuid");
+		
+		String allAbilitiesUsed = request.getParameter("allAbilitiesUsed");
+		String allCharsUsedSkill = request.getParameter("allCharsUsedSkill");
+		String allTargets = request.getParameter("allTargets");
+		String allAllyEnemy = request.getParameter("allAllyEnemy");
+		String allAbilitiesID = request.getParameter("allAbilitiesID");
+		
+		String[] abilitiesUsed = allAbilitiesUsed.split(",");
+		String[] charsUsedSkill = allCharsUsedSkill.split(",");
+		String[] targets = allTargets.split(",");
+		String[] allyEnemy = allAllyEnemy.split(",");
+		String[] abilitiesID = allAbilitiesID.split(",");
+	
+		for (int i = 0; i < abilitiesUsed.length; i++) {
+			if (abilitiesUsed[i].length() > 0) {
+				GameUtils.activeAbilitiesUsed.get(id).add(abilitiesUsed[i]);
+				GameUtils.activeCharsUsedSkill.get(id).add(charsUsedSkill[i]);
+				GameUtils.activeTargets.get(id).add(targets[i]);
+				GameUtils.activeAllyEnemy.get(id).add(allyEnemy[i]);
+				GameUtils.activeAbilitiesID.get(id).add(abilitiesID[i]);
+			}
+			
+		}
+		
+//		GameUtils.allAbilitiesUsed.put(uuid, abilitiesUsed);
+//		GameUtils.allCharsUsedSkill.put(uuid, charsUsedSkill);
+//		GameUtils.allTargets.put(uuid, targets);
+//		GameUtils.allAllyEnemy.put(uuid, allyEnemy);
+//		GameUtils.allAbilitiesID.put(uuid, abilitiesID);
 	}
 	
 	

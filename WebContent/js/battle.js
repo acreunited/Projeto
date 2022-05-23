@@ -117,7 +117,16 @@ function endTurn() {
 	       document.getElementById("hpEnemy1").innerHTML = x[3];
 		   document.getElementById("hpEnemy2").innerHTML = x[4];
 		   document.getElementById("hpEnemy3").innerHTML = x[5];
+		   
+		   document.getElementById("effectsAlly0").innerHTML = x[6];
+		   document.getElementById("effectsAlly1").innerHTML = x[7];
+		   document.getElementById("effectsAlly2").innerHTML = x[8];
+		   document.getElementById("effectsEnemy1").innerHTML = x[9];
+		   document.getElementById("effectsEnemy2").innerHTML = x[10];
+		   document.getElementById("effectsEnemy3").innerHTML = x[11];
 
+		   
+		   
 		} 
 	}
 	//xhttp.open("POST", "InGame?metodo=unlock&allAbilitiesUsed="+allAbilitiesUsed+"&allCharsUsedSkill="+allCharsUsedSkill+
@@ -257,14 +266,7 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 				   allAllyEnemy.push(allyEnemy);
 				   allTargets.push(charPos);
 				   allAbilitiesID.push(abilityClicked);
-				   
-//				   for (let i = 0; i < allAbilitiesUsed.length; i++) {
-//					   console.log("ability pos: "+allAbilitiesUsed[i]);
-//					   console.log("char used skill: "+allCharsUsedSkill[i]);
-//					   console.log("target: "+allTargets[i]);
-//					   console.log("ally-enemy: "+allAllyEnemy[i]);
-//					   console.log("----------------");
-//				   }
+			
 				   
 				   if (allyEnemy=="enemy") {
 					   document.getElementById("effectsEnemy"+charPos).insertAdjacentHTML('beforeend', this.responseText);
@@ -344,6 +346,7 @@ function cancelAbility(pos) {
 
 
 function abilityClick(abilityID, selfChar, abilityPos) {
+
 	
 	var imgIDselected = $.map($("#selected"+selfChar+" > img"), div => div.id);
 	//console.log(imgIDselected[0]);
