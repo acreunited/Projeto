@@ -73,20 +73,18 @@ public class AbilityActions extends HttpServlet {
 			else {
 				
 				if (allyEnemy.trim().equalsIgnoreCase("ally")) {
-					//System.out.println("ALLY");
 					pw.println("<div class='effects_border0 zindex1'>");
 				}
 				else if (allyEnemy.trim().equalsIgnoreCase("enemy")) {
-					//System.out.println("ENEMY");
 					pw.println("<div class='effects_border1 zindex0'>");
 				}
 
 				pw.println("<img src='ViewAbility?id="+abilityUsedID+"' id='activeSkill"+abilityUsedID+"' onmouseover='seeActiveSkill(id)' onmouseleave='hideActiveSkill()'>");
-				pw.println("<span class='tooltiptext' id='tooltiptextid'>");
-					pw.println("<span class='tooltiptextname'>SPRINKLING NEEDLES</span>");
-					pw.println("<span class='tooltiptextdesc'>This character will take 10 damage.</span>");
-					pw.println("<span class='tooltiptextduration'>1 TURN LEFT</span>");
-				pw.println("</span>");
+//				pw.println("<span class='tooltiptext' id='tooltiptextid'>");
+//					pw.println("<span class='tooltiptextname'>SPRINKLING NEEDLES</span>");
+//					pw.println("<span class='tooltiptextdesc'>This character will take 10 damage.</span>");
+//					pw.println("<span class='tooltiptextduration'>1 TURN LEFT</span>");
+//				pw.println("</span>");
 				pw.println("</div>");
 			
 			}
@@ -107,11 +105,7 @@ public class AbilityActions extends HttpServlet {
 			GameUtils.allTargets.put(uuid, allTargets.split(","));
 			GameUtils.allAllyEnemy.put(uuid, allAllyEnemy.split(","));
 			GameUtils.allAbilitiesID.put(uuid, allAbilitiesID.split(","));
-//			request.getServletContext().setAttribute("allAbilitiesUsed", allAbilitiesUsed);
-//			request.getServletContext().setAttribute("allCharsUsedSkill", allCharsUsedSkill);
-//			request.getServletContext().setAttribute("allTargets", allTargets);
-//			request.getServletContext().setAttribute("allAllyEnemy", allAllyEnemy);
-//			request.getServletContext().setAttribute("allAbilitiesID", allAbilitiesID);
+
 		}
 		
 	

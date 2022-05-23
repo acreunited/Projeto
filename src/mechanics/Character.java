@@ -51,7 +51,6 @@ public class Character {
 		int damage = doDamage(a, c);
 		if (damage>0) {
 			c.setHp( c.getHp()-damage );
-			
 		}
 		
 		//stun

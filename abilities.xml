@@ -3,8 +3,15 @@
 
 	<ability abilityID="0">
 		<name>Linear</name>
-		<description>Asuna Yuuki deals 20 damage to one enemy. For 3 turns,
-			her abilities will deal an additional 5 damage.</description>
+		<description>
+			Asuna Yuuki deals 20 damage to one enemy. For 3 turns,
+			her abilities will deal an additional 5 damage.
+		</description>
+		<active>
+			<target>self</target>
+			<text>This character will deal 5 additional damage with its skills</text>
+			<duration>3</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -54,14 +61,19 @@
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>
 		<temporaryDamageIncrease>
-			<extraDamage>20</extraDamage>
-			<duration>1</duration>
+			<extraDamage>5</extraDamage>
+			<duration>3</duration>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="1">
 		<name>Rapier Repel</name>
 		<description>For 2 turns, Asuna Yuuki will deal 15 damage to one
 			enemy.</description>
+		<active>
+			<target>enemy</target>
+			<text>This character will take 15 damage</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -176,6 +188,11 @@
 		<name>Asuna Dodge</name>
 		<description>This skill makes Asuna Yuuki invulnerable for 1 turn.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -233,6 +250,11 @@
 		<name>Cyborg Kick</name>
 		<description>Genos deals 15 damage to one enemy and stuns them for 1
 			turn.</description>
+		<active>
+			<target>enemy</target>
+			<text>This character is stunned</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>1</taijutsu>
 			<heart>0</heart>
@@ -403,6 +425,11 @@
 		<name>Hyper Sensors</name>
 		<description>This skill makes Genos invulnerable for 1 turn.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -628,6 +655,11 @@
 		<name>Gon Block</name>
 		<description>This skill makes Gon Freecss invulnerable for 1 turn.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -740,7 +772,7 @@
 	</ability>
 	<ability abilityID="13">
 		<name>Lightning Charge</name>
-		<description>This skill deals 20 damage to one enemy and ignores
+		<description>This skill deals 20 damage to one enemy that ignores
 			invulnerability.</description>
 		<nature>
 			<taijutsu>0</taijutsu>
@@ -799,6 +831,16 @@
 		<name>Whirlwind</name>
 		<description>Killua Zoldyck stuns one enemy for 2 turns and deals 20
 			damage each turn.</description>
+		<active>
+			<target>enemy</target>
+			<text>This character is stunned</text>
+			<duration>2</duration>
+		</active>
+		<active>
+			<target>enemy</target>
+			<text>This character will take 20 damage</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>1</heart>
@@ -856,6 +898,11 @@
 		<name>Rhythm Echo</name>
 		<description>This skill makes Killua Zoldyck invulnerable for 1 turn.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1087,6 +1134,11 @@
 		<name>Leorio Jump</name>
 		<description>This skill makes Leorio Paradinight invulnerable for 1
 			turn.</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1144,6 +1196,11 @@
 		<name>Zangetsu Slash</name>
 		<description>Kurasaki Ichigo deals 20 damage to one enemy. This skill
 			will deal 5 more damage each time it is used.</description>
+		<active>
+			<target>self</target>
+			<text>This character´s skill will deal 5 more damage</text>
+			<duration>permanent</duration>
+		</active>
 		<nature>
 			<taijutsu>1</taijutsu>
 			<heart>0</heart>
@@ -1201,6 +1258,11 @@
 		<name>Getsuga Tenshou</name>
 		<description>Kurasaki Ichigo deals 40 damage to one enemy and stuns
 			him for 1 turn.</description>
+		<active>
+			<target>enemy</target>
+			<text>This character is stunned</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>1</taijutsu>
 			<heart>0</heart>
@@ -1259,6 +1321,16 @@
 		<description>For 3 turns, Kurasaki Ichigo will gain 15 Destructible
 			Defense and his attacks will deal an additional 5 damage.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character has 15 Destructible Defense</text>
+			<duration>3</duration>
+		</active>
+		<active>
+			<target>self</target>
+			<text>This character´s skills deal additional 5 damage</text>
+			<duration>3</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1316,6 +1388,11 @@
 		<name>Zangetsu Defense</name>
 		<description>This skill makes Kurasaki Ichigo invulnerable for 1 turn.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1372,8 +1449,13 @@
 	<ability abilityID="24">
 		<name>Cutting Shield</name>
 		<description>Inoue Orihime destroys one enemy´s Destructible Defense
-			and deals 15 damage to him. For 1 turn, she will gains 10 points of
+			and deals 15 damage to him. For 1 turn, she will gain 10 points of
 			damage reduction.</description>
+		<active>
+			<target>self</target>
+			<text>This character has 10 points of damage reduction</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1431,6 +1513,11 @@
 		<name>Return Shield</name>
 		<description>For 2 turns, Inoue Orihime heals one ally for 20 health.
 		</description>
+		<active>
+			<target>ally</target>
+			<text>This character will heal 20 health</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1488,6 +1575,11 @@
 		<name>Shielding Flowers</name>
 		<description>For the next 3 turns, Inoue Orihime will gain 30
 			Destructible Defense.</description>
+		<active>
+			<target>self</target>
+			<text>This character has 30 Destructible Defense.</text>
+			<duration>3</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1545,6 +1637,11 @@
 		<name>Links Shield</name>
 		<description>This skill makes Inoue Orihime invulnerable for 1 turn.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1602,6 +1699,11 @@
 		<name>Kojaku Shot</name>
 		<description>Uryu Ishida fires an arrow from his bow, dealing 20
 			damage to one enemy for 2 turns.</description>
+		<active>
+			<target>enemy</target>
+			<text>This character will take 20 damage</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1716,6 +1818,11 @@
 		<name>Kojaku Preparation</name>
 		<description>Uryu Ishida prepares himself for his next attack gaining
 			1 random nature.</description>
+		<active>
+			<target>self</target>
+			<text>This character will gain 1 random nature</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1773,6 +1880,11 @@
 		<name>Uryu Evasion</name>
 		<description>This skill makes Uryu Ishida invulnerable for 1 turn.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -1830,6 +1942,11 @@
 		<name>Sixth Form Whirlpool</name>
 		<description>Tanjiro Kamado deals 20 damage and stuns one enemy for 1
 			turn.</description>
+		<active>
+			<target>enemy</target>
+			<text>This character is stunned</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>1</taijutsu>
 			<heart>0</heart>
@@ -1945,6 +2062,16 @@
 		<description>Tanjiro Kamado takes 10 damage and becomes invulnerable
 			for 1 turn. His skills will deal 10 additional damage permanently.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
+		<active>
+			<target>self</target>
+			<text>This character deals 10 more damage with his skills</text>
+			<duration>permanent</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -2002,6 +2129,11 @@
 		<name>Sword Block</name>
 		<description>This skill makes Tanjiro Kamado invulnerable for 1 turn.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -2059,6 +2191,11 @@
 		<name>Exploding Blood</name>
 		<description>Nezuko Kamado deals 20 damage to one enemy. The next
 			turn, this skill will deal an additional 5 damage.</description>
+		<active>
+			<target>self</target>
+			<text>This skill will deal 5 aditional damage</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -2173,6 +2310,11 @@
 		<name>Protect</name>
 		<description>Nezuko Kamado protects on ally for 2 turn making them
 			invulnerable. </description>
+			<active>
+			<target>ally</target>
+			<text>This character is invulnerable</text>
+			<duration>2</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -2230,6 +2372,11 @@
 		<name>Hiding</name>
 		<description>This skill makes Nezuko Kamado invulnerable for 1 turn.
 		</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -2401,6 +2548,11 @@
 		<name>Stance</name>
 		<description>For 1 turn, Zenitsu Agatsuma will gain 30 Destructible
 			Defense and 1 random nature.</description>
+		<active>
+			<target>self</target>
+			<text>This character has 30 Destructible Defense and will gain 1 random nature</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -2458,6 +2610,11 @@
 		<name>Sword Block</name>
 		<description>This skill makes Zenitsu Agatsuma invulnerable for 1
 			turn.</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>

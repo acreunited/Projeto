@@ -2,6 +2,7 @@ package mechanics;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,6 +17,70 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class ReadAbilitiesXML {
+	
+	public static ArrayList<String> getActiveTarget(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		ArrayList<String> retorno = new ArrayList<String>();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='" + id + "']/active/target/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+		
+		retorno.add(value);
+		
+		return retorno;
+	}
+	public static ArrayList<String> getActiveDescription(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		ArrayList<String> retorno = new ArrayList<String>();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='" + id + "']/active/text/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+		
+		retorno.add(value);
+		
+		return retorno;
+	}
+	public static ArrayList<String> getActiveDuration(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		ArrayList<String> retorno = new ArrayList<String>();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='" + id + "']/active/duration/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+		
+		retorno.add(value);
+		
+		return retorno;
+	}
 	
 	public static int getCooldown(int id) {
 		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
@@ -33,29 +98,8 @@ public class ReadAbilitiesXML {
 		}
 
 		return (value==null) ? -1 : Integer.parseInt(value);
-		}
+	}
 	public static String getTargetClick(int id) {
-//		File f = new File("D:\\GitHub\\Projeto\\abilities.xml");
-//		if (f.exists()) {
-//			System.out.println("existe");
-//			if (f.canRead()) {
-//				System.out.println("pode ler");
-//				if (f.canWrite()) {
-//					System.out.println("pode escrever");
-//				}
-//				else {
-//					System.out.println("nao pode escrever");
-//				}
-//			}
-//			else {
-//				System.out.println("não pode ler");
-//			}
-//		}
-//		else {
-//			System.out.println("não existe");
-//		}
-		
-//		return null;
 		
 		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();

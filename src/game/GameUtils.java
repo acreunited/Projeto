@@ -16,6 +16,13 @@ public class GameUtils {
 	public static Hashtable<String, String[]> allAllyEnemy = new Hashtable<String, String[]>();
 	public static Hashtable<String, String[]> allAbilitiesID = new Hashtable<String, String[]>();
 	
+	//activeSkills
+//	public static Hashtable<Integer, ArrayList<String>> activeAbilitiesUsed = new Hashtable<Integer, ArrayList<String>>();
+//	public static Hashtable<Integer, ArrayList<String>> activeCharsUsedSkill = new Hashtable<Integer, ArrayList<String>>();
+//	public static Hashtable<Integer, ArrayList<String>> activeTargets = new Hashtable<Integer, ArrayList<String>>();
+//	public static Hashtable<Integer, ArrayList<String>> activeAllyEnemy = new Hashtable<Integer, ArrayList<String>>();
+//	public static Hashtable<Integer, ArrayList<String>> activeAbilitiesID = new Hashtable<Integer, ArrayList<String>>();
+//	
 	//fechar jogo quando ambos os jogadores sairem
 	public static Hashtable<String, Integer> gamesFinish = new Hashtable<String, Integer>();
 	

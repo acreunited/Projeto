@@ -2,6 +2,7 @@ package game;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 import javax.servlet.ServletException;
@@ -108,9 +109,9 @@ public class InGame extends HttpServlet {
 
 			response.setContentType("text/html");
 			
-			String uuid = (String) session.getAttribute("uuid");	
-			calculateAbilities(thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, uuid);
+			String uuid = (String) session.getAttribute("uuid");
 			
+			calculateAbilities(thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, uuid);
 			writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 			
 			session.setAttribute("turn", false);
@@ -142,8 +143,19 @@ public class InGame extends HttpServlet {
 		String[] allTargets = GameUtils.allTargets.get(uuid);
 		String[] allAllyEnemy = GameUtils.allAllyEnemy.get(uuid);
 		String[] allAbilitiesID = GameUtils.allAbilitiesID.get(uuid);
+//		ArrayList<String> activeAbilitiesUsed = new ArrayList<String>();
+//		ArrayList<String> activeCharsUsedSkill = new ArrayList<String>();
+//		ArrayList<String> activeTargets = new ArrayList<String>();
+//		ArrayList<String> activeAllyEnemy = new ArrayList<String>();
+//		ArrayList<String> activeAbilitiesID = new ArrayList<String>();
 		
 		for (int i = 0; i < allAbilitiesUsed.length; i++) {
+//			activeAbilitiesUsed.add(allAbilitiesUsed[i]);
+//			activeCharsUsedSkill.add(allCharsUsedSkill[i]);
+//			activeTargets.add(allTargets[i]);
+//			activeAllyEnemy.add(allAllyEnemy[i]);
+//			activeAbilitiesID.add(allAbilitiesID[i]);
+			
 			Character c = getCharacterUsed(allCharsUsedSkill[i], thisChar1, thisChar2, thisChar3);
 			
 			Character target = getTarget(allAllyEnemy[i], allTargets[i], 
@@ -163,6 +175,12 @@ public class InGame extends HttpServlet {
 			}
 
 		}
+
+//		GameUtils.activeAbilitiesUsed.put(sessionID, activeAbilitiesUsed);
+//		GameUtils.activeCharsUsedSkill.put(sessionID, activeCharsUsedSkill);
+//		GameUtils.activeTargets.put(sessionID, activeTargets);
+//		GameUtils.activeAllyEnemy.put(sessionID, activeAllyEnemy);
+//		GameUtils.activeAbilitiesID.put(sessionID, activeAbilitiesID);
 	
 	}
 

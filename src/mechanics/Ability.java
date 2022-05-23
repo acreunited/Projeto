@@ -1,10 +1,15 @@
 package mechanics;
 
+import java.util.ArrayList;
+
 public class Ability {
 	
 	private int id;
 	private int nTimesUsed;
 	//private String activeDescription; TODO form
+	private ArrayList<String> activeTarget;
+	private ArrayList<String> activeDescription;
+	private ArrayList<String> activeDuration;	
 	private String targetClick;
 	private int cooldown;
 	private boolean ignoresInvul;
@@ -46,7 +51,9 @@ public class Ability {
 		this.gainHP = ReadAbilitiesXML.gainHP(id);
 		this.damagePerEnemyHPLost = ReadAbilitiesXML.moreDamageEnemyHPLost(id);
 		this.temporaryDamageIncrease = ReadAbilitiesXML.temporaryDamageIncrease(id);
-		
+		this.activeTarget = ReadAbilitiesXML.getActiveTarget(id);
+		this.activeDescription = ReadAbilitiesXML.getActiveDescription(id);
+		this.activeDuration = ReadAbilitiesXML.getActiveDuration(id);
 	}
 
 	public void doDamage(Character c) {
@@ -200,6 +207,37 @@ public class Ability {
 
 	public void setTemporaryDamageIncrease(int[] temporaryDamageIncrease) {
 		this.temporaryDamageIncrease = temporaryDamageIncrease;
+	}
+	public ArrayList<String> getActiveTarget() {
+		return activeTarget;
+	}
+
+	public void setActiveTarget(ArrayList<String> activeTarget) {
+		this.activeTarget = activeTarget;
+	}
+
+	public ArrayList<String> getActiveDescription() {
+		return activeDescription;
+	}
+
+	public void setActiveDescription(ArrayList<String> activeDescription) {
+		this.activeDescription = activeDescription;
+	}
+
+	public ArrayList<String> getActiveDuration() {
+		return activeDuration;
+	}
+
+	public void setActiveDuration(ArrayList<String> activeDuration) {
+		this.activeDuration = activeDuration;
+	}
+
+	public int[] getGainDR() {
+		return gainDR;
+	}
+
+	public void setGainDR(int[] gainDR) {
+		this.gainDR = gainDR;
 	}
 
 
