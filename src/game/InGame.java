@@ -213,10 +213,7 @@ public class InGame extends HttpServlet {
 		
 		ArrayList<String> removeStringID = new ArrayList<String>();
 		ArrayList<Integer> removeIndex = new ArrayList<Integer>();
-		
-		System.out.println("SIZE: "+allAbilitiesUsed.size());
-		
-		
+
 		if (allAbilitiesUsed.size()>0) {
 			
 			for (String s : allAbilitiesUsed) {
@@ -251,11 +248,9 @@ public class InGame extends HttpServlet {
 				
 			
 				if (delete) {
-					
-					//removeStringID.add(allAbilitiesID.get(i));
-					//removeIfExists( allAbilitiesID.get(i), activeThisChar1, activeThisChar2, activeThisChar3, activeOppChar1, activeOppChar2, activeOppChar3 );
-					//System.out.println("removeu");
+
 					removeIndex.add(i);
+					
 					String s = allAbilitiesID.get(i);
 					activeThisChar1.removeIf(name -> name.contains(s));
 					activeThisChar2.removeIf(name -> name.contains(s));
@@ -263,17 +258,7 @@ public class InGame extends HttpServlet {
 					activeOppChar1.removeIf(name -> name.contains(s));
 					activeOppChar2.removeIf(name -> name.contains(s));
 					activeOppChar3.removeIf(name -> name.contains(s));
-					
-//					GameUtils.activeAbilitiesUsed.get(id).remove(i);
-//					GameUtils.activeCharsUsedSkill.get(id).remove(i);
-//					GameUtils.activeTargets.get(id).remove(i);
-//					GameUtils.activeAllyEnemy.get(id).remove(i);
-//					GameUtils.activeAbilitiesID.get(id).remove(i);
-					
-					System.out.println("SIZE 2: "+allAbilitiesUsed.size());
-					//removeIfExists( removeStringID, activeThisChar1, activeThisChar2, activeThisChar3, activeOppChar1, activeOppChar2, activeOppChar3 );
 
-					
 				}
 				else {
 					String resposta = "";
@@ -330,10 +315,8 @@ public class InGame extends HttpServlet {
 					}
 				}
 			}
-			System.out.println("acabou");
 		}
 
-		//removeIfExists( removeStringID, activeThisChar1, activeThisChar2, activeThisChar3, activeOppChar1, activeOppChar2, activeOppChar3 );
 		removeIfExists(removeIndex, id);
 		
 		writeActiveSkills(pw, activeThisChar1, activeThisChar2, activeThisChar3, activeOppChar1, activeOppChar2, activeOppChar3, session);
@@ -355,8 +338,6 @@ public class InGame extends HttpServlet {
 			GameUtils.activeAllyEnemy.get(id).toArray(arrayAllyEnemy);
 			String[] arrayAbilitiesID = new String[size];
 			GameUtils.activeAbilitiesID.get(id).toArray(arrayAbilitiesID);
-			
-			System.out.println("SIZE REMOVE: "+removeIndex.size());
 		
 			for (int i = 0; i < size; i++) {
 				for (int rem : removeIndex) {
@@ -394,7 +375,6 @@ public class InGame extends HttpServlet {
 		}
 	}
 
-	
 	
 	
 	private void writeActiveSkills(PrintWriter pw, ArrayList<String> activeThisChar1, ArrayList<String> activeThisChar2 , ArrayList<String> activeThisChar3 ,
@@ -451,11 +431,9 @@ public class InGame extends HttpServlet {
 		int id = a.getId();
 		
 		if (a.getActiveDuration()==null || a.getActiveDuration().get(0).length()==0) {
-			//System.out.println("null ou zero - remove true");
 			return true;
 		}
 		else if (a.getActiveDuration().get(0).equalsIgnoreCase("permanent")) {
-			//System.out.println("permanent - remove false");
 			return false;
 		}
 		else {
@@ -467,9 +445,6 @@ public class InGame extends HttpServlet {
 				int x = Integer.parseInt( restart.getActiveDuration().get(0) );
 				arr.add(""+x);
 				a.setActiveDuration( arr );
-				
-				
-				//System.out.println("duration < 1 - remove true");
 				return true;
 			}
 			else {
@@ -478,15 +453,11 @@ public class InGame extends HttpServlet {
 				x--;
 				arr.add(""+x);
 				a.setActiveDuration( arr );
-				
-				//System.out.println("duration > 1 - remove false");
 				return false;
 			}
-		}
-		
-		//return false;
-		
+		}		
 	}
+	
 	private void writeResponse(PrintWriter pw, Character this1,Character this2,Character this3,
 			Character opp1,Character opp2,Character opp3) {
 		
