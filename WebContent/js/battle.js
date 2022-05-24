@@ -67,6 +67,13 @@ function lockSemaphore() {
 			   document.getElementById("hpEnemy3").innerHTML = x[5];
 			   document.getElementById("natures").innerHTML = x[6];
 			   //document.getElementById("natures").innerHTML = this.responseText;
+//			   document.getElementById("effectsAlly0").innerHTML = x[7];
+//			   document.getElementById("effectsAlly1").innerHTML = x[8];
+//			   document.getElementById("effectsAlly2").innerHTML = x[9];
+//			   document.getElementById("effectsEnemy1").innerHTML = x[10];
+//			   document.getElementById("effectsEnemy2").innerHTML = x[11];
+//			   document.getElementById("effectsEnemy3").innerHTML = x[12];
+
 			   defineTurns(true);
 		   }
 		   
@@ -107,6 +114,11 @@ function endTurn() {
 		   cancelAbility(0);
 		   cancelAbility(1);
 		   cancelAbility(2);
+		   allAbilitiesUsed = [];
+		   allCharsUsedSkill = [];
+		   allTargets = [];
+		   allAllyEnemy = [];
+		   allAbilitiesID = [];
 		   defineTurns(false);
 		   
 		   var x = this.responseText.split("break");
@@ -423,8 +435,8 @@ function playerFooterInfo(my_opp) {
 }
 
 function seeActiveSkillEnemy(activeSkill) {
-	
-	var id = "tooltiptext1"+activeSkill;
+	console.log("fdfdf");
+	var id = "tooltiptext"+activeSkill;
 	var skill = document.getElementsByClassName ("tooltiptext1");
 	for (var i = 0; i < skill.length; i++) {
 		if (id==skill[i].id) {
