@@ -75,7 +75,8 @@ public class InGame extends HttpServlet {
 					break;
 				}
 			}
-			createAbilitiesHashtable(id);
+			
+			createAbilitiesHashtable(id, (int) session.getAttribute("opp_id") );
 			
 			GameUtils.semQuick.release();
 
@@ -88,12 +89,12 @@ public class InGame extends HttpServlet {
 			gameInfo.lock(uuid);
 			int oppID = (int) session.getAttribute("opp_id");
 			//winner
-			if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))!=null) {
-				if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))==id) {
+			if (GameUtils.gamesWinner.get(uuid)!=null) {
+				if (GameUtils.gamesWinner.get(uuid)==id) {
 					response.setContentType("text/plain");
 					pw.println("winner");					
 				}
-				else if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))==(int) session.getAttribute("opp_id")) {
+				else if (GameUtils.gamesWinner.get(uuid)==oppID) {
 					response.setContentType("text/plain");
 					pw.println("loser");
 				}
@@ -188,12 +189,18 @@ public class InGame extends HttpServlet {
 
 
 
-	private void createAbilitiesHashtable(int sessionID) {
+	private void createAbilitiesHashtable(int sessionID, int oppID) {
 		GameUtils.activeAbilitiesUsed.put( sessionID, new ArrayList<String>() );
 		GameUtils.activeCharsUsedSkill.put( sessionID, new ArrayList<String>() );
 		GameUtils.activeTargets.put( sessionID, new ArrayList<String>() );
 		GameUtils.activeAllyEnemy.put( sessionID, new ArrayList<String>() );
 		GameUtils.activeAbilitiesID.put( sessionID, new ArrayList<String>() );
+		
+		GameUtils.enemy_activeAbilitiesUsed.put( oppID, new ArrayList<String>() );
+		GameUtils.enemy_activeCharsUsedSkill.put( oppID, new ArrayList<String>() );
+		GameUtils.enemy_activeTargets.put( oppID, new ArrayList<String>() );
+		GameUtils.enemy_activeAllyEnemy.put( oppID, new ArrayList<String>() );
+		GameUtils.enemy_activeAbilitiesID.put( oppID, new ArrayList<String>() );
 	}
 	
 	
@@ -208,99 +215,168 @@ public class InGame extends HttpServlet {
 		ArrayList<String> activeOppChar2 = (ArrayList<String>) session.getAttribute("activeOppChar2");
 		ArrayList<String> activeOppChar3 = (ArrayList<String>) session.getAttribute("activeOppChar3");
 		
-		ArrayList<String> allAbilitiesUsed = GameUtils.activeAbilitiesUsed.get(id);
-		ArrayList<String> allCharsUsedSkill = GameUtils.activeCharsUsedSkill.get(id);
-		ArrayList<String> allTargets = GameUtils.activeTargets.get(id);
-		ArrayList<String> allAllyEnemy = GameUtils.activeAllyEnemy.get(id);
-		ArrayList<String> allAbilitiesID = GameUtils.activeAbilitiesID.get(id);
+		ArrayList<String> enemy_allAbilitiesUsed = GameUtils.enemy_activeAbilitiesUsed.get(id);
+		ArrayList<String> enemy_allCharsUsedSkill = GameUtils.enemy_activeCharsUsedSkill.get(id);
+		ArrayList<String> enemy_allTargets = GameUtils.enemy_activeTargets.get(id);
+		ArrayList<String> enemy_allAllyEnemy = GameUtils.enemy_activeAllyEnemy.get(id);
+		ArrayList<String> enemy_allAbilitiesID = GameUtils.enemy_activeAbilitiesID.get(id);
 		
-		if (allAbilitiesUsed.size()>0) {
+		ArrayList<Integer> removeIndex = new ArrayList<Integer>();
+
+		if (enemy_allAbilitiesUsed.size()>0) {
 			
-			for (int i = 0; i < allAbilitiesUsed.size(); i++) {
-				Character c = getCharacterUsed(allCharsUsedSkill.get(i), opp1, opp2, opp3);
+			for (int i = 0; i < enemy_allAbilitiesUsed.size(); i++) {
+				Character c = getCharacterUsed(enemy_allCharsUsedSkill.get(i), opp1, opp2, opp3);
 				
+				boolean delete = false;
 				Ability a = null; 
-				if (allAbilitiesUsed.get(i).equalsIgnoreCase("0")) {
-					//delete = shouldRemoveActive(c.getAbility1());
+				
+				if (enemy_allAbilitiesUsed.get(i).equalsIgnoreCase("0")) {
+					delete = shouldRemoveActive(c.getAbility1());
 					a = c.getAbility1();
 				}
-				else if (allAbilitiesUsed.get(i).equalsIgnoreCase("1")) {
-					//delete = shouldRemoveActive(c.getAbility2());
+				else if (enemy_allAbilitiesUsed.get(i).equalsIgnoreCase("1")) {
+					delete = shouldRemoveActive(c.getAbility2());
 					a = c.getAbility2();
 				}
-				else if (allAbilitiesUsed.get(i).equalsIgnoreCase("2")) {
-					//delete = shouldRemoveActive(c.getAbility3());
+				else if (enemy_allAbilitiesUsed.get(i).equalsIgnoreCase("2")) {
+					delete = shouldRemoveActive(c.getAbility3());
 					a = c.getAbility3();
 				}
-				else if (allAbilitiesUsed.get(i).equalsIgnoreCase("3")) {
-					//delete = shouldRemoveActive(c.getAbility4());
+				else if (enemy_allAbilitiesUsed.get(i).equalsIgnoreCase("3")) {
+					delete = shouldRemoveActive(c.getAbility4());
 					a = c.getAbility4();
 				}
 				else {
 					System.out.println("ABILITY GONE WRONG");
 				}
 				
-				String resposta = "";
-				if (allAllyEnemy.get(i).trim().equalsIgnoreCase("ally")) {
-					resposta += "\n<div class='effects_border1 zindex0'>";
-					resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkillEnemy("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkillEnemy()'>";
-					resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
-				
-					resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
-					resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
-					resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
-					resposta += "\n</span>";
-					resposta += "\n</div>";
+				if (delete) {
+
+					removeIndex.add(i);
 					
-					if (allTargets.get(i).equalsIgnoreCase("0")) {
-						activeOppChar1.add(resposta);
+					String s = enemy_allAbilitiesID.get(i);
+					activeThisChar1.removeIf(name -> name.contains(s));
+					activeThisChar2.removeIf(name -> name.contains(s));
+					activeThisChar3.removeIf(name -> name.contains(s));
+					activeOppChar1.removeIf(name -> name.contains(s));
+					activeOppChar2.removeIf(name -> name.contains(s));
+					activeOppChar3.removeIf(name -> name.contains(s));
+
+				}
+				else {
+					
+					String resposta = "";
+					if (enemy_allAllyEnemy.get(i).trim().equalsIgnoreCase("ally")) {
+						resposta += "\n<div class='effects_border1 zindex0'>";
+						resposta += "\n<img src='ViewAbility?id="+enemy_allAbilitiesID.get(i)+"' id='activeSkill"+enemy_allAbilitiesID.get(i)+"' onmouseover='seeActiveSkillEnemy("+enemy_allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkillEnemy()'>";
+						resposta += "\n<span class='tooltiptext1' id='tooltiptext"+enemy_allAbilitiesID.get(i)+"'>";
+					
+						resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
+						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
+						resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
+						resposta += "\n</span>";
+						resposta += "\n</div>";
+						
+						if (enemy_allTargets.get(i).equalsIgnoreCase("0")) {
+							activeOppChar1.add(resposta);
+						}
+						else if (enemy_allTargets.get(i).equalsIgnoreCase("1")) {
+							activeOppChar2.add(resposta);
+						}
+						else if (enemy_allTargets.get(i).equalsIgnoreCase("2")) {
+							activeOppChar3.add(resposta);
+						}
+						else {
+							System.out.println("ENEMY GONE WRONG");
+						}
 					}
-					else if (allTargets.get(i).equalsIgnoreCase("1")) {
-						activeOppChar2.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("2")) {
-						activeOppChar3.add(resposta);
-					}
-					else {
-						System.out.println("ENEMY GONE WRONG");
+					
+					
+					else if (enemy_allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy")) {
+						resposta += "\n<div class='effects_border0 zindex1'>";
+						resposta += "\n<img src='ViewAbility?id="+enemy_allAbilitiesID.get(i)+"' id='activeSkill"+enemy_allAbilitiesID.get(i)+"' onmouseover='seeActiveSkill("+enemy_allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkill()'>";
+						resposta += "\n<span class='tooltiptext' id='tooltiptext"+enemy_allAbilitiesID.get(i)+"'>";
+
+						resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
+						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
+						resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
+						resposta += "\n</span>";
+						resposta += "\n</div>";
+						
+						if (enemy_allTargets.get(i).equalsIgnoreCase("1")) {
+							activeThisChar1.add(resposta);
+						}
+						else if (enemy_allTargets.get(i).equalsIgnoreCase("2")) {
+							activeThisChar2.add(resposta);
+						}
+						else if (enemy_allTargets.get(i).equalsIgnoreCase("3")) {
+							activeThisChar3.add(resposta);
+						}
+						else {
+							System.out.println("ALLY GONE WRONG");
+						}
 					}
 				}
-				
-				
-				else if (allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy")) {
-					resposta += "\n<div class='effects_border0 zindex1'>";
-					resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkill("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkill()'>";
-					resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
-
-					resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
-					resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
-					resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
-					resposta += "\n</span>";
-					resposta += "\n</div>";
-
-					
-					System.out.println("TARGET ALLY: "+allTargets.get(i));
-					if (allTargets.get(i).equalsIgnoreCase("1")) {
-						activeThisChar1.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("2")) {
-						activeThisChar2.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("3")) {
-						activeThisChar3.add(resposta);
-					}
-					else {
-						System.out.println("ALLY GONE WRONG");
-					}
-				}
+			
 				
 			}
 		}
 		
+		removeIfExistsEnemy(removeIndex, id);
 		writeActiveSkills(pw, activeThisChar1, activeThisChar2, activeThisChar3, activeOppChar1, activeOppChar2, activeOppChar3, session);
 
 	}
 	
+	private void removeIfExistsEnemy(ArrayList<Integer> removeIndex, int id) {
+		if (removeIndex.size()>0) {
+			int size = GameUtils.enemy_activeAbilitiesUsed.get(id).size();
+			
+			String[] arrayAbilitiesUsed = new String[size];
+			GameUtils.enemy_activeAbilitiesUsed.get(id).toArray(arrayAbilitiesUsed);
+			String[] arrayCharsUsedSkill = new String[size];
+			GameUtils.enemy_activeCharsUsedSkill.get(id).toArray(arrayCharsUsedSkill);
+			String[] arrayTargets = new String[size];
+			GameUtils.enemy_activeTargets.get(id).toArray(arrayTargets);
+			String[] arrayAllyEnemy = new String[size];
+			GameUtils.enemy_activeAllyEnemy.get(id).toArray(arrayAllyEnemy);
+			String[] arrayAbilitiesID = new String[size];
+			GameUtils.enemy_activeAbilitiesID.get(id).toArray(arrayAbilitiesID);
+		
+			for (int i = 0; i < size; i++) {
+				for (int rem : removeIndex) {
+					if (rem==i) {
+						arrayAbilitiesUsed[i] = null;
+						arrayCharsUsedSkill[i] = null;
+						arrayTargets[i] = null;
+						arrayAllyEnemy[i] = null;
+						arrayAbilitiesID[i] = null;
+					}
+				}
+			}
+			
+			ArrayList<String> copyAbilitiesUsed = new ArrayList<String>();
+			ArrayList<String> copyCharsUsedSkill = new ArrayList<String>();
+			ArrayList<String> copyTargets = new ArrayList<String>();
+			ArrayList<String> copyAllyEnemy = new ArrayList<String>();
+			ArrayList<String> copyAbilitiesID = new ArrayList<String>();
+			for (int i = 0; i < size; i++) {
+				if (arrayAbilitiesUsed[i]!=null) {
+					copyAbilitiesUsed.add(arrayAbilitiesUsed[i]);
+					copyCharsUsedSkill.add(arrayCharsUsedSkill[i]);
+					copyTargets.add(arrayTargets[i]);
+					copyAllyEnemy.add(arrayAllyEnemy[i]);
+					copyAbilitiesID.add(arrayAbilitiesID[i]);
+				}
+			}
+			GameUtils.enemy_activeAbilitiesUsed.put(id, copyAbilitiesUsed);
+			GameUtils.enemy_activeAbilitiesUsed.put(id, copyAbilitiesUsed);
+			GameUtils.enemy_activeCharsUsedSkill.put(id, copyCharsUsedSkill);
+			GameUtils.enemy_activeTargets.put(id, copyTargets);
+			GameUtils.enemy_activeAllyEnemy.put(id, copyAllyEnemy);
+			GameUtils.enemy_activeAbilitiesID.put(id, copyAbilitiesID);
+		}
+	}
 	
 	@SuppressWarnings("unchecked")
 	private void checkActiveSkills(PrintWriter pw, int id, Character this1, Character this2, Character this3,
@@ -318,6 +394,7 @@ public class InGame extends HttpServlet {
 		ArrayList<String> allTargets = GameUtils.activeTargets.get(id);
 		ArrayList<String> allAllyEnemy = GameUtils.activeAllyEnemy.get(id);
 		ArrayList<String> allAbilitiesID = GameUtils.activeAbilitiesID.get(id);
+		
 		
 		ArrayList<String> removeStringID = new ArrayList<String>();
 		ArrayList<Integer> removeIndex = new ArrayList<Integer>();
@@ -376,9 +453,7 @@ public class InGame extends HttpServlet {
 						resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
 						resposta += "\n</span>";
 						resposta += "\n</div>";
-
 						
-						System.out.println("TARGET ALLY: "+allTargets.get(i));
 						if (allTargets.get(i).equalsIgnoreCase("0")) {
 							activeThisChar1.add(resposta);
 						}

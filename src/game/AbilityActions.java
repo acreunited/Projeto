@@ -161,6 +161,12 @@ public class AbilityActions extends HttpServlet {
 				GameUtils.activeTargets.get(id).add(targets[i]);
 				GameUtils.activeAllyEnemy.get(id).add(allyEnemy[i]);
 				GameUtils.activeAbilitiesID.get(id).add(abilitiesID[i]);
+				
+				GameUtils.enemy_activeAbilitiesUsed.get(id).add(abilitiesUsed[i]);
+				GameUtils.enemy_activeCharsUsedSkill.get(id).add(charsUsedSkill[i]);
+				GameUtils.enemy_activeTargets.get(id).add(targets[i]);
+				GameUtils.enemy_activeAllyEnemy.get(id).add(allyEnemy[i]);
+				GameUtils.enemy_activeAbilitiesID.get(id).add(abilitiesID[i]);
 			}
 			
 		}
