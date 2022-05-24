@@ -58,14 +58,24 @@ function lockSemaphore() {
 		   }
 		   else {
 			   var x = this.responseText.split("break");
-			   
+			   for (let i = 0; i < 12; i++) {
+				   console.log("break "+x[i]);
+			   }
 			   document.getElementById("hpAlly0").innerHTML = x[0];
 			   document.getElementById("hpAlly1").innerHTML = x[1];
 			   document.getElementById("hpAlly2").innerHTML = x[2];
 		       document.getElementById("hpEnemy1").innerHTML = x[3];
 			   document.getElementById("hpEnemy2").innerHTML = x[4];
 			   document.getElementById("hpEnemy3").innerHTML = x[5];
-			   document.getElementById("natures").innerHTML = x[6];
+			   
+			   document.getElementById("effectsAlly0").innerHTML = x[6];
+			   document.getElementById("effectsAlly1").innerHTML = x[7];
+			   document.getElementById("effectsAlly2").innerHTML = x[8];
+			   document.getElementById("effectsEnemy1").innerHTML = x[9];
+			   document.getElementById("effectsEnemy2").innerHTML = x[10];
+			   document.getElementById("effectsEnemy3").innerHTML = x[11];
+			   
+			   document.getElementById("natures").innerHTML = x[12];
 			   //document.getElementById("natures").innerHTML = this.responseText;
 //			   document.getElementById("effectsAlly0").innerHTML = x[7];
 //			   document.getElementById("effectsAlly1").innerHTML = x[8];

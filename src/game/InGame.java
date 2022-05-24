@@ -83,7 +83,9 @@ public class InGame extends HttpServlet {
 		}
 		else if (metodo.equalsIgnoreCase("lock")) {
 			
-			gameInfo.lock((String) session.getAttribute("uuid"));
+			String uuid = (String) session.getAttribute("uuid");
+			
+			gameInfo.lock(uuid);
 			int oppID = (int) session.getAttribute("opp_id");
 			//winner
 			if (GameUtils.gamesWinner.get((String) session.getAttribute("uuid"))!=null) {
@@ -99,13 +101,12 @@ public class InGame extends HttpServlet {
 			else {
 				response.setContentType("text/html");
 				generateRandomNatures(session, 3);
-				String uuid = (String) session.getAttribute("uuid");	
 				
 				calculateAbilities(oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, oppID );
 				writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 				
-				
-				
+				checkActiveSkillsEnemy(pw, oppID, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, session);
+
 				updateNatureInGame(session, pw);
 				
 			}
@@ -126,7 +127,8 @@ public class InGame extends HttpServlet {
 			
 			session.setAttribute("turn", false);
 
-			gameInfo.unlock((String) session.getAttribute("uuid"));
+			//gameInfo.unlock((String) session.getAttribute("uuid"));
+			gameInfo.unlock(uuid);
 			
 		}
 		
@@ -194,6 +196,112 @@ public class InGame extends HttpServlet {
 		GameUtils.activeAbilitiesID.put( sessionID, new ArrayList<String>() );
 	}
 	
+	
+	@SuppressWarnings("unchecked")
+	private void checkActiveSkillsEnemy(PrintWriter pw, int id, Character this1, Character this2, Character this3,
+			Character opp1, Character opp2, Character opp3, HttpSession session) {
+		
+		ArrayList<String> activeThisChar1 = (ArrayList<String>) session.getAttribute("activeThisChar1");
+		ArrayList<String> activeThisChar2 = (ArrayList<String>) session.getAttribute("activeThisChar2");
+		ArrayList<String> activeThisChar3 = (ArrayList<String>) session.getAttribute("activeThisChar3");
+		ArrayList<String> activeOppChar1 = (ArrayList<String>) session.getAttribute("activeOppChar1");
+		ArrayList<String> activeOppChar2 = (ArrayList<String>) session.getAttribute("activeOppChar2");
+		ArrayList<String> activeOppChar3 = (ArrayList<String>) session.getAttribute("activeOppChar3");
+		
+		ArrayList<String> allAbilitiesUsed = GameUtils.activeAbilitiesUsed.get(id);
+		ArrayList<String> allCharsUsedSkill = GameUtils.activeCharsUsedSkill.get(id);
+		ArrayList<String> allTargets = GameUtils.activeTargets.get(id);
+		ArrayList<String> allAllyEnemy = GameUtils.activeAllyEnemy.get(id);
+		ArrayList<String> allAbilitiesID = GameUtils.activeAbilitiesID.get(id);
+		
+		if (allAbilitiesUsed.size()>0) {
+			
+			for (int i = 0; i < allAbilitiesUsed.size(); i++) {
+				Character c = getCharacterUsed(allCharsUsedSkill.get(i), opp1, opp2, opp3);
+				
+				Ability a = null; 
+				if (allAbilitiesUsed.get(i).equalsIgnoreCase("0")) {
+					//delete = shouldRemoveActive(c.getAbility1());
+					a = c.getAbility1();
+				}
+				else if (allAbilitiesUsed.get(i).equalsIgnoreCase("1")) {
+					//delete = shouldRemoveActive(c.getAbility2());
+					a = c.getAbility2();
+				}
+				else if (allAbilitiesUsed.get(i).equalsIgnoreCase("2")) {
+					//delete = shouldRemoveActive(c.getAbility3());
+					a = c.getAbility3();
+				}
+				else if (allAbilitiesUsed.get(i).equalsIgnoreCase("3")) {
+					//delete = shouldRemoveActive(c.getAbility4());
+					a = c.getAbility4();
+				}
+				else {
+					System.out.println("ABILITY GONE WRONG");
+				}
+				
+				String resposta = "";
+				if (allAllyEnemy.get(i).trim().equalsIgnoreCase("ally")) {
+					resposta += "\n<div class='effects_border1 zindex0'>";
+					resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkillEnemy("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkillEnemy()'>";
+					resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
+				
+					resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
+					resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
+					resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
+					resposta += "\n</span>";
+					resposta += "\n</div>";
+					
+					if (allTargets.get(i).equalsIgnoreCase("0")) {
+						activeOppChar1.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("1")) {
+						activeOppChar2.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("2")) {
+						activeOppChar3.add(resposta);
+					}
+					else {
+						System.out.println("ENEMY GONE WRONG");
+					}
+				}
+				
+				
+				else if (allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy")) {
+					resposta += "\n<div class='effects_border0 zindex1'>";
+					resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkill("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkill()'>";
+					resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
+
+					resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
+					resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
+					resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
+					resposta += "\n</span>";
+					resposta += "\n</div>";
+
+					
+					System.out.println("TARGET ALLY: "+allTargets.get(i));
+					if (allTargets.get(i).equalsIgnoreCase("1")) {
+						activeThisChar1.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("2")) {
+						activeThisChar2.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("3")) {
+						activeThisChar3.add(resposta);
+					}
+					else {
+						System.out.println("ALLY GONE WRONG");
+					}
+				}
+				
+			}
+		}
+		
+		writeActiveSkills(pw, activeThisChar1, activeThisChar2, activeThisChar3, activeOppChar1, activeOppChar2, activeOppChar3, session);
+
+	}
+	
+	
 	@SuppressWarnings("unchecked")
 	private void checkActiveSkills(PrintWriter pw, int id, Character this1, Character this2, Character this3,
 			Character opp1, Character opp2, Character opp3, HttpSession session) {
@@ -215,14 +323,9 @@ public class InGame extends HttpServlet {
 		ArrayList<Integer> removeIndex = new ArrayList<Integer>();
 
 		if (allAbilitiesUsed.size()>0) {
-			
-			for (String s : allAbilitiesUsed) {
-				System.out.println("ah " + s);
-			}
-			
+	
 			for (int i = 0; i < allAbilitiesUsed.size(); i++) {
-				System.out.println("fez");
-				System.out.println("habilidades usadas "+allAbilitiesUsed.get(i));
+
 				Character c = getCharacterUsed(allCharsUsedSkill.get(i), this1, this2, this3);
 
 				boolean delete = false;
