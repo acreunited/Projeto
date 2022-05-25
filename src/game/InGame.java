@@ -305,8 +305,10 @@ public class InGame extends HttpServlet {
 						resposta += "\n<span class='tooltiptext1' id='tooltiptext"+enemy_allAbilitiesID.get(i)+"'>";
 					
 						resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
-						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
-						resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
+						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+						
+						int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+						resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
 						resposta += "\n</span>";
 						resposta += "\n</div>";
 						
@@ -331,8 +333,10 @@ public class InGame extends HttpServlet {
 						resposta += "\n<span class='tooltiptext' id='tooltiptext"+enemy_allAbilitiesID.get(i)+"'>";
 
 						resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
-						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
-						resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
+						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+
+						int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+						resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
 						resposta += "\n</span>";
 						resposta += "\n</div>";
 						
@@ -481,8 +485,10 @@ public class InGame extends HttpServlet {
 						resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
 
 						resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
-						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
-						resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
+						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+						
+						int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+						resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
 						resposta += "\n</span>";
 						resposta += "\n</div>";
 						
@@ -505,8 +511,9 @@ public class InGame extends HttpServlet {
 						resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
 					
 						resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
-						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription()+"</span>";
-						resposta += "\n<span class='tooltiptextduration'>"+a.getActiveDuration()+"TURN LEFT</span>";
+						resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+						int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+						resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
 						resposta += "\n</span>";
 						resposta += "\n</div>";
 					
