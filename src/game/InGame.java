@@ -103,7 +103,7 @@ public class InGame extends HttpServlet {
 				response.setContentType("text/html");
 				generateRandomNatures(session, 3);
 				
-				calculateAbilities(oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, oppID );
+				calculateAbilitiesEnemy(oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, oppID );
 				writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 				
 				checkActiveSkillsEnemy(pw, oppID, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, session);
@@ -181,10 +181,38 @@ public class InGame extends HttpServlet {
 			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("3")) {
 				c.applyAbility(c.getAbility4(), target);
 			}
-
 		}
-
+	}
 	
+	private void calculateAbilitiesEnemy(Character thisChar1, Character thisChar2, Character thisChar3, Character oppChar1,
+			Character oppChar2, Character oppChar3, int id) {
+
+		ArrayList<String> allAbilitiesUsed = GameUtils.enemy_activeAbilitiesUsed.get(id);
+		ArrayList<String> allCharsUsedSkill = GameUtils.enemy_activeCharsUsedSkill.get(id);
+		ArrayList<String> allTargets = GameUtils.enemy_activeTargets.get(id);
+		ArrayList<String> allAllyEnemy = GameUtils.enemy_activeAllyEnemy.get(id);
+		ArrayList<String> allAbilitiesID = GameUtils.enemy_activeAbilitiesUsed.get(id);
+		
+		for (int i = 0; i < allAbilitiesUsed.size(); i++) {
+
+			Character c = getCharacterUsed(allCharsUsedSkill.get(i), thisChar1, thisChar2, thisChar3);
+			
+			Character target = getTarget(allAllyEnemy.get(i), allTargets.get(i), 
+					thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
+			
+			if (allAbilitiesUsed.get(i).equalsIgnoreCase("0")) {
+				c.applyAbility(c.getAbility1(), target);
+			}
+			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("1")) {
+				c.applyAbility(c.getAbility2(), target);
+			}
+			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("2")) {
+				c.applyAbility(c.getAbility3(), target);
+			}
+			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("3")) {
+				c.applyAbility(c.getAbility4(), target);
+			}
+		}
 	}
 
 
