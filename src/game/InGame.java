@@ -103,7 +103,16 @@ public class InGame extends HttpServlet {
 				response.setContentType("text/html");
 				generateRandomNatures(session, 3);
 				
-				calculateAbilitiesEnemy(oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, oppID );
+				ArrayList<String> allAbilitiesUsed = GameUtils.enemy_activeAbilitiesUsed.get(oppID);
+				ArrayList<String> allCharsUsedSkill = GameUtils.enemy_activeCharsUsedSkill.get(oppID);
+				ArrayList<String> allTargets = GameUtils.enemy_activeTargets.get(oppID);
+				ArrayList<String> allAllyEnemy = GameUtils.enemy_activeAllyEnemy.get(oppID);
+				ArrayList<String> allAbilitiesID = GameUtils.enemy_activeAbilitiesUsed.get(oppID);
+				calculateAbilities(
+						oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, 
+						allAbilitiesUsed, allCharsUsedSkill, allTargets, allAllyEnemy, allAbilitiesID
+						);
+				
 				writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 				
 				checkActiveSkillsEnemy(pw, oppID, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, session);
@@ -121,7 +130,17 @@ public class InGame extends HttpServlet {
 			
 			String uuid = (String) session.getAttribute("uuid");
 			
-			calculateAbilities(thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, id);
+			ArrayList<String> allAbilitiesUsed = GameUtils.activeAbilitiesUsed.get(id);
+			ArrayList<String> allCharsUsedSkill = GameUtils.activeCharsUsedSkill.get(id);
+			ArrayList<String> allTargets = GameUtils.activeTargets.get(id);
+			ArrayList<String> allAllyEnemy = GameUtils.activeAllyEnemy.get(id);
+			ArrayList<String> allAbilitiesID = GameUtils.activeAbilitiesUsed.get(id);
+			calculateAbilities(
+					thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, 
+					allAbilitiesUsed, allCharsUsedSkill, allTargets, allAllyEnemy, allAbilitiesID
+					);
+			
+			//calculateAbilities(thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, id);
 			writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 			
 			checkActiveSkills(pw, id, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3, session);
@@ -153,54 +172,47 @@ public class InGame extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	private void calculateAbilities(Character thisChar1, Character thisChar2, Character thisChar3, Character oppChar1,
-			Character oppChar2, Character oppChar3, int id) {
-
-		ArrayList<String> allAbilitiesUsed = GameUtils.activeAbilitiesUsed.get(id);
-		ArrayList<String> allCharsUsedSkill = GameUtils.activeCharsUsedSkill.get(id);
-		ArrayList<String> allTargets = GameUtils.activeTargets.get(id);
-		ArrayList<String> allAllyEnemy = GameUtils.activeAllyEnemy.get(id);
-		ArrayList<String> allAbilitiesID = GameUtils.activeAbilitiesUsed.get(id);
-		
-		for (int i = 0; i < allAbilitiesUsed.size(); i++) {
-
-			System.out.println("TARGET: "+allTargets.get(i)+"\n.....");
-			
-			Character c = getCharacterUsed(allCharsUsedSkill.get(i), thisChar1, thisChar2, thisChar3);
-			
-			Character target = getTarget(allAllyEnemy.get(i), allTargets.get(i), 
-					thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
-			
-			if (allAbilitiesUsed.get(i).equalsIgnoreCase("0")) {
-				c.applyAbility(c.getAbility1(), target);
-			}
-			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("1")) {
-				c.applyAbility(c.getAbility2(), target);
-			}
-			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("2")) {
-				c.applyAbility(c.getAbility3(), target);
-			}
-			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("3")) {
-				c.applyAbility(c.getAbility4(), target);
-			}
-		}
-	}
+//	private void calculateAbilities(Character thisChar1, Character thisChar2, Character thisChar3, Character oppChar1,
+//			Character oppChar2, Character oppChar3, int id) {
+//
+//		ArrayList<String> allAbilitiesUsed = GameUtils.activeAbilitiesUsed.get(id);
+//		ArrayList<String> allCharsUsedSkill = GameUtils.activeCharsUsedSkill.get(id);
+//		ArrayList<String> allTargets = GameUtils.activeTargets.get(id);
+//		ArrayList<String> allAllyEnemy = GameUtils.activeAllyEnemy.get(id);
+//		ArrayList<String> allAbilitiesID = GameUtils.activeAbilitiesUsed.get(id);
+//		
+//		for (int i = 0; i < allAbilitiesUsed.size(); i++) {
+//
+//			System.out.println("TARGET: "+allTargets.get(i)+"\n.....");
+//			
+//			Character c = getCharacterUsed(allCharsUsedSkill.get(i), thisChar1, thisChar2, thisChar3);
+//			
+//			Character target = getTarget(allAllyEnemy.get(i), allTargets.get(i), 
+//					thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
+//			
+//			if (allAbilitiesUsed.get(i).equalsIgnoreCase("0")) {
+//				c.applyAbility(c.getAbility1(), target);
+//			}
+//			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("1")) {
+//				c.applyAbility(c.getAbility2(), target);
+//			}
+//			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("2")) {
+//				c.applyAbility(c.getAbility3(), target);
+//			}
+//			else if (allAbilitiesUsed.get(i).equalsIgnoreCase("3")) {
+//				c.applyAbility(c.getAbility4(), target);
+//			}
+//		}
+//	}
 	
-	private void calculateAbilitiesEnemy(Character thisChar1, Character thisChar2, Character thisChar3, Character oppChar1,
-			Character oppChar2, Character oppChar3, int id) {
+	private void calculateAbilities(Character thisChar1, Character thisChar2, Character thisChar3, Character oppChar1,
+			Character oppChar2, Character oppChar3, ArrayList<String> allAbilitiesUsed, ArrayList<String> allCharsUsedSkill, 
+			ArrayList<String> allTargets, ArrayList<String> allAllyEnemy, ArrayList<String> allAbilitiesID) {
 
-		ArrayList<String> allAbilitiesUsed = GameUtils.enemy_activeAbilitiesUsed.get(id);
-		ArrayList<String> allCharsUsedSkill = GameUtils.enemy_activeCharsUsedSkill.get(id);
-		ArrayList<String> allTargets = GameUtils.enemy_activeTargets.get(id);
-		ArrayList<String> allAllyEnemy = GameUtils.enemy_activeAllyEnemy.get(id);
-		ArrayList<String> allAbilitiesID = GameUtils.enemy_activeAbilitiesUsed.get(id);
 		
 		for (int i = 0; i < allAbilitiesUsed.size(); i++) {
 			
-			System.out.println("TARGET ENEMY: "+allTargets.get(i));
-
 			Character c = getCharacterUsed(allCharsUsedSkill.get(i), thisChar1, thisChar2, thisChar3);
-			
 			Character target = getTarget(allAllyEnemy.get(i), allTargets.get(i), 
 					thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 			
