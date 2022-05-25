@@ -164,6 +164,8 @@ public class InGame extends HttpServlet {
 		
 		for (int i = 0; i < allAbilitiesUsed.size(); i++) {
 
+			System.out.println("TARGET: "+allTargets.get(i)+"\n.....");
+			
 			Character c = getCharacterUsed(allCharsUsedSkill.get(i), thisChar1, thisChar2, thisChar3);
 			
 			Character target = getTarget(allAllyEnemy.get(i), allTargets.get(i), 
@@ -194,6 +196,8 @@ public class InGame extends HttpServlet {
 		ArrayList<String> allAbilitiesID = GameUtils.enemy_activeAbilitiesUsed.get(id);
 		
 		for (int i = 0; i < allAbilitiesUsed.size(); i++) {
+			
+			System.out.println("TARGET ENEMY: "+allTargets.get(i));
 
 			Character c = getCharacterUsed(allCharsUsedSkill.get(i), thisChar1, thisChar2, thisChar3);
 			
@@ -677,7 +681,7 @@ public class InGame extends HttpServlet {
 			pw.println("break");
 			pw.println("<div id=\"bar_02\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
 			pw.println("<div id=\"bar_text_02\" class=\"mc_char_card_lifetext\">");
-			pw.println(this2.getHp()+"/100</div>");
+			pw.println(this3.getHp()+"/100</div>");
 			pw.println("break");
 			pw.println("<div id=\"bar_10\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
 			pw.println("<div id=\"bar_text_10\" class=\"mc_char_card_lifetext\">");
@@ -698,18 +702,45 @@ public class InGame extends HttpServlet {
 		
 		Character target = null; 
 		
-		switch (pos) {
-		case "1":
-			target = (allyEnemy.equalsIgnoreCase("ally")) ? thisChar1 : oppChar1;
-			break;
-		case "2":
-			target = (allyEnemy.equalsIgnoreCase("ally")) ? thisChar2 : oppChar2;
-			break;
-		case "3":
-			target = (allyEnemy.equalsIgnoreCase("ally")) ? thisChar3 : oppChar3;
-			break;
-	
+		if (allyEnemy.equalsIgnoreCase("ally")) {
+			switch (pos) {
+				case "0":
+					target = thisChar1;
+					break;
+				case "1":
+					target = thisChar2;
+					break;
+				case "2":
+					target = thisChar3;
+					break;
+				}
 		}
+		else if (allyEnemy.equalsIgnoreCase("enemy")) {
+			switch (pos) {
+			case "1":
+				target = oppChar1;
+				break;
+			case "2":
+				target = oppChar2;
+				break;
+			case "3":
+				target = oppChar3;
+				break;
+			}
+		}
+//		
+//		switch (pos) {
+//		case "1":
+//			target = (allyEnemy.equalsIgnoreCase("ally")) ? thisChar1 : oppChar1;
+//			break;
+//		case "2":
+//			target = (allyEnemy.equalsIgnoreCase("ally")) ? thisChar2 : oppChar2;
+//			break;
+//		case "3":
+//			target = (allyEnemy.equalsIgnoreCase("ally")) ? thisChar3 : oppChar3;
+//			break;
+//	
+//		}
 		
 		
 		return target;
