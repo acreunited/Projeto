@@ -18,6 +18,24 @@ import org.w3c.dom.NodeList;
 
 public class ReadAbilitiesXML {
 	
+	public static String getName(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='"+id+"']/name/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+		
+		return value;
+	}
+	
 	public static ArrayList<String> getActiveTarget(int id) {
 		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();

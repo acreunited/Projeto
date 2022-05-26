@@ -294,15 +294,18 @@ public class InGame extends HttpServlet {
 			ArrayList<String> activeThisChar2, ArrayList<String> activeThisChar3, ArrayList<String> activeOppChar1, 
 			ArrayList<String> activeOppChar2, ArrayList<String> activeOppChar3 ) {
 		
-		if (isUnlock) {
+		//if (isUnlock) {
 			String resposta = "";
 			
-			if (allAllyEnemy.get(i).trim().equalsIgnoreCase("ally")) {
+			if (
+				(allAllyEnemy.get(i).trim().equalsIgnoreCase("ally") && isUnlock) ||
+				(allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy") && !isUnlock)
+					) {
 				resposta += "\n<div class='effects_border0 zindex1'>";
 				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkill("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkill()'>";
 				resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
 
-				resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
+				resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
 				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
 				
 				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
@@ -310,102 +313,140 @@ public class InGame extends HttpServlet {
 				resposta += "\n</span>";
 				resposta += "\n</div>";
 				
-				if (allTargets.get(i).equalsIgnoreCase("0")) {
-					activeThisChar1.add(resposta);
-				}
-				else if (allTargets.get(i).equalsIgnoreCase("1")) {
-					activeThisChar2.add(resposta);
-				}
-				else if (allTargets.get(i).equalsIgnoreCase("2")) {
-					activeThisChar3.add(resposta);
+				if (isUnlock) {
+					if (allTargets.get(i).equalsIgnoreCase("0")) {
+						activeThisChar1.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("1")) {
+						activeThisChar2.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("2")) {
+						activeThisChar3.add(resposta);
+					}
+					else {
+						System.out.println("ALLY GONE WRONG");
+					}
 				}
 				else {
-					System.out.println("ALLY GONE WRONG");
+					if (allTargets.get(i).equalsIgnoreCase("1")) {
+						activeThisChar1.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("2")) {
+						activeThisChar2.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("3")) {
+						activeThisChar3.add(resposta);
+					}
+					else {
+						System.out.println("ALLY GONE WRONG");
+					}
 				}
+				
 			}
-			else if (allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy")) {
+			else if (
+					(allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy") && isUnlock) ||
+					(allAllyEnemy.get(i).trim().equalsIgnoreCase("ally") && !isUnlock)
+					) {
 				resposta += "\n<div class='effects_border1 zindex0'>";
 				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkillEnemy("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkillEnemy()'>";
 				resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
 			
-				resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
+				resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
 				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
 				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
 				resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
 				resposta += "\n</span>";
 				resposta += "\n</div>";
 			
-				if (allTargets.get(i).equalsIgnoreCase("1")) {
-					activeOppChar1.add(resposta);
-				}
-				else if (allTargets.get(i).equalsIgnoreCase("2")) {
-					activeOppChar2.add(resposta);
-				}
-				else if (allTargets.get(i).equalsIgnoreCase("3")) {
-					activeOppChar3.add(resposta);
+				
+				if (isUnlock) {
+					if (allTargets.get(i).equalsIgnoreCase("1")) {
+						activeOppChar1.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("2")) {
+						activeOppChar2.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("3")) {
+						activeOppChar3.add(resposta);
+					}
+					else {
+						System.out.println("ENEMY GONE WRONG");
+					}
 				}
 				else {
-					System.out.println("ENEMY GONE WRONG");
+					if (allTargets.get(i).equalsIgnoreCase("0")) {
+						activeOppChar1.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("1")) {
+						activeOppChar2.add(resposta);
+					}
+					else if (allTargets.get(i).equalsIgnoreCase("2")) {
+						activeOppChar3.add(resposta);
+					}
+					else {
+						System.out.println("ENEMY GONE WRONG");
+					}
 				}
-			}
-		}
-		else {
-			String resposta = "";
-			if (allAllyEnemy.get(i).trim().equalsIgnoreCase("ally")) {
-				resposta += "\n<div class='effects_border1 zindex0'>";
-				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkillEnemy("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkillEnemy()'>";
-				resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
-			
-				resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
-				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
 				
-				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
-				resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
-				resposta += "\n</span>";
-				resposta += "\n</div>";
-				
-				if (allTargets.get(i).equalsIgnoreCase("0")) {
-					activeOppChar1.add(resposta);
-				}
-				else if (allTargets.get(i).equalsIgnoreCase("1")) {
-					activeOppChar2.add(resposta);
-				}
-				else if (allTargets.get(i).equalsIgnoreCase("2")) {
-					activeOppChar3.add(resposta);
-				}
-				else {
-					System.out.println("ENEMY GONE WRONG");
-				}
 			}
-			
-			
-			else if (allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy")) {
-				resposta += "\n<div class='effects_border0 zindex1'>";
-				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkill("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkill()'>";
-				resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
-
-				resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
-				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
-
-				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
-				resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
-				resposta += "\n</span>";
-				resposta += "\n</div>";
-				
-				if (allTargets.get(i).equalsIgnoreCase("1")) {
-					activeThisChar1.add(resposta);
-				}
-				else if (allTargets.get(i).equalsIgnoreCase("2")) {
-					activeThisChar2.add(resposta);
-				}
-				else if (allTargets.get(i).equalsIgnoreCase("3")) {
-					activeThisChar3.add(resposta);
-				}
-				else {
-					System.out.println("ALLY GONE WRONG");
-				}
-			}
-		}
+//		}
+//		else {
+//			String resposta = "";
+//			if (allAllyEnemy.get(i).trim().equalsIgnoreCase("ally")) {
+//				resposta += "\n<div class='effects_border1 zindex0'>";
+//				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkillEnemy("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkillEnemy()'>";
+//				resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
+//			
+//				resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
+//				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+//				
+//				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+//				resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
+//				resposta += "\n</span>";
+//				resposta += "\n</div>";
+//				
+//				if (allTargets.get(i).equalsIgnoreCase("0")) {
+//					activeOppChar1.add(resposta);
+//				}
+//				else if (allTargets.get(i).equalsIgnoreCase("1")) {
+//					activeOppChar2.add(resposta);
+//				}
+//				else if (allTargets.get(i).equalsIgnoreCase("2")) {
+//					activeOppChar3.add(resposta);
+//				}
+//				else {
+//					System.out.println("ENEMY GONE WRONG");
+//				}
+//			}
+//			
+//			
+//			else if (allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy")) {
+//				resposta += "\n<div class='effects_border0 zindex1'>";
+//				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkill("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkill()'>";
+//				resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
+//
+//				resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
+//				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+//
+//				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+//				resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
+//				resposta += "\n</span>";
+//				resposta += "\n</div>";
+//				
+//				if (allTargets.get(i).equalsIgnoreCase("1")) {
+//					activeThisChar1.add(resposta);
+//				}
+//				else if (allTargets.get(i).equalsIgnoreCase("2")) {
+//					activeThisChar2.add(resposta);
+//				}
+//				else if (allTargets.get(i).equalsIgnoreCase("3")) {
+//					activeThisChar3.add(resposta);
+//				}
+//				else {
+//					System.out.println("ALLY GONE WRONG");
+//				}
+//			}
+//		}
 		
 		
 	}

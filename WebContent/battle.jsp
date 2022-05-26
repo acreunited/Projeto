@@ -221,11 +221,12 @@ window.onload = function() {
                      
                      <div class="mc_char_card">
                        <div class="mc_char_card_rank2  ">
-                           <img src="https://naruto-arena.net/images/ranks/10v2.png">
+                           <!-- <img src="https://naruto-arena.net/images/ranks/10v2.png">  -->
+                           <img src="battle/hats/default/cipher.png">
                         </div> 
                     
                         <div class="mc_char_card_rank">
-                           <a onclick="characterFooterInfo(<%=characterID%>, 'ally', <%=countChars%>)"><img src="https://naruto-arena.net/images/ranks/10.png"></a>
+                           <a onclick="characterFooterInfo(<%=characterID%>, 'ally', <%=countChars%>)"><img src="battle/hats/default/cipher.png"></a>
                         </div> 
                          <div class="mc_char_card_avatar  ">
                          	<img class="abs " src="https://naruto-arena.net/images/dead.png">
@@ -289,14 +290,14 @@ window.onload = function() {
                   	%>
                      <div class="mc_char_card">
                         <div class="mc_char_card_rank2 revert rankenemy">
-                           <img src="https://naruto-arena.net/images/ranks/9v2.png">
+                           <img src="battle/hats/default/cipher.png">
                         </div>
                         <div class="mc_char_card_avatar revert mc_char_card_avatar_en">
                           <!--  <img class="abs revert" src="https://naruto-arena.net/images/dead.png"> -->
                            <img class="abs" id="dead_1<%=countChars%>" src="ViewCharacter?id=<%=characterID%>">
                         </div>
                         <div class="mc_char_card_rank revert">
-                           <a onclick="characterFooterInfo(<%=characterID%>, 'enemy', <%=countChars%>)"><img src="https://naruto-arena.net/images/ranks/9.png"></a>
+                           <a onclick="characterFooterInfo(<%=characterID%>, 'enemy', <%=countChars%>)"><img src="battle/hats/default/cipher.png"></a>
                         </div>
                      </div>
                  

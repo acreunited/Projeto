@@ -6,7 +6,7 @@ public class Ability {
 	
 	private int id;
 	private int nTimesUsed;
-	//private String activeDescription; TODO form
+	private String name;
 	private ArrayList<String> activeTarget;
 	private ArrayList<String> activeDescription;
 	private ArrayList<String> activeDuration;	
@@ -34,6 +34,7 @@ public class Ability {
 	public Ability(int id) {
 		this.id = id;
 		this.nTimesUsed = 0;
+		this.name = ReadAbilitiesXML.getName(id);
 		this.targetClick = ReadAbilitiesXML.getTargetClick(id);
 		this.cooldown = ReadAbilitiesXML.getCooldown(id);
 		this.ignoresInvul = ReadAbilitiesXML.ignoresInvul(id);
@@ -56,9 +57,9 @@ public class Ability {
 		this.activeDuration = ReadAbilitiesXML.getActiveDuration(id);
 	}
 
-	public void doDamage(Character c) {
-		
-	}
+//	public void doDamage(Character c) {
+//		
+//	}
 	
 	
 	public int getId() {
@@ -238,6 +239,14 @@ public class Ability {
 
 	public void setGainDR(int[] gainDR) {
 		this.gainDR = gainDR;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
