@@ -230,7 +230,7 @@ public class InGame extends HttpServlet {
 		ArrayList<String> allAbilitiesUsed = abilitiesUsed.get(id);
 		ArrayList<String> allCharsUsedSkill = charsUsedSkill.get(id);
 		ArrayList<String> allTargets = targets.get(id);
-		ArrayList<String> allAllyEnemy = allyEnemy.get(id);
+		//ArrayList<String> allAllyEnemy = allyEnemy.get(id);
 		ArrayList<String> allAbilitiesID = abilitiesID.get(id);
 		
 		ArrayList<Integer> removeIndex = new ArrayList<Integer>();
@@ -277,7 +277,7 @@ public class InGame extends HttpServlet {
 					activeOppChar3.removeIf(name -> name.contains(s));
 				}
 				else {
-					writeThis(i, a, allAbilitiesUsed, allCharsUsedSkill, allTargets, allAllyEnemy, allAbilitiesID, isUnlock, 
+					writeThis(i, a, allAbilitiesUsed, allCharsUsedSkill, allTargets, a.getActiveTarget().get(0), allAbilitiesID, isUnlock, 
 							activeThisChar1, activeThisChar2,activeThisChar3, activeOppChar1, activeOppChar2, activeOppChar3);
 				}
 			}
@@ -290,165 +290,160 @@ public class InGame extends HttpServlet {
 	
 	private void writeThis(
 			int i, Ability a, ArrayList<String> allAbilitiesUsed, ArrayList<String> allCharsUsedSkill, ArrayList<String> allTargets, 
-			ArrayList<String> allAllyEnemy, ArrayList<String> allAbilitiesID, boolean isUnlock, ArrayList<String> activeThisChar1,
+			String activeTarget, ArrayList<String> allAbilitiesID, boolean isUnlock, ArrayList<String> activeThisChar1,
 			ArrayList<String> activeThisChar2, ArrayList<String> activeThisChar3, ArrayList<String> activeOppChar1, 
 			ArrayList<String> activeOppChar2, ArrayList<String> activeOppChar3 ) {
-		
-		//if (isUnlock) {
-			String resposta = "";
-			
-			if (
-				(allAllyEnemy.get(i).trim().equalsIgnoreCase("ally") && isUnlock) ||
-				(allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy") && !isUnlock)
-					) {
-				resposta += "\n<div class='effects_border0 zindex1'>";
-				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkill("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkill()'>";
-				resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
 
-				resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
-				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
-				
-				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
-				resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
-				resposta += "\n</span>";
-				resposta += "\n</div>";
-				
-				if (isUnlock) {
-					if (allTargets.get(i).equalsIgnoreCase("0")) {
-						activeThisChar1.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("1")) {
-						activeThisChar2.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("2")) {
-						activeThisChar3.add(resposta);
-					}
-					else {
-						System.out.println("ALLY GONE WRONG");
-					}
+		if (
+			(activeTarget.trim().equalsIgnoreCase("ally") && isUnlock) ||
+			(activeTarget.trim().equalsIgnoreCase("enemy") && !isUnlock)
+				) {
+
+			String resposta = getResponseAlly(a, i, allAbilitiesID);
+			
+			if (isUnlock) {
+				if (allTargets.get(i).equalsIgnoreCase("0")) {
+					activeThisChar1.add(resposta);
+				}
+				else if (allTargets.get(i).equalsIgnoreCase("1")) {
+					activeThisChar2.add(resposta);
+				}
+				else if (allTargets.get(i).equalsIgnoreCase("2")) {
+					activeThisChar3.add(resposta);
 				}
 				else {
-					if (allTargets.get(i).equalsIgnoreCase("1")) {
-						activeThisChar1.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("2")) {
-						activeThisChar2.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("3")) {
-						activeThisChar3.add(resposta);
-					}
-					else {
-						System.out.println("ALLY GONE WRONG");
-					}
+					System.out.println("ALLY GONE WRONG");
 				}
-				
 			}
-			else if (
-					(allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy") && isUnlock) ||
-					(allAllyEnemy.get(i).trim().equalsIgnoreCase("ally") && !isUnlock)
-					) {
-				resposta += "\n<div class='effects_border1 zindex0'>";
-				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkillEnemy("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkillEnemy()'>";
-				resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
-			
-				resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
-				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
-				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
-				resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
-				resposta += "\n</span>";
-				resposta += "\n</div>";
-			
-				
-				if (isUnlock) {
-					if (allTargets.get(i).equalsIgnoreCase("1")) {
-						activeOppChar1.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("2")) {
-						activeOppChar2.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("3")) {
-						activeOppChar3.add(resposta);
-					}
-					else {
-						System.out.println("ENEMY GONE WRONG");
-					}
+			else {
+				if (allTargets.get(i).equalsIgnoreCase("1")) {
+					activeThisChar1.add(resposta);
+				}
+				else if (allTargets.get(i).equalsIgnoreCase("2")) {
+					activeThisChar2.add(resposta);
+				}
+				else if (allTargets.get(i).equalsIgnoreCase("3")) {
+					activeThisChar3.add(resposta);
 				}
 				else {
-					if (allTargets.get(i).equalsIgnoreCase("0")) {
-						activeOppChar1.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("1")) {
-						activeOppChar2.add(resposta);
-					}
-					else if (allTargets.get(i).equalsIgnoreCase("2")) {
-						activeOppChar3.add(resposta);
-					}
-					else {
-						System.out.println("ENEMY GONE WRONG");
-					}
+					System.out.println("ALLY GONE WRONG");
 				}
-				
 			}
-//		}
-//		else {
-//			String resposta = "";
-//			if (allAllyEnemy.get(i).trim().equalsIgnoreCase("ally")) {
-//				resposta += "\n<div class='effects_border1 zindex0'>";
-//				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkillEnemy("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkillEnemy()'>";
-//				resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
-//			
-//				resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
-//				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
-//				
-//				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
-//				resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
-//				resposta += "\n</span>";
-//				resposta += "\n</div>";
-//				
-//				if (allTargets.get(i).equalsIgnoreCase("0")) {
-//					activeOppChar1.add(resposta);
-//				}
-//				else if (allTargets.get(i).equalsIgnoreCase("1")) {
-//					activeOppChar2.add(resposta);
-//				}
-//				else if (allTargets.get(i).equalsIgnoreCase("2")) {
-//					activeOppChar3.add(resposta);
-//				}
-//				else {
-//					System.out.println("ENEMY GONE WRONG");
-//				}
-//			}
-//			
-//			
-//			else if (allAllyEnemy.get(i).trim().equalsIgnoreCase("enemy")) {
-//				resposta += "\n<div class='effects_border0 zindex1'>";
-//				resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkill("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkill()'>";
-//				resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
-//
-//				resposta += "\n<span class='tooltiptextname'>"+"TODO NOME TODO"+"</span>";
-//				resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
-//
-//				int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
-//				resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
-//				resposta += "\n</span>";
-//				resposta += "\n</div>";
-//				
-//				if (allTargets.get(i).equalsIgnoreCase("1")) {
-//					activeThisChar1.add(resposta);
-//				}
-//				else if (allTargets.get(i).equalsIgnoreCase("2")) {
-//					activeThisChar2.add(resposta);
-//				}
-//				else if (allTargets.get(i).equalsIgnoreCase("3")) {
-//					activeThisChar3.add(resposta);
-//				}
-//				else {
-//					System.out.println("ALLY GONE WRONG");
-//				}
-//			}
-//		}
+			
+		}
+		else if (
+				(activeTarget.trim().equalsIgnoreCase("enemy") && isUnlock) ||
+				(activeTarget.trim().equalsIgnoreCase("ally") && !isUnlock)
+				) {
+
+			String resposta = getResponseEnemy(a, i, allAbilitiesID);
 		
+			
+			if (isUnlock) {
+				if (allTargets.get(i).equalsIgnoreCase("1")) {
+					activeOppChar1.add(resposta);
+				}
+				else if (allTargets.get(i).equalsIgnoreCase("2")) {
+					activeOppChar2.add(resposta);
+				}
+				else if (allTargets.get(i).equalsIgnoreCase("3")) {
+					activeOppChar3.add(resposta);
+				}
+				else {
+					System.out.println("ENEMY GONE WRONG");
+				}
+			}
+			else {
+				if (allTargets.get(i).equalsIgnoreCase("0")) {
+					activeOppChar1.add(resposta);
+				}
+				else if (allTargets.get(i).equalsIgnoreCase("1")) {
+					activeOppChar2.add(resposta);
+				}
+				else if (allTargets.get(i).equalsIgnoreCase("2")) {
+					activeOppChar3.add(resposta);
+				}
+				else {
+					System.out.println("ENEMY GONE WRONG");
+				}
+			}
+			
+		}
+		else if ( activeTarget.trim().equalsIgnoreCase("self") ) {
+			
+			if (isUnlock) {
+
+				String resposta = getResponseAlly(a, i, allAbilitiesID);
+				
+				if (allCharsUsedSkill.get(i).equalsIgnoreCase("0")) {
+					activeThisChar1.add(resposta);
+				}
+				else if (allCharsUsedSkill.get(i).equalsIgnoreCase("1")) {
+					activeThisChar2.add(resposta);
+				}
+				else if (allCharsUsedSkill.get(i).equalsIgnoreCase("2")) {
+					activeThisChar3.add(resposta);
+				}
+				else {
+					System.out.println("ALLY GONE WRONG SELF");
+				}
+			}
+			else {
+
+				String resposta = getResponseEnemy(a, i, allAbilitiesID);
+
+				if (allCharsUsedSkill.get(i).equalsIgnoreCase("0")) {
+					activeOppChar1.add(resposta);
+				}
+				else if (allCharsUsedSkill.get(i).equalsIgnoreCase("1")) {
+					activeOppChar2.add(resposta);					
+					}
+				else if (allCharsUsedSkill.get(i).equalsIgnoreCase("2")) {
+					activeOppChar3.add(resposta);
+				}
+				else {
+					System.out.println("ENEMY GONE WRONG SELF");
+				}
+			}
+		}
+
 		
+	}
+	
+	private String getResponseAlly(Ability a, int i,  ArrayList<String> allAbilitiesID) {
+		
+		String resposta = "";
+		resposta += "\n<div class='effects_border0 zindex1'>";
+		resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkill("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkill()'>";
+		resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
+
+		resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
+		resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+		
+		int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+		resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
+		resposta += "\n</span>";
+		resposta += "\n</div>";
+		
+		return resposta;
+	}
+	
+	private String getResponseEnemy(Ability a, int i,  ArrayList<String> allAbilitiesID) {
+		
+		String resposta = "";
+		
+		resposta += "\n<div class='effects_border1 zindex0'>";
+		resposta += "\n<img src='ViewAbility?id="+allAbilitiesID.get(i)+"' id='activeSkill"+allAbilitiesID.get(i)+"' onmouseover='seeActiveSkillEnemy("+allAbilitiesID.get(i)+")' onmouseleave='hideActiveSkillEnemy()'>";
+		resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
+	
+		resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
+		resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+		int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+		resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
+		resposta += "\n</span>";
+		resposta += "\n</div>";
+		
+		return resposta;
 	}
 	
 	private void removeIfExists(
