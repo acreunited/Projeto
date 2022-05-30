@@ -106,7 +106,8 @@ public class InGame extends HttpServlet {
 				calculateAbilities(
 						oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, 
 						GameUtils.enemy_activeAbilitiesUsed.get(oppID), GameUtils.enemy_activeCharsUsedSkill.get(oppID), 
-						GameUtils.enemy_activeTargets.get(oppID), GameUtils.enemy_activeAllyEnemy.get(oppID), GameUtils.enemy_activeAbilitiesID.get(oppID)
+						GameUtils.enemy_activeTargets.get(oppID), GameUtils.enemy_activeAllyEnemy.get(oppID), 
+						GameUtils.enemy_activeAbilitiesID.get(oppID)
 						);
 				
 				writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
@@ -263,9 +264,10 @@ public class InGame extends HttpServlet {
 					a = c.getAbility4();
 				}
 				
+				
 			
-				if (delete) {
-
+				if (delete || a.getActiveDuration().get(0).equalsIgnoreCase("permanent")) {
+					
 					removeIndex.add(i);
 					
 					String s = allAbilitiesID.get(i);
@@ -275,7 +277,22 @@ public class InGame extends HttpServlet {
 					activeOppChar1.removeIf(name -> name.contains(s));
 					activeOppChar2.removeIf(name -> name.contains(s));
 					activeOppChar3.removeIf(name -> name.contains(s));
+					
+					
+					Ability novo = new Ability(Integer.parseInt( allAbilitiesID.get(i) ));
+					int[] damageNovo = novo.getDamage();
+					a.setDamage(damageNovo);
+					int[] gainHPNovo = novo.getGainHP();
+					a.setGainHP(gainHPNovo);
+					int[] permanentDamageNovo = novo.getPermanentDamageIncrease();
+					a.setPermanentDamageIncrease(permanentDamageNovo);
+					
+					if (a.getActiveDuration().get(0).equalsIgnoreCase("permanent")) {
+						writeThis(i, a, allAbilitiesUsed, allCharsUsedSkill, allTargets, a.getActiveTarget().get(0), allAbilitiesID, isUnlock, 
+								activeThisChar1, activeThisChar2,activeThisChar3, activeOppChar1, activeOppChar2, activeOppChar3);
+					}
 				}
+				
 				else {
 					writeThis(i, a, allAbilitiesUsed, allCharsUsedSkill, allTargets, a.getActiveTarget().get(0), allAbilitiesID, isUnlock, 
 							activeThisChar1, activeThisChar2,activeThisChar3, activeOppChar1, activeOppChar2, activeOppChar3);
@@ -420,8 +437,14 @@ public class InGame extends HttpServlet {
 		resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
 		resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
 		
-		int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
-		resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
+		if (a.getActiveDuration().get(0).equalsIgnoreCase("permanent")) {
+			resposta += "\n<span class='tooltiptextduration'>INFINITE</span>";
+		}
+		else {
+			int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+			resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
+		}
+		
 		resposta += "\n</span>";
 		resposta += "\n</div>";
 		
@@ -438,8 +461,15 @@ public class InGame extends HttpServlet {
 	
 		resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
 		resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
-		int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
-		resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
+		
+		if (a.getActiveDuration().get(0).equalsIgnoreCase("permanent")) {
+			resposta += "\n<span class='tooltiptextduration'>INFINITE</span>";
+		}
+		else {
+			int turnsLeft = Integer.parseInt(a.getActiveDuration().get(0)) + 1;
+			resposta += "\n<span class='tooltiptextduration'>"+turnsLeft+" TURN LEFT</span>";
+		}
+		
 		resposta += "\n</span>";
 		resposta += "\n</div>";
 		
@@ -468,6 +498,7 @@ public class InGame extends HttpServlet {
 			for (int i = 0; i < size; i++) {
 				for (int rem : removeIndex) {
 					if (rem==i) {
+						//Ability a = new Ability(Integer.parseInt( arrayAbilitiesID[i] ));
 						arrayAbilitiesUsed[i] = null;
 						arrayCharsUsedSkill[i] = null;
 						arrayTargets[i] = null;

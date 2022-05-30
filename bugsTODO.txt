@@ -1,0 +1,3 @@
+habilidades com ID igual sao todas removidas, mesmo quando são personagens em equipas diferentes
+	- por exemplo, Ichigo em 2 equipas
+	- talvez acrescentar que aquele é o da sua equipa num sitio do id da habilidade ajude a resolver

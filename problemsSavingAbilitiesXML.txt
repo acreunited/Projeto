@@ -1,0 +1,3 @@
+gain HP Duration
+temporaryDamageIncrease
+remove nTimesUsed from XML

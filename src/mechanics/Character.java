@@ -48,10 +48,51 @@ public class Character {
 	
 	public void applyAbility(Ability a, Character c) {
 		//damage
-		int damage = doDamage(a, c);
-		if (damage>0) {
-			c.setHp( c.getHp()-damage );
+		if (a.getDamage()[1]>0) {
+			
+			int damage = doDamage(a, c);
+			if (damage>0) {
+				c.setHp( c.getHp()-damage );
+			}
+			
+			//reduce duration by 1
+			int[] lessTurn = new int[2];
+			lessTurn[0] = a.getDamage()[0];
+			lessTurn[1] = a.getDamage()[1] - 1;
+			a.setDamage(lessTurn);
 		}
+		
+		//permanent damage
+		if (a.getPermanentDamageIncrease()[1] > 0) {
+			c.setPermanentDamageIncrease( c.getPermanentDamageIncrease() + a.getPermanentDamageIncrease()[0] );
+			
+			//reduce duration by 1
+			int[] lessTurn = new int[2];
+			lessTurn[0] = a.getPermanentDamageIncrease()[0];
+			lessTurn[1] = a.getPermanentDamageIncrease()[1] - 1;
+			a.setPermanentDamageIncrease( (lessTurn) );
+		}
+		
+		//damagePerUse
+		if (a.getDamageIncreasePerUse()>0) {
+			a.setnTimesUsed( a.getnTimesUsed()+1 );
+		}
+		
+		//gainHP
+		if (a.getGainHP()[1]>0) {
+			int hp = a.getGainHP()[0];
+			if (hp > 0) {
+				c.setHp(c.getHp() + a.getGainHP()[0]);
+			}
+			
+			//reduce duration by 1
+			int[] lessTurn = new int[2];
+			lessTurn[0] = a.getGainHP()[0];
+			lessTurn[1] = a.getGainHP()[1] - 1;
+			a.setGainHP(lessTurn);
+		}
+		
+		
 		
 		//stun
 		/*c.setStunnedDuration( a.getStunDuration() );
@@ -73,11 +114,7 @@ public class Character {
 			c.setDr( c.getDr() + dr );
 		}
 		
-		//gainHP
-		int hp = a.getGainHP()[0];
-		if (hp > 0) {
-			c.setHp(c.getHp() + a.getGainHP()[0]);
-		}
+		
 		
 		//gain nature
 		int natureGain = a.getGainNature()[0];

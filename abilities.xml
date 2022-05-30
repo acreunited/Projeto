@@ -31,7 +31,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -93,7 +96,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -150,7 +156,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -212,7 +221,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -274,7 +286,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -331,7 +346,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>1</number>
 			<duration>1</duration>
@@ -387,7 +405,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -449,7 +470,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -505,7 +529,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -561,7 +588,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -617,7 +647,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -679,7 +712,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -736,7 +772,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -793,7 +832,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -860,7 +902,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -922,7 +967,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -978,7 +1026,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1034,7 +1085,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1093,7 +1147,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1158,7 +1215,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1220,7 +1280,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>5</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1282,7 +1345,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1312,8 +1378,8 @@
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>
 		<temporaryDamageIncrease>
-			<extraDamage>40</extraDamage>
-			<duration>1</duration>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="22">
@@ -1350,7 +1416,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1412,7 +1481,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1475,7 +1547,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>yes</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1537,7 +1612,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1560,7 +1638,7 @@
 		</moreDamagePerHPLost>
 		<gainHP>
 			<number>20</number>
-			<duration>0</duration>
+			<duration>2</duration>
 		</gainHP>
 		<moreDamageEnemyHPLost>
 			<extraDamage>0</extraDamage>
@@ -1599,7 +1677,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1661,7 +1742,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1723,7 +1807,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1780,7 +1867,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1842,7 +1932,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1904,7 +1997,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -1966,7 +2062,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2023,7 +2122,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2091,7 +2193,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>10</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>10</number>
+			<duration>1</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2153,7 +2258,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2215,7 +2323,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2272,7 +2383,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2295,7 +2409,7 @@
 		</moreDamagePerHPLost>
 		<gainHP>
 			<number>25</number>
-			<duration>0</duration>
+			<duration>1</duration>
 		</gainHP>
 		<moreDamageEnemyHPLost>
 			<extraDamage>0</extraDamage>
@@ -2334,7 +2448,10 @@
 		<becomeInvulnerable>2</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2396,7 +2513,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2444,7 +2564,7 @@
 		<cooldown>0</cooldown>
 		<targetClick>enemy</targetClick>
 		<damage>
-			<number>20</number>
+			<number>25</number>
 			<duration>1</duration>
 		</damage>
 		<nTimesUsed>0</nTimesUsed>
@@ -2453,7 +2573,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2510,7 +2633,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2540,8 +2666,8 @@
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>
 		<temporaryDamageIncrease>
-			<extraDamage>40</extraDamage>
-			<duration>1</duration>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="42">
@@ -2572,7 +2698,10 @@
 		<becomeInvulnerable>0</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>
@@ -2634,7 +2763,10 @@
 		<becomeInvulnerable>1</becomeInvulnerable>
 		<damageIncreasePerUse>0</damageIncreasePerUse>
 		<destroyDD>no</destroyDD>
-		<permanentDamageIncrease>0</permanentDamageIncrease>
+		<permanentDamageIncrease>
+			<number>0</number>
+			<duration>0</duration>
+		</permanentDamageIncrease>
 		<removeNature>
 			<number>0</number>
 			<duration>0</duration>

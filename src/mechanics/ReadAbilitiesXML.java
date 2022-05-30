@@ -186,23 +186,7 @@ public class ReadAbilitiesXML {
 		
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
-	public static int permanentDamageIncrease(int id) {
-		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
-		document.getDocumentElement().normalize();
-		
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		String cooldown = "//ability[@abilityID='"+id+"']/permanentDamageIncrease/text()";
-		String value = null;
-		
-		try {
-			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
-
-		} catch (XPathExpressionException e) {
-			e.printStackTrace();
-		}
-		
-		return (value==null) ? -1 : Integer.parseInt(value);
-	}
+	
 	
 	public static int becomeInvulnerable(int id) {
 		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
@@ -277,6 +261,49 @@ public class ReadAbilitiesXML {
 	public static int[] damage(int id) {
 		int number = damageNumber(id);
 		int duration = damageDuration(id);
+		int[] arr = new int[2];
+		arr[0] = number;
+		arr[1] = duration;
+		return arr;
+	}
+	
+	public static int permanentDamageIncreaseNumber(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='"+id+"']/permanentDamageIncrease/number/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+		
+		return (value==null) ? -1 : Integer.parseInt(value);
+	}
+	public static int permanentDamageIncreaseDuration(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='"+id+"']/permanentDamageIncrease/duration/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+		
+		return (value==null) ? -1 : Integer.parseInt(value);
+	}
+	public static int[] permanentDamageIncrease(int id) {
+		int number = permanentDamageIncreaseNumber(id);
+		int duration = permanentDamageIncreaseDuration(id);
 		int[] arr = new int[2];
 		arr[0] = number;
 		arr[1] = duration;

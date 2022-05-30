@@ -19,7 +19,7 @@ public class Ability {
 	private int[] damage; //0-number 1-duration
 	//private int damageDuration;
 	private boolean destroysDD;
-	private int permanentDamageIncrease;
+	private int[] permanentDamageIncrease;
 	private int[] removeNature;
 	//private int removeNatureDuration;
 	private int[] gainNature;
@@ -138,11 +138,11 @@ public class Ability {
 		this.destroysDD = destroysDD;
 	}
 
-	public int getPermanentDamageIncrease() {
+	public int[] getPermanentDamageIncrease() {
 		return permanentDamageIncrease;
 	}
 
-	public void setPermanentDamageIncrease(int permanentDamageIncrease) {
+	public void setPermanentDamageIncrease(int[] permanentDamageIncrease) {
 		this.permanentDamageIncrease = permanentDamageIncrease;
 	}
 

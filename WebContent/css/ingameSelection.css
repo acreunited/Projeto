@@ -34,6 +34,9 @@
     height: 560px;
     width: 770px
 }
+* {
+	margin: 0;
+}
 
 .mc_custom,
 .mold {
