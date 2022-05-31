@@ -102,7 +102,6 @@ public class InGame extends HttpServlet {
 			else {
 				response.setContentType("text/html");
 				
-				
 				calculateAbilities(
 						oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, 
 						GameUtils.enemy_activeAbilitiesUsed.get(oppID), GameUtils.enemy_activeCharsUsedSkill.get(oppID), 
@@ -127,6 +126,7 @@ public class InGame extends HttpServlet {
 						);
 
 				updateNatureInGame(session, pw);
+				writeIfCharIsStunned(pw, thisChar1, thisChar2, thisChar3);
 				
 			}
 			
@@ -319,6 +319,9 @@ public class InGame extends HttpServlet {
 					a.setBecomeInvulDuration(invulNovo);
 					target.setInvul(false);
 					
+					int stunNovo = novo.getStunDuration();
+					a.setStunDuration(stunNovo);
+					target.setStunned(false);
 					//target.setDr( target.getDr()-drNovo[0] );
 //					System.out.println("a3: "+c.getAbility3().getCurrentTemporaryDamage());
 //					System.out.println("n3: "+temporaryDamageNovo[0]);
@@ -845,6 +848,16 @@ public class InGame extends HttpServlet {
 		pw.println(" <strong class=\"energy2\">x"+session.getAttribute("energy")+"</strong>");
 		pw.println(" <strong class=\"energy3\">x"+session.getAttribute("spirit")+"</strong>");
 		pw.println(" <strong class=\"energy4\">x"+session.getAttribute("random")+"</strong>");
+	}
+	
+	private void writeIfCharIsStunned(PrintWriter pw, Character thisChar1, Character thisChar2, Character thisChar3) {
+		
+
+		
+		pw.println("break");
+		pw.println(thisChar1.isStunned()+"-"+thisChar2.isStunned()+"-"+thisChar3.isStunned());
+
+		
 	}
 
 	private void createCharacters(HttpSession session) {

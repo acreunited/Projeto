@@ -157,7 +157,11 @@ public class Character {
 			a.setBecomeInvulDuration( a.getBecomeInvulDuration()-1 );
 		}
 		
-		
+		if (a.getStunDuration()>0) {
+			c.setStunnedDuration( a.getStunDuration() );
+			
+			a.setStunDuration( a.getStunDuration()-1 );
+		}
 		
 		//stun
 		/*c.setStunnedDuration( a.getStunDuration() );

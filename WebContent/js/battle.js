@@ -74,7 +74,27 @@ function lockSemaphore() {
 			   document.getElementById("effectsEnemy3").innerHTML = x[11];
 			   
 			   document.getElementById("natures").innerHTML = x[12];
-
+			   
+			   var charIsStunned = x[13].split("-");
+			   
+			   if (charIsStunned[0].trim()=="true") {
+				   $('#allSkillsChar0 img').addClass('disabled');
+			   }
+			   if (charIsStunned[1].trim()=="true") {
+				   $('#allSkillsChar1 img').addClass('disabled');
+			   }
+			   if (charIsStunned[2].trim()=="true") {
+				   $('#allSkillsChar2 img').addClass('disabled');
+			   }
+			   
+//			   var disableAbilities = x[13].split("-");
+//			   for (let i = 0; i < disableAbilities.length; i++) {
+//				   if (document.getElementById("allSkillsChar"+disableAbilities[i].trim())!=null) {
+//					   var current =  document.getElementById("allSkillsChar"+disableAbilities[i].trim()).innerHTML.split("></a>")[0];
+//					   document.getElementById("allSkillsChar"+disableAbilities[i].trim()).innerHTML = current + "class='disabled'></a>";
+//				   }
+//			   }
+			 
 			   defineTurns(true);
 		   }
 		   
@@ -360,7 +380,7 @@ function cancelAbility(pos) {
 function abilityClick(abilityID, selfChar, abilityPos) {
 
 	var imgIDselected = $.map($("#selected"+selfChar+" > img"), div => div.id);
-	//console.log(imgIDselected[0]);
+	
 	if(imgIDselected[0] == "selectedNone" || imgIDselected[0] == null) {
 		
 		const xhttp = new XMLHttpRequest();
@@ -370,9 +390,8 @@ function abilityClick(abilityID, selfChar, abilityPos) {
 		   if (xhttp.status === 200 && xhttp.readyState === 4) {
 			   
 			   removeAllTargetClick();
-			  // console.log("responseText: "+this.responseText.trim());
+			   
 			   var answer = this.responseText.split("-");
-			  // console.log("answer: "+answer);
 			   var element = document.createElement("div");
 			   element.classList.add("choose");
 			   
