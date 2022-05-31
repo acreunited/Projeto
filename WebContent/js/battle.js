@@ -86,15 +86,7 @@ function lockSemaphore() {
 			   if (charIsStunned[2].trim()=="true") {
 				   $('#allSkillsChar2 img').addClass('disabled');
 			   }
-			   
-//			   var disableAbilities = x[13].split("-");
-//			   for (let i = 0; i < disableAbilities.length; i++) {
-//				   if (document.getElementById("allSkillsChar"+disableAbilities[i].trim())!=null) {
-//					   var current =  document.getElementById("allSkillsChar"+disableAbilities[i].trim()).innerHTML.split("></a>")[0];
-//					   document.getElementById("allSkillsChar"+disableAbilities[i].trim()).innerHTML = current + "class='disabled'></a>";
-//				   }
-//			   }
-			 
+
 			   defineTurns(true);
 		   }
 		   
@@ -118,8 +110,7 @@ function storeAbilities() {
 		   endTurn();
 		} 
 	}
-	//xhttp.open("POST", "InGame?metodo=unlock&allAbilitiesUsed="+allAbilitiesUsed+"&allCharsUsedSkill="+allCharsUsedSkill+
-	//		"&allTargets="+allTargets+"&allAllyEnemy="+allAllyEnemy+"&allAbilitiesID="+allAbilitiesID, true);  // assincrono
+
 	xhttp.open("POST", "AbilityActions?action=saveAbilities&allAbilitiesUsed="+allAbilitiesUsed+"&allCharsUsedSkill="+allCharsUsedSkill+
 			"&allTargets="+allTargets+"&allAllyEnemy="+allAllyEnemy+"&allAbilitiesID="+allAbilitiesID, true);
 	xhttp.send(null);
@@ -378,55 +369,59 @@ function cancelAbility(pos) {
 
 
 function abilityClick(abilityID, selfChar, abilityPos) {
-
-	var imgIDselected = $.map($("#selected"+selfChar+" > img"), div => div.id);
 	
-	if(imgIDselected[0] == "selectedNone" || imgIDselected[0] == null) {
+	if (!document.getElementById("imageClickMaybe"+abilityID).classList.contains('disabled')) {
 		
-		const xhttp = new XMLHttpRequest();
-
-		xhttp.onload = function() {
+		var imgIDselected = $.map($("#selected"+selfChar+" > img"), div => div.id);
+		
+		if(imgIDselected[0] == "selectedNone" || imgIDselected[0] == null) {
 			
-		   if (xhttp.status === 200 && xhttp.readyState === 4) {
-			   
-			   removeAllTargetClick();
-			   
-			   var answer = this.responseText.split("-");
-			   var element = document.createElement("div");
-			   element.classList.add("choose");
-			   
-			   if (answer[0].trim()=="self") {
-					document.getElementById("ally"+selfChar).appendChild(element);
-			   }
-			   else if (answer[0].trim()=="ally") {
-					document.getElementById("ally0").appendChild(element.cloneNode(true));
-					document.getElementById("ally1").appendChild(element.cloneNode(true));
-					document.getElementById("ally2").appendChild(element.cloneNode(true));
-			   }
-			   else if (answer[0].trim()=="enemy") {
-				   var elementEnemy = document.createElement("div");
-				   elementEnemy.classList.add("chooseEnemy");
-				   console.log(answer[1]+"-"+answer[2]+"-"+answer[3]);
-				   if (answer[1].trim()=="false") {
-					   document.getElementById("enemy0").appendChild(elementEnemy.cloneNode(true));
+			const xhttp = new XMLHttpRequest();
+
+			xhttp.onload = function() {
+				
+			   if (xhttp.status === 200 && xhttp.readyState === 4) {
+				   
+				   removeAllTargetClick();
+				   
+				   var answer = this.responseText.split("-");
+				   var element = document.createElement("div");
+				   element.classList.add("choose");
+				   
+				   if (answer[0].trim()=="self") {
+						document.getElementById("ally"+selfChar).appendChild(element);
 				   }
-				   if (answer[2].trim()=="false") {
-					   document.getElementById("enemy1").appendChild(elementEnemy.cloneNode(true));
+				   else if (answer[0].trim()=="ally") {
+						document.getElementById("ally0").appendChild(element.cloneNode(true));
+						document.getElementById("ally1").appendChild(element.cloneNode(true));
+						document.getElementById("ally2").appendChild(element.cloneNode(true));
 				   }
-				   if (answer[3].trim()=="false") {
-					   document.getElementById("enemy2").appendChild(elementEnemy.cloneNode(true));
+				   else if (answer[0].trim()=="enemy") {
+					   var elementEnemy = document.createElement("div");
+					   elementEnemy.classList.add("chooseEnemy");
+					   console.log(answer[1]+"-"+answer[2]+"-"+answer[3]);
+					   if (answer[1].trim()=="false") {
+						   document.getElementById("enemy0").appendChild(elementEnemy.cloneNode(true));
+					   }
+					   if (answer[2].trim()=="false") {
+						   document.getElementById("enemy1").appendChild(elementEnemy.cloneNode(true));
+					   }
+					   if (answer[3].trim()=="false") {
+						   document.getElementById("enemy2").appendChild(elementEnemy.cloneNode(true));
+					   }
 				   }
-			   }
-			   
-			   abilityClicked = abilityID;
-			   charPosUsedSkill = selfChar;
-			   abilityUsedPos = abilityPos;
-			} 
+				   
+				   abilityClicked = abilityID;
+				   charPosUsedSkill = selfChar;
+				   abilityUsedPos = abilityPos;
+				} 
+			}
+			xhttp.open("POST", "AbilityActions?action=seeTarget&selfChar="+selfChar+"&abilityPos="+abilityPos, true);  // assincrono
+			xhttp.send(null);
+			
 		}
-		xhttp.open("POST", "AbilityActions?action=seeTarget&selfChar="+selfChar+"&abilityPos="+abilityPos, true);  // assincrono
-		xhttp.send(null);
-		
 	}
+	
 
 	abilityFooterInfo(abilityID);
 	

@@ -326,7 +326,7 @@
     width:54px
 }
 .disabled{
-    opacity:.3
+    opacity:.3;
 }
 .mc_char_12,.mc_char_card{
     position:absolute;

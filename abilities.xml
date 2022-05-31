@@ -938,8 +938,8 @@
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>
 		<temporaryDamageIncrease>
-			<extraDamage>20</extraDamage>
-			<duration>2</duration>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="15">
@@ -1113,8 +1113,8 @@
 			<hpLost>0</hpLost>
 		</moreDamagePerHPLost>
 		<gainHP>
-			<number>0</number>
-			<duration>0</duration>
+			<number>20</number>
+			<duration>1</duration>
 		</gainHP>
 		<moreDamageEnemyHPLost>
 			<extraDamage>0</extraDamage>

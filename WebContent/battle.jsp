@@ -202,7 +202,7 @@ window.onload = function() {
                           String abilityID_my = abilities_my.getString("abilityID");
                           %>
                                  <div class="skillimg<%=count_my%>" id="allSkillsChar<%=countChars%>">
-                                    <a onclick="abilityClick(<%=abilityID_my%>, <%=countChars%>, <%=count_my%>)"><img src="ViewAbility?id=<%=abilityID_my%>"></a>
+                                    <a onclick="abilityClick(<%=abilityID_my%>, <%=countChars%>, <%=count_my%>)"><img src="ViewAbility?id=<%=abilityID_my%>" id="imageClickMaybe<%=abilityID_my%>"></a>
                                  </div>
   
                                   <%
