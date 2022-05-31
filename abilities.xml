@@ -329,11 +329,7 @@
 		<name>Incineration Cannon</name>
 		<description>Genos targets an enemy, dealing 20 damage and removing 1
 			random nature from them.</description>
-		<active>
-			<target>self</target>
-			<text>This character is invulnerable</text>
-			<duration>1</duration>
-		</active>
+
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>

@@ -149,14 +149,20 @@ public class Character {
 			a.setRemoveNature(lessTurn);
 		}
 		
+		//become invulnerable
+		if (a.getBecomeInvulDuration()>0) {
+			c.setInvulDuration( a.getBecomeInvulDuration() );
+			
+			//reduce duration by 1
+			a.setBecomeInvulDuration( a.getBecomeInvulDuration()-1 );
+		}
 		
 		
 		
 		//stun
 		/*c.setStunnedDuration( a.getStunDuration() );
 		
-		//become invulnerable
-		c.setInvulDuration( a.getBecomeInvulDuration() );
+		
 		
 		//TODO DD e DR - quando duração acaba, tirar DR ou DD mas só da habilidade
 		

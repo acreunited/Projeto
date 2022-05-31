@@ -54,7 +54,14 @@ public class AbilityActions extends HttpServlet {
 			Ability a = getSelectedAbility(abilityPos, selfChar, thisChar1, thisChar2, thisChar3);
 			
 			if (a!=null) {
-				pw.write(a.getTargetClick());
+				if (a.isIgnoresInvul()) {
+					pw.write(a.getTargetClick()+"-false-false-false");
+				}
+				else {
+					pw.write(a.getTargetClick()
+							+"-"+oppChar1.isInvul()+"-"+oppChar2.isInvul()+"-"+oppChar3.isInvul());
+				}
+				
 			}
 			else {
 				System.out.println("HABILIDADE NULL");

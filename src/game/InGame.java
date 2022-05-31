@@ -101,13 +101,7 @@ public class InGame extends HttpServlet {
 			}
 			else {
 				response.setContentType("text/html");
-				int gain1 = thisChar1.getNatureGain();
-				int gain2 = thisChar2.getNatureGain();
-				int gain3 = thisChar3.getNatureGain();
-				int loss1 = thisChar1.getNatureLoss();
-				int loss2 = thisChar2.getNatureLoss();
-				int loss3 = thisChar3.getNatureLoss();
-				generateRandomNatures(session, 3 + gain1+gain2+gain3 -loss1-loss2-loss3);
+				
 				
 				calculateAbilities(
 						oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, 
@@ -115,6 +109,14 @@ public class InGame extends HttpServlet {
 						GameUtils.enemy_activeTargets.get(oppID), GameUtils.enemy_activeAllyEnemy.get(oppID), 
 						GameUtils.enemy_activeAbilitiesID.get(oppID)
 						);
+				
+				int gain1 = thisChar1.getNatureGain();
+				int gain2 = thisChar2.getNatureGain();
+				int gain3 = thisChar3.getNatureGain();
+				int loss1 = thisChar1.getNatureLoss();
+				int loss2 = thisChar2.getNatureLoss();
+				int loss3 = thisChar3.getNatureLoss();
+				generateRandomNatures(session, 3 + gain1+gain2+gain3 -loss1-loss2-loss3);
 				
 				writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 
@@ -312,6 +314,10 @@ public class InGame extends HttpServlet {
 					int[] removeNatureNovo = novo.getRemoveNature();
 					a.setRemoveNature(removeNatureNovo);
 					target.setNatureLoss( target.getNatureLoss() - removeNatureNovo[0] );
+					
+					int invulNovo = novo.getBecomeInvulDuration();
+					a.setBecomeInvulDuration(invulNovo);
+					target.setInvul(false);
 					
 					//target.setDr( target.getDr()-drNovo[0] );
 //					System.out.println("a3: "+c.getAbility3().getCurrentTemporaryDamage());

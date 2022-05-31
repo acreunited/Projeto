@@ -8,5 +8,5 @@ criar varias habilidades 1, 2, 3, 4
 
 add stack effect in xml
 
-remover energia está a fazer 1 turno depois 
-	- talvez seja preciso separar mecanicas de skills que aparecem
+
+- talvez seja preciso separar mecanicas de skills que aparecem
