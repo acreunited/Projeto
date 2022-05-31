@@ -73,6 +73,15 @@ public class Character {
 			a.setPermanentDamageIncrease( (lessTurn) );
 		}
 		
+		//temporary damage
+		if (a.getTemporaryDamageIncrease()[1] > 0) {
+			//c.setTemporaryDamageIncrease( c.getTemporaryDamageIncrease() + a.getTemporaryDamageIncrease()[0] );
+			this.ability1.setCurrentTemporaryDamage( this.ability1.getCurrentTemporaryDamage() + a.getTemporaryDamageIncrease()[0] );
+			this.ability2.setCurrentTemporaryDamage( this.ability2.getCurrentTemporaryDamage() + a.getTemporaryDamageIncrease()[0] );
+			this.ability3.setCurrentTemporaryDamage( this.ability3.getCurrentTemporaryDamage() + a.getTemporaryDamageIncrease()[0] );
+			this.ability4.setCurrentTemporaryDamage( this.ability4.getCurrentTemporaryDamage() + a.getTemporaryDamageIncrease()[0] );
+		}
+		
 		//damagePerUse
 		if (a.getDamageIncreasePerUse()>0) {
 			a.setnTimesUsed( a.getnTimesUsed()+1 );
@@ -92,6 +101,55 @@ public class Character {
 			a.setGainHP(lessTurn);
 		}
 		
+		//gain DR
+		if (a.getDR()[1]>0) {
+			int dr = a.getDR()[0];
+			if (dr>0) {
+				if (a.getGainDRTarget().equalsIgnoreCase("self")) {
+					this.setDr( this.getDr() + dr );
+				}
+				else {
+					c.setDr( c.getDr() + dr );
+				}
+				
+			}
+			
+			//reduce duration by 1
+			int[] lessTurn = new int[2];
+			lessTurn[0] = a.getDR()[0];
+			lessTurn[1] = a.getDR()[1] - 1;
+			a.setDR(lessTurn);
+		}
+		
+		//gain nature
+		if (a.getGainNature()[1]>0) {
+			int natureGain = a.getGainNature()[0];
+			if (natureGain>0) {
+				c.setNatureGain( c.getNatureGain() + natureGain );
+			}
+			
+			//reduce duration by 1
+			int[] lessTurn = new int[2];
+			lessTurn[0] = a.getGainNature()[0];
+			lessTurn[1] = a.getGainNature()[1] - 1;
+			a.setGainNature(lessTurn);
+		}
+		
+		//lose nature
+		if (a.getRemoveNature()[1]>0) {
+			int natureLoss = a.getRemoveNature()[0];
+			if (natureLoss > 0) {
+				c.setNatureLoss( c.getNatureLoss() + natureLoss );
+			}
+			
+			//reduce duration by 1
+			int[] lessTurn = new int[2];
+			lessTurn[0] = a.getRemoveNature()[0];
+			lessTurn[1] = a.getRemoveNature()[1] - 1;
+			a.setRemoveNature(lessTurn);
+		}
+		
+		
 		
 		
 		//stun
@@ -106,28 +164,8 @@ public class Character {
 		int dd = a.getGainDD()[0];
 		if (dd>0) {
 			c.setDd( c.getDd() + dd );
-		}
-		
-		//gain DR
-		int dr = a.getDR()[0];
-		if (dr>0) {
-			c.setDr( c.getDr() + dr );
-		}
-		
-		
-		
-		//gain nature
-		int natureGain = a.getGainNature()[0];
-		if (natureGain>0) {
-			c.setNatureGain( c.getNatureGain() + natureGain );
-		}
-		
-		//lose nature
-		int natureLoss = a.getRemoveNature()[0];
-		if (natureLoss > 0) {
-			c.setNatureLoss( c.getNatureLoss() + natureLoss );
 		}*/
-			
+				
 	}
 
 	
@@ -135,7 +173,7 @@ public class Character {
 		int damage = a.getDamage()[0];
 		
 		int permanent = this.getPermanentDamageIncrease();
-		int temporary = this.getTemporaryDamageIncrease();
+		int temporary = a.getCurrentTemporaryDamage();
 		int damageIncreaseUse = a.getDamageIncreasePerUse();
 		if (damageIncreaseUse>0) {
 			damageIncreaseUse = damageIncreaseUse*a.getnTimesUsed();
@@ -151,6 +189,9 @@ public class Character {
 		if (damagePerSelfHPLost>0) {
 			damage += damagePerSelfHPLost;
 		}
+		
+		//check if opp has DR
+		damage -= c.getDr();
 
 		return damage;
 	}

@@ -482,7 +482,23 @@ public class ReadAbilitiesXML {
 		arr[1] = duration;
 		return arr;
 	}
-	
+	public static String gainDRTarget(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='"+id+"']/gainDR/target/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+		
+		return value;
+	}
 	private static int gainHPNumber(int id) {
 		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
 		document.getDocumentElement().normalize();
@@ -653,6 +669,49 @@ public class ReadAbilitiesXML {
 		int[] arr = new int[2];
 		arr[0] = number;
 		arr[1] = duration;
+		return arr;
+	}
+	
+	private static String temporaryDamageIncreaseTarget(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='"+id+"']/temporaryDamageIncrease/target/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+		
+		return value;
+	}
+	private static String temporaryDamageIncreaseWhich(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='"+id+"']/temporaryDamageIncrease/whichAbilities/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+		
+		return value;
+	}
+	public static String[] temporaryDamageIncreaseTargetWhich(int id) {
+		String target = temporaryDamageIncreaseTarget(id);
+		String which = temporaryDamageIncreaseWhich(id);
+		String[] arr = new String[2];
+		arr[0] = target;
+		arr[1] = which;
 		return arr;
 	}
 	

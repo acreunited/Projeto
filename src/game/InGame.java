@@ -101,7 +101,13 @@ public class InGame extends HttpServlet {
 			}
 			else {
 				response.setContentType("text/html");
-				generateRandomNatures(session, 3);
+				int gain1 = thisChar1.getNatureGain();
+				int gain2 = thisChar2.getNatureGain();
+				int gain3 = thisChar3.getNatureGain();
+				int loss1 = thisChar1.getNatureLoss();
+				int loss2 = thisChar2.getNatureLoss();
+				int loss3 = thisChar3.getNatureLoss();
+				generateRandomNatures(session, 3 + gain1+gain2+gain3 -loss1-loss2-loss3);
 				
 				calculateAbilities(
 						oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, 
@@ -231,7 +237,7 @@ public class InGame extends HttpServlet {
 		ArrayList<String> allAbilitiesUsed = abilitiesUsed.get(id);
 		ArrayList<String> allCharsUsedSkill = charsUsedSkill.get(id);
 		ArrayList<String> allTargets = targets.get(id);
-		//ArrayList<String> allAllyEnemy = allyEnemy.get(id);
+		ArrayList<String> allAllyEnemy = allyEnemy.get(id);
 		ArrayList<String> allAbilitiesID = abilitiesID.get(id);
 		
 		ArrayList<Integer> removeIndex = new ArrayList<Integer>();
@@ -280,12 +286,42 @@ public class InGame extends HttpServlet {
 					
 					
 					Ability novo = new Ability(Integer.parseInt( allAbilitiesID.get(i) ));
+					//Character target = new Character(Integer.parseInt(allTargets.get(i) ));
+					Character target = 
+							(isUnlock) ? getTarget(allAllyEnemy.get(i), allTargets.get(i), this1, this2, this3, opp1, opp2, opp3)
+									: getTarget(allAllyEnemy.get(i), allTargets.get(i), opp1, opp2, opp3, this1, this2, this3);
+					
 					int[] damageNovo = novo.getDamage();
 					a.setDamage(damageNovo);
 					int[] gainHPNovo = novo.getGainHP();
 					a.setGainHP(gainHPNovo);
 					int[] permanentDamageNovo = novo.getPermanentDamageIncrease();
 					a.setPermanentDamageIncrease(permanentDamageNovo);
+					int[] temporaryDamageNovo = novo.getTemporaryDamageIncrease();
+					a.setTemporaryDamageIncrease(temporaryDamageNovo);
+					int[] drNovo = novo.getDR();
+					a.setDR(drNovo);
+					//System.out.println("current: "+c.getDr()+"\nSubtract: "+drNovo[0]+"\nAfter: "+(c.getDr()-drNovo[0]));
+					if (a.getGainDRTarget().equalsIgnoreCase("self")) {
+						c.setDr( c.getDr()-drNovo[0] );
+					}
+					int[] gainNatureNovo = novo.getGainNature();
+					a.setGainNature(gainNatureNovo);
+					target.setNatureGain( target.getNatureGain() - gainNatureNovo[0] );
+					
+					int[] removeNatureNovo = novo.getRemoveNature();
+					a.setRemoveNature(removeNatureNovo);
+					target.setNatureLoss( target.getNatureLoss() - removeNatureNovo[0] );
+					
+					//target.setDr( target.getDr()-drNovo[0] );
+//					System.out.println("a3: "+c.getAbility3().getCurrentTemporaryDamage());
+//					System.out.println("n3: "+temporaryDamageNovo[0]);
+//					System.out.println("final: "+ (c.getAbility3().getCurrentTemporaryDamage() - temporaryDamageNovo[0]) );
+					c.getAbility1().setCurrentTemporaryDamage( c.getAbility1().getCurrentTemporaryDamage() - temporaryDamageNovo[0] );
+					c.getAbility2().setCurrentTemporaryDamage( c.getAbility2().getCurrentTemporaryDamage() - temporaryDamageNovo[0] );
+					c.getAbility3().setCurrentTemporaryDamage( c.getAbility3().getCurrentTemporaryDamage() - temporaryDamageNovo[0] );
+					c.getAbility4().setCurrentTemporaryDamage( c.getAbility4().getCurrentTemporaryDamage() - temporaryDamageNovo[0] );
+								
 					
 					if (a.getActiveDuration().get(0).equalsIgnoreCase("permanent")) {
 						writeThis(i, a, allAbilitiesUsed, allCharsUsedSkill, allTargets, a.getActiveTarget().get(0), allAbilitiesID, isUnlock, 
@@ -762,24 +798,27 @@ public class InGame extends HttpServlet {
 
 
 	private void generateRandomNatures(HttpSession session, int number) {
-		for (int i = 0; i < number; i++) {
-			
-			Random r = new Random();
-			int randomInt = r.nextInt(100) + 1;
-			
-			if (randomInt <=25) {
-				session.setAttribute("taijutsu", (int) session.getAttribute("taijutsu")+1);
+		if (number>0) {
+			for (int i = 0; i < number; i++) {
+				
+				Random r = new Random();
+				int randomInt = r.nextInt(100) + 1;
+				
+				if (randomInt <=25) {
+					session.setAttribute("taijutsu", (int) session.getAttribute("taijutsu")+1);
+				}
+				else if (randomInt <= 50) {
+					session.setAttribute("heart", (int) session.getAttribute("heart")+1);
+				}
+				else if (randomInt <=75) {
+					session.setAttribute("energy", (int) session.getAttribute("energy")+1);
+				}
+				else {
+					session.setAttribute("spirit", (int) session.getAttribute("spirit")+1);
+				}			
 			}
-			else if (randomInt <= 50) {
-				session.setAttribute("heart", (int) session.getAttribute("heart")+1);
-			}
-			else if (randomInt <=75) {
-				session.setAttribute("energy", (int) session.getAttribute("energy")+1);
-			}
-			else {
-				session.setAttribute("spirit", (int) session.getAttribute("spirit")+1);
-			}			
 		}
+		
 		updateRandom(session);
 		
 	}

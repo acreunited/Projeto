@@ -1,3 +1,12 @@
 habilidades com ID igual sao todas removidas, mesmo quando são personagens em equipas diferentes
 	- por exemplo, Ichigo em 2 equipas
 	- talvez acrescentar que aquele é o da sua equipa num sitio do id da habilidade ajude a resolver
+
+adicionar target das habilidades no temporaryDamage e aumentar esse valor
+
+criar varias habilidades 1, 2, 3, 4
+
+add stack effect in xml
+
+remover energia está a fazer 1 turno depois 
+	- talvez seja preciso separar mecanicas de skills que aparecem

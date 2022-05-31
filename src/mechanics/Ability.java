@@ -26,14 +26,20 @@ public class Ability {
 	//private int gainNatureDuration;
 	private int[] gainDD;
 	private int[] gainDR;
+	private String gainDRTarget;
 	private int[] damagePerHPLost; //0-damage 1 -hpLost
 	private int[] gainHP;//0-hp 1-duration
 	private int[] damagePerEnemyHPLost;
 	private int[] temporaryDamageIncrease;
+	private String[] temporaryDamageIncreaseTarget;
+	private int currentTemporaryDamage;
 	
 	public Ability(int id) {
+		this.currentTemporaryDamage = 0;
 		this.id = id;
 		this.nTimesUsed = 0;
+		this.gainDRTarget = ReadAbilitiesXML.gainDRTarget(id);
+		this.temporaryDamageIncreaseTarget = ReadAbilitiesXML.temporaryDamageIncreaseTargetWhich(id);
 		this.name = ReadAbilitiesXML.getName(id);
 		this.targetClick = ReadAbilitiesXML.getTargetClick(id);
 		this.cooldown = ReadAbilitiesXML.getCooldown(id);
@@ -247,6 +253,30 @@ public class Ability {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getCurrentTemporaryDamage() {
+		return currentTemporaryDamage;
+	}
+
+	public void setCurrentTemporaryDamage(int currentTemporaryDamage) {
+		this.currentTemporaryDamage = (currentTemporaryDamage > 0) ? currentTemporaryDamage : 0;
+	}
+
+	public String[] getTemporaryDamageIncreaseTarget() {
+		return temporaryDamageIncreaseTarget;
+	}
+
+	public void setTemporaryDamageIncreaseTarget(String[] temporaryDamageIncreaseTarget) {
+		this.temporaryDamageIncreaseTarget = temporaryDamageIncreaseTarget;
+	}
+
+	public String getGainDRTarget() {
+		return gainDRTarget;
+	}
+
+	public void setGainDRTarget(String gainDRTarget) {
+		this.gainDRTarget = gainDRTarget;
 	}
 
 

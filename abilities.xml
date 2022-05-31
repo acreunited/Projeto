@@ -66,6 +66,8 @@
 		<temporaryDamageIncrease>
 			<extraDamage>5</extraDamage>
 			<duration>3</duration>
+			<target>self</target>
+			<whichAbilities>all</whichAbilities>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="1">
@@ -129,8 +131,8 @@
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>
 		<temporaryDamageIncrease>
-			<extraDamage>15</extraDamage>
-			<duration>2</duration>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="2">
@@ -189,8 +191,8 @@
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>
 		<temporaryDamageIncrease>
-			<extraDamage>30</extraDamage>
-			<duration>1</duration>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="3">
@@ -327,6 +329,11 @@
 		<name>Incineration Cannon</name>
 		<description>Genos targets an enemy, dealing 20 damage and removing 1
 			random nature from them.</description>
+		<active>
+			<target>self</target>
+			<text>This character is invulnerable</text>
+			<duration>1</duration>
+		</active>
 		<nature>
 			<taijutsu>0</taijutsu>
 			<heart>0</heart>
@@ -379,8 +386,8 @@
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>
 		<temporaryDamageIncrease>
-			<extraDamage>20</extraDamage>
-			<duration>1</duration>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="6">
@@ -1313,8 +1320,8 @@
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>
 		<temporaryDamageIncrease>
-			<extraDamage>20</extraDamage>
-			<duration>1</duration>
+			<extraDamage>0</extraDamage>
+			<duration>0</duration>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="21">
@@ -1566,6 +1573,7 @@
 		<gainDR>
 			<number>10</number>
 			<duration>1</duration>
+			<target>self</target>
 		</gainDR>
 		<moreDamagePerHPLost>
 			<extraDamage>0</extraDamage>
@@ -1942,7 +1950,7 @@
 		</removeNature>
 		<gainNature>
 			<number>1</number>
-			<duration>0</duration>
+			<duration>1</duration>
 		</gainNature>
 		<gainDD>
 			<number>0</number>
@@ -2356,8 +2364,10 @@
 			<hpLost>0</hpLost>
 		</moreDamageEnemyHPLost>
 		<temporaryDamageIncrease>
-			<extraDamage>20</extraDamage>
+			<extraDamage>5</extraDamage>
 			<duration>1</duration>
+			<target>self</target>
+			<whichAbilities>current</whichAbilities>
 		</temporaryDamageIncrease>
 	</ability>
 	<ability abilityID="37">
