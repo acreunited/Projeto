@@ -11,3 +11,8 @@ add stack effect in xml
 - talvez seja preciso separar mecanicas de skills que aparecem
 
 cancelar uma habilidade antes de terminar o turno executa-a na mesma
+
+gain nature duration +1 - XML
+
+DD sóe stá a funcionar como se fosse self..
+a.getCurrentDD() na descricao do skill activo - XML

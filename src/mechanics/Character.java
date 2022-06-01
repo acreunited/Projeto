@@ -1,5 +1,6 @@
 package mechanics;
 
+import java.math.RoundingMode;
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
@@ -47,6 +48,15 @@ public class Character {
 	}
 	
 	public void applyAbility(Ability a, Character c) {
+		
+		//destroyDD
+		if (a.isDestroysDD()) {
+			c.getAbility1().setCurrentDD(0);
+			c.getAbility2().setCurrentDD(0);
+			c.getAbility3().setCurrentDD(0);
+			c.getAbility4().setCurrentDD(0);
+		}
+		
 		//damage
 		if (a.getDamage()[1]>0) {
 			
@@ -163,18 +173,22 @@ public class Character {
 			a.setStunDuration( a.getStunDuration()-1 );
 		}
 		
-		//stun
-		/*c.setStunnedDuration( a.getStunDuration() );
-		
-		
-		
-		//TODO DD e DR - quando duração acaba, tirar DR ou DD mas só da habilidade
-		
 		//gain DD
-		int dd = a.getGainDD()[0];
-		if (dd>0) {
-			c.setDd( c.getDd() + dd );
-		}*/
+		if (a.getGainDD()[1]>0) {
+			int[] lessTurn = new int[2];
+			
+			if (a.getGainDD()[0]<=0) {
+				lessTurn[0] = a.getGainDD()[0];
+				lessTurn[1] = 0;
+				a.setGainDD(lessTurn);
+			}
+			else {
+				a.setCurrentDD( a.getCurrentDD() + a.getGainDD()[0] );
+				lessTurn[0] = a.getGainDD()[0];
+				lessTurn[1] = a.getGainDD()[1] - 1;
+				a.setGainDD(lessTurn);
+			}
+		}
 				
 	}
 
@@ -202,48 +216,42 @@ public class Character {
 		
 		//check if opp has DR
 		damage -= c.getDr();
-
-		return damage;
+		
+		//check if opp has DD
+		damage = c.getAbility1().affectDD(damage);
+		damage = c.getAbility2().affectDD(damage);
+		damage = c.getAbility3().affectDD(damage);
+		damage = c.getAbility4().affectDD(damage);
+		
+		return (damage>0) ? damage : 0;
 	}
+	
 	private int getAbilityDamageEnemyHP(Ability a, Character c) {
-		/*int damagePerEnemyHPLost = 0;
+
+		int hpLost = 100-c.getHp();
+		int damagePerHp = a.getDamagePerEnemyHPLost()[1];		
+		int damage = a.getDamagePerEnemyHPLost()[0];
 		
-		int enemyHP_damage = a.getDamagePerEnemyHPLost()[0];
-		int enemyHP_hp = a.getDamagePerHPLost()[1];
-		if (enemyHP_damage<0 || enemyHP_hp<0) {
-			return -1;
+		int nTimes = -1;
+		if (damagePerHp>0) {
+			nTimes = (int) Math.ceil(hpLost/damagePerHp);
 		}
 		
-		int currentEnemyHP = c.getHp();
-		int currentEnemyHP_lost = 100-currentEnemyHP;
-		if (currentEnemyHP_lost>=enemyHP_hp) {
-			do {
-				damagePerEnemyHPLost += enemyHP_damage;
-				currentEnemyHP_lost -= enemyHP_hp;
-			}
-			while (currentEnemyHP_lost-enemyHP_hp>0);
-		}
-		return damagePerEnemyHPLost;*/
-		return 0;
+		return damage*nTimes;
 	}
 	private int getAbilityDamageSelfHP(Ability a) {
-		/*int damagePerSelfHPLost = 0;
 		
-		int selfHP_damage = a.getDamagePerHPLost()[0];
-		int selfHP_hp = a.getDamagePerHPLost()[1];
-		if (selfHP_damage<0 || selfHP_hp<0) {
-			return -1;
+		int hpLost = 100-this.getHp();
+		int damagePerHp = a.getDamagePerHPLost()[1];		
+		int damage = a.getDamagePerHPLost()[0];
+		
+		int nTimes = -1;
+		if (damagePerHp>0) {
+			nTimes = (int) Math.ceil(hpLost/damagePerHp);
 		}
-		int currentHP_lost = 100-this.getHp();
-		if(currentHP_lost >= selfHP_hp) {
-			do {
-				damagePerSelfHPLost += selfHP_damage;
-				currentHP_lost -= selfHP_hp;
-			}
-			while(currentHP_lost-selfHP_hp > 0);
-		}
-		return damagePerSelfHPLost;*/
-		return 0;
+		
+		return damage*nTimes;
+		
 	}
 	
 	public int getId() {

@@ -48,9 +48,7 @@ public class InGame extends HttpServlet {
 
 		int id = (int) session.getAttribute("userID");
 		
-		
 		String metodo = request.getParameter("metodo");
-		
 		
 		if (metodo.equalsIgnoreCase("create")) {
 			
@@ -322,6 +320,12 @@ public class InGame extends HttpServlet {
 					int stunNovo = novo.getStunDuration();
 					a.setStunDuration(stunNovo);
 					target.setStunned(false);
+					
+					int[] ddNovo = novo.getGainDD();
+					a.setGainDD(ddNovo);
+					a.setCurrentDD( a.getCurrentDD()-ddNovo[0] );
+					
+					
 					//target.setDr( target.getDr()-drNovo[0] );
 //					System.out.println("a3: "+c.getAbility3().getCurrentTemporaryDamage());
 //					System.out.println("n3: "+temporaryDamageNovo[0]);
@@ -480,7 +484,14 @@ public class InGame extends HttpServlet {
 		resposta += "\n<span class='tooltiptext' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
 
 		resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
-		resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+		
+		String[] descDD = a.getActiveDescription().get(0).split("a.getCurrentDD()");
+		if (descDD.length>=2) {
+			resposta += "\n<span class='tooltiptextdesc'>"+descDD[0]+a.getCurrentDD()+descDD[1].substring(2)+"</span>";
+		}
+		else {
+			resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+		}
 		
 		if (a.getActiveDuration().get(0).equalsIgnoreCase("permanent")) {
 			resposta += "\n<span class='tooltiptextduration'>INFINITE</span>";
@@ -505,7 +516,15 @@ public class InGame extends HttpServlet {
 		resposta += "\n<span class='tooltiptext1' id='tooltiptext"+allAbilitiesID.get(i)+"'>";
 	
 		resposta += "\n<span class='tooltiptextname'>"+a.getName()+"</span>";
-		resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+		
+		String[] descDD = a.getActiveDescription().get(0).split("a.getCurrentDD()");		
+		if (descDD.length>=2) {
+			resposta += "\n<span class='tooltiptextdesc'>"+descDD[0]+a.getCurrentDD()+descDD[1].substring(2)+"</span>";
+		}
+		else {
+			resposta += "\n<span class='tooltiptextdesc'>"+a.getActiveDescription().get(0)+"</span>";
+		}
+		
 		
 		if (a.getActiveDuration().get(0).equalsIgnoreCase("permanent")) {
 			resposta += "\n<span class='tooltiptextduration'>INFINITE</span>";

@@ -33,9 +33,11 @@ public class Ability {
 	private int[] temporaryDamageIncrease;
 	private String[] temporaryDamageIncreaseTarget;
 	private int currentTemporaryDamage;
+	private int currentDD;
 	
 	public Ability(int id) {
 		this.currentTemporaryDamage = 0;
+		this.currentDD = 0;
 		this.id = id;
 		this.nTimesUsed = 0;
 		this.gainDRTarget = ReadAbilitiesXML.gainDRTarget(id);
@@ -63,9 +65,21 @@ public class Ability {
 		this.activeDuration = ReadAbilitiesXML.getActiveDuration(id);
 	}
 
-//	public void doDamage(Character c) {
-//		
-//	}
+	
+	public int affectDD(int damage) {
+		//System.out.println( "dd "+this.getCurrentDD());
+		//System.out.println("math: "+ (damage - this.getCurrentDD()) );
+		int retorno = damage - this.getCurrentDD();
+		
+		this.setCurrentDD( this.getCurrentDD()-damage );
+		
+		int[] update = new int[2];
+		update[0] = (this.getGainDD()[0]-damage > 0) ? this.getGainDD()[0]-damage : 0;
+		update[1] = this.getGainDD()[1];
+		this.setGainDD(update);
+		
+		return retorno;
+	}
 	
 	
 	public int getId() {
@@ -277,6 +291,14 @@ public class Ability {
 
 	public void setGainDRTarget(String gainDRTarget) {
 		this.gainDRTarget = gainDRTarget;
+	}
+
+	public int getCurrentDD() {
+		return currentDD;
+	}
+
+	public void setCurrentDD(int currentDD) {
+		this.currentDD = (currentDD>0) ? currentDD : 0;
 	}
 
 

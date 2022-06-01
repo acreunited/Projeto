@@ -1392,7 +1392,7 @@
 		</description>
 		<active>
 			<target>self</target>
-			<text>This character has 15 Destructible Defense</text>
+			<text>This character has a.getCurrentDD() Destructible Defense and will deal 5 additional damage.</text>
 			<duration>3</duration>
 		</active>
 		<active>
@@ -1659,7 +1659,7 @@
 			Destructible Defense.</description>
 		<active>
 			<target>self</target>
-			<text>This character has 30 Destructible Defense.</text>
+			<text>This character has a.getCurrentDD() Destructible Defense.</text>
 			<duration>3</duration>
 		</active>
 		<nature>
@@ -2682,7 +2682,7 @@
 			Defense and 1 random nature.</description>
 		<active>
 			<target>self</target>
-			<text>This character has 30 Destructible Defense and will gain 1 random nature</text>
+			<text>This character has a.getCurrentDD() Destructible Defense and will gain 1 random nature</text>
 			<duration>1</duration>
 		</active>
 		<nature>
@@ -2714,7 +2714,7 @@
 		</removeNature>
 		<gainNature>
 			<number>1</number>
-			<duration>0</duration>
+			<duration>1</duration>
 		</gainNature>
 		<gainDD>
 			<number>30</number>
