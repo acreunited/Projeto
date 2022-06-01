@@ -34,8 +34,10 @@ public class Ability {
 	private String[] temporaryDamageIncreaseTarget;
 	private int currentTemporaryDamage;
 	private int currentDD;
+	private int currentCooldown;
 	
 	public Ability(int id) {
+		this.currentCooldown = 0;
 		this.currentTemporaryDamage = 0;
 		this.currentDD = 0;
 		this.id = id;
@@ -299,6 +301,16 @@ public class Ability {
 
 	public void setCurrentDD(int currentDD) {
 		this.currentDD = (currentDD>0) ? currentDD : 0;
+	}
+
+
+	public int getCurrentCooldown() {
+		return currentCooldown;
+	}
+
+
+	public void setCurrentCooldown(int currentCooldown) {
+		this.currentCooldown = (currentCooldown>0) ? currentCooldown : 0;
 	}
 
 

@@ -98,10 +98,19 @@
 								      <%=name_ability %>
 								   </div>
 								   <img src="ViewAbility?id=<%=abilityID %>" class="fotoskill borda"> 
+								   <%
+								   		}
+							   ResultSet cool = conn.createStatement().executeQuery(
+										"select * from ABILITY where abilityID="+abilityID+";");
+								if (cool.next()) {
+									int cooldown = cool.getInt("cooldown");
+								 %>
+								<div class="cooldown">
+							   		Cooldown: <%=cooldown%>
+							   </div>
 							   </div>
 							   
 							   <%
-							  
 								}
 								abilit.close();
 						   }
@@ -109,9 +118,7 @@
 								
 							   %>
 						  
-						   <div class="cooldown">
-						   		Cooldown: 
-						   </div>
+						  
 						   
 						</div>
 					    

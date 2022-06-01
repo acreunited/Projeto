@@ -99,7 +99,7 @@ public class AbilityActions extends HttpServlet {
 		}
 		else if (action.equalsIgnoreCase("saveAbilities")) {
 			
-			saveAbilities(request, session, id);
+			saveAbilities(request, session, id, thisChar1, thisChar2, thisChar3);
 		}
 		
 	
@@ -146,7 +146,7 @@ public class AbilityActions extends HttpServlet {
 		return a;
 	}
 	
-	private void saveAbilities(HttpServletRequest request, HttpSession session, int id) {
+	private void saveAbilities(HttpServletRequest request, HttpSession session, int id, Character thisChar1,Character thisChar2,Character thisChar3) {
 		String uuid = (String) session.getAttribute("uuid");
 		
 		String allAbilitiesUsed = request.getParameter("allAbilitiesUsed");
@@ -163,6 +163,13 @@ public class AbilityActions extends HttpServlet {
 	
 		for (int i = 0; i < abilitiesUsed.length; i++) {
 			if (abilitiesUsed[i].length() > 0) {
+//				int abilityPos = Integer.parseInt( request.getParameter("abilityPos") );
+//				int selfChar = Integer.parseInt( request.getParameter("selfChar") );
+				
+				//Character c = getCharacterUsed(charsUsedSkill[i], thisChar1, thisChar2, thisChar3);
+				Ability a = getSelectedAbility(Integer.parseInt(abilitiesUsed[i]), Integer.parseInt(charsUsedSkill[i]), thisChar1, thisChar2, thisChar3);
+				a.setCurrentCooldown( a.getCooldown()+1 );
+				
 				GameUtils.activeAbilitiesUsed.get(id).add(abilitiesUsed[i]);
 				GameUtils.activeCharsUsedSkill.get(id).add(charsUsedSkill[i]);
 				GameUtils.activeTargets.get(id).add(targets[i]);
@@ -177,12 +184,7 @@ public class AbilityActions extends HttpServlet {
 			}
 			
 		}
-		
-//		GameUtils.allAbilitiesUsed.put(uuid, abilitiesUsed);
-//		GameUtils.allCharsUsedSkill.put(uuid, charsUsedSkill);
-//		GameUtils.allTargets.put(uuid, targets);
-//		GameUtils.allAllyEnemy.put(uuid, allyEnemy);
-//		GameUtils.allAbilitiesID.put(uuid, abilitiesID);
+	
 	}
 	
 	

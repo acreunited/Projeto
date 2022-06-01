@@ -203,6 +203,7 @@ window.onload = function() {
                           %>
                                  <div class="skillimg<%=count_my%>" id="allSkillsChar<%=countChars%>">
                                     <a onclick="abilityClick(<%=abilityID_my%>, <%=countChars%>, <%=count_my%>)"><img src="ViewAbility?id=<%=abilityID_my%>" id="imageClickMaybe<%=abilityID_my%>"></a>
+                                	 <span class="cooldown" id="cooldown<%=countChars%>-<%=count_my%>" style="display: none"></span> 
                                  </div>
   
                                   <%
@@ -466,7 +467,20 @@ window.onload = function() {
 				                     
 				                     <div class="ability_info_name"><%=nome_ab%></div>
 				                     <div class="ability_info_desc"><%=descricao_ab%></div>
-				
+									 
+									 <%
+									 ResultSet cool = conn.createStatement().executeQuery(
+												"select * from ABILITY where abilityID="+abilityID+";");
+										if (cool.next()) {
+											int cooldown = cool.getInt("cooldown");
+										 %>
+									 
+									 <div class="ability_info_cooldown">
+									    COOLDOWN: <%=cooldown%>
+									 </div>
+									 <%
+										}
+									 %>
 				                   </div>
 								 <%
 								 	}

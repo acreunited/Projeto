@@ -86,7 +86,46 @@ function lockSemaphore() {
 			   if (charIsStunned[2].trim()=="true") {
 				   $('#allSkillsChar2 img').addClass('disabled');
 			   }
+			   
+			   var cooldown1 = x[14].split("-");
+			   for (let i = 0; i<cooldown1.length; i++) {
+				   document.getElementById("cooldown0-"+i).innerHTML = cooldown1[i].trim();
+				   if (cooldown1[i].trim()!="0") {
+					   document.getElementById("cooldown0-"+i).style.display = "block";
+					   document.getElementById("cooldown0-"+i).parentElement.classList.add('disabled');
+				   }
+				   else {
+					   document.getElementById("cooldown0-"+i).style.display = "none";
+					   document.getElementById("cooldown0-"+i).parentElement.classList.remove('disabled');
+				   }
+				  
+			   }
+			   var cooldown2 = x[15].split("-");
+			   for (let i = 0; i<cooldown2.length; i++) {
+				   document.getElementById("cooldown1-"+i).innerHTML = cooldown2[i].trim();
+				   if (cooldown2[i].trim()!="0") {
+					   document.getElementById("cooldown1-"+i).style.display = "block";
+					   document.getElementById("cooldown1-"+i).parentElement.classList.add('disabled');
+				   }
+				   else {
+					   document.getElementById("cooldown1-"+i).style.display = "none";
+					   document.getElementById("cooldown1-"+i).parentElement.classList.remove('disabled');
+				   }
+			   }
+			   var cooldown3 = x[16].split("-");
+			   for (let i = 0; i<cooldown3.length; i++) {
+				   document.getElementById("cooldown2-"+i).innerHTML = cooldown3[i].trim();
+				   if (cooldown3[i].trim()!="0") {
+					   document.getElementById("cooldown2-"+i).style.display = "block";
+					   document.getElementById("cooldown2-"+i).parentElement.classList.add('disabled');
+				   }
+				   else {
+					   document.getElementById("cooldown2-"+i).style.display = "none";
+					   document.getElementById("cooldown2-"+i).parentElement.classList.remove('disabled');
+				   }
+			   }
 
+			  
 			   defineTurns(true);
 		   }
 		   
@@ -370,7 +409,10 @@ function cancelAbility(pos) {
 
 function abilityClick(abilityID, selfChar, abilityPos) {
 	
-	if (!document.getElementById("imageClickMaybe"+abilityID).classList.contains('disabled')) {
+	if (
+		!document.getElementById("imageClickMaybe"+abilityID).classList.contains('disabled') &&
+		!document.getElementById("cooldown"+selfChar+"-"+abilityPos).parentElement.classList.contains('disabled')
+	) {
 		
 		var imgIDselected = $.map($("#selected"+selfChar+" > img"), div => div.id);
 		
@@ -420,6 +462,9 @@ function abilityClick(abilityID, selfChar, abilityPos) {
 			xhttp.send(null);
 			
 		}
+	}
+	else {
+		removeAllTargetClick();
 	}
 	
 

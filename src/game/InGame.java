@@ -100,6 +100,8 @@ public class InGame extends HttpServlet {
 			else {
 				response.setContentType("text/html");
 				
+				reduceCooldown(thisChar1, thisChar2, thisChar3);
+				
 				calculateAbilities(
 						oppChar1, oppChar2, oppChar3, thisChar1, thisChar2, thisChar3, 
 						GameUtils.enemy_activeAbilitiesUsed.get(oppID), GameUtils.enemy_activeCharsUsedSkill.get(oppID), 
@@ -177,6 +179,17 @@ public class InGame extends HttpServlet {
 		doGet(request, response);
 	}
 
+	private void reduceCooldown(Character thisChar1, Character thisChar2, Character thisChar3) {
+		reduceCooldownChar(thisChar1);
+		reduceCooldownChar(thisChar2);
+		reduceCooldownChar(thisChar3);
+	}
+	private void reduceCooldownChar(Character c) {
+		c.getAbility1().setCurrentCooldown( c.getAbility1().getCurrentCooldown()-1 );
+		c.getAbility2().setCurrentCooldown( c.getAbility2().getCurrentCooldown()-1 );
+		c.getAbility3().setCurrentCooldown( c.getAbility3().getCurrentCooldown()-1 );
+		c.getAbility4().setCurrentCooldown( c.getAbility4().getCurrentCooldown()-1 );
+	}
 	
 	private void calculateAbilities(Character thisChar1, Character thisChar2, Character thisChar3, Character oppChar1,
 			Character oppChar2, Character oppChar3, ArrayList<String> allAbilitiesUsed, ArrayList<String> allCharsUsedSkill, 
@@ -680,33 +693,46 @@ public class InGame extends HttpServlet {
 		}		
 	}
 	
+	private String getHPColor(int hp) {
+		if (hp>=75) {
+			return "background-color: #3BDF3F;";
+		}
+		else if (hp<35) {
+			return "background-color: #ff1324;";
+			
+		}
+		else {
+			return "background-color: #ffdc19;";
+		}
+	}
+
+	
 	private void writeResponse(PrintWriter pw, Character this1,Character this2,Character this3,
 			Character opp1,Character opp2,Character opp3) {
 		
-			pw.println("<div id=\"bar_00\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
-			pw.println("<div id=\"bar_text_00\" class=\"mc_char_card_lifetext\">");
+			pw.println("<div id='bar_00' style='"+getHPColor(this1.getHp())+" width: "+this1.getHp()+"%'></div>");	
+			pw.println("<div id='bar_text_00' class='mc_char_card_lifetext'>");
 			pw.println(this1.getHp()+"/100</div>");
 			pw.println("break");
-			pw.println("<div id=\"bar_01\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
-			pw.println("<div id=\"bar_text_01\" class=\"mc_char_card_lifetext\">");
+			pw.println("<div id='bar_01' style='"+getHPColor(this2.getHp())+" width: "+this2.getHp()+"%'></div>");	
+			pw.println("<div id='bar_text_01' class='mc_char_card_lifetext'>");
 			pw.println(this2.getHp()+"/100</div>");
 			pw.println("break");
-			pw.println("<div id=\"bar_02\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
-			pw.println("<div id=\"bar_text_02\" class=\"mc_char_card_lifetext\">");
+			pw.println("<div id='bar_02' style='"+getHPColor(this3.getHp())+" width: "+this3.getHp()+"%'></div>");	
+			pw.println("<div id='bar_text_02' class='mc_char_card_lifetext'>");
 			pw.println(this3.getHp()+"/100</div>");
 			pw.println("break");
-			pw.println("<div id=\"bar_10\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
-			pw.println("<div id=\"bar_text_10\" class=\"mc_char_card_lifetext\">");
+			pw.println("<div id='bar_10' style='"+getHPColor(opp1.getHp())+" width: "+opp1.getHp()+"%'></div>");	
+			pw.println("<div id='bar_text_10' class='mc_char_card_lifetext'>");
 			pw.println(opp1.getHp()+"/100</div>");
 			pw.println("break");
-			pw.println("<div id=\"bar_10\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
-			pw.println("<div id=\"bar_text_10\" class=\"mc_char_card_lifetext\">");
+			pw.println("<div id='bar_10' style='"+getHPColor(opp2.getHp())+" width: "+opp2.getHp()+"%'></div>");	
+			pw.println("<div id='bar_text_10' class='mc_char_card_lifetext'>");
 			pw.println(opp2.getHp()+"/100</div>");
 			pw.println("break");
-			pw.println("<div id=\"bar_10\" style=\" background-color: #3BDF3F; width: 100%\"></div>");	
-			pw.println("<div id=\"bar_text_10\" class=\"mc_char_card_lifetext\">");
+			pw.println("<div id='bar_10' style='"+getHPColor(opp3.getHp())+" width: "+opp3.getHp()+"%'></div>");	
+			pw.println("<div id='bar_text_10' class='mc_char_card_lifetext'>");
 			pw.println(opp3.getHp()+"/100</div>");
-		
 	}
 	
 	private Character getTarget(String allyEnemy, String pos, 
@@ -871,12 +897,25 @@ public class InGame extends HttpServlet {
 	
 	private void writeIfCharIsStunned(PrintWriter pw, Character thisChar1, Character thisChar2, Character thisChar3) {
 		
-
-		
 		pw.println("break");
 		pw.println(thisChar1.isStunned()+"-"+thisChar2.isStunned()+"-"+thisChar3.isStunned());
-
 		
+		writeIfAbilityOnCooldown(pw, thisChar1, thisChar2, thisChar3);
+	
+	}
+	
+	private void writeIfAbilityOnCooldown(PrintWriter pw, Character thisChar1, Character thisChar2, Character thisChar3) {
+		writeCharCooldown(pw, thisChar1);
+		writeCharCooldown(pw, thisChar2);
+		writeCharCooldown(pw, thisChar3);
+	}
+	
+	private void writeCharCooldown(PrintWriter pw, Character c) {
+		pw.println("break");
+		pw.println(
+				c.getAbility1().getCurrentCooldown()+"-"+c.getAbility2().getCurrentCooldown()+"-"+
+				c.getAbility3().getCurrentCooldown()+"-"+c.getAbility4().getCurrentCooldown()
+		);
 	}
 
 	private void createCharacters(HttpSession session) {

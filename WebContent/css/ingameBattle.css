@@ -327,6 +327,7 @@
 }
 .disabled{
     opacity:.3;
+    /*pointer-events:none;*/
 }
 .mc_char_12,.mc_char_card{
     position:absolute;
@@ -365,7 +366,7 @@
     pointer-events: all;
 }
 .mc_char_card_lifebar{
-    background-color:#3bdf3f ;
+    background-color:#dcdcdc ;
     border:1px solid #000;
     height:14px;
     left:32px;
@@ -375,7 +376,7 @@
     z-index:2
 }
 #bar_00,#bar_01,#bar_02,#bar_10,#bar_11,#bar_12{
-    background-color:#3bdf3f;
+    background-color:#dcdcdc;
     outline-style: solid ;
 	outline-color: #000000;
 	outline-width: 1px;
@@ -1081,6 +1082,33 @@ txtexchange, .txtsurrender {
     animation: opacidade .8s infinite alternate;
 }
 
+/*Cooldown*/
+.cooldown {
+    align-items: center;
+    color: #000;
+    display: flex;
+    font-family: Pedra;
+    font-size: 40px;
+    height: 54px;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 7px;
+    width: 54px;
+    pointer-events: none;
+}
+.ability_info_cooldown {
+    left: 418px;
+}
+
+.ability_info_classlist, .ability_info_cooldown {
+	font-family: "franklin_gothic_medium_condRg";
+    color: #e1e1e1;
+    font-size: 10pt;
+    position: absolute;
+    top: 95px;
+}
 
 /*Animations*/
 /*
