@@ -16,3 +16,5 @@ gain nature duration +1 - XML
 
 DD sóe stá a funcionar como se fosse self..
 a.getCurrentDD() na descricao do skill activo - XML
+
+DD está a fazer um turno anterior

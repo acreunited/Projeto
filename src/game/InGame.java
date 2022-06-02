@@ -3,6 +3,7 @@ package game;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
@@ -30,8 +31,6 @@ public class InGame extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//response.setContentType("text/plain");
 		
 		response.setCharacterEncoding("UTF-8");
 		
@@ -109,13 +108,13 @@ public class InGame extends HttpServlet {
 						GameUtils.enemy_activeAbilitiesID.get(oppID)
 						);
 				
-				int gain1 = thisChar1.getNatureGain();
-				int gain2 = thisChar2.getNatureGain();
-				int gain3 = thisChar3.getNatureGain();
-				int loss1 = thisChar1.getNatureLoss();
-				int loss2 = thisChar2.getNatureLoss();
-				int loss3 = thisChar3.getNatureLoss();
-				generateRandomNatures(session, 3 + gain1+gain2+gain3 -loss1-loss2-loss3);
+//				int gain1 = thisChar1.getNatureGain();
+//				int gain2 = thisChar2.getNatureGain();
+//				int gain3 = thisChar3.getNatureGain();
+//				int loss1 = thisChar1.getNatureLoss();
+//				int loss2 = thisChar2.getNatureLoss();
+//				int loss3 = thisChar3.getNatureLoss();
+				generateRandomNatures(session, 3, thisChar1, thisChar2, thisChar3);
 				
 				writeResponse(pw, thisChar1, thisChar2, thisChar3, oppChar1, oppChar2, oppChar3);
 
@@ -253,12 +252,15 @@ public class InGame extends HttpServlet {
 		ArrayList<String> allAllyEnemy = allyEnemy.get(id);
 		ArrayList<String> allAbilitiesID = abilitiesID.get(id);
 		
+		
+		
 		ArrayList<Integer> removeIndex = new ArrayList<Integer>();
 
 		if (allAbilitiesUsed.size()>0) {
 	
 			for (int i = 0; i < allAbilitiesUsed.size(); i++) {
-
+				
+				
 				Character c = null;
 				
 				c = (isUnlock) ? getCharacterUsed(allCharsUsedSkill.get(i), this1, this2, this3) : getCharacterUsed(allCharsUsedSkill.get(i), opp1, opp2, opp3);
@@ -282,8 +284,6 @@ public class InGame extends HttpServlet {
 					delete = shouldRemoveActive(c.getAbility4());
 					a = c.getAbility4();
 				}
-				
-				
 			
 				if (delete || a.getActiveDuration().get(0).equalsIgnoreCase("permanent")) {
 					
@@ -337,12 +337,7 @@ public class InGame extends HttpServlet {
 					int[] ddNovo = novo.getGainDD();
 					a.setGainDD(ddNovo);
 					a.setCurrentDD( a.getCurrentDD()-ddNovo[0] );
-					
-					
-					//target.setDr( target.getDr()-drNovo[0] );
-//					System.out.println("a3: "+c.getAbility3().getCurrentTemporaryDamage());
-//					System.out.println("n3: "+temporaryDamageNovo[0]);
-//					System.out.println("final: "+ (c.getAbility3().getCurrentTemporaryDamage() - temporaryDamageNovo[0]) );
+
 					c.getAbility1().setCurrentTemporaryDamage( c.getAbility1().getCurrentTemporaryDamage() - temporaryDamageNovo[0] );
 					c.getAbility2().setCurrentTemporaryDamage( c.getAbility2().getCurrentTemporaryDamage() - temporaryDamageNovo[0] );
 					c.getAbility3().setCurrentTemporaryDamage( c.getAbility3().getCurrentTemporaryDamage() - temporaryDamageNovo[0] );
@@ -372,16 +367,20 @@ public class InGame extends HttpServlet {
 			String activeTarget, ArrayList<String> allAbilitiesID, boolean isUnlock, ArrayList<String> activeThisChar1,
 			ArrayList<String> activeThisChar2, ArrayList<String> activeThisChar3, ArrayList<String> activeOppChar1, 
 			ArrayList<String> activeOppChar2, ArrayList<String> activeOppChar3 ) {
-
+		
 		if (
 			(activeTarget.trim().equalsIgnoreCase("ally") && isUnlock) ||
 			(activeTarget.trim().equalsIgnoreCase("enemy") && !isUnlock)
 				) {
 
 			String resposta = getResponseAlly(a, i, allAbilitiesID);
+			checkDuplicate(activeThisChar1, resposta);
+			checkDuplicate(activeThisChar2, resposta);
+			checkDuplicate(activeThisChar3, resposta);
 			
 			if (isUnlock) {
 				if (allTargets.get(i).equalsIgnoreCase("0")) {
+					
 					activeThisChar1.add(resposta);
 				}
 				else if (allTargets.get(i).equalsIgnoreCase("1")) {
@@ -416,7 +415,9 @@ public class InGame extends HttpServlet {
 				) {
 
 			String resposta = getResponseEnemy(a, i, allAbilitiesID);
-		
+			checkDuplicate(activeOppChar1, resposta);
+			checkDuplicate(activeOppChar2, resposta);
+			checkDuplicate(activeOppChar3, resposta);
 			
 			if (isUnlock) {
 				if (allTargets.get(i).equalsIgnoreCase("1")) {
@@ -453,8 +454,11 @@ public class InGame extends HttpServlet {
 			if (isUnlock) {
 
 				String resposta = getResponseAlly(a, i, allAbilitiesID);
+				checkDuplicate(activeThisChar1, resposta);
+				checkDuplicate(activeThisChar2, resposta);
+				checkDuplicate(activeThisChar3, resposta);
 				
-				if (allCharsUsedSkill.get(i).equalsIgnoreCase("0")) {
+				if (allCharsUsedSkill.get(i).equalsIgnoreCase("0")) {				
 					activeThisChar1.add(resposta);
 				}
 				else if (allCharsUsedSkill.get(i).equalsIgnoreCase("1")) {
@@ -470,6 +474,9 @@ public class InGame extends HttpServlet {
 			else {
 
 				String resposta = getResponseEnemy(a, i, allAbilitiesID);
+				checkDuplicate(activeOppChar1, resposta);
+				checkDuplicate(activeOppChar2, resposta);
+				checkDuplicate(activeOppChar3, resposta);
 
 				if (allCharsUsedSkill.get(i).equalsIgnoreCase("0")) {
 					activeOppChar1.add(resposta);
@@ -485,8 +492,21 @@ public class InGame extends HttpServlet {
 				}
 			}
 		}
-
-		
+	}
+	
+	private void checkDuplicate(ArrayList<String> activeChar, String resposta) {
+		int exists = -1;
+		for (int index = 0; index < activeChar.size(); index++) {
+			String active = activeChar.get(index).split("tooltiptext")[0];
+			String ans = resposta.split("tooltiptext")[0];
+			if (active.equalsIgnoreCase(ans)) {
+				exists = index;
+				break;
+			}
+		}
+		if (exists!=-1) {
+			activeChar.remove(exists);
+		}
 	}
 	
 	private String getResponseAlly(Ability a, int i,  ArrayList<String> allAbilitiesID) {
@@ -614,6 +634,8 @@ public class InGame extends HttpServlet {
 	
 	private void writeActiveSkills(PrintWriter pw, ArrayList<String> activeThisChar1, ArrayList<String> activeThisChar2 , ArrayList<String> activeThisChar3 ,
 			ArrayList<String> activeOppChar1, ArrayList<String> activeOppChar2, ArrayList<String> activeOppChar3, HttpSession session) {
+		
+
 		
 		pw.write("break");
 		for (String s : activeThisChar1) {
@@ -838,7 +860,7 @@ public class InGame extends HttpServlet {
 		session.setAttribute("uuid", gameInfo.getUuid());
 		
 		if ( gameInfo.isturn()) {
-			generateRandomNatures(session, 1);
+			generateRandomNatures(session, 1, null, null, null);
 		}
 	
 		session.setAttribute("activeThisChar1", new ArrayList<String>());
@@ -851,7 +873,19 @@ public class InGame extends HttpServlet {
 	}
 
 
-	private void generateRandomNatures(HttpSession session, int number) {
+	private void generateRandomNatures(HttpSession session, int number, Character thisChar1, Character thisChar2, Character thisChar3) {
+		
+		if (thisChar1!=null) {
+			int gain1 = thisChar1.getNatureGain();
+			int gain2 = thisChar2.getNatureGain();
+			int gain3 = thisChar3.getNatureGain();
+			int loss1 = thisChar1.getNatureLoss();
+			int loss2 = thisChar2.getNatureLoss();
+			int loss3 = thisChar3.getNatureLoss();
+			number = number + gain1+gain2+gain3 -loss1-loss2-loss3;
+		}
+		
+		//generateRandomNatures(session, 3 + gain1+gain2+gain3 -loss1-loss2-loss3);
 		if (number>0) {
 			for (int i = 0; i < number; i++) {
 				
