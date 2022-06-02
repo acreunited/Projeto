@@ -374,8 +374,24 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 	
 }
 
+
+function cancelArrayFirst(pos, parent) {
+	 var ability = parent.getElementsByTagName('img')[0].id;
+	 for (let i = 0; i < allAbilitiesUsed.length; i++) {
+		 if ("abilitySelected"+allAbilitiesID[i]==ability) {
+			 allAbilitiesUsed.splice(i, 1);
+			 allCharsUsedSkill.splice(i, 1);
+			 allTargets.splice(i, 1);
+			 allAllyEnemy.splice(i, 1);
+			 allAbilitiesID.splice(i, 1);
+		 }
+	 }
+
+	 cancelAbility(pos);
+}
+
 function cancelAbility(pos) {
-	
+	   
 	var id = document.getElementById("selected"+pos).getElementsByTagName('img')[0].id;
 	document.getElementById("selected"+pos).innerHTML = "<a><img src='battle/skillact.png'  id='selectedNone'></a>";
 
@@ -402,7 +418,7 @@ function cancelAbility(pos) {
 		  e.remove();
 	  }
    });
-	   
+
 	 
 }
 

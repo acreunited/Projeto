@@ -212,7 +212,7 @@ window.onload = function() {
                                     	abilities_my.close();
                                     %>
                               </div>
-                              <div class="mc_char_section_selected" id="selected<%=countChars%>"  ondblclick="cancelAbility(<%=countChars%>)">
+                              <div class="mc_char_section_selected" id="selected<%=countChars%>"  ondblclick="cancelArrayFirst(<%=countChars%>, this)">
                               	<img src='battle/skillact.png' id="selectedNone">
                               </div>
                            </div>
