@@ -11,12 +11,6 @@ public class GameUtils {
 	public static Hashtable<String,  Semaphore> games = new Hashtable<String,  Semaphore>();
 	public static Hashtable<String,  Integer> gamesWinner = new Hashtable<String, Integer>();
 	
-//	public static Hashtable<String, String[]> allAbilitiesUsed = new Hashtable<String, String[]>();
-//	public static Hashtable<String, String[]> allCharsUsedSkill = new Hashtable<String, String[]>();
-//	public static Hashtable<String, String[]> allTargets = new Hashtable<String, String[]>();
-//	public static Hashtable<String, String[]> allAllyEnemy = new Hashtable<String, String[]>();
-//	public static Hashtable<String, String[]> allAbilitiesID = new Hashtable<String, String[]>();
-//	
 	//activeSkills
 	public static Hashtable<Integer, ArrayList<String>> activeAbilitiesUsed = new Hashtable<Integer, ArrayList<String>>();
 	public static Hashtable<Integer, ArrayList<String>> activeCharsUsedSkill = new Hashtable<Integer, ArrayList<String>>();

@@ -121,6 +121,8 @@ public class InGame extends HttpServlet {
 				updateNatureInGame(session, pw);
 				writeIfCharIsStunned(pw, thisChar1, thisChar2, thisChar3);
 				
+			
+				
 			}
 			
 			session.setAttribute("turn", true);
@@ -149,8 +151,6 @@ public class InGame extends HttpServlet {
 			
 			
 			session.setAttribute("turn", false);
-
-			System.out.println("DD: "+oppChar3.getAbility3().getCurrentDD());
 			gameInfo.unlock(uuid);
 			
 		}
@@ -175,7 +175,103 @@ public class InGame extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	@SuppressWarnings("unchecked")
+	private void updateSelf(HttpSession session) {
+		ArrayList<String> activeThisChar1 = (ArrayList<String>) session.getAttribute("activeThisChar1");
+		ArrayList<String> activeThisChar2 = (ArrayList<String>) session.getAttribute("activeThisChar2");
+		ArrayList<String> activeThisChar3 = (ArrayList<String>) session.getAttribute("activeThisChar3");
+		ArrayList<String> activeOppChar1 = (ArrayList<String>) session.getAttribute("activeOppChar1");
+		ArrayList<String> activeOppChar2 = (ArrayList<String>) session.getAttribute("activeOppChar2");
+		ArrayList<String> activeOppChar3 = (ArrayList<String>) session.getAttribute("activeOppChar3");
+
+		updateOneAtTime(activeThisChar1, session);
+		updateOneAtTime(activeThisChar2, session);
+		updateOneAtTime(activeThisChar3, session);
+		updateOneAtTime(activeOppChar1, session);
+		updateOneAtTime(activeOppChar2, session);
+		updateOneAtTime(activeOppChar3, session);
+		
+		session.setAttribute("activeThisChar1", activeThisChar1);
+		session.setAttribute("activeThisChar2", activeThisChar2);
+		session.setAttribute("activeThisChar3", activeThisChar3);
+		session.setAttribute("activeOppChar1", activeOppChar1);
+		session.setAttribute("activeOppChar2", activeOppChar2);
+		session.setAttribute("activeOppChar3", activeOppChar3);
+	}
 	
+	private ArrayList<String> updateOneAtTime(ArrayList<String> activeChar, HttpSession session) {
+		for (int i = 0; i < activeChar.size(); i++) {
+			String s = activeChar.get(i);
+		
+			if (s.contains("Destructible")) {
+				String[] antes = s.split("id='activeSkill");
+				String[] depois = antes[1].split("'");
+				
+				int id = Integer.parseInt(depois[0]);
+				
+				String[] split = s.split(" Destructible");
+				String[] split2 = split[0].split("has");
+				
+				Ability a = getAbilityUpdate( id, session );
+				String update = split2[0]+a.getCurrentDD()+split[1];
+				
+				activeChar.set(i, update);
+			}
+		}
+		return activeChar;
+	}
+	
+	private Ability getAbilityUpdate(int id, HttpSession session) {
+		Character thisChar1 = (Character) session.getAttribute("this_char1_game");
+		Character thisChar2 = (Character) session.getAttribute("this_char2_game");
+		Character thisChar3 = (Character) session.getAttribute("this_char3_game");
+		Character oppChar1 = (Character) session.getAttribute("opp_char1_game");
+		Character oppChar2 = (Character) session.getAttribute("opp_char2_game");
+		Character oppChar3 = (Character) session.getAttribute("opp_char3_game");
+		
+		Ability a = getAbilityPerID(id, thisChar1);
+		if (a!=null) {
+			return a;
+		}
+		a = getAbilityPerID(id, thisChar2);
+		if (a!=null) {
+			return a;
+		}
+		a = getAbilityPerID(id, thisChar3);
+		if (a!=null) {
+			return a;
+		}
+		a = getAbilityPerID(id, oppChar1);
+		if (a!=null) {
+			return a;
+		}
+		a = getAbilityPerID(id, oppChar2);
+		if (a!=null) {
+			return a;
+		}
+		a = getAbilityPerID(id, oppChar3);
+		if (a!=null) {
+			return a;
+		}
+		return null;
+	}
+	
+	private Ability getAbilityPerID(int id, Character c) {
+		if (c.getAbility1().getId()==id) {
+			return c.getAbility1();
+		}
+		else if (c.getAbility2().getId()==id) {
+			return c.getAbility2();
+		}
+		else if (c.getAbility3().getId()==id) {
+			return c.getAbility3();
+		}
+		else if (c.getAbility4().getId()==id) {
+			return c.getAbility4();
+		}
+		
+		return null;
+	}
 
 	private void reduceCooldown(Character thisChar1, Character thisChar2, Character thisChar3) {
 		reduceCooldownChar(thisChar1);
@@ -238,6 +334,8 @@ public class InGame extends HttpServlet {
 			Hashtable<Integer, ArrayList<String>> targets, Hashtable<Integer, ArrayList<String>> allyEnemy, 
 			Hashtable<Integer, ArrayList<String>> abilitiesID, boolean isUnlock) {
 
+		updateSelf(session);
+		
 		ArrayList<String> activeThisChar1 = (ArrayList<String>) session.getAttribute("activeThisChar1");
 		ArrayList<String> activeThisChar2 = (ArrayList<String>) session.getAttribute("activeThisChar2");
 		ArrayList<String> activeThisChar3 = (ArrayList<String>) session.getAttribute("activeThisChar3");
