@@ -173,7 +173,7 @@ function endTurn() {
 		   defineTurns(false);
 		   
 		   var x = this.responseText.split("break");
-		   
+		  
 		   document.getElementById("hpAlly0").innerHTML = x[0];
 		   document.getElementById("hpAlly1").innerHTML = x[1];
 		   document.getElementById("hpAlly2").innerHTML = x[2];
@@ -484,15 +484,26 @@ function abilityClick(abilityID, selfChar, abilityPos) {
 	}
 	
 
-	abilityFooterInfo(abilityID);
+	abilityFooterInfo(abilityID, selfChar, abilityPos);
 	
 	
 }
 
-function abilityFooterInfo(abilityID) {
+function abilityFooterInfo(abilityID, selfChar, abilityPos) {
+	const xhttp = new XMLHttpRequest();
 
-	displayNones();
-	document.getElementById("ability"+abilityID).style.display="block";
+	xhttp.onload = function() {
+	   if (xhttp.status === 200 && xhttp.readyState === 4) {
+
+		   document.getElementById("natures"+abilityID).innerHTML = this.responseText;
+		   displayNones();
+		   document.getElementById("ability"+abilityID).style.display="block";
+		} 
+	}
+	xhttp.open("POST", "AbilityActions?action=seeNatureCost&selfChar="+selfChar+"&abilityPos="+abilityPos, true);  // assincrono
+	xhttp.send(null);
+
+	
 	
 }
 

@@ -180,7 +180,7 @@ window.onload = function() {
                      					String abilityID = abilities.getString("abilityID");
                      %>
                                  <div class="skillimg<%=count%>">
-                                    <a onclick="abilityFooterInfo(<%=abilityID%>)"><img src="ViewAbility?id=<%=abilityID%>" class="disabled" > </a>
+                                    <a onclick="abilityFooterInfo(<%=abilityID%>, <%=countChars%>, <%=count%>)"><img src="ViewAbility?id=<%=abilityID%>" class="disabled" > </a>
                                  </div>
   
                                   <%
@@ -481,6 +481,13 @@ window.onload = function() {
 									 <%
 										}
 									 %>
+									 
+									 <div class="ability_info_energy">
+							              ENERGY:
+							            <div class="ability_info_energy_img" id="natures<%=abilityID%>">
+							     
+							            </div>
+									</div>
 				                   </div>
 								 <%
 								 	}

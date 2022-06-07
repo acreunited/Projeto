@@ -117,6 +117,93 @@ public class ReadAbilitiesXML {
 
 		return (value==null) ? -1 : Integer.parseInt(value);
 	}
+	
+	public static int getTaijutsu(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='" + id + "']/nature/taijutsu/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+
+		return (value==null) ? -1 : Integer.parseInt(value);
+	}
+	public static int getHeart(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='" + id + "']/nature/heart/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+
+		return (value==null) ? -1 : Integer.parseInt(value);
+	}
+	public static int getEnergy(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='" + id + "']/nature/energy/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+
+		return (value==null) ? -1 : Integer.parseInt(value);
+	}
+	public static int getSpirit(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='" + id + "']/nature/spirit/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+
+		return (value==null) ? -1 : Integer.parseInt(value);
+	}
+	public static int getRandom(int id) {
+		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");
+		document.getDocumentElement().normalize();
+		
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		String cooldown = "//ability[@abilityID='" + id + "']/nature/random/text()";
+		String value = null;
+		
+		try {
+			value = (String) xpath.evaluate(cooldown, document, XPathConstants.STRING);
+
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+
+		return (value==null) ? -1 : Integer.parseInt(value);
+	}
+	
 	public static String getTargetClick(int id) {
 		
 		Document document = readDocument("D:\\GitHub\\Projeto\\abilities.xml");

@@ -35,7 +35,14 @@ public class Ability {
 	private int currentTemporaryDamage;
 	private int currentDD;
 	private int currentCooldown;
+	private int nTaijutsu;
+	private int nHeart;
+	private int nEnergy;
+	private int nSpirit;
+	private int nRandom;
 	
+	
+
 	public Ability(int id) {
 		this.currentCooldown = 0;
 		this.currentTemporaryDamage = 0;
@@ -65,6 +72,11 @@ public class Ability {
 		this.activeTarget = ReadAbilitiesXML.getActiveTarget(id);
 		this.activeDescription = ReadAbilitiesXML.getActiveDescription(id);
 		this.activeDuration = ReadAbilitiesXML.getActiveDuration(id);
+		this.nTaijutsu = ReadAbilitiesXML.getTaijutsu(id);
+		this.nHeart = ReadAbilitiesXML.getHeart(id);
+		this.nEnergy = ReadAbilitiesXML.getEnergy(id);
+		this.nSpirit = ReadAbilitiesXML.getSpirit(id);
+		this.nRandom = ReadAbilitiesXML.getRandom(id);
 	}
 
 	
@@ -82,6 +94,61 @@ public class Ability {
 		
 		return retorno;
 	}
+	
+	public int getnTaijutsu() {
+		return nTaijutsu;
+	}
+
+
+	public void setnTaijutsu(int nTaijutsu) {
+		this.nTaijutsu = nTaijutsu;
+	}
+
+
+	public int getnHeart() {
+		return nHeart;
+	}
+
+
+	public void setnHeart(int nHeart) {
+		this.nHeart = nHeart;
+	}
+
+
+	public int getnEnergy() {
+		return nEnergy;
+	}
+
+
+	public void setnEnergy(int nEnergy) {
+		this.nEnergy = nEnergy;
+	}
+
+
+	public int getnSpirit() {
+		return nSpirit;
+	}
+
+
+	public void setnSpirit(int nSpirit) {
+		this.nSpirit = nSpirit;
+	}
+
+
+	public int getnRandom() {
+		return nRandom;
+	}
+
+
+	public void setnRandom(int nRandom) {
+		this.nRandom = nRandom;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	
 	
 	public int getId() {

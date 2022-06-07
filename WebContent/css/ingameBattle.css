@@ -491,7 +491,7 @@
 .ability_info_name{
 	font-family: "franklin_gothic_medium_condRg";
     color:#ff1d20;
-    font-size:14pt;
+    font-size:13pt;
     top:20px;
 }
 .ability_info_desc,.ability_info_name{
@@ -501,7 +501,7 @@
 .ability_info_desc{
 	font-family: "uni_sanslight";
     color: #ffffff;
-    font-size:11pt;
+    font-size:10.5pt;
     top:39px;
     overflow-y: auto;
    
@@ -1099,15 +1099,31 @@ txtexchange, .txtsurrender {
     pointer-events: none;
 }
 .ability_info_cooldown {
-    left: 418px;
+    left: 414px;
 }
 
 .ability_info_classlist, .ability_info_cooldown {
 	font-family: "franklin_gothic_medium_condRg";
     color: #e1e1e1;
-    font-size: 10pt;
+    font-size: 8.5pt;
     position: absolute;
     top: 95px;
+}
+
+/*Abilities Cost Nature*/
+.ability_info_energy {
+	font-family: 'franklin_gothic_medium_condRg';
+    color: #e1e1e1;
+    font-size: 8.5pt;
+    left: 414px;
+    position: absolute;
+    top: 25px;
+    width: 105px;
+}
+.ability_info_energy_img {
+    left: 45px;
+    position: absolute;
+    top: -2px;
 }
 
 /*Animations*/

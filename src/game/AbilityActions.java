@@ -101,6 +101,13 @@ public class AbilityActions extends HttpServlet {
 			
 			saveAbilities(request, session, id, thisChar1, thisChar2, thisChar3);
 		}
+		else if (action.equalsIgnoreCase("seeNatureCost")) {
+			int selfChar = Integer.parseInt( request.getParameter("selfChar") );
+			int abilityPos = Integer.parseInt( request.getParameter("abilityPos") );
+			
+			Ability a = getSelectedAbility(abilityPos, selfChar, thisChar1, thisChar2, thisChar3);
+			abilityCost(pw, a);
+		}
 		
 	
 		
@@ -108,13 +115,40 @@ public class AbilityActions extends HttpServlet {
 		pw.close();
 
 	}
-	
-	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		doGet(request, response);
+	}
+	
+	private void abilityCost(PrintWriter pw, Ability a) {
+		
+		if (a.getnTaijutsu()>0) {
+			for (int i = 0; i < a.getnTaijutsu(); i++) {
+				pw.println("<img src='battle/Taijutsu.png'>");
+			}
+		}
+		if (a.getnHeart()>0) {
+			for (int i = 0; i < a.getnHeart(); i++) {
+				pw.println("<img src='battle/Heart.png'>");
+			}
+		}
+		if (a.getnEnergy()>0) {
+			for (int i = 0; i < a.getnEnergy(); i++) {
+				pw.println("<img src='battle/Energy.png'>");
+			}
+		}
+		if (a.getnSpirit() > 0) {
+			for (int i = 0; i < a.getnSpirit(); i++) {
+				pw.println("<img src='battle/Spirit.png'>");
+			}
+		}
+		if (a.getnRandom()>0) {
+			for (int i = 0; i < a.getnRandom(); i++) {
+				pw.println("<img src='battle/Random.png'>");
+			}
+		}
 	}
 
 	private Ability getSelectedAbility(int abilityPos, int selfChar, Character thisChar1,Character thisChar2,Character thisChar3) {
