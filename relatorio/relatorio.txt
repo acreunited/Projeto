@@ -1,0 +1,11 @@
+Organização em capítulos:
+Capítulo 1- Introdução / Enquadramento/ Motivação /Objectivo / Contribuição / Organização do documento
+Capítulo 2- Estado da Arte / Ferramentas / Protocolos e Tecnologias
+Capítulo 3- Projeto / Arquitectura / Componentes da arquitetura / Tecnologias usadas
+Capítulo 4- Resultados Experimentais / Demonstrador / Cenários de Demonstração
+Capítulo 5- Conclusão e Desenvolvimento Futuro
+
+objetivo 
+- baixo custo
+- open source
+- possibilidades do projeto  crescer

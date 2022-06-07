@@ -1,0 +1,30 @@
+Organização em capítulos:
+Capítulo 1- Introdução (começo)
+	  (texto)
+	 Enquadramento (fale deste tipo de jogos em geral)
+	 Motivação (argumentos que defendam a atualidade e interesse do projeto)
+	 Objectivo (...)
+	 Requisitos (enumerar as carateristicas do jogo a implementar)
+	 Contribuição (o que foi feito, considerações sobre o produto final e interesse do publico)
+	 Organização do documento (dizer o que está dito em cada capitulo)
+Capítulo 2- Tecnologias  (ver rankings de tecnologias)
+	  (texto)
+	  Linguagens
+	  Sistemas de Gestão de Dados
+	  Servidores Aplicacionais
+	  Ferramentas (eclipse/ netbeans ...) 
+Capítulo 3- Projeto
+	 caso de uso 
+	 Arquitectura (descrever os serviços)
+		definição de personagens (uml/classes)
+		modelo EA (vários modelos)
+		configuração de habilidades (xsd/xml)
+		configuração de missões (xsd/xml)
+	 Interface Humana
+		- jogador
+		- administrador
+Capítulo 4- Demonstração
+	 2 ou 3 Cenários de Demonstração e Testes usando como referencia os casos de uso
+Capítulo 5- Conclusão (fecho)
+	 Sumário
+	 Desenvolvimentos Futuros
