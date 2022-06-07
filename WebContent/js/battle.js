@@ -9,6 +9,56 @@ let allAllyEnemy = [];
 let allAbilitiesID = [];
 
 
+function canUseAbilityNature() {
+	const xhttp = new XMLHttpRequest();
+
+	xhttp.onload = function() {
+	   if (xhttp.status === 200 && xhttp.readyState === 4) {
+		   
+		   var response = this.responseText.split("-");
+		   
+//		   var skill0 = document.getElementsByClassName("skillimg0");
+//		   var skill1 = document.getElementsByClassName("skillimg1");
+//		   var skill2 = document.getElementsByClassName("skillimg2");
+//		   var skill3 = document.getElementsByClassName("skillimg3");
+		   
+		   for(let i = 0; i<response.length; i++) {
+			   if (i<4) { //char1
+				   var x = document.getElementsByClassName("skillimg"+i);
+				   if (response[i].trim()=="false") {
+					   x[1].classList.add('disabledNature');
+				   }
+				   else {
+					   x[1].classList.remove('disabledNature');
+				   }
+			   }
+			   else if (i<8) {//char2
+				   var x = document.getElementsByClassName("skillimg"+(i-4));
+				   if (response[i].trim()=="false") {
+					   x[3].classList.add('disabledNature');
+				   }
+				   else {
+					   x[3].classList.remove('disabledNature');
+				   }
+			   }
+			   else {//char3
+				   var x = document.getElementsByClassName("skillimg"+(i-8));
+				   if (response[i].trim()=="false") {
+					   x[5].classList.add('disabledNature');
+				   }
+				   else {
+					   x[5].classList.remove('disabledNature');
+				   }
+			   }
+		   }
+
+		} 
+	}
+
+	xhttp.open("POST", "AbilityActions?action=abilityHasNature", true);
+	xhttp.send(null);
+}
+
 function defineTurns(turn) {
 	
 	var opp = document.getElementsByClassName ("opp_turn");
@@ -16,6 +66,10 @@ function defineTurns(turn) {
 	var my = document.getElementsByClassName ("my_turn");
 	
 	if (turn==true) {
+		
+		canUseAbilityNature();	
+		
+		
 		for (var i = 0; i < opp.length; i++) {
 			opp[i].style.display="none";
 		}
@@ -329,12 +383,13 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 				   allTargets.push(charPos);
 				   allAbilitiesID.push(abilityClicked);
 			
+				   var response = this.responseText.split("break");
 				   
 				   if (allyEnemy=="enemy") {
-					   document.getElementById("effectsEnemy"+charPos).insertAdjacentHTML('beforeend', this.responseText);
+					   document.getElementById("effectsEnemy"+charPos).insertAdjacentHTML('beforeend',response[0]);
 				   }
 				   else if (allyEnemy=="ally") {
-					   document.getElementById("effectsAlly"+charPos).insertAdjacentHTML('beforeend', this.responseText);
+					   document.getElementById("effectsAlly"+charPos).insertAdjacentHTML('beforeend', response[0]);
 				   }
 				   
 				   document.getElementById("selected"+charPosUsedSkill).innerHTML = "<img src='ViewAbility?id="+abilityClicked+"' id='abilitySelected"+abilityClicked+"'>";
@@ -348,6 +403,9 @@ function characterFooterInfo(id, allyEnemy, charPos) {
 				   else if (charPosUsedSkill==2) {
 					   $('#allSkillsChar2 img').addClass('disabled');
 				   }
+				   
+				   document.getElementById("natures").innerHTML = response[1];
+				   canUseAbilityNature();
 				   
 				   removeAllTargetClick();
 				   abilityClicked = null;
@@ -393,6 +451,7 @@ function cancelArrayFirst(pos, parent) {
 function cancelAbility(pos) {
 	   
 	var id = document.getElementById("selected"+pos).getElementsByTagName('img')[0].id;
+	//console.log();
 	document.getElementById("selected"+pos).innerHTML = "<a><img src='battle/skillact.png'  id='selectedNone'></a>";
 
    if (pos==0) {
@@ -419,6 +478,23 @@ function cancelAbility(pos) {
 	  }
    });
 
+   if (id.split("Selected")[1]!="" && id.split("Selected")[1]!="undefined" &&
+		   id.split("Selected")[1]!=null && id.split("Selected")[1]!="null") {
+	   
+	    const xhttp = new XMLHttpRequest();
+
+		xhttp.onload = function() {
+		   if (xhttp.status === 200 && xhttp.readyState === 4) {
+			   
+			   document.getElementById("natures").innerHTML = this.responseText;
+			   canUseAbilityNature();
+			} 
+		}
+		xhttp.open("POST", "AbilityActions?action=cancelAbility&id="+id.split("Selected")[1], true);  // assincrono
+		xhttp.send(null);
+		
+   }
+   
 	 
 }
 
@@ -427,7 +503,8 @@ function abilityClick(abilityID, selfChar, abilityPos) {
 	
 	if (
 		!document.getElementById("imageClickMaybe"+abilityID).classList.contains('disabled') &&
-		!document.getElementById("cooldown"+selfChar+"-"+abilityPos).parentElement.classList.contains('disabled')
+		!document.getElementById("cooldown"+selfChar+"-"+abilityPos).parentElement.classList.contains('disabled') &&
+		!document.getElementById("cooldown"+selfChar+"-"+abilityPos).parentElement.classList.contains('disabledNature')
 	) {
 		
 		var imgIDselected = $.map($("#selected"+selfChar+" > img"), div => div.id);

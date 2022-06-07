@@ -329,6 +329,10 @@
     opacity:.3;
     /*pointer-events:none;*/
 }
+.disabledNature{
+    opacity:.3;
+    /*pointer-events:none;*/
+}
 .mc_char_12,.mc_char_card{
     position:absolute;
     width:110px;
