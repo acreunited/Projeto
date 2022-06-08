@@ -1,0 +1,18 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Consolas;}
+{\colortbl;\red255\green255\blue255;\red234\green234\blue234;\red0\green0\blue122;\red109\green0\blue0;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19940\viewh11140\viewkind0
+\deftab720
+\pard\pardeftab720\ql\qnatural
+
+\f0\fs30 \cf0 \cb2 iconv -f UTF-8 -t ISO-8859-1 filename.txt > filename_1.txt\
+\
+\
+for /f %x in ('dir /b *.txt') do iconv -f UTF-8 -t ISO-8859-1 %x\
+\
+\
+\pard\pardeftab720\ql\qnatural
+\cf3 for\cf0  a \cf3 in\cf0  $(find . -name \cf4 "*.tex"\cf0 ); \cf3 do\cf0  iconv -f UTF-\cf4 8\cf0  -t ISO-\cf4 8859\cf0 -\cf4 1\cf0  <\cf4 "$a"\cf0  > z_iso8859_1/\cf4 "$a"\cf0  ; \cf3 done\
+\
+for\cf0  a \cf3 in\cf0  $(find . -name \cf4 "*.sty"\cf0 ); \cf3 do\cf0  iconv -f UTF-\cf4 8\cf0  -t ISO-\cf4 8859\cf0 -\cf4 1\cf0  <\cf4 "$a"\cf0  > z_iso8859_1/\cf4 "$a"\cf0  ; \cf3 done}

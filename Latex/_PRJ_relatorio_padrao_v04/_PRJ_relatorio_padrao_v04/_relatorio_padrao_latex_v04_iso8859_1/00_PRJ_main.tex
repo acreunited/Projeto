@@ -1,0 +1,194 @@
+%%________________________________________________________________________
+%% LEIM | PROJETO
+%% 2022 / 2013 / 2012
+%% Modelo para relatório
+%% v04: alteração ADEETC para DEETC; outros ajustes
+%% v03: correção de gralhas
+%% v02: inclui anexo sobre utilização sistema controlo de versões
+%% v01: original
+%% PTS / MAR.2022 / MAI.2013 / 23.MAI.2012 (construído)
+%%________________________________________________________________________
+%%
+%%
+%% É importante ver o essencial do LaTeX antes de usar este template.
+%% um bom "ponto de partida": http://en.wikibooks.org/wiki/LaTeX/
+%%
+%%________________________________________________________________________
+%% Para alterar o Título, Nome dos Autores e Nome dos Orientadores fazer:
+%% - abrir o ficheiro "00_PRJ_padrao.sty"
+%% - procurar "Nome do aluno" e alterar
+%% - procurar "número" e alterar; deixar os parêntesis
+%% - procurar "Nome do orientador" e alterar
+%% - procurar "[Doutor]" e atirar os parêntesis rectos ou eliminar tudo
+%%
+%% Caso precise de adicionar um novo aluno, ou orientador, deve:
+%% - selecionar toda a linha (com "Nome do aluno" ou "Nome do orientador")
+%% - seleccionar a linha imediatamente acima dessa
+%% - copiar ambas as linhas
+%% - colocar as linhas copiadas logo abaixo da primeira linha seleccionada
+%%________________________________________________________________________
+
+
+
+
+
+%% o documento é definido do tipo "book" em a4, font 12pt
+\documentclass[a4paper,12pt]{book}
+
+%% para usar caracteres acentuados
+%\usepackage[utf8]{inputenc} % no Unix (com codificação UTF-8)
+\usepackage[latin1]{inputenc} % no Windows (com codificação ISO-8859-1, ou ISO-8859-15)
+
+% para aspectos de hifenização (do Português)
+\usepackage[portuguese]{babel}
+
+%% para incluir imagens e tratar de modo adequado endereços url
+\usepackage{graphicx,url}
+
+%% para usar \begin{comment} ... \end{comment}
+\usepackage{verbatim}
+
+%% para usar o símbolo do euro
+%usepackage{eurosym}
+
+%% para juntar multiplas linhas em tabelas
+\usepackage{multirow}
+
+%% para usar símbolos matemáticos
+\usepackage[centertags]{amsmath}
+
+%% para usar \mathds{...}
+\usepackage{dsfont}
+
+%% para formatação (e.g. espaçamento) de Tabelas
+\usepackage{tabls}
+
+%% para usar listagens de código
+\usepackage{listings}
+
+%% para escrita "formal" de algoritmos
+\usepackage{algorithm}
+
+%% Para que a numeracao de listings seja global
+%% (e nao no contexto de cada capitulo!)
+\usepackage{chngcntr}
+
+% para usar um estilo diferente na identificação de "Capítulo"
+%Sonny, Lenny(x), Glenn, Conny, Rejne, Bjarne
+%\usepackage[Lenny]{fncychap}
+% Para ter no "heading" o nome do capítulo e da secção
+\usepackage{fancyhdr}
+
+% para usar hiperligações (especialmente relevante para o índice)
+\usepackage[hidelinks]{hyperref}
+%\hypersetup{linktocpage}
+%\hypersetup{
+%    colorlinks,
+%    citecolor=black,
+%    filecolor=black,
+%    linkcolor=black,
+%    urlcolor=black
+%}
+
+%%________________________________________________________________________
+%% para incluir o estilo proposto
+\usepackage{./00_PRJ_padrao}
+%%________________________________________________________________________
+
+
+
+%%________________________________________________________________________
+% mudar alguns nomes fixos para Português
+%%________________________________________________________________________
+% renomear "Listing" para "Código"
+\renewcommand{\lstlistingname}{Código}
+\addto\captionsportuges{
+    \renewcommand{\contentsname}{Índice}}
+\addto\captionsportuges{
+    \renewcommand{\bibname}{Bibliografia}}
+\addto\captionsportuges{
+    \renewcommand{\proofname}{Prova}}
+\addto\captionsportuges{
+    \renewcommand{\chaptername}{Capítulo}}
+\setlength{\headheight}{15pt}
+%%________________________________________________________________________
+
+
+
+
+
+%%________________________________________________________________________
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% para que a numeracao de listings seja global
+% (e nao no contexto de cada capitulo!)
+\counterwithout{lstlisting}{chapter}
+%% incluir a capa
+\frontmatter
+\fazerCapa
+%% incluir o resumo e abstract
+%% caso pretenda, incluir os agradecimentos e a dedicatória
+\frontmatter
+%%________________________________________________________________________
+%% comentar o que não interessar
+\include{./00a_PRJ_resumo_abstract}
+\include{./00b_PRJ_agradecimentos}
+\include{./00c_PRJ_dedicatoria}
+%%________________________________________________________________________
+
+
+
+
+
+%% incluir a lista de conteúdos (índice, tabelas e figuras)
+%comentar se quiser alterar o espaçamento entre linhas
+\setlinespacing{1.15}
+\myTableOfContents
+%%________________________________________________________________________
+%% comentar o que não interessar
+\myListOfTables
+\myListOfFigures
+%%________________________________________________________________________
+
+
+
+
+
+%% "Corpo Principal" do texto
+\mainmatter
+\myPageStyle
+%% cada um dos Capítulos
+%% (aqui separados em dois ficheiros)
+%%________________________________________________________________________
+%% comentar o que não interessar (ou incluir outros ficheiros)
+\input{./01_PRJ_cap_1_2_3.tex}
+\input{./01_PRJ_cap_4_5_6.tex}
+%%________________________________________________________________________
+
+
+
+
+\appendix
+%%________________________________________________________________________
+%% comentar o que não interessar (ou incluir outros ficheiros)
+\input{./02_PRJ_cap_apendice.tex}
+%%________________________________________________________________________
+
+
+
+
+
+%% bibliografia
+%% estilo para construção de referências bibliográficas
+%% PTS. Alterei o estilo "apalike" e chamei-lhe "apalikeMy".
+%% Coloquei vários termos em Português
+%% (e.g., "and", "of", "chapter", "editors", etc)
+\bibliographystyle{apalikeMy}
+\backmatter
+\bibliography{Xbib}
+
+
+%%________________________________________________________________________
+\end{document}

@@ -1,0 +1,113 @@
+%%________________________________________________________________________
+%% LEIM | PROJETO
+%% 2022 / 2013 / 2012
+%% Modelo para relatório
+%% v04: alteração ADEETC para DEETC; outros ajustes
+%% v03: correção de gralhas
+%% v02: inclui anexo sobre utilização sistema controlo de versões
+%% v01: original
+%% PTS / MAR.2022 / MAI.2013 / 23.MAI.2012 (construído)
+%%________________________________________________________________________
+
+
+
+
+%%________________________________________________________________________
+\chapter{Introdução}
+\label{ch:introducao}
+%%________________________________________________________________________
+
+Tal como no resumo mas mais desenvolvido. O leitor quer construir rapidamente uma ideia sobre este trabalho. Em geral o leitor procura pontos de contacto entre este trabalho e os temas em que o próprio leitor trabalha ou que tem curiosidade em conhecer.  Conduza rapidamente o leitor para o essencial do seu trabalho e desperte a sua curiosidade alinhando de modo objetivo os contributos que este trabalho incorpora e que serão apresentados ao longo do texto.
+
+Aqui deve apresentar a motivação, as ideias essenciais, o modo como essas ideias se distinguem, o \aspas{valor acrescentado} dessas ideias face ao que atualmente existe, as principais contribuições do trabalho, o processo de desenvolvimento adotado, as validações e testes e uma apreciação global dos objetivos alcançados. Deve também ter uma breve descrição da estrutura do relatório.
+
+Este documento terá leitores com diferentes níveis de conhecimento dos temas que aqui abordar. No entanto admita que o seu público tem, como base comum, uma formação e uma \aspas{atitude} de Engenharia. Ou seja, o seu público está à espera de descrições objetivas, alternativas quantificadas, decisões fundamentadas, modelos aplicáveis em diferentes escalas, soluções com testes e análise de resultados. Em síntese, o seu leitor vai querer ver uma \aspas{construção} assente em princípios sólidos e com capacidade para se afirmar pela sua qualidade técnica.
+
+Este documento servirá de base a uma avaliação (\textit{a sua!}) num contexto de Engenharia. Escreva de modo simples, \eg, frases curtas são mais simples que longas, e garanta que o seu texto está livre de erros ortográficos.
+
+É também muito importante que adote regras de escrita para sinais de pontuação como aspas e plicas, e de estilo como itálico e negrito. Pode até apresentar, de modo muito sucinto (por exemplo no final deste capítulo) as regras que adotou. O mais importante é que siga essas regras de modo consistente ao longo de todo o documento.
+
+Em relação às regras de escrita e em geral para qualquer esclarecimento sobre a correta utilização da nossa Língua, deve recorrer ao excelente suporte da plataforma \textit{Ciberdúvidas da Língua Portuguesa} \cite{ciberduvidas}.
+
+O \LaTeX\ garante que todos os aspetos de forma do documento estão assegurados; pode focar-se exclusivamente no conteúdo e em expor as suas ideias de modo claro e correto.
+
+Caso utilize outro processador, ou editor, de texto deve ter muita atenção para garantir a correção de todos os aspeto de forma do documento. Por exemplo é usual os documentos apresentarem incorreções na formação de parágrafos, nos espaçamentos em torno de figuras e tabelas na numeração de figuras, tabelas e páginas e, entre as gralhas mais comuns estão ainda as incorreções na formação das referências bibliográficas. Evitar este tipo de gralha contribui para a qualidade final do seu trabalho.
+
+
+
+
+
+
+
+%%________________________________________________________________________
+\chapter{Trabalho Relacionado}
+\label{ch:trabalhoRelacionado}
+%%________________________________________________________________________
+
+Trabalho relacionado aqui \ldots
+
+Aqui terá certamente necessidade de citar (fazer referência) a vários trabalhos anteriormente publicados e que foi analisando ao longo de todo o seu projeto. Esses trabalhos devem ser apresentados com os seguintes objetivos essenciais:
+\begin{itemize}
+\item
+delimitar o contexto onde o seu projeto se insere,
+
+\item
+definir claramente os aspetos diferenciadores (inovadores) do seu projeto,
+
+\item
+identificar e caracterizar os pressupostos (teóricos ou tecnológicos) em que o projeto se baseia.
+\end{itemize}
+
+Cada trabalho a que fizer referência precisa de ser corretamente identificado. Essa identificação depende do tipo de publicação do trabalho. Um trabalho terá sido publicado em revista científica, \eg, \cite{Elzinga_Mills_2011}, outro em ata de conferência internacional, \eg, \cite{Boutilier_et_al_1995}, outro em livro, \eg, \cite{Bellifemine_et_al_2007}, ou apenas em capítulo de livro, \eg, \cite{Wooldridge_2000}, ou pode ainda incluído numa coleção, \eg, \cite{Howard_Matheson_1984} e há também a hipótese de ser uma \aspas{publicação de proveniência diversa}, como no caso em que o \aspas{o sítio na Internet} é a principal forma de publicação, \eg, \cite{Python_2012} e, por fim, a publicação pode ser um relatório técnico, \eg, \cite{Marin_2006}.
+
+Para conseguir lidar de forma adequada com as referências é importante construir um acervo e ter um mecanismo para geração automática (e correta) das referências que vai fazendo ao longo do texto.
+
+Atualmente, as publicações têm também informação sobre o modo como devem ser corretamente citadas; em geral essa informação segue o formato \textsc{Bib}\TeX.
+
+Para fazer referência a um trabalho é necessário seguir as boas regras (sintáticas) para uma citação correta, mas isso não é suficiente; falta a \aspas{semântica}. Ou seja, é também preciso descrever o essencial do trabalho que está a citar. É necessário explicar esse trabalho e enquadrá-lo, no texto, de modo a tornar clara a relação entre esse trabalho e o seu projeto.
+
+
+
+%%________________________________________________________________________
+\chapter{Modelo Proposto}
+\label{ch:modeloProposto}
+%%________________________________________________________________________
+
+Aqui mostra um caminho que inicia com requisitos (\cf, secção \ref{sec:requisitos}), passa pela aplicação dos fundamentos (\cf, secção \ref{sec:fundamentos}) e continua até conseguir transmitir uma visão clara e um formalismo com nível de detalhe adequado a um leitor que tenha um perfil (competência técnica) idêntico ao seu.
+
+Recorra, sempre que possível, a exemplos ilustrativos da utilização do seu modelo. Esses exemplos devem ajudar o leitor a compreender os aspetos mais específicos do seu trabalho.
+
+O modelo aqui proposto deve ser (tanto quanto possível) independente de tecnologias concretas (\eg, linguagens de programação ou bibliotecas). No entanto deve fornecer os argumentos que contribuam para justificar uma posterior escolha (adoção) de tecnologias.
+
+
+%%________________________________________________________________________
+\section{Requisitos}
+\label{sec:requisitos}
+%%________________________________________________________________________
+
+Aqui o essencial (e se aplicável) dos requisitos funcionais, não funcionais e modelo de casos de utilização. Aqui deve também apresentar matriz para decisão sobre prioridade dos casos de utilização (se aplicável) \ldots
+
+Deve apresentar de forma \aspas{moderada} o resultado da fase avaliação de requisitos. A informação de maior detalhe (\eg, diagramas UML demasiado detalhados) deve ser colocada em apêndice.
+
+
+%%________________________________________________________________________
+\section{Fundamentos}
+\label{sec:fundamentos}
+%%________________________________________________________________________
+
+Aqui o sustento formal (teórico / tecnológico) do trabalho realizado \ldots
+
+
+%%________________________________________________________________________
+\section{Abordagem}
+\label{sec:abordagem}
+%%________________________________________________________________________
+
+Aqui explique as formulações, os métodos, os algoritmos e outros contributos que desenvolveu e que considera centrais ao seu trabalho.
+
+Aqui precisa de abordar tudo o que contribui para diferenciar o seu trabalho e que (na sua opinião) deve ser evidenciado e explicado de modo claro.
+
+Lembre-se que a apresentação de um (ou mais) \textbf{exemplo(s) simples} é muito importante para que o leitor consiga seguir e compreender o seu trabalho.
+
+Tenha em atenção que um exemplo acompanhado por figuras ilustrativas será certamente analisado (de modo cuidado) pelos leitores do seu trabalho.
+

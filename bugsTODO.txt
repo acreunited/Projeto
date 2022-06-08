@@ -15,3 +15,6 @@ gain nature duration +1 - XML
 DD sóe stá a funcionar como se fosse self..
 a.getCurrentDD() na descricao do skill activo - XML
 
+remover habilidade:
+	- remove skill visível, mas faz dano na mesma em alguns casos
+
