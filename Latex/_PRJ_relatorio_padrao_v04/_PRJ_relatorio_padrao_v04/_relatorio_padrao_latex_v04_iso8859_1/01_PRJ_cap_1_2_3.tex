@@ -10,34 +10,97 @@
 %%________________________________________________________________________
 
 
-
-
 %%________________________________________________________________________
 \chapter{Introdução}
 \label{ch:introducao}
 %%________________________________________________________________________
 
-Tal como no resumo mas mais desenvolvido. O leitor quer construir rapidamente uma ideia sobre este trabalho. Em geral o leitor procura pontos de contacto entre este trabalho e os temas em que o próprio leitor trabalha ou que tem curiosidade em conhecer.  Conduza rapidamente o leitor para o essencial do seu trabalho e desperte a sua curiosidade alinhando de modo objetivo os contributos que este trabalho incorpora e que serão apresentados ao longo do texto.
+Este capítulo faz uma breve introdução ao projeto intitulado de \emph{Anime-Arena}. Mais concretamente, descreve o enquadramento, a motivação, o objetivo, os requisitos, a contribuição e como o documento está organizado.
 
-Aqui deve apresentar a motivação, as ideias essenciais, o modo como essas ideias se distinguem, o \aspas{valor acrescentado} dessas ideias face ao que atualmente existe, as principais contribuições do trabalho, o processo de desenvolvimento adotado, as validações e testes e uma apreciação global dos objetivos alcançados. Deve também ter uma breve descrição da estrutura do relatório.
+%%________________________________________________________________________
+ 
+\section{Enquadramento}
+\label{sec:enquadramento}
 
-Este documento terá leitores com diferentes níveis de conhecimento dos temas que aqui abordar. No entanto admita que o seu público tem, como base comum, uma formação e uma \aspas{atitude} de Engenharia. Ou seja, o seu público está à espera de descrições objetivas, alternativas quantificadas, decisões fundamentadas, modelos aplicáveis em diferentes escalas, soluções com testes e análise de resultados. Em síntese, o seu leitor vai querer ver uma \aspas{construção} assente em princípios sólidos e com capacidade para se afirmar pela sua qualidade técnica.
+Este tipo de jogo começou em 2006 com a criação do \emph{Naruto-Arena}. Devido ao facto de nesta altura o anime \emph{Naruto} ser bastante popular entre as crianças e os jovens, muitos procuravam por jogos relacionados com este seu interesse. Inevitavelmente encontraram este jogo e jogaram-no até 2018. Infelizmente, no final do ano 2015 e início de 2016, os criadores abandonaram o projeto. A inexistência de atualizações fez diminuir consideravelmente o número de jogadores e o jogo terminou permanentemente em 2018. No final de maio desse ano, quando uma pessoa tentava entrar no site, apenas encontrava a seguinte imagem:
 
-Este documento servirá de base a uma avaliação (\textit{a sua!}) num contexto de Engenharia. Escreva de modo simples, \eg, frases curtas são mais simples que longas, e garanta que o seu texto está livre de erros ortográficos.
+\begin{centering}
+	\begin{figure}[H]
+		\includegraphics[scale=0.75]{./naDied}
+		\caption{Fim do Naruto-Arena antigo}
+	\end{figure}
+\end{centering}
+%%recortar imagem - tem um fundo branco muito grande em baixo
 
-É também muito importante que adote regras de escrita para sinais de pontuação como aspas e plicas, e de estilo como itálico e negrito. Pode até apresentar, de modo muito sucinto (por exemplo no final deste capítulo) as regras que adotou. O mais importante é que siga essas regras de modo consistente ao longo de todo o documento.
+Não ser possível voltar a jogar deixou tristeza, mas também esperança que os administradores voltassem e/ou alguém recriasse o seu jogo de infância que tanto gostavam. Este desejo concretizou-se em 2019 quando uma pessoa exterior (que não fazia parte da equipa do jogo original) \aspas{reviveu} o jogo que tantos queriam. Este ainda estava numa fase inicial, onde lhe deu o nome de \aspas{versão alpha}. Em 2020 lançou oficialmente o produto final, chamando-lhe \aspas{versão beta}.
 
-Em relação às regras de escrita e em geral para qualquer esclarecimento sobre a correta utilização da nossa Língua, deve recorrer ao excelente suporte da plataforma \textit{Ciberdúvidas da Língua Portuguesa} \cite{ciberduvidas}.
+Este jogo continua atualmente a ser jogado e atualizado. Este, encontra-se no seguinte link \href{https://naruto-arena.net/}{naruto-arena.net}
 
-O \LaTeX\ garante que todos os aspetos de forma do documento estão assegurados; pode focar-se exclusivamente no conteúdo e em expor as suas ideias de modo claro e correto.
+%%________________________________________________________________________
+\section{Motivação}
+\label{sec:motivacao}
 
-Caso utilize outro processador, ou editor, de texto deve ter muita atenção para garantir a correção de todos os aspeto de forma do documento. Por exemplo é usual os documentos apresentarem incorreções na formação de parágrafos, nos espaçamentos em torno de figuras e tabelas na numeração de figuras, tabelas e páginas e, entre as gralhas mais comuns estão ainda as incorreções na formação das referências bibliográficas. Evitar este tipo de gralha contribui para a qualidade final do seu trabalho.
+A reedição do \emph{Naruto-Arena} trouxe alegria a muitas pessoas, mas também desejo por mais. Desde o abandono do jogo original até à atualidade, os jogadores têm exprimido o seu desejo por versões alternativas. Uns por quererem algo diferente onde as personagens, habilidades e classificações não são iguais, outros por preferirem diferentes animes ao Naruto. As razões variam entre os jogadores, mas é o facto que um número considerável de pessoas tem interesse por algo novo baseado nesta versão original.
+Este projeto visa satisfazer este mercado, englobando neste estilo de jogo vários animes diferentes. Foi pensado em fazer para um anime em particular, no entanto a popularidade varia consoante o tempo, e nem todas os jogadores preferem o mesmo anime. Assim, este problema fica resolvido com a existência de vários animes no mesmo jogo, e garante conteúdo para o futuro, pois todos os anos aparecem animes novos e populares.
+
+%%________________________________________________________________________
+\section{Objetivo}
+\label{sec:objetivo}
+
+O objetivo de \emph{Anime-Arena} é conceber e implementar uma plataforma de jogos para a web, capaz de gerir a interação entre pares de jogadores que competem para melhorar a sua classificação e desbloquear personagens.
+
+Este projeto visa manter as características do jogo original que são familiares e apelativas aos jogadores, mas também fazer melhorarias a funcionalidades existentes e acrescentar ao jogo o que atualmente não tem. 
+
+%%________________________________________________________________________
+\section{Requisitos}
+\label{sec:requisitos}
+
+%%________________________________________________________________________
+\section{Contribuição}
+\label{sec:contribuicao}
+
+%%________________________________________________________________________
+\section{Organização do Documento}
+\label{sec:organizacao}
+
+No documento presente, existem cinco capítulos que descrevem o projeto desenvolvido.
+
+Neste capítulo de introdução é feito:
+\begin{itemize}
+	\item o enquadramento do projeto, que ilustra a origem e o tipo deste jogo de uma forma geral;
+	\item a motivação, onde defende a atualidade e interesse do projeto;
+	\item o objetivo de \emph{Anime-Arena} diz concretamente o que se pretende;
+	\item os requisitos enumeram as características do jogo a implementar;
+	\item na parte da contribuição é explicado o que foi feito, o interesse do público e considerações sobre o produto final;
+	\item é dito neste subcapítulo a forma como o documento está organizado.
+\end{itemize}
 
 
+No segundo capítulo é descreve as tecnologias consideradas relevantes para a elaboração deste projeto, nomeadamente:
+\begin{itemize}
+	\item linguagens;
+	\item sistemas para gestão de dados;
+	\item servidores aplicacionais;
+	\item ferramentas
+\end{itemize}
 
 
+O terceiro capítulo trata a solução apresentada do projeto, mais concretamente:
+\begin{itemize}
+	\item casos de utilização;
+	\item arquitetura para descrever os serviços, em específico:
+	\begin{itemize}
+		\item definição de personagens;
+		\item modelo EA;
+		\item configuração de habilidades e missões
+	\end{itemize}
+	\item servidores aplicacionais;
+	\item ferramentas
+\end{itemize}
 
+São apresentados cenários de demonstração e testes no quarto capítulo, fazendo referência aos casos de utilização.
 
+O documento termina no quinto capítulo com a conclusão e desenvolvimentos futuros.
 
 %%________________________________________________________________________
 \chapter{Trabalho Relacionado}
@@ -73,7 +136,7 @@ Para fazer referência a um trabalho é necessário seguir as boas regras (sintátic
 \label{ch:modeloProposto}
 %%________________________________________________________________________
 
-Aqui mostra um caminho que inicia com requisitos (\cf, secção \ref{sec:requisitos}), passa pela aplicação dos fundamentos (\cf, secção \ref{sec:fundamentos}) e continua até conseguir transmitir uma visão clara e um formalismo com nível de detalhe adequado a um leitor que tenha um perfil (competência técnica) idêntico ao seu.
+Aqui mostra um caminho que inicia com requisitos (\cf, secção \ref{sec:requisitoss}), passa pela aplicação dos fundamentos (\cf, secção \ref{sec:fundamentos}) e continua até conseguir transmitir uma visão clara e um formalismo com nível de detalhe adequado a um leitor que tenha um perfil (competência técnica) idêntico ao seu.
 
 Recorra, sempre que possível, a exemplos ilustrativos da utilização do seu modelo. Esses exemplos devem ajudar o leitor a compreender os aspetos mais específicos do seu trabalho.
 
