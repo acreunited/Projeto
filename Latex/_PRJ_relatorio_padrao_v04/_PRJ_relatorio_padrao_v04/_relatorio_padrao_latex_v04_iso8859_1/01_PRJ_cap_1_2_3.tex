@@ -55,6 +55,118 @@ Este projeto visa manter as características do jogo original que são familiares 
 \section{Requisitos}
 \label{sec:requisitos}
 
+Os requisitos descrevem as necessidades e propósitos do projeto. Esta fase serve para colecionarmos dados necessários para alcançar o objetivo e vai determinar o sucesso ou o fracasso do projeto. De forma ao trabalho estar bem estruturado, estes requisitos relevantes para o projeto devem ser bem analisados e detalhados. 
+
+%%________________________________________________________________________
+\subsection{Funções do Sistema}
+\label{sec:funcoessistema}
+
+As funções do sistema são os requisitos funcionais e servem para representar aquilo que o sistema é suposto fazer. Estas devem ser categorizadas, de modo a definir prioridades e identificar as que, sendo evidentes, consomem recursos temporais. Os requisitos podem assim ser divididos nas seguintes categorias:
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ |c|c|c|c| } 
+		\hline
+		\textbf{Categoria} & \textbf{Significado} \\
+		\hline
+		\multirow{2}{4em}{Evidente} & Tem que ser realizada\\ & O utilizador tem que ter conhecimento da sua realização \\
+		\hline
+		\multirow{2}{4em}{Invisível} & Tem que ser realizada\\ & Não é visível para os utilizadores \\
+		\hline
+		\multirow{2}{4em}{Adorno} & Opcional\\ & Não afeta significativamente o custo ou outras funções \\
+		\hline
+	\end{tabular}
+	\caption{Funções do Sistema}
+	\label{tab:funcoessistema}
+\end{table}
+
+Com a utilização destas categorias, são apresentadas, nas próximas tabelas, todas as funções deste sistema.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ |c|c|c|c| } 
+		\hline
+	 	\textbf{Ref} & 	\textbf{Função} & 	\textbf{Categoria}
+		\\
+		\hline
+		R1.1 & Criação do perfil do jogador & Evidente
+		\\ \hline
+		R1.2 & Autenticação do jogador (nome e senha) & Evidente
+		\\
+		\hline 
+		R1.3 & Identificação do perfil do jogador & Evidente
+		\\
+		\hline 
+		R1.4 & Consulta de perfis dos jogadores & Evidente
+		\\
+		\hline 
+		R1.5 & Criar missões & Evidente
+		\\
+		\hline 
+		R1.6 & Consultar missões & Evidente
+		\\
+		\hline 
+		R1.7 & Criar personagens & Invisível
+		\\
+		\hline 
+		R1.8 & Consultar habilidades das personagens & Evidente
+		\\
+		\hline 
+		R1.9 & Notificações na página principal & Evidente
+		\\
+		\hline 
+	\end{tabular}
+	\caption{Requisitos Funcionais Site}
+	\label{tab:requisitosfuncionaissite}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ |c|c|c|c| } 
+		\hline
+		\textbf{Ref} & 	\textbf{Função} & 	\textbf{Categoria}
+		\\
+		\hline
+		R2.1 &Formar uma equipa & Evidente
+		\\ \hline
+		R2.2 & Jogar contra outros jogadores & Evidente
+		\\
+		\hline 
+		R2.3 & Animações em tempo real que facilitem a compreensão do jogo & Adorno
+		\\
+		\hline 
+		R2.4 & Reprodução de sons & Adorno
+		\\
+		\hline 
+	
+	\end{tabular}
+	\caption{Requisitos Funcionais Jogo}
+	\label{tab:requisitosfuncionaisjogo}
+\end{table}
+
+
+%%________________________________________________________________________
+\subsection{Atributos do Sistema}
+\label{sec:atributossistema}
+
+Os atributos do sistema são os requisitos não-funcionais e representam as características ou dimensões do sistema. Estes, podem ser definidos em duas categorias:
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ |c|c|c|c| } 
+		\hline
+		\textbf{Categoria} & \textbf{Significado} \\
+		\hline
+		\multirow{1}{5em}{Obrigatório} & Tem que ser contemplado \\
+		\hline
+		\multirow{1}{5em}{Desejável} & Deve estar preparado para alcançar \\
+		\hline
+	\end{tabular}
+	\caption{Atributos do Sistema}
+	\label{tab:atributossistema}
+\end{table}
+
+Neste projeto, os requisitos não-funcionais são focados maioritariamente na experiência do utilizador, com o objetivo de melhorar a sua compreensão e facilitar a sua utilização do jogo.  
+
 %%________________________________________________________________________
 \section{Contribuição}
 \label{sec:contribuicao}
@@ -65,38 +177,14 @@ Este projeto visa manter as características do jogo original que são familiares 
 
 No documento presente, existem cinco capítulos que descrevem o projeto desenvolvido.
 
-Neste capítulo de introdução é feito:
-\begin{itemize}
-	\item o enquadramento do projeto, que ilustra a origem e o tipo deste jogo de uma forma geral;
-	\item a motivação, onde defende a atualidade e interesse do projeto;
-	\item o objetivo de \emph{Anime-Arena} diz concretamente o que se pretende;
-	\item os requisitos enumeram as características do jogo a implementar;
-	\item na parte da contribuição é explicado o que foi feito, o interesse do público e considerações sobre o produto final;
-	\item é dito neste subcapítulo a forma como o documento está organizado.
-\end{itemize}
+Este capítulo de introdução começa por enquadrar o projeto, explicando a origem e o tipo deste jogo de uma forma geral. Fala-se da motivação do projeto, nomeadamente a atualidade e o interesse do público. É dito concretamente o objetivo que se pretende alcançar e nos requisitos, são enumeradas as características a implementar. Por fim, na parte da contribuição é explicado o que foi feito e as considerações sobre o produto final.
 
 
-No segundo capítulo é descreve as tecnologias consideradas relevantes para a elaboração deste projeto, nomeadamente:
-\begin{itemize}
-	\item linguagens;
-	\item sistemas para gestão de dados;
-	\item servidores aplicacionais;
-	\item ferramentas
-\end{itemize}
+No segundo capítulo é descrito as tecnologias consideradas relevantes para a elaboração deste projeto, nomeadamente linguagens, sistemas para gestão de dados, servidores aplicacionais e ferramentas.
 
 
-O terceiro capítulo trata a solução apresentada do projeto, mais concretamente:
-\begin{itemize}
-	\item casos de utilização;
-	\item arquitetura para descrever os serviços, em específico:
-	\begin{itemize}
-		\item definição de personagens;
-		\item modelo EA;
-		\item configuração de habilidades e missões
-	\end{itemize}
-	\item servidores aplicacionais;
-	\item ferramentas
-\end{itemize}
+O terceiro capítulo trata a solução apresentada do projeto, mais concretamente os casos de utilização, a arquitetura para descrever os serviços (definição de personagens, modelo EA e configuração de habilidades e missões), os servidores aplicacionais e as ferramentas utilizadas. 
+
 
 São apresentados cenários de demonstração e testes no quarto capítulo, fazendo referência aos casos de utilização.
 
