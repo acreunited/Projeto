@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  9 JUN 2022 16:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  9 JUN 2022 19:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -347,9 +347,6 @@ File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 (00a_PRJ_resumo_abstract.aux) (00b_PRJ_agradecimentos.aux)
 (00c_PRJ_dedicatoria.aux)
 
-LaTeX Warning: Label `tab:funcoessistema' multiply defined.
-
-
 LaTeX Warning: Label `sec:requisitos' multiply defined.
 
 )
@@ -416,7 +413,7 @@ LaTeX Info: Redefining \nameref on input line 124.
 \@outlinefile=\write3
 \openout3 = `00_PRJ_main.out'.
 
-<./fig_logo_ISEL.png, id=107, 464.4552pt x 456.7464pt>
+<./fig_logo_ISEL.png, id=111, 464.4552pt x 456.7464pt>
 File: ./fig_logo_ISEL.png Graphic file (type png)
 <use ./fig_logo_ISEL.png>
 Package pdftex.def Info: ./fig_logo_ISEL.png  used on input line 130.
@@ -484,7 +481,7 @@ l.29 \myPrefaceChapter{Abstract}
 
 ] (01_PRJ_cap_1_2_3.tex
 Cap\'{\i }tulo 1.
-<./naDied.png, id=224, 662.475pt x 521.95pt>
+<./naDied.png, id=233, 662.475pt x 521.95pt>
 File: ./naDied.png Graphic file (type png)
 <use ./naDied.png>
 Package pdftex.def Info: ./naDied.png  used on input line 29.
@@ -524,23 +521,32 @@ Overfull \vbox (1.0pt too high) detected at line 159
 Overfull \vbox (1.0pt too high) detected at line 161
  []
 
-[5] [6]
-Cap\'{\i }tulo 2.
-[7
 
-] [8]
+Overfull \hbox (100.90363pt too wide) in paragraph at lines 172--201
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+[6] [7] [8
+
+]
+Cap\'{\i }tulo 2.
+[9] [10]
 Cap\'{\i }tulo 3.
 
-LaTeX Warning: Reference `sec:requisitoss' on page 9 undefined on input line 22
-5.
+LaTeX Warning: Reference `sec:requisitoss' on page 11 undefined on input line 2
+95.
 
-[9
-
-]) (01_PRJ_cap_4_5_6.tex [10]
-Cap\'{\i }tulo 4.
 [11
 
-] [12
+]) (01_PRJ_cap_4_5_6.tex [12]
+Cap\'{\i }tulo 4.
+[13
+
+] [14
 
 ]
 Cap\'{\i }tulo 5.
@@ -548,19 +554,19 @@ File: ./fig_logo_ISEL.png Graphic file (type png)
 <use ./fig_logo_ISEL.png>
 Package pdftex.def Info: ./fig_logo_ISEL.png  used on input line 57.
 (pdftex.def)             Requested size: 56.9055pt x 55.95714pt.
-[13] [14
+[15] [16
 
 ]
 Cap\'{\i }tulo 6.
-) (02_PRJ_cap_apendice.tex [15] [16
+) (02_PRJ_cap_apendice.tex [17] [18
 
 ]
 Ap\^endice A.
-[17] [18
+[19] [20
 
 ]
 Ap\^endice B.
-) [19] [20
+) [21] [22
 
 ] (00_PRJ_main.bbl
 Underfull \hbox (badness 1142) in paragraph at lines 37--41
@@ -568,7 +574,7 @@ Underfull \hbox (badness 1142) in paragraph at lines 37--41
 a-ti-o-nal
  []
 
-) [21
+) [23
 
 ] (00_PRJ_main.aux (00a_PRJ_resumo_abstract.aux)
 (00b_PRJ_agradecimentos.aux) (00c_PRJ_dedicatoria.aux))
@@ -579,13 +585,13 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `00_PRJ_main.out' has not changed.
-(rerunfilecheck)             Checksum: E0E1193E58D6F127A1AE894CDAEFDB32;3292.
+(rerunfilecheck)             Checksum: 25CC8C35BB4DB9DF4C1DEAB85EEE2044;3522.
  ) 
 Here is how much of TeX's memory you used:
- 12030 strings out of 478582
- 190857 string characters out of 2861228
- 503245 words of memory out of 3000000
- 29928 multiletter control sequences out of 15000+600000
+ 12041 strings out of 478582
+ 191036 string characters out of 2861228
+ 503462 words of memory out of 3000000
+ 29934 multiletter control sequences out of 15000+600000
  477246 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,13n,63p,830b,504s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -598,9 +604,9 @@ fb><D:/Latex/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Latex/fonts/type1/pub
 lic/amsfonts/cm/cmr8.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmsl12.pfb><D
 :/Latex/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Latex/fonts/type1/public/
 amsfonts/cm/cmti12.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on 00_PRJ_main.pdf (37 pages, 378659 bytes).
+Output written on 00_PRJ_main.pdf (39 pages, 383125 bytes).
 PDF statistics:
- 424 PDF objects out of 1000 (max. 8388607)
- 79 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 441 PDF objects out of 1000 (max. 8388607)
+ 84 named destinations out of 1000 (max. 500000)
+ 227 words of extra memory for PDF output out of 10000 (max. 10000000)
 

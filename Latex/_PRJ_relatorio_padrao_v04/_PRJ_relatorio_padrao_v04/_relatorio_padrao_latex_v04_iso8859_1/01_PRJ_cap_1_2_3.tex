@@ -165,7 +165,75 @@ Os atributos do sistema são os requisitos não-funcionais e representam as caract
 	\label{tab:atributossistema}
 \end{table}
 
-Neste projeto, os requisitos não-funcionais são focados maioritariamente na experiência do utilizador, com o objetivo de melhorar a sua compreensão e facilitar a sua utilização do jogo.  
+Neste projeto, os requisitos não-funcionais são focados maioritariamente na experiência do utilizador, com o objetivo de melhorar a sua compreensão e facilitar a sua utilização do jogo. Assim, os atributos do sistema são os seguintes:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ |c|c|c|c| } 
+		\hline
+		\textbf{Atributos} & \textbf{Detalhe / Restrição de Fronteira} & \textbf{Categoria}
+		\\
+		\hline
+		Facilidade de Utilização & Responsividade & Obrigatório
+		\\ \hline
+		  & Fácil aprendizagem das mecânicas do jogo & Desejável
+		\\
+		\hline 
+		  & Representação de símbolos para pessoas daltónicas & Desejável
+		\\
+		\hline 
+		  & Existência de vários idiomas & Desejável
+		\\
+		\hline 
+		Interação Pessoa-Máquina & Utilização de rato e de teclado & Obrigatório
+		\\ \hline
+		Plataforma	& Windows & Obrigatório
+		\\
+		\hline 
+		Tolerância a falhas & Minimizar o máximo possível & Desejável
+		\\
+		\hline 
+		Tempo de resposta & O mais rápido possível & Desejável
+		\\
+		\hline 
+		
+	\end{tabular}
+	\caption{Requisitos Não-Funcionais}
+	\label{tab:requisitosnaofuncionais}
+\end{table}
+
+%%________________________________________________________________________
+\subsection{Atributos e Funções do Sistema}
+\label{sec:atributosefuncoessistema}
+
+É importante evidenciar as relações entre funções e atributos do sistema, ou seja, descrever os atributos relacionados com funções específicas. Estas relações podem ser visualizadas de seguida:
+
+\begin{table}[H]
+
+	\centering
+	\resizebox{\textwidth}{!}{\begin{tabular}{ |c|c|c|c| } 
+		\hline
+		\textbf{Atributos} & \textbf{Funções} 
+		\\
+		\hline
+		Facilidade de Utilização & R1.4, R1.6, R1.8, R1.9, R2.3, R2.4 
+		\\ \hline
+		Interação Pessoa-Máquina & R1.1, R1.2, R1.3, R1.4, R1.5, R1.6, R1.7, R1.8, R1.9, R2.1, R2.2, R2.3, R2.4 
+		\\ \hline
+		Plataforma	& R1.1, R1.2, R1.3, R1.4, R1.5, R1.6, R1.7, R1.8, R1.9, R2.1, R2.2, R2.3, R2.4 
+		\\
+		\hline 
+		Tolerância a falhas & R1.1, R1.2, R1.3, R1.4, R1.5, R1.6, R1.7, R1.8, R1.9, R2.1, R2.2, R2.3, R2.4
+		\\
+		\hline 
+		Tempo de resposta & R1.1, R1.2, R1.3, R1.4, R1.5, R1.6, R1.7, R1.8, R1.9, R2.1, R2.2, R2.3, R2.4
+		\\
+		\hline 
+		
+	\end{tabular}}
+	\caption{Atributos e Funções do Sistema}
+	\label{tab:atributosefuncoes}
+\end{table}
 
 %%________________________________________________________________________
 \section{Contribuição}
