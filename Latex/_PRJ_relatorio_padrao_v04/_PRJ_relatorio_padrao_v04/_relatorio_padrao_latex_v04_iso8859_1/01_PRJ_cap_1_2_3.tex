@@ -18,11 +18,11 @@
 Este capítulo faz uma breve introdução ao projeto intitulado de \emph{Anime-Arena}. Mais concretamente, descreve o enquadramento, a motivação, o objetivo, os requisitos, a contribuição e como o documento está organizado.
 
 %%________________________________________________________________________
- 
+
 \section{Enquadramento}
 \label{sec:enquadramento}
 
-Este tipo de jogo começou em 2006 com a criação do \emph{Naruto-Arena}. Devido ao facto de nesta altura o anime \emph{Naruto} ser bastante popular entre as crianças e os jovens, muitos procuravam por jogos relacionados com este seu interesse. Inevitavelmente encontraram este jogo e jogaram-no até 2018. Infelizmente, no final do ano 2015 e início de 2016, os criadores abandonaram o projeto. A inexistência de atualizações fez diminuir consideravelmente o número de jogadores e o jogo terminou permanentemente em 2018. No final de maio desse ano, quando uma pessoa tentava entrar no site, apenas encontrava a seguinte imagem:
+Este tipo de jogo começou em 2006 com a criação do \emph{Naruto-Arena} \cite{NarutoArena}. Devido ao facto de nesta altura o anime \emph{Naruto} \cite{Naruto} ser bastante popular entre as crianças e os jovens, muitos procuravam por jogos relacionados com este seu interesse. Inevitavelmente encontraram este jogo e jogaram-no até 2018. Infelizmente, no final do ano 2015 e início de 2016, os criadores abandonaram o projeto. A inexistência de atualizações fez diminuir consideravelmente o número de jogadores e o jogo terminou permanentemente em 2018. No final de maio desse ano, quando uma pessoa tentava entrar no site, apenas encontrava a seguinte imagem:
 
 \begin{centering}
 	\begin{figure}[H]
@@ -34,13 +34,12 @@ Este tipo de jogo começou em 2006 com a criação do \emph{Naruto-Arena}. Devido a
 
 Não ser possível voltar a jogar deixou tristeza, mas também esperança que os administradores voltassem e/ou alguém recriasse o seu jogo de infância que tanto gostavam. Este desejo concretizou-se em 2019 quando uma pessoa exterior (que não fazia parte da equipa do jogo original) \aspas{reviveu} o jogo que tantos queriam. Este ainda estava numa fase inicial, onde lhe deu o nome de \aspas{versão alpha}. Em 2020 lançou oficialmente o produto final, chamando-lhe \aspas{versão beta}.
 
-Este jogo continua atualmente a ser jogado e atualizado. Este, encontra-se no seguinte link \href{https://naruto-arena.net/}{naruto-arena.net}
 
 %%________________________________________________________________________
 \section{Motivação}
 \label{sec:motivacao}
 
-A reedição do \emph{Naruto-Arena} trouxe alegria a muitas pessoas, mas também desejo por mais. Desde o abandono do jogo original até à atualidade, os jogadores têm exprimido o seu desejo por versões alternativas. Uns por quererem algo diferente onde as personagens, habilidades e classificações não são iguais, outros por preferirem diferentes animes ao Naruto. As razões variam entre os jogadores, mas é o facto que um número considerável de pessoas tem interesse por algo novo baseado nesta versão original.
+A reedição do \emph{Naruto-Arena} \cite{NarutoArena} trouxe alegria a muitas pessoas, mas também desejo por mais. Desde o abandono do jogo original até à atualidade, os jogadores têm exprimido o seu desejo por versões alternativas. Uns por quererem algo diferente onde as personagens, habilidades e classificações não são iguais, outros por preferirem diferentes animes ao Naruto \cite{Naruto}. As razões variam entre os jogadores, mas é o facto que um número considerável de pessoas tem interesse por algo novo baseado nesta versão original.
 Este projeto visa satisfazer este mercado, englobando neste estilo de jogo vários animes diferentes. Foi pensado em fazer para um anime em particular, no entanto a popularidade varia consoante o tempo, e nem todas os jogadores preferem o mesmo anime. Assim, este problema fica resolvido com a existência de vários animes no mesmo jogo, e garante conteúdo para o futuro, pois todos os anos aparecem animes novos e populares.
 
 %%________________________________________________________________________
@@ -85,7 +84,7 @@ Com a utilização destas categorias, são apresentadas, nas próximas tabelas, toda
 	\centering
 	\begin{tabular}{ |c|c|c|c| } 
 		\hline
-	 	\textbf{Ref} & 	\textbf{Função} & 	\textbf{Categoria}
+		\textbf{Ref} & 	\textbf{Função} & 	\textbf{Categoria}
 		\\
 		\hline
 		R1.1 & Criação do perfil do jogador & Evidente
@@ -137,7 +136,7 @@ Com a utilização destas categorias, são apresentadas, nas próximas tabelas, toda
 		R2.4 & Reprodução de sons & Adorno
 		\\
 		\hline 
-	
+		
 	\end{tabular}
 	\caption{Requisitos Funcionais Jogo}
 	\label{tab:requisitosfuncionaisjogo}
@@ -168,21 +167,21 @@ Os atributos do sistema são os requisitos não-funcionais e representam as caract
 Neste projeto, os requisitos não-funcionais são focados maioritariamente na experiência do utilizador, com o objetivo de melhorar a sua compreensão e facilitar a sua utilização do jogo. Assim, os atributos do sistema são os seguintes:
 
 \begin{table}[H]
-	\centering
-	\begin{tabular}{ |c|c|c|c| } 
+	
+	\begin{tabular}{ |p{0.35\textwidth}|p{0.5\textwidth}|p{0.15\textwidth}|p| }
 		\hline
 		\textbf{Atributos} & \textbf{Detalhe / Restrição de Fronteira} & \textbf{Categoria}
 		\\
 		\hline
 		Facilidade de Utilização & Responsividade & Obrigatório
 		\\ \hline
-		  & Fácil aprendizagem das mecânicas do jogo & Desejável
+		& Fácil aprendizagem das mecânicas do jogo & Desejável
 		\\
 		\hline 
-		  & Representação de símbolos para pessoas daltónicas & Desejável
+		& Representação de símbolos para pessoas daltónicas & Desejável
 		\\
 		\hline 
-		  & Existência de vários idiomas & Desejável
+		& Existência de vários idiomas & Desejável
 		\\
 		\hline 
 		Interação Pessoa-Máquina & Utilização de rato e de teclado & Obrigatório
@@ -209,9 +208,9 @@ Neste projeto, os requisitos não-funcionais são focados maioritariamente na expe
 É importante evidenciar as relações entre funções e atributos do sistema, ou seja, descrever os atributos relacionados com funções específicas. Estas relações podem ser visualizadas de seguida:
 
 \begin{table}[H]
-
+	
 	\centering
-	\resizebox{\textwidth}{!}{\begin{tabular}{ |c|c|c|c| } 
+	\begin{tabular}{ |p{0.35\textwidth}|p{0.65\textwidth}|p|p|} 
 		\hline
 		\textbf{Atributos} & \textbf{Funções} 
 		\\
@@ -230,7 +229,7 @@ Neste projeto, os requisitos não-funcionais são focados maioritariamente na expe
 		\\
 		\hline 
 		
-	\end{tabular}}
+	\end{tabular}
 	\caption{Atributos e Funções do Sistema}
 	\label{tab:atributosefuncoes}
 \end{table}
@@ -258,75 +257,81 @@ São apresentados cenários de demonstração e testes no quarto capítulo, fazendo r
 
 O documento termina no quinto capítulo com a conclusão e desenvolvimentos futuros.
 
-%%________________________________________________________________________
-\chapter{Trabalho Relacionado}
-\label{ch:trabalhoRelacionado}
-%%________________________________________________________________________
-
-Trabalho relacionado aqui \ldots
-
-Aqui terá certamente necessidade de citar (fazer referência) a vários trabalhos anteriormente publicados e que foi analisando ao longo de todo o seu projeto. Esses trabalhos devem ser apresentados com os seguintes objetivos essenciais:
-\begin{itemize}
-\item
-delimitar o contexto onde o seu projeto se insere,
-
-\item
-definir claramente os aspetos diferenciadores (inovadores) do seu projeto,
-
-\item
-identificar e caracterizar os pressupostos (teóricos ou tecnológicos) em que o projeto se baseia.
-\end{itemize}
-
-Cada trabalho a que fizer referência precisa de ser corretamente identificado. Essa identificação depende do tipo de publicação do trabalho. Um trabalho terá sido publicado em revista científica, \eg, \cite{Elzinga_Mills_2011}, outro em ata de conferência internacional, \eg, \cite{Boutilier_et_al_1995}, outro em livro, \eg, \cite{Bellifemine_et_al_2007}, ou apenas em capítulo de livro, \eg, \cite{Wooldridge_2000}, ou pode ainda incluído numa coleção, \eg, \cite{Howard_Matheson_1984} e há também a hipótese de ser uma \aspas{publicação de proveniência diversa}, como no caso em que o \aspas{o sítio na Internet} é a principal forma de publicação, \eg, \cite{Python_2012} e, por fim, a publicação pode ser um relatório técnico, \eg, \cite{Marin_2006}.
-
-Para conseguir lidar de forma adequada com as referências é importante construir um acervo e ter um mecanismo para geração automática (e correta) das referências que vai fazendo ao longo do texto.
-
-Atualmente, as publicações têm também informação sobre o modo como devem ser corretamente citadas; em geral essa informação segue o formato \textsc{Bib}\TeX.
-
-Para fazer referência a um trabalho é necessário seguir as boas regras (sintáticas) para uma citação correta, mas isso não é suficiente; falta a \aspas{semântica}. Ou seja, é também preciso descrever o essencial do trabalho que está a citar. É necessário explicar esse trabalho e enquadrá-lo, no texto, de modo a tornar clara a relação entre esse trabalho e o seu projeto.
-
-
 
 %%________________________________________________________________________
-\chapter{Modelo Proposto}
-\label{ch:modeloProposto}
+%%Tecnologias
 %%________________________________________________________________________
 
-Aqui mostra um caminho que inicia com requisitos (\cf, secção \ref{sec:requisitoss}), passa pela aplicação dos fundamentos (\cf, secção \ref{sec:fundamentos}) e continua até conseguir transmitir uma visão clara e um formalismo com nível de detalhe adequado a um leitor que tenha um perfil (competência técnica) idêntico ao seu.
+%%________________________________________________________________________
+\chapter{Tecnologias}
+\label{ch:tecnologias}
 
-Recorra, sempre que possível, a exemplos ilustrativos da utilização do seu modelo. Esses exemplos devem ajudar o leitor a compreender os aspetos mais específicos do seu trabalho.
+%%________________________________________________________________________
 
-O modelo aqui proposto deve ser (tanto quanto possível) independente de tecnologias concretas (\eg, linguagens de programação ou bibliotecas). No entanto deve fornecer os argumentos que contribuam para justificar uma posterior escolha (adoção) de tecnologias.
+\section{Linguagens}
+\label{sec:linguagens}
+
+%%________________________________________________________________________
+
+\section{Sistemas de Gestão de Dados}
+\label{sec:sistemagestaodados}
+
+%%________________________________________________________________________
+
+\section{Servidores Aplicacionais}
+\label{sec:servidoresaplicacionais}
+
+%%________________________________________________________________________
+
+\section{Ferramentas}
+\label{sec:ferramentas}
+
 
 
 %%________________________________________________________________________
-\section{Requisitos}
-\label{sec:requisitos}
+%%Projeto
 %%________________________________________________________________________
 
-Aqui o essencial (e se aplicável) dos requisitos funcionais, não funcionais e modelo de casos de utilização. Aqui deve também apresentar matriz para decisão sobre prioridade dos casos de utilização (se aplicável) \ldots
+%%________________________________________________________________________
+\chapter{Projeto}
+\label{ch:projeto}
 
-Deve apresentar de forma \aspas{moderada} o resultado da fase avaliação de requisitos. A informação de maior detalhe (\eg, diagramas UML demasiado detalhados) deve ser colocada em apêndice.
+%%________________________________________________________________________
+
+\section{Casos de Utilização}
+\label{sec:casosuso}
+
+%%________________________________________________________________________
+
+\section{Interface Humana}
+\label{sec:interfacehumana}
 
 
 %%________________________________________________________________________
-\section{Fundamentos}
-\label{sec:fundamentos}
-%%________________________________________________________________________
-
-Aqui o sustento formal (teórico / tecnológico) do trabalho realizado \ldots
-
+\chapter{Demonstração}
+\label{ch:demonstracao}
 
 %%________________________________________________________________________
-\section{Abordagem}
-\label{sec:abordagem}
+%%Conclusão
 %%________________________________________________________________________
 
-Aqui explique as formulações, os métodos, os algoritmos e outros contributos que desenvolveu e que considera centrais ao seu trabalho.
+%%________________________________________________________________________
+\chapter{Conclusão}
+\label{ch:conclusao}
 
-Aqui precisa de abordar tudo o que contribui para diferenciar o seu trabalho e que (na sua opinião) deve ser evidenciado e explicado de modo claro.
+%%________________________________________________________________________
 
-Lembre-se que a apresentação de um (ou mais) \textbf{exemplo(s) simples} é muito importante para que o leitor consiga seguir e compreender o seu trabalho.
+\section{Sumário}
+\label{sec:sumario}
 
-Tenha em atenção que um exemplo acompanhado por figuras ilustrativas será certamente analisado (de modo cuidado) pelos leitores do seu trabalho.
+%%________________________________________________________________________
+
+\section{Desenvolvimentos Futuros}
+\label{sec:desenvolvimentosfuturos}
+
+
+
+
+
+
 

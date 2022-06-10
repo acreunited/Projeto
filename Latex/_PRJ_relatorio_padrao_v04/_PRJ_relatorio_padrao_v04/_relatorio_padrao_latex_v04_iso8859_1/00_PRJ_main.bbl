@@ -1,42 +1,13 @@
 \begin{thebibliography}{}
 
-\bibitem[Bellifemine et~al., 2007]{Bellifemine_et_al_2007}
-Bellifemine, F.~L., Caire, G., e Greenwood, D. (2007).
-\newblock {\em Developing Multi-Agent Systems with {JADE}}.
-\newblock Wiley Series in Agent Technology. Wiley.
+\bibitem[Kishimoto, 2002]{Naruto}
+Kishimoto, M. (2002).
+\newblock Naruto.
+\newblock \url{https://www.tv-tokyo.co.jp/anime/naruto2002/}.
 
-\bibitem[Boutilier et~al., 1995]{Boutilier_et_al_1995}
-Boutilier, C., Dearden, R., e Goldszmidt, M. (1995).
-\newblock Exploiting structure in policy construction.
-\newblock In {\em Proceedings of the IJCAI-95}, p. 1104--1111.
-
-\bibitem[Elzinga e Mills, 2011]{Elzinga_Mills_2011}
-Elzinga, K. e Mills, D. (2011).
-\newblock The lerner index of monopoly power: Origins and uses.
-\newblock {\em American Economic Review: Papers \& Proceedings}, 101(3).
-
-\bibitem[Howard e Matheson, 1984]{Howard_Matheson_1984}
-Howard, R. e Matheson, J. (1984).
-\newblock Influence diagrams.
-\newblock In {\em Readings on the Principles and Applications of Decision
-  Analysis}, volume~2, p. 721--762. Strategic Decision Group, Menlo Park, CA.
-
-\bibitem[Marin, 2006]{Marin_2006}
-Marin, D. (2006).
-\newblock A formalization of {RDF} (applications de la logique á la sémantique
-  du {Web}).
-\newblock Technical report, Dept. Computer Science, Ecole Polytechnique,
-  Universidad de Chile, TR/DCC-2006-8.
-
-\bibitem[Python3.2.3, 2012]{Python_2012}
-Python3.2.3 (2012).
-\newblock Python programming language.
-\newblock \url{http://docs.python.org/py3k/}.
-
-\bibitem[Wooldridge, 2000]{Wooldridge_2000}
-Wooldridge, M. (2000).
-\newblock {\em Reasoning About Rational Agents}, cap.: Implementing Rational
-  Agents.
-\newblock The MIT Press.
+\bibitem[Wespro, 2019]{NarutoArena}
+Wespro (2019).
+\newblock Naruto-arena.
+\newblock \url{http://naruto-arena.net/}.
 
 \end{thebibliography}
