@@ -15,22 +15,23 @@
 \label{ch:introducao}
 %%________________________________________________________________________
 
-Este capítulo faz uma breve introdução ao projeto intitulado de \emph{Anime-Arena}. Mais concretamente, descreve o enquadramento, a motivação, o objetivo, os requisitos, a contribuição e como o documento está organizado.
+A reedição de um jogo antigo chamado \emph{Naruto-Arena}, trouxe nostalgia a um número considerável de pessoas. Tendo sido parte da infância de muitos jogadores durante vários anos, estes têm demonstrado interesse por versões alternativas do seu jogo preferido.
+
 
 %%________________________________________________________________________
 
 \section{Enquadramento}
 \label{sec:enquadramento}
 
-Este tipo de jogo começou em 2006 com a criação do \emph{Naruto-Arena} \cite{NarutoArena}. Devido ao facto de nesta altura o anime \emph{Naruto} \cite{Naruto} ser bastante popular entre as crianças e os jovens, muitos procuravam por jogos relacionados com este seu interesse. Inevitavelmente encontraram este jogo e jogaram-no até 2018. Infelizmente, no final do ano 2015 e início de 2016, os criadores abandonaram o projeto. A inexistência de atualizações fez diminuir consideravelmente o número de jogadores e o jogo terminou permanentemente em 2018. No final de maio desse ano, quando uma pessoa tentava entrar no site, apenas encontrava a seguinte imagem:
+Tudo começou em 2006 com a criação do \emph{Naruto-Arena} \cite{NarutoArena}. Devido ao facto de nesta altura o anime \emph{Naruto} \cite{Naruto} ser bastante popular entre as crianças e os jovens, muitos procuravam por jogos relacionados com este seu interesse. Inevitavelmente encontraram este jogo e jogaram-no até 2018. Infelizmente, no final do ano 2015 e início de 2016, os criadores abandonaram o projeto. A inexistência de atualizações fez diminuir consideravelmente o número de jogadores e o jogo terminou permanentemente em 2018. No final de maio desse ano, quando uma pessoa tentava entrar no site, apenas encontrava a seguinte imagem:
 
 \begin{centering}
 	\begin{figure}[H]
-		\includegraphics[scale=0.75]{./naDied}
+		\includegraphics{./naDied}
 		\caption{Fim do Naruto-Arena antigo}
 	\end{figure}
 \end{centering}
-%%recortar imagem - tem um fundo branco muito grande em baixo
+
 
 Não ser possível voltar a jogar deixou tristeza, mas também esperança que os administradores voltassem e/ou alguém recriasse o seu jogo de infância que tanto gostavam. Este desejo concretizou-se em 2019 quando uma pessoa exterior (que não fazia parte da equipa do jogo original) \aspas{reviveu} o jogo que tantos queriam. Este ainda estava numa fase inicial, onde lhe deu o nome de \aspas{versão alpha}. Em 2020 lançou oficialmente o produto final, chamando-lhe \aspas{versão beta}.
 
@@ -46,9 +47,9 @@ Este projeto visa satisfazer este mercado, englobando neste estilo de jogo vário
 \section{Objetivo}
 \label{sec:objetivo}
 
-O objetivo de \emph{Anime-Arena} é conceber e implementar uma plataforma de jogos para a web, capaz de gerir a interação entre pares de jogadores que competem para melhorar a sua classificação e desbloquear personagens.
+O objetivo de \emph{Anime-Arena} é conceber e implementar um jogo para a web, capaz de gerir a interação entre pares de jogadores que competem para melhorar a sua classificação e desbloquear personagens.
 
-Este projeto visa manter as características do jogo original que são familiares e apelativas aos jogadores, mas também fazer melhorarias a funcionalidades existentes e acrescentar ao jogo o que atualmente não tem. 
+Este projeto visa manter as características do jogo original que são familiares e apelativas aos jogadores, mas também fazer uma interpretação pessoal e melhorar funcionalidades existentes.
 
 %%________________________________________________________________________
 \section{Requisitos}
@@ -238,6 +239,12 @@ Neste projeto, os requisitos não-funcionais são focados maioritariamente na expe
 \section{Contribuição}
 \label{sec:contribuicao}
 
+Existe uma comunidade interessada em desenvolver a parte gráfica e manter o jogo online. Nomeadamente, foi formada uma equipa de pessoas que contribui no planeamento e organização do projeto, assim como na criação das imagens do jogo: personagens, habilidades, missões, classificações, energias e botões.
+
+A contribuição principal deste projeto assenta na satisfação do mercado que deseja versões alternativas do jogo original, querendo jogar com novas personagens, realizar diferentes missões e obter classificações de outros animes. 
+
+
+
 %%________________________________________________________________________
 \section{Organização do Documento}
 \label{sec:organizacao}
@@ -296,10 +303,23 @@ O documento termina no quinto capítulo com a conclusão e desenvolvimentos futuro
 \chapter{Projeto}
 \label{ch:projeto}
 
+Este capítulo explica a solução apresentada, detalhando as tecnologias utilizadas no desenvolvimento deste projeto.
+
 %%________________________________________________________________________
 
 \section{Casos de Utilização}
 \label{sec:casosuso}
+
+Neste projeto, existem dois atores. Apesar de todos os utilizadores serem \emph{Players}, é possível serem também \emph{Administrator}, tendo acesso a mais funcionalidades dos que não o são.  
+
+\includegraphics[scale=0.85]{./useCases.png}
+
+Um \emph{Player} é o tipo de utilizador básico nos jogos, isto é, consegue visualizar o conteúdo disponível e jogar, neste caso contra um oponente. Ser \emph{Administrator} mantém todas as características de um \emph{Player}, no entanto este consegue também administrar o jogo, nomeadamente criar novo conteúdo como personagens, missões e anúncios.
+
+%%________________________________________________________________________
+
+\section{Arquitetura}
+\label{sec:arquitetura}
 
 %%________________________________________________________________________
 

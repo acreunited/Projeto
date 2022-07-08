@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  10 JUN 2022 01:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  8 JUL 2022 20:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -409,7 +409,7 @@ LaTeX Info: Redefining \nameref on input line 124.
 \@outlinefile=\write3
 \openout3 = `00_PRJ_main.out'.
 
-<./fig_logo_ISEL.png, id=127, 464.4552pt x 456.7464pt>
+<./fig_logo_ISEL.png, id=131, 464.4552pt x 456.7464pt>
 File: ./fig_logo_ISEL.png Graphic file (type png)
 <use ./fig_logo_ISEL.png>
 Package pdftex.def Info: ./fig_logo_ISEL.png  used on input line 130.
@@ -425,11 +425,17 @@ SEL.png>] [0
 \openout2 = `./00a_PRJ_resumo_abstract.aux'.
 
  (00a_PRJ_resumo_abstract.tex
+Overfull \hbox (12.45844pt too wide) in paragraph at lines 26--27
+[]\OT1/cmr/m/n/12 Para solu^^Xc~ao da aplica^^Xc~ao, utilizou-se JSP de modo a 
+criar p^^Saginas din^amicas
+ []
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.29 \myPrefaceChapter{Abstract}
+l.31 \myPrefaceChapter{Abstract}
                                  [1
 
 
@@ -477,87 +483,80 @@ l.29 \myPrefaceChapter{Abstract}
 
 ] (01_PRJ_cap_1_2_3.tex
 Cap\'{\i }tulo 1.
-
-Overfull \hbox (24.73462pt too wide) in paragraph at lines 25--26
-\OT1/cmr/m/n/12 Este tipo de jogo come^^Xcou em 2006 com a cria^^Xc~ao do \OT1/
-cmr/m/it/12 Naruto-Arena \OT1/cmr/m/n/12 [[]].
- []
-
-<./naDied.png, id=253, 662.475pt x 521.95pt>
+<./naDied.png, id=256, 240.29774pt x 241.50224pt>
 File: ./naDied.png Graphic file (type png)
 <use ./naDied.png>
-Package pdftex.def Info: ./naDied.png  used on input line 29.
-(pdftex.def)             Requested size: 496.85504pt x 391.46153pt.
-
-Overfull \hbox (106.85504pt too wide) in paragraph at lines 29--30
-[][] 
- []
-
+Package pdftex.def Info: ./naDied.png  used on input line 30.
+(pdftex.def)             Requested size: 240.29715pt x 241.50163pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[2 <./naDied.png>]
 
- [2 <./naDied.png>]
-Underfull \vbox (badness 3557) has occurred while \output is active []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
- [3]
-Overfull \hbox (50.2839pt too wide) in paragraph at lines 123--141
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (50.2839pt too wide) in paragraph at lines 124--142
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4]
-Overfull \hbox (0.65277pt too wide) in paragraph at lines 158--158
+
+Underfull \vbox (badness 1571) has occurred while \output is active []
+
+ [3]
+Overfull \hbox (0.65277pt too wide) in paragraph at lines 159--159
 []|\OT1/cmr/m/n/12 Obrigat^^Sorio|  
  []
 
 
-Overfull \vbox (1.0pt too high) detected at line 158
+Overfull \vbox (1.0pt too high) detected at line 159
  []
 
 
-Overfull \vbox (1.0pt too high) detected at line 160
+Overfull \vbox (1.0pt too high) detected at line 161
  []
 
 
-Overfull \hbox (0.90454pt too wide) in paragraph at lines 176--177
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (0.90454pt too wide) in paragraph at lines 177--178
 []\OT1/cmr/m/n/12 Obrigat^^Sorio| 
  []
 
 
-Overfull \hbox (0.90454pt too wide) in paragraph at lines 187--188
+Overfull \hbox (0.90454pt too wide) in paragraph at lines 188--189
 []\OT1/cmr/m/n/12 Obrigat^^Sorio| 
  []
 
 
-Overfull \hbox (0.90454pt too wide) in paragraph at lines 189--191
+Overfull \hbox (0.90454pt too wide) in paragraph at lines 190--192
 []\OT1/cmr/m/n/12 Obrigat^^Sorio| 
  []
 
 
-Overfull \hbox (36.0pt too wide) in paragraph at lines 171--200
+Overfull \hbox (36.0pt too wide) in paragraph at lines 172--201
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5]
-Overfull \hbox (24.0pt too wide) in paragraph at lines 213--233
+ [4]
+Overfull \hbox (24.0pt too wide) in paragraph at lines 214--234
  [][] 
  []
 
-
-Underfull \vbox (badness 3148) has occurred while \output is active []
-
- [6]
-[7] [8
+[5] [6] [7] [8
 
 ]
 Cap\'{\i }tulo 2.
@@ -565,11 +564,21 @@ Cap\'{\i }tulo 2.
 
 ]
 Cap\'{\i }tulo 3.
-[11] [12
+<./useCases.png, id=304, 551.661pt x 310.15875pt>
+File: ./useCases.png Graphic file (type png)
+<use ./useCases.png>
+Package pdftex.def Info: ./useCases.png  used on input line 315.
+(pdftex.def)             Requested size: 468.91406pt x 263.63617pt.
 
-]
+Overfull \hbox (96.53888pt too wide) in paragraph at lines 315--316
+[][] 
+ []
+
+[11 <./useCases.png>] [12]
 Cap\'{\i }tulo 4.
-[13] [14
+[13
+
+] [14
 
 ]
 Cap\'{\i }tulo 5.
@@ -589,25 +598,25 @@ Ap\^endice B.
 (00a_PRJ_resumo_abstract.aux) (00b_PRJ_agradecimentos.aux)
 (00c_PRJ_dedicatoria.aux))
 Package rerunfilecheck Info: File `00_PRJ_main.out' has not changed.
-(rerunfilecheck)             Checksum: 6199F1574D4BE4B2AD0971B622EBAEC6;3974.
+(rerunfilecheck)             Checksum: 2557A6C50D4720BC30EAEC0F63245729;4084.
  ) 
 Here is how much of TeX's memory you used:
- 12024 strings out of 478582
- 190569 string characters out of 2861228
- 505233 words of memory out of 3000000
- 29927 multiletter control sequences out of 15000+600000
+ 12034 strings out of 478582
+ 190737 string characters out of 2861228
+ 508274 words of memory out of 3000000
+ 29935 multiletter control sequences out of 15000+600000
  476909 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,13n,63p,729b,504s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 60i,13n,63p,716b,504s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <D:/Latex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Latex/fonts/type1/pub
 lic/amsfonts/cm/cmcsc10.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmr10.pfb>
 <D:/Latex/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Latex/fonts/type1/public
 /amsfonts/cm/cmsl12.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:
 /Latex/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Latex/fonts/type1/public/a
 msfonts/cm/cmtt12.pfb>
-Output written on 00_PRJ_main.pdf (37 pages, 334648 bytes).
+Output written on 00_PRJ_main.pdf (37 pages, 415230 bytes).
 PDF statistics:
- 406 PDF objects out of 1000 (max. 8388607)
- 78 named destinations out of 1000 (max. 500000)
- 259 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 412 PDF objects out of 1000 (max. 8388607)
+ 79 named destinations out of 1000 (max. 500000)
+ 272 words of extra memory for PDF output out of 10000 (max. 10000000)
 
