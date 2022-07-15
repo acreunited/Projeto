@@ -18,45 +18,45 @@ Warning--empty year in PHP
 Warning--empty year in CSharp
 Warning--empty year in HTML
 Warning--empty year in ObjectPascal
-You've used 31 entries,
+You've used 35 entries,
             1935 wiz_defined-function locations,
-            619 strings with 5781 characters,
-and the built_in function-call counts, 7851 in all, are:
-= -- 827
-> -- 258
-< -- 30
-+ -- 76
-- -- 76
-* -- 491
-:= -- 1557
-add.period$ -- 91
-call.type$ -- 31
-change.case$ -- 193
-chr.to.int$ -- 31
-cite$ -- 38
-duplicate$ -- 310
-empty$ -- 466
-format.name$ -- 117
-if$ -- 1443
+            638 strings with 6039 characters,
+and the built_in function-call counts, 8831 in all, are:
+= -- 931
+> -- 286
+< -- 34
++ -- 84
+- -- 84
+* -- 551
+:= -- 1753
+add.period$ -- 103
+call.type$ -- 35
+change.case$ -- 217
+chr.to.int$ -- 35
+cite$ -- 42
+duplicate$ -- 350
+empty$ -- 526
+format.name$ -- 129
+if$ -- 1623
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 156
-num.names$ -- 93
-pop$ -- 117
+newline$ -- 176
+num.names$ -- 105
+pop$ -- 129
 preamble$ -- 1
-purify$ -- 193
+purify$ -- 217
 quote$ -- 0
-skip$ -- 265
+skip$ -- 301
 stack$ -- 0
-substring$ -- 372
+substring$ -- 420
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 186
+type$ -- 210
 warning$ -- 7
-while$ -- 62
+while$ -- 70
 width$ -- 0
-write$ -- 363
+write$ -- 411
 (There were 7 warnings)

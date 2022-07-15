@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  15 JUL 2022 20:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  15 JUL 2022 21:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -571,56 +571,56 @@ Overfull \hbox (36.43051pt too wide) in paragraph at lines 297--298
  de HTML [[]].
  []
 
-[10] [11] [12]
+[10] [11] [12] [13] [14
+
+]
 Cap\'{\i }tulo 3.
-<./useCases.png, id=380, 551.661pt x 310.15875pt>
+<./useCases.png, id=396, 551.661pt x 310.15875pt>
 File: ./useCases.png Graphic file (type png)
 <use ./useCases.png>
-Package pdftex.def Info: ./useCases.png  used on input line 367.
+Package pdftex.def Info: ./useCases.png  used on input line 378.
 (pdftex.def)             Requested size: 468.91406pt x 263.63617pt.
 
-Overfull \hbox (96.53888pt too wide) in paragraph at lines 367--368
+Overfull \hbox (96.53888pt too wide) in paragraph at lines 378--379
 [][] 
  []
 
-[13
-
- <./useCases.png>] [14]
+[15 <./useCases.png>] [16]
 Cap\'{\i }tulo 4.
-[15
+[17
 
-] [16
+] [18
 
 ]
 Cap\'{\i }tulo 5.
-) (02_PRJ_cap_apendice.tex [17] [18
+) (02_PRJ_cap_apendice.tex [19] [20
 
 ]
 Ap\^endice A.
-[19] [20
+[21] [22
 
 ]
 Ap\^endice B.
-) [21] [22
+) [23] [24
 
-] (00_PRJ_main.bbl [23
+] (00_PRJ_main.bbl [25
 
-]
-Underfull \hbox (badness 1158) in paragraph at lines 152--155
+] [26]
+Underfull \hbox (badness 1158) in paragraph at lines 172--175
 []\OT1/cmr/m/n/12 Zuckerberg, M. (2004).  Fa-ce-book.  []$\OT1/cmtt/m/n/12 http
 s : / / www .
  []
 
-) [24] (00_PRJ_main.aux (00a_PRJ_resumo_abstract.aux)
+) [27] (00_PRJ_main.aux (00a_PRJ_resumo_abstract.aux)
 (00b_PRJ_agradecimentos.aux) (00c_PRJ_dedicatoria.aux))
 Package rerunfilecheck Info: File `00_PRJ_main.out' has not changed.
 (rerunfilecheck)             Checksum: 5CAB0FD860A485241AEF470A3E2D2EB7;4492.
  ) 
 Here is how much of TeX's memory you used:
- 12103 strings out of 478582
- 191463 string characters out of 2861228
- 510476 words of memory out of 3000000
- 29970 multiletter control sequences out of 15000+600000
+ 12114 strings out of 478582
+ 191576 string characters out of 2861228
+ 510645 words of memory out of 3000000
+ 29974 multiletter control sequences out of 15000+600000
  476909 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,13n,63p,716b,477s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -630,9 +630,9 @@ lic/amsfonts/cm/cmcsc10.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmr10.pfb>
 /amsfonts/cm/cmsl12.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:
 /Latex/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Latex/fonts/type1/public/a
 msfonts/cm/cmtt12.pfb>
-Output written on 00_PRJ_main.pdf (40 pages, 451525 bytes).
+Output written on 00_PRJ_main.pdf (43 pages, 457947 bytes).
 PDF statistics:
- 539 PDF objects out of 1000 (max. 8388607)
- 113 named destinations out of 1000 (max. 500000)
+ 567 PDF objects out of 1000 (max. 8388607)
+ 120 named destinations out of 1000 (max. 500000)
  288 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -15,6 +15,11 @@ Corporation, O. (1995).
 \newblock Mysql.
 \newblock \url{https://www.mysql.com/}.
 
+\bibitem[Corporation, 2015]{Workbench}
+Corporation, O. (2015).
+\newblock Mysql workbench.
+\newblock \url{https://www.mysql.com/products/workbench/}.
+
 \bibitem[Crockford, 2002]{JSON}
 Crockford, D. (2002).
 \newblock Json.
@@ -64,10 +69,20 @@ Hurley, C., Chen, S., e Karim, J. (2005).
 \newblock Youtube.
 \newblock \url{https://www.youtube.com/}.
 
+\bibitem[IBM, 2001]{Eclipse}
+IBM (2001).
+\newblock Eclipse.
+\newblock \url{https://www.eclipse.org/}.
+
 \bibitem[Inc., 2009]{MongoDB}
 Inc., M. (2009).
 \newblock Mongodb.
 \newblock \url{https://www.mongodb.com/}.
+
+\bibitem[JetBrains, 2001]{IntelliJ}
+JetBrains (2001).
+\newblock Intellij.
+\newblock \url{https://www.jetbrains.com/}.
 
 \bibitem[Kishimoto, 2002]{Naruto}
 Kishimoto, M. (2002).
@@ -112,6 +127,11 @@ Page, L. e Brin, S. (1998).
 Sittner, J. (1983).
 \newblock Ancestry.
 \newblock \url{https://www.ancestry.com/}.
+
+\bibitem[Stanek, 2000]{NetBeans}
+Stanek, R. (2000).
+\newblock Netbeans.
+\newblock \url{https://netbeans.apache.org/}.
 
 \bibitem[van Rossum, 1991]{Python}
 van Rossum, G. (1991).
