@@ -273,20 +273,72 @@ O documento termina no quinto capítulo com a conclusão e desenvolvimentos futuro
 \chapter{Tecnologias}
 \label{ch:tecnologias}
 
+É possível desenvolver uma aplicação para a Web de diversas formas. Este capítulo destaca diferentes tecnologias consideradas para o projeto. Salienta-se que foi focado as que são gratuitas, de modo a reduzir o custo do projeto.
+
+
+
 %%________________________________________________________________________
 
 \section{Linguagens}
 \label{sec:linguagens}
+
+Relativamente a linguagens para aplicações Web, salientam-se: Java, PHP, JavaScript, Python, C Sharp, HTML e CSS.
+
+Java é uma linguagem de programação orientada a objetos, independente da plataforma e possuidora de uma biblioteca extensa que facilita a cooperação com protocolos TCP/IP. Com Java \cite{Java}, é possível criar páginas dinâmicas com interfaces interativas e que sejam compatíveis com grande variedade de dispositivos, independentemente de serem computadores ou telemóveis. Existem sites bastante conhecidos que utilizam Java na sua programação, nomeadamente LinkedIn \cite{LinkedIn} e Amazon \cite{Amazon}.
+
+PHP \cite{PHP} é uma linguagem interpretada livre, utilizada originalmente para o desenvolvimento de aplicações no lado do servidor, capaz de criar conteúdo dinâmico na \emph{World Wide Web}. É usado em conjunto com outras linguagens no desenvolvimento Web para interagir diversas páginas com base de dados, permitindo rápidas atualizações dos conteúdos nos sites exibidos aos utilizadores. Alguns sites famosos que utilizam PHP são o Facebook \cite{Facebook} e a Wikipédia.
+
+JavaScript \cite{JavaScript} é uma linguagem de programação interpretada estruturada, e uma das principais tecnologias da World Wide Web, sendo utilizado no desenvolvimento de aplicações para a web, principalmente na criação de sites mais interativos. Google \cite{Google} e Youtube \cite{Youtube} são exemplos de sites que utilizam esta linguagem.
+
+Python \cite{Python} é uma linguagem de programação interpretada de script, imperativa, orientada a objetos e funcional. Em desenvolvimento Web, é focado especialmente no \aspas{back end}, de modo a controlar as conexões entre servidores e páginas, apresentando o conteúdo da melhor forma possível aos utilizadores.Alguns exemplos de sites que utilizam Python são Spotify \cite{Spotify} e Netflix \cite{Netflix}.
+
+C Sharp \cite{CSharp} é uma linguagem de programação multi-paradigma desenvolvida pela Microsoft como parte da plataforma \emph{.NET}. A sua sintaxe orientada a objetos foi baseada no C++ mas inclui muitas influências de outras linguagens, nomeadamente \emph{Object Pascal} \cite{ObjectPascal} e, principalmente, \emph{Java}. C Sharp  tem duas principais vantagens: acesso a várias \emph{frameworks} e bibliotecas \emph{.NET} \cite{NET} que ajudam na eficiência e otimização de aplicações Web; compatibilidade com códigos de linguagens diferentes. Entre os sites que utilizam C Sharp, cito Ancestry \cite{Ancestry}.
+
+É difícil falar de desenvolvimento Web sem falar de HTML \cite{HTML}. É uma linguagem de marcação utilizada na estrutura de páginas para a Internet e que pode ser interpretada pelos navegadores. Na maioria das vezes tem associado CSS \cite{CSS} - linguagem utilizada para embelezar um documento HTML.
 
 %%________________________________________________________________________
 
 \section{Sistemas de Gestão de Dados}
 \label{sec:sistemagestaodados}
 
+No que toca a base de dados, existem vários concorrentes no mercado, separados em duas categorias: relacional e não relacional.
+
+\subsection{Base de Dados Relacional}
+
+Um sistema relacional tem uma forma de estrutura organizada em tabelas, armazenando e fornecendo acesso a pontos de dados que estão relacionados entre si. Cada linha da tabela é um registo com uma identificação única chamada chave primária. As colunas da tabela contêm os atributos dos dados, facilitando o estabelecimento das relações entre os dados. O mais popular entre eles é o \emph{MySQL}, mas também temos outras opções, como por exemplo \emph{Microsoft SQL Server} e \emph{PostgreSQL}.
+
+O sistema de base de dados MySQL \cite{MySQL} utiliza a linguagem \emph{Structured Query
+Language (SQL)} e é um dos sistemas de gestão de dados mais populares da \emph{Oracle Corporation}, com mais de 10 milhões de instalações pelo mundo. Algumas das suas características são: portabilidade (suporta qualquer plataforma atual), excelente desempenho, pouco exigente em termos de hardware, fácil manuseamento e controle transacional.
+
+Microsoft SQL Server \cite{MicrosoftSQLServer} tem como principal funcionalidade armazenar e recuperar dados solicitados por outras aplicações de software. Existem várias versões, destinadas a públicos e trabalho diferentes, variando de pequenas aplicações que leem e escrevem dados no mesmo computador, até milhões de utilizadores que acessam grandes quantidades de dados a partir da Internet ao mesmo tempo.
+
+PostgreSQL \cite{PostgreSQL} foi desenvolvido como um projeto de código aberto. Hoje é um dos sistemas de bancos de dados mais avançado. Algumas das suas características são: facilidade de acesso, controlo transacional e suporte de consultas complexas. 
+
+
+\subsection{Base de Dados Não Relacional}
+
+Um sistema de base de dados não relacional utiliza um modelo de armazenamento otimizado para os requisitos específicos do tipo de dados armazenados, por exemplo simples pares de chave-valor como documentos JSON \cite{JSON} e XML \cite{XML}. 
+
+O mais popular designa-se MongoDB \cite{MongoDB}, software orientado a documentos, livre, de código aberto, multiplataforma e escrito na linguagem C++. Permite que as aplicações modelem informações mais naturalmente, pois os dados podem ser organizados em hierarquias complexas e continuarem a ser indexáveis e fáceis de aceder.
+
+
+%%https://blog.debugeverything.com/pt/diferenca-base-de-dados-relacional-e-nao-relacional/
+
+
 %%________________________________________________________________________
 
 \section{Servidores Aplicacionais}
 \label{sec:servidoresaplicacionais}
+
+Num aplicação para a Web, é necessário um servidor que entenda os pedidos feitos no protocolo HTTP, de modo a ser possível comunicar com clientes espalhados pela Internet. Para este projeto, destacam-se os seguintes servidores aplicacionais: Tomcat, LiteSpeed e JBoss.
+
+Tomcat \cite{Tomcat}, desenvolvido por Apache Software Foundation, é um servidor Web Java que implementa as tecnologias Java Servlet e JavaServer Pages (JSP) \cite{JSP}. Tem a capacidade de funcionar como um servidor Web, ou integrado a outro, por exemplo com Apache \cite{Apache}. Como servidor Web HTTP, é puramente em Java e inclui ferramentas para configuração e gestão. Por padrão, o porto é no número 8080.
+
+LiteSpeed Web Server (LSWS) \cite{LiteSpeed} é um software de servidor Web proprietário. Desenvolvido por LiteSpeed Technologies, estima-se que tenha sido utilizado por 10\% dos sites em julho de 2021, sendo o quarto servidor Web mais popular. Utiliza o mesmo formato de configuração do Apache HTTP Server e é compatível com a maioria das suas funcionalidades.
+
+JBoss \cite{JBoss} é um servidor aplicacional de código fonte aberto baseado na plataforma JEE e implementado na linguagem de programação Java e é possível ser utilizado em qualquer sistema operacional que suporte esta linguagem. Desenvolvido por uma empresa de serviços chamada \aspas{JBoss Inc}, fundada por Marc Fleury, criador da primeira versão do JBoss. Em abril de 2006 foi adquirida pela \emph{Red Hat} \cite{RedHat}.
+
+
 
 %%________________________________________________________________________
 

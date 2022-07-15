@@ -11,44 +11,52 @@ Reallocating 'name_of_file' (item size: 1) to 10 items.
 The style file: apalikeMy.bst
 Reallocating 'name_of_file' (item size: 1) to 5 items.
 Database file #1: Xbib.bib
-You've used 2 entries,
+Warning--empty year in JavaScript
+Warning--empty year in JBoss
+Warning--empty year in Java
+Warning--empty year in PHP
+Warning--empty year in CSharp
+Warning--empty year in HTML
+Warning--empty year in ObjectPascal
+You've used 31 entries,
             1935 wiz_defined-function locations,
-            486 strings with 3921 characters,
-and the built_in function-call counts, 507 in all, are:
-= -- 52
-> -- 14
-< -- 2
-+ -- 4
-- -- 4
-* -- 30
-:= -- 105
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 12
-chr.to.int$ -- 2
-cite$ -- 2
-duplicate$ -- 20
-empty$ -- 31
-format.name$ -- 6
-if$ -- 91
+            619 strings with 5781 characters,
+and the built_in function-call counts, 7851 in all, are:
+= -- 827
+> -- 258
+< -- 30
++ -- 76
+- -- 76
+* -- 491
+:= -- 1557
+add.period$ -- 91
+call.type$ -- 31
+change.case$ -- 193
+chr.to.int$ -- 31
+cite$ -- 38
+duplicate$ -- 310
+empty$ -- 466
+format.name$ -- 117
+if$ -- 1443
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 13
-num.names$ -- 6
-pop$ -- 6
+newline$ -- 156
+num.names$ -- 93
+pop$ -- 117
 preamble$ -- 1
-purify$ -- 12
+purify$ -- 193
 quote$ -- 0
-skip$ -- 19
+skip$ -- 265
 stack$ -- 0
-substring$ -- 24
+substring$ -- 372
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
-warning$ -- 0
-while$ -- 4
+type$ -- 186
+warning$ -- 7
+while$ -- 62
 width$ -- 0
-write$ -- 26
+write$ -- 363
+(There were 7 warnings)

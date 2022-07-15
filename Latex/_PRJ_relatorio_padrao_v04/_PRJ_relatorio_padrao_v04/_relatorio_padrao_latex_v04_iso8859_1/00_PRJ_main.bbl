@@ -1,13 +1,156 @@
 \begin{thebibliography}{}
 
+\bibitem[Bezos, 1994]{Amazon}
+Bezos, J. (1994).
+\newblock Amazon.
+\newblock \url{https://www.amazon.com/}.
+
+\bibitem[Consortium, 1996]{CSS}
+Consortium, W. W.~W. (1996).
+\newblock Css.
+\newblock \url{https://www.w3schools.com/css/}.
+
+\bibitem[Corporation, 1995]{MySQL}
+Corporation, O. (1995).
+\newblock Mysql.
+\newblock \url{https://www.mysql.com/}.
+
+\bibitem[Crockford, 2002]{JSON}
+Crockford, D. (2002).
+\newblock Json.
+\newblock \url{http://json.org/json-pt.html}.
+
+\bibitem[Eich, ]{JavaScript}
+Eich, B.
+\newblock Javascript.
+\newblock \url{https://www.javascript.com/}.
+
+\bibitem[Ek e Lorentzon, 2006]{Spotify}
+Ek, D. e Lorentzon, M. (2006).
+\newblock Spotify.
+\newblock \url{https://www.spotify.com/}.
+
+\bibitem[Fleury, ]{JBoss}
+Fleury, M.
+\newblock Jboss.
+\newblock \url{https://www.jboss.org/}.
+
+\bibitem[Foundation, 1999]{Tomcat}
+Foundation, A.~S. (1999).
+\newblock Tomcat.
+\newblock \url{https://tomcat.apache.org/}.
+
+\bibitem[Gosling, ]{Java}
+Gosling, J.
+\newblock Java.
+\newblock \url{https://www.java.com/}.
+
+\bibitem[Group, 1996]{PostgreSQL}
+Group, P. G.~D. (1996).
+\newblock Postgresql.
+
+\bibitem[Hastings e Randolph, 1997]{Netflix}
+Hastings, R. e Randolph, M. (1997).
+\newblock Netflix.
+\newblock \url{https://www.netflix.com/}.
+
+\bibitem[Hoffman, 2002]{LinkedIn}
+Hoffman, R. (2002).
+\newblock Linkedin.
+\newblock \url{https://www.linkedin.com/}.
+
+\bibitem[Hurley et~al., 2005]{Youtube}
+Hurley, C., Chen, S., e Karim, J. (2005).
+\newblock Youtube.
+\newblock \url{https://www.youtube.com/}.
+
+\bibitem[Inc., 2009]{MongoDB}
+Inc., M. (2009).
+\newblock Mongodb.
+\newblock \url{https://www.mongodb.com/}.
+
 \bibitem[Kishimoto, 2002]{Naruto}
 Kishimoto, M. (2002).
 \newblock Naruto.
 \newblock \url{https://www.tv-tokyo.co.jp/anime/naruto2002/}.
 
+\bibitem[Lerdorf, ]{PHP}
+Lerdorf, R.
+\newblock Php.
+\newblock \url{https://www.php.net/}.
+
+\bibitem[McCool, 1995]{Apache}
+McCool, R. (1995).
+\newblock Apache.
+\newblock \url{https://www.apache.org/}.
+
+\bibitem[Microsoft, ]{CSharp}
+Microsoft.
+\newblock C sharp.
+\newblock \url{https://docs.microsoft.com/en-us/dotnet/csharp/}.
+
+\bibitem[Microsoft, 1989]{MicrosoftSQLServer}
+Microsoft (1989).
+\newblock Microsoft sql server.
+\newblock \url{https://www.microsoft.com/en-us/sql-server/}.
+
+\bibitem[Microsoft, 2002]{NET}
+Microsoft (2002).
+\newblock .net.
+\newblock \url{https://dotnet.microsoft.com/}.
+
+\bibitem[Microsystems, 1999]{JSP}
+Microsystems, S. (1999).
+\newblock Javaserver pages.
+
+\bibitem[Page e Brin, 1998]{Google}
+Page, L. e Brin, S. (1998).
+\newblock Google.
+\newblock \url{https://www.google.com/}.
+
+\bibitem[Sittner, 1983]{Ancestry}
+Sittner, J. (1983).
+\newblock Ancestry.
+\newblock \url{https://www.ancestry.com/}.
+
+\bibitem[van Rossum, 1991]{Python}
+van Rossum, G. (1991).
+\newblock Python.
+\newblock \url{https://www.python.org/}.
+
+\bibitem[W3C, 1998]{XML}
+W3C (1998).
+\newblock Xml.
+\newblock \url{https://www.w3schools.com/xml/}.
+
+\bibitem[W3C e WHATWG, ]{HTML}
+W3C e WHATWG.
+\newblock Html.
+\newblock \url{https://html.com/}.
+
+\bibitem[Wang, 2003]{LiteSpeed}
+Wang, G. (2003).
+\newblock Litespeed.
+\newblock \url{https://www.litespeedtech.com/}.
+
 \bibitem[Wespro, 2019]{NarutoArena}
 Wespro (2019).
 \newblock Naruto-arena.
 \newblock \url{http://naruto-arena.net/}.
+
+\bibitem[Wirth, ]{ObjectPascal}
+Wirth, N.
+\newblock Object pascal.
+\newblock \url{https://objectpascalprogramming.com/}.
+
+\bibitem[Young e Ewing, 1993]{RedHat}
+Young, B. e Ewing, M. (1993).
+\newblock Red hat.
+\newblock \url{https://www.redhat.com/}.
+
+\bibitem[Zuckerberg, 2004]{Facebook}
+Zuckerberg, M. (2004).
+\newblock Facebook.
+\newblock \url{https://www.facebook.com/}.
 
 \end{thebibliography}

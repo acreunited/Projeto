@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  8 JUL 2022 20:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  15 JUL 2022 20:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -348,24 +348,24 @@ File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 (00c_PRJ_dedicatoria.aux))
 \openout1 = `00_PRJ_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
  (D:\Latex\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count296
@@ -388,7 +388,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \c@lstlisting=\count302
-Package hyperref Info: Link coloring OFF on input line 124.
+Package hyperref Info: Link coloring OFF on input line 126.
 
 (D:\Latex\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -401,18 +401,18 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count303
 )
-LaTeX Info: Redefining \ref on input line 124.
-LaTeX Info: Redefining \pageref on input line 124.
-LaTeX Info: Redefining \nameref on input line 124.
+LaTeX Info: Redefining \ref on input line 126.
+LaTeX Info: Redefining \pageref on input line 126.
+LaTeX Info: Redefining \nameref on input line 126.
  (00_PRJ_main.out)
 (00_PRJ_main.out)
 \@outlinefile=\write3
 \openout3 = `00_PRJ_main.out'.
 
-<./fig_logo_ISEL.png, id=131, 464.4552pt x 456.7464pt>
+<./fig_logo_ISEL.png, id=139, 464.4552pt x 456.7464pt>
 File: ./fig_logo_ISEL.png Graphic file (type png)
 <use ./fig_logo_ISEL.png>
-Package pdftex.def Info: ./fig_logo_ISEL.png  used on input line 130.
+Package pdftex.def Info: ./fig_logo_ISEL.png  used on input line 132.
 (pdftex.def)             Requested size: 49.79231pt x 48.95988pt.
  [1
 
@@ -483,7 +483,7 @@ l.31 \myPrefaceChapter{Abstract}
 
 ] (01_PRJ_cap_1_2_3.tex
 Cap\'{\i }tulo 1.
-<./naDied.png, id=256, 240.29774pt x 241.50224pt>
+<./naDied.png, id=266, 240.29774pt x 241.50224pt>
 File: ./naDied.png Graphic file (type png)
 <use ./naDied.png>
 Package pdftex.def Info: ./naDied.png  used on input line 30.
@@ -560,63 +560,79 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 214--234
 
 ]
 Cap\'{\i }tulo 2.
-[9] [10
 
-]
+Overfull \hbox (9.32458pt too wide) in paragraph at lines 291--292
+\OT1/cmr/m/n/12 tes mais in-te-ra-ti-vos. Go-o-gle [[]] e You-tube [[]]
+ []
+
+[9]
+Overfull \hbox (36.43051pt too wide) in paragraph at lines 297--298
+[][]\OT1/cmr/m/n/12 E dif^^S^^Pcil fa-lar de de-sen-vol-vi-mento Web sem fa-lar
+ de HTML [[]].
+ []
+
+[10] [11] [12]
 Cap\'{\i }tulo 3.
-<./useCases.png, id=304, 551.661pt x 310.15875pt>
+<./useCases.png, id=380, 551.661pt x 310.15875pt>
 File: ./useCases.png Graphic file (type png)
 <use ./useCases.png>
-Package pdftex.def Info: ./useCases.png  used on input line 315.
+Package pdftex.def Info: ./useCases.png  used on input line 367.
 (pdftex.def)             Requested size: 468.91406pt x 263.63617pt.
 
-Overfull \hbox (96.53888pt too wide) in paragraph at lines 315--316
+Overfull \hbox (96.53888pt too wide) in paragraph at lines 367--368
 [][] 
  []
 
-[11 <./useCases.png>] [12]
-Cap\'{\i }tulo 4.
 [13
 
-] [14
+ <./useCases.png>] [14]
+Cap\'{\i }tulo 4.
+[15
+
+] [16
 
 ]
 Cap\'{\i }tulo 5.
-) (02_PRJ_cap_apendice.tex [15] [16
+) (02_PRJ_cap_apendice.tex [17] [18
 
 ]
 Ap\^endice A.
-[17] [18
+[19] [20
 
 ]
 Ap\^endice B.
-) [19] [20
+) [21] [22
 
-] (00_PRJ_main.bbl) [21
+] (00_PRJ_main.bbl [23
 
-] (00_PRJ_main.aux
-(00a_PRJ_resumo_abstract.aux) (00b_PRJ_agradecimentos.aux)
-(00c_PRJ_dedicatoria.aux))
+]
+Underfull \hbox (badness 1158) in paragraph at lines 152--155
+[]\OT1/cmr/m/n/12 Zuckerberg, M. (2004).  Fa-ce-book.  []$\OT1/cmtt/m/n/12 http
+s : / / www .
+ []
+
+) [24] (00_PRJ_main.aux (00a_PRJ_resumo_abstract.aux)
+(00b_PRJ_agradecimentos.aux) (00c_PRJ_dedicatoria.aux))
 Package rerunfilecheck Info: File `00_PRJ_main.out' has not changed.
-(rerunfilecheck)             Checksum: 2557A6C50D4720BC30EAEC0F63245729;4084.
+(rerunfilecheck)             Checksum: 5CAB0FD860A485241AEF470A3E2D2EB7;4492.
  ) 
 Here is how much of TeX's memory you used:
- 12034 strings out of 478582
- 190737 string characters out of 2861228
- 508274 words of memory out of 3000000
- 29935 multiletter control sequences out of 15000+600000
+ 12103 strings out of 478582
+ 191463 string characters out of 2861228
+ 510476 words of memory out of 3000000
+ 29970 multiletter control sequences out of 15000+600000
  476909 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,13n,63p,716b,504s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 60i,13n,63p,716b,477s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <D:/Latex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Latex/fonts/type1/pub
 lic/amsfonts/cm/cmcsc10.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmr10.pfb>
 <D:/Latex/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Latex/fonts/type1/public
 /amsfonts/cm/cmsl12.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:
 /Latex/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Latex/fonts/type1/public/a
 msfonts/cm/cmtt12.pfb>
-Output written on 00_PRJ_main.pdf (37 pages, 415230 bytes).
+Output written on 00_PRJ_main.pdf (40 pages, 451525 bytes).
 PDF statistics:
- 412 PDF objects out of 1000 (max. 8388607)
- 79 named destinations out of 1000 (max. 500000)
- 272 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 539 PDF objects out of 1000 (max. 8388607)
+ 113 named destinations out of 1000 (max. 500000)
+ 288 words of extra memory for PDF output out of 10000 (max. 10000000)
 
