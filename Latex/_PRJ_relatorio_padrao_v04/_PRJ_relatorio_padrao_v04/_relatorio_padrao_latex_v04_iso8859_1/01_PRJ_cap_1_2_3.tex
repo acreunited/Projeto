@@ -355,7 +355,7 @@ IntelliJ \cite{IntelliJ} é um dos principais editores do mercado que teve um cre
 
 %https://www.treinaweb.com.br/blog/principais-ides-para-desenvolvimento-java
 
-MySQL Workbench \cite{Workbench} é uma das ferramentas que torna possível a implementação do sistema de base de dados relacional e permite ao utilizador ver o estado do servidor. Tendo sido desenvolvido pela Oracle (empresa por detrás do próprio MySQL), dá a certeza e tranquilidade ao utilizador que sempre será compatível com as funcionalides mais recentes.
+MySQL Workbench \cite{Workbench} é uma das ferramentas que torna possível a implementação do sistema de base de dados relacional e permite ao utilizador ver o estado do servidor. Tendo sido desenvolvido pela Oracle (empresa por detrás do próprio MySQL), dá a certeza e tranquilidade ao utilizador que sempre será compatível com as funcionalidades mais recentes.
 
 
 %%________________________________________________________________________
@@ -385,6 +385,76 @@ Um \emph{Player} é o tipo de utilizador básico nos jogos, isto é, consegue visua
 \label{sec:arquitetura}
 
 %%________________________________________________________________________
+\subsection{Definição de Personagens}
+\label{sec:definicaopersonagens}
+%%________________________________________________________________________
+
+%%________________________________________________________________________
+\subsection{Modelo EA}
+\label{sec:modeloea}
+%%________________________________________________________________________
+
+O modelo entidade-associação descreve os dados e a forma como estão relacionados entre si. De seguida será ilustrado o dito modelo dividido em diferentes partes, assim como as justificações que originaram o resultado final.  
+
+Começando por explicar as entidades possuidoras de atributos, contexto ao tema, temos os utilizadores na figura \ref{fig:eauser}, missões em \ref{fig:eamission} e as habilidades das personagens em \ref{fig:eaability}.
+
+
+\begin{centering}
+	\begin{figure}[H]
+		\includegraphics[scale=0.7]{./users.png}
+		\caption{Entidade User}
+		\label{fig:eauser}
+	\end{figure}
+\end{centering}
+
+
+\begin{centering}
+	\begin{figure}[H]
+		\includegraphics[scale=0.9]{./mission.png}
+		\caption{Entidade Mission}
+		\label{fig:eamission}
+	\end{figure}
+\end{centering}
+
+
+\begin{centering}
+	\begin{figure}[H]
+		\includegraphics[scale=0.9]{./ability.png}
+		\caption{Entidade Ability}
+		\label{fig:eaability}
+	\end{figure}
+\end{centering}
+
+A entidade \emph{User} trata toda a informação que diz respeito ao utilizador: 
+\begin{itemize}
+	\item userID - chave primária, número inteiro e  serve como identificador do utilizador;
+	\item username - corresponde ao nome de usuário, é único, tendo no máximo 16 caracteres;
+	\item pass - senha do utilizador que todos têm de ter, e por motivos de segurança, TODO requer um mínimo de X caracteres, letras, números, etc TODO
+	\item registerDate - data de registo do utilizador no site;
+	\item xp - número inteiro que nunca pode ser negativo, diz respeito à experiência do utilizador. Ganhar e perder batalhas irá aumentar e diminuir este valor, respetivamente;
+	\item avatar - um blob que representa uma imagem à escolha do utilizador;
+	\item email - correio eletrónico associado à conta;
+	\item nWins - número inteiro que nunca pode ser negativo. Começando com valor de zero, incrementa por um sempre que o jogador é vitorioso;
+	\item nLosses - número inteiro que nunca desce de zero, aumenta sempre que o jogador é derrotado;
+	\item selectionBackground - é um blob e corresponde á imagem de fundo na página de seleção da equipa;
+	\item battleBackground - imagem de fundo da página de batalha (blob);
+	\item streak - número inteiro sempre superior ou igual a zero, é o valor atualizado do número de vitórias consecutivas do jogador;
+	\item highestStreak - número inteiro onde o valor mínimo que pode tomar é zero, indica o maior número de batalhas que o jogador venceu seguidas;
+	\item estado - uma data que inicialmente é igual á \emph{registerDate}. Esta pode ser alterada por um administrador, de forma a banir a conta em questão temporariamente ou permanentemente. Concretamente, o utilizador não consegue jogar se esta data disser respeito ao futuro. 
+	
+\end{itemize}
+
+%%________________________________________________________________________
+\subsection{Configuração de Habilidades}
+\label{sec:configuracaohabilidades}
+%%________________________________________________________________________
+
+%%________________________________________________________________________
+\subsection{Configuração de Missões}
+\label{sec:configuracaomissoes}
+%%________________________________________________________________________
+
+%%________________________________________________________________________
 
 \section{Interface Humana}
 \label{sec:interfacehumana}
@@ -411,7 +481,6 @@ Um \emph{Player} é o tipo de utilizador básico nos jogos, isto é, consegue visua
 
 \section{Desenvolvimentos Futuros}
 \label{sec:desenvolvimentosfuturos}
-
 
 
 

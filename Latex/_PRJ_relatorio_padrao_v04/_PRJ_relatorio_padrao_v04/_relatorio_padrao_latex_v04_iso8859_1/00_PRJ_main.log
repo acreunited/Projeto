@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  15 JUL 2022 21:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.19)  18 JUL 2022 19:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -409,7 +409,7 @@ LaTeX Info: Redefining \nameref on input line 126.
 \@outlinefile=\write3
 \openout3 = `00_PRJ_main.out'.
 
-<./fig_logo_ISEL.png, id=139, 464.4552pt x 456.7464pt>
+<./fig_logo_ISEL.png, id=155, 464.4552pt x 456.7464pt>
 File: ./fig_logo_ISEL.png Graphic file (type png)
 <use ./fig_logo_ISEL.png>
 Package pdftex.def Info: ./fig_logo_ISEL.png  used on input line 132.
@@ -483,7 +483,7 @@ l.31 \myPrefaceChapter{Abstract}
 
 ] (01_PRJ_cap_1_2_3.tex
 Cap\'{\i }tulo 1.
-<./naDied.png, id=266, 240.29774pt x 241.50224pt>
+<./naDied.png, id=292, 240.29774pt x 241.50224pt>
 File: ./naDied.png Graphic file (type png)
 <use ./naDied.png>
 Package pdftex.def Info: ./naDied.png  used on input line 30.
@@ -575,7 +575,7 @@ Overfull \hbox (36.43051pt too wide) in paragraph at lines 297--298
 
 ]
 Cap\'{\i }tulo 3.
-<./useCases.png, id=396, 551.661pt x 310.15875pt>
+<./useCases.png, id=422, 551.661pt x 310.15875pt>
 File: ./useCases.png Graphic file (type png)
 <use ./useCases.png>
 Package pdftex.def Info: ./useCases.png  used on input line 378.
@@ -585,54 +585,83 @@ Overfull \hbox (96.53888pt too wide) in paragraph at lines 378--379
 [][] 
  []
 
-[15 <./useCases.png>] [16]
+[15 <./useCases.png>]
+<./users.png, id=431, 583.17876pt x 398.48875pt>
+File: ./users.png Graphic file (type png)
+<use ./users.png>
+Package pdftex.def Info: ./users.png  used on input line 404.
+(pdftex.def)             Requested size: 408.22235pt x 278.94022pt.
+
+Overfull \hbox (18.22235pt too wide) in paragraph at lines 404--405
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16]
+<./mission.png, id=436, 402.50375pt x 201.75375pt>
+File: ./mission.png Graphic file (type png)
+<use ./mission.png>
+Package pdftex.def Info: ./mission.png  used on input line 413.
+(pdftex.def)             Requested size: 362.25002pt x 181.57669pt.
+<./ability.png, id=437, 362.35374pt x 141.52875pt>
+File: ./ability.png Graphic file (type png)
+<use ./ability.png>
+Package pdftex.def Info: ./ability.png  used on input line 422.
+(pdftex.def)             Requested size: 326.11536pt x 127.37468pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [17 <./users.png> <./mission.png>] [18 <./ability.png>] [19] [20
+
+]
 Cap\'{\i }tulo 4.
-[17
-
-] [18
-
-]
-Cap\'{\i }tulo 5.
-) (02_PRJ_cap_apendice.tex [19] [20
-
-]
-Ap\^endice A.
 [21] [22
 
 ]
+Cap\'{\i }tulo 5.
+) (02_PRJ_cap_apendice.tex [23] [24
+
+]
+Ap\^endice A.
+[25] [26
+
+]
 Ap\^endice B.
-) [23] [24
+) [27] [28
 
-] (00_PRJ_main.bbl [25
+] (00_PRJ_main.bbl [29
 
-] [26]
+] [30]
 Underfull \hbox (badness 1158) in paragraph at lines 172--175
 []\OT1/cmr/m/n/12 Zuckerberg, M. (2004).  Fa-ce-book.  []$\OT1/cmtt/m/n/12 http
 s : / / www .
  []
 
-) [27] (00_PRJ_main.aux (00a_PRJ_resumo_abstract.aux)
+) [31] (00_PRJ_main.aux (00a_PRJ_resumo_abstract.aux)
 (00b_PRJ_agradecimentos.aux) (00c_PRJ_dedicatoria.aux))
 Package rerunfilecheck Info: File `00_PRJ_main.out' has not changed.
-(rerunfilecheck)             Checksum: 5CAB0FD860A485241AEF470A3E2D2EB7;4492.
+(rerunfilecheck)             Checksum: F06F623BE69209C9A09E6790DE6E9161;5197.
  ) 
 Here is how much of TeX's memory you used:
- 12114 strings out of 478582
- 191576 string characters out of 2861228
- 510645 words of memory out of 3000000
- 29974 multiletter control sequences out of 15000+600000
- 476909 words of font info for 54 fonts, out of 8000000 for 9000
+ 12160 strings out of 478582
+ 192288 string characters out of 2861228
+ 509997 words of memory out of 3000000
+ 30005 multiletter control sequences out of 15000+600000
+ 477246 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,13n,63p,716b,477s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<D:/Latex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Latex/fonts/type1/pub
-lic/amsfonts/cm/cmcsc10.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-<D:/Latex/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Latex/fonts/type1/public
-/amsfonts/cm/cmsl12.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:
-/Latex/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Latex/fonts/type1/public/a
-msfonts/cm/cmtt12.pfb>
-Output written on 00_PRJ_main.pdf (43 pages, 457947 bytes).
+ <C:\Users\pncdi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
+1200.pk><D:/Latex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Latex/fonts/typ
+e1/public/amsfonts/cm/cmcsc10.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Latex/fonts/type1/
+public/amsfonts/cm/cmsl12.pfb><D:/Latex/fonts/type1/public/amsfonts/cm/cmti10.p
+fb><D:/Latex/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/Latex/fonts/type1/pu
+blic/amsfonts/cm/cmtt12.pfb>
+Output written on 00_PRJ_main.pdf (47 pages, 498445 bytes).
 PDF statistics:
- 567 PDF objects out of 1000 (max. 8388607)
- 120 named destinations out of 1000 (max. 500000)
- 288 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 625 PDF objects out of 1000 (max. 8388607)
+ 131 named destinations out of 1000 (max. 500000)
+ 335 words of extra memory for PDF output out of 10000 (max. 10000000)
 

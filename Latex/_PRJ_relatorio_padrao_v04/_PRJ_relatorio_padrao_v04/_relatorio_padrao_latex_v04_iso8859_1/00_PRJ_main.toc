@@ -25,11 +25,15 @@
 \contentsline {chapter}{\numberline {3}Projeto}{15}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Casos de Utiliza\c c\~ao}{15}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Arquitetura}{16}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Interface Humana}{16}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Demonstra\c c\~ao}{17}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Conclus\~ao}{19}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Sum\'ario}{19}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Desenvolvimentos Futuros}{19}{section.5.2}%
-\contentsline {chapter}{\numberline {A}Um Detalhe Adicional}{21}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Outro Detalhe Adicional}{23}{appendix.B}%
-\contentsline {chapter}{Bibliografia}{25}{appendix*.8}%
+\contentsline {subsection}{\numberline {3.2.1}Defini\c c\~ao de Personagens}{16}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Modelo EA}{16}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Configura\c c\~ao de Habilidades}{19}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Configura\c c\~ao de Miss\~oes}{19}{subsection.3.2.4}%
+\contentsline {section}{\numberline {3.3}Interface Humana}{19}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Demonstra\c c\~ao}{21}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Conclus\~ao}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Sum\'ario}{23}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Desenvolvimentos Futuros}{23}{section.5.2}%
+\contentsline {chapter}{\numberline {A}Um Detalhe Adicional}{25}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Outro Detalhe Adicional}{27}{appendix.B}%
+\contentsline {chapter}{Bibliografia}{29}{appendix*.8}%
